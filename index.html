@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --space-background: #16161a;
+            --space-headline: #fffffe;
+            --space-paragraph: #f0f0f0;
+            --space-button: #2cb67d;
+            --space-button-secondary: #2cb67d;
+            --sky-background: #0f0e17;
+            --sky-headline: #fffffe;
+            --sky-paragraph: #f0f0f0;
+            --sky-button: #ff8906;
+            --sky-button-secondary: #ff8906;
+            --land-background: #004643;
+            --land-headline: #fffffe;
+            --land-paragraph: #f0f0f0;
+            --land-button: #e16162;
+            --land-button-secondary: #e16162;
+            --sea-background: #00473e;
+            --sea-headline: #f2f7f5;
+            --sea-paragraph: #f0f0f0;
+            --sea-button: #faae2b;
+            --sea-button-secondary: #faae2b;
+        }
+
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        body{
+            background-color: #252525;
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body::-webkit-scrollbar{
+            display: none;
+        }
+
+        header{
+            font-family: 'Teko', sans-serif;
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .logo-container{
+            padding: 28px 20px 20px 20px;
+            position: absolute;
+            left: 0;
+        }
+
+        .list-container{
+            justify-content: center;
+        }
+
+        .list-container ul{
+            display: flex;
+            justify-content: space-between;
+            width: 50vw;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .list-container ul a{
+            padding: 2px 5px;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .nav-items:hover{
+            padding: 2px 5px;
+            background-color: white;
+            color: #252525;
+            border-radius: 2px;
+        }
+
+        .content-container{
+            z-index: 2;
+        }
+
+        .title-section{
+            height: 100vh;
+            width: 100vw;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            position: sticky;
+            top: 0;
+        }
+
+        .title-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            
+            color: white;
+            font-family: 'Teko', monospace;
+            text-transform: uppercase;
+            font-size: 3.25rem;
+
+            width: 70vw;
+            height: 50vh;
+        }
+
+        .top-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            width: 50vw;
+            padding-left: 50%;
+            height: fit-content;
+            padding: 20px 0px;
+        }
+
+        .top-content div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+        }
+
+        .top-content div hr{
+            color: white;
+            width: 300px;
+            margin: -20px 0px 5px 0px;
+        }
+
+        .translate{
+            font-size: 1.5rem;
+        }
+
+        .bottom-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: end;
+
+            width: 50vw;
+        }
+
+        .content-btn{
+            padding: 10px 5px;
+            border-radius: 5px;
+
+            background: none;
+            color: inherit;
+            border: none;
+            cursor: pointer;
+            outline: inherit;
+        }
+
+        .close-btn-container{
+            width: 100%;
+            display: flex;
+            justify-content: end;
+            margin-bottom: -10px;
+
+            position: sticky;
+            top: 0;
+        }
+
+        .close-btn{
+            width: 25px;
+            height: 25px;
+            font-size: 1rem;
+
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            outline: inherit;
+        }
+
+        .titles{
+            font-family: 'Teko', monospace;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+
+            margin: 15px auto 0px auto;
+            width: 100%;
+        }
+
+        .title-lvl-2{
+            margin-top: 60px;
+        }
+
+        hr{
+            width: 100px;
+            color: #252525;
+            margin-top: 0px;
+            margin-bottom: 15px;
+        }
+
+        .content-lvl-1{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0px;
+            padding: 5px;
+            /* border: 1px solid white; */
+            border-radius: 10px;
+        }
+
+        .content-lvl-1 p{
+            width: 65%;
+            text-align: justify;
+            /* border: 1px solid white; */
+        }
+
+        .content-lvl-2{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0px;
+            padding: 5px;
+            /* border: 1px solid white; */
+            border-radius: 10px;
+        }
+
+        .content-lvl-2 div{
+            width: 65%;
+            text-align: justify;
+            /* border: 1px solid white; */
+        }
+
+        .welcome-section{
+            background-color: #252525;
+            z-index: 1;
+        }
+
+        .space-section{
+            background-color: var(--space-background);
+            z-index: 1;
+        }
+
+        #space-content-container{
+            display: none;
+            top: 0;
+            left: 0;
+            position: absolute;
+            
+            height: 100vh;
+            width: 100vw;
+
+            background: rgba(37, 37, 37, .9);
+            color: white;
+            font-family: 'Teko', monospace;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+        }
+
+        .space-content{
+            position: relative;
+            margin: 0 auto;
+            padding: 20px 10px;
+            top: 10%;
+            width: 80%;
+            height: 80vh;
+            background-color: white;
+            overflow-y: scroll;
+            text-align: center;
+
+            color: #252525;
+            font-family: 'Teko', monospace;
+            text-transform: none;
+            font-size: 1rem;
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .space-content::-webkit-scrollbar{
+            display: none;
+        }
+
+        .space-title{
+            color: var(--space-headline);
+        }
+
+        .space-desc{
+            color: var(--space-paragraph);
+        }
+
+        .space-btn{
+            background-color: var(--space-button);
+        }
+
+        .space-btn:hover{
+            background-color: var(--space-button-secondary);
+            box-shadow: -5px 7px 1px;
+            margin-bottom: 10px;
+        }
+
+        .sky-section{
+            background-color: var(--sky-background);
+            z-index: 1;
+        }
+
+        #sky-content-container{
+            display: none;
+            top: 0;
+            left: 0;
+            position: absolute;
+
+            height: 100vh;
+            width: 100vw;
+
+            background: rgba(37, 37, 37, .9);
+            color: white;
+            font-family: 'Teko', monospace;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+        }
+
+        .sky-content{
+            position: relative;
+            margin: 0 auto;
+            padding: 20px 10px;
+            top: 20%;
+            width: 80%;
+            height: max-content;
+            background-color: white;
+            text-align: center;
+
+            color: #252525;
+            font-family: 'Teko', monospace;
+            text-transform: none;
+            font-size: 1rem;
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .sky-content::-webkit-scrollbar{
+            display: none;
+        }
+
+        .sky-title{
+            color: var(--sky-headline);
+        }
+
+        .sky-desc{
+            color: var(--sky-paragraph);
+        }
+
+        .sky-btn{
+            background-color: var(--sky-button);
+        }
+
+        .sky-btn:hover{
+            background-color: var(--sky-button-secondary);
+            box-shadow: -5px 7px 1px;
+            margin-bottom: 10px;
+        }
+
+        .land-section{
+            background-color: var(--land-background);
+            z-index: 1;
+        }
+
+        #land-content-container{
+            display: none;
+            top: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+
+            height: 100vh;
+            width: 100vw;
+
+            background: rgba(37, 37, 37, .9);
+            color: white;
+            font-family: 'Teko', monospace;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+        }
+
+        .land-content{
+            position: relative;
+            margin: 0 auto;
+            padding: 20px 10px;
+            top: 10%;
+            width: 80%;
+            height: 80vh;
+            background-color: white;
+            overflow-y: scroll;
+            text-align: center;
+
+            color: #252525;
+            font-family: 'Teko', monospace;
+            text-transform: none;
+            font-size: 1rem;
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .land-content::-webkit-scrollbar{
+            display: none;
+        }
+
+        .land-title{
+            color: var(--land-headline);
+        }
+
+        .land-desc{
+            color: var(--land-paragraph);
+        }
+
+        .land-btn{
+            background-color: var(--land-button);
+        }
+
+        .land-btn:hover{
+            background-color: var(--land-button-secondary);
+            box-shadow: -5px 7px 1px;
+            margin-bottom: 10px;
+        }
+
+        .sea-section{
+            background-color: var(--sea-background);
+            z-index: 1;
+        }
+
+        #sea-content-container{
+            display: none;
+            top: 0;
+            left: 0;
+            position: absolute;
+
+            height: 100vh;
+            width: 100vw;
+
+            background: rgba(37, 37, 37, .9);
+            color: white;
+            font-family: 'Teko', monospace;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+        }
+
+        .sea-content{
+            position: relative;
+            margin: 0 auto;
+            padding: 20px 10px;
+            top: 10%;
+            width: 80%;
+            height: 80vh;
+            background-color: white;
+            overflow-y: scroll;
+            text-align: center;
+
+            color: #252525;
+            font-family: 'Teko', monospace;
+            text-transform: none;
+            font-size: 1rem;
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .sea-content::-webkit-scrollbar{
+            display: none;
+        }
+
+        .sea-title{
+            color: var(--sea-headline);
+        }
+
+        .sea-desc{
+            color: var(--sea-paragraph);
+        }
+
+        .sea-btn{
+            background-color: var(--sea-button);
+        }
+
+        .sea-btn:hover{
+            background-color: var(--sea-button-secondary);
+            box-shadow: -5px 7px 1px;
+            margin-bottom: 10px;
+        }
+
+        .quotes-section{
+            background-color: #252525;
+            z-index: 1;
+        }
+
+        footer{
+            font-family: 'Teko', sans-serif;
+            position: sticky;
+            bottom: 0;
+            z-index: 0;
+
+            background-color: white;
+        }
+
+        .top-footer{
+            display: flex;
+            padding: 20px 20px 0px 20px;
+            width: 100vw;
+        }
+
+        .left-footer{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 50vw;
+        }
+
+        .left-footer p{
+            padding: 0px 0px 10px 0px;
+        }
+
+        .pages-container ul{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+
+            color: #252525;
+            font-size: 1.1rem;
+        }
+
+        .pages-container ul a{
+            padding: 2px 5px;
+            color: #252525;
+        }
+
+        .footer-items:hover{
+            padding: 2px 5px;
+            background-color: white;
+            color: #252525;
+            border-radius: 2px;
+        }
+
+        .social-container ul{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+
+            color: #252525;
+        }
+
+        .right-footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50vw;
+        }
+
+        .bottom-footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px 40px 40px 40px;
+        }
+
+        .footer-vertical{
+            margin: 0;
+            color: #252525;
+
+            display: flex;
+            flex-direction: row;
+
+            width: 0;
+            height: 100%;
+
+            border: 1px solid #252525;
+        }
+
+        .footer-horizontal{
+            margin: 10px 0px;
+            color: #252525;
+            width: 100vw;
+            stroke: 5px;
+
+            border: 1px solid #252525;
+        }
+
+        .footer-items:hover{
+            padding: 2px 5px;
+            background-color: #252525;
+            color: white;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="/Web Sampah/img/logo-square.svg" alt="Logo Kelompok 186"
+            height="30px"
+
+            style="
+            /* color: #252525; */
+
+            /* filter: invert(7%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%); */
+
+            filter: invert(100%) sepia(0%) saturate(7457%) hue-rotate(46deg) brightness(100%) contrast(97%);
+            "
+            >
+        </div>
+
+        <div class="list-container">
+            <ul>
+                <li class="items">|</li>
+                <li><a href="index.html" data-value="HOME" class="items nav-items nav-item1">HOME</a></li>
+                <li class="items">|</li>
+                <li><a href="guides.html" data-value="GUIDES" class="items nav-items nav-item2">GUIDES</a></li>
+                <li class="items">|</li>
+                <li><a href="articles-list.php" data-value="ARTICLES" class="items nav-items nav-item3">ARTICLES</a></li>
+                <li class="items">|</li>
+                <li><a href="about.html" data-value="ABOUT" class="items nav-items nav-item4">ABOUT</a></li>
+                <li class="items">|</li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="content-container" id="content-container">
+        <section class="welcome-section title-section">
+            <div class="title-container">
+                <p class="trash-word top-content">Sampah</p>
+                <p class="lang-word bottom-content">-Indonesia</p>
+            </div>
+        </section>
+        <section class="space-section title-section">
+            <div class="title-container">
+                <div class="top-content">
+                    <div>
+                        <p class="space-title">Trash in The Space</p>
+                        <hr>
+                        <p class="translate space-desc">Sampah di Luar Angkasa.</p>
+                    </div>
+                </div>
+                <section class="bottom-content">
+                    <button class="content-btn space-btn" onclick="OpenContent('space-content-container')">Selengkapnya &#8594</button>
+                </section>
+            </div>
+        </section>
+        <section class="sky-section title-section">
+            <div class="title-container">
+                <div class="top-content">
+                    <div>
+                        <p class="sky-title">Trash in The Sky</p>
+                        <hr>
+                        <p class="translate sky-desc">Sampah di Udara.</p>
+                    </div>
+                </div>
+                <section class="bottom-content">
+                    <button class="content-btn sky-btn" onclick="OpenContent('sky-content-container')">Selengkapnya &#8594</button>
+                </section>
+            </div>
+        </section>
+        <section class="land-section title-section">
+            <div class="title-container">
+                <div class="top-content">
+                    <div>
+                        <p class="land-title">Trash in The Land</p>
+                        <hr>
+                        <p class="translate land-desc">Sampah di Tanah.</p>
+                    </div>
+                </div>
+                <section class="bottom-content">
+                    <button class="content-btn land-btn" onclick="OpenContent('land-content-container')">Selengkapnya &#8594</button>
+                </section>
+            </div>
+        </section>
+        <section class="sea-section title-section">
+            <div class="title-container">
+                <div class="top-content">
+                    <div>
+                        <p class="sea-title">Trash in The Sea</p>
+                        <hr>
+                        <p class="translate sea-desc">Sampah di Laut.</p>
+                    </div>
+                </div>
+                <section class="bottom-content">
+                    <button class="content-btn sea-btn" onclick="OpenContent('sea-content-container')">Selengkapnya &#8594</button>
+                </section>
+            </div>
+        </section>
+        <section class="quotes-section title-section">
+            <div class="title-container">
+                <p class="quotes-sentence top-content">"You must be the change you wish to see in the world."</p>
+                <p class="quotes-name bottom-content">-Mahatma Gandhi</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="space-content-container" class="content-container" onmouseover="document.body.style.overflow='hidden';"  onmouseout="document.body.style.overflow='auto';">
+                <div class="space-content material-content" onmouseover="document.body.style.overflow='hidden';"  onmouseout="document.body.style.overflow='auto';">
+                    
+                    <div class="close-btn-container">
+                        <button class="close-btn" onclick="CloseContent('space-content-container')">
+                        X
+                        </button>
+                    </div>
+
+                    <p class="title-lvl-1 titles">Trash in The Space</p>
+                    <div class="content-lvl-1">
+                        <p>Pada 2023, terdapat sekitar 30.000 sampah di luar 
+                            angkasa seukuran bola tenis yang melayang di sekitar 
+                            bumi. Sampah dapat berakhir di luar angkasa karena aktivitas 
+                            luar angkasa yang mulai meningkat, seperti peluncuran 
+                            satelit dan roket. Sampah di luar angkasa sangat berbahaya, karena 
+                            rata-rata kecepatan yang dimiliki oleh sampah 
+                            tersebut adalah 10 KM per detik.</p>
+                        <img src="http://placehold.it/160x90" alt="">
+                    </div>
+                    <div class="content-lvl-1">
+                        <img src="http://placehold.it/160x90" alt="">
+                        <p>Objek dengan ukuran sekitar 10 cm dapat menghancurkan 
+                            satelit dengan ukuran rata-rata jika bertabrakan. 
+                            Terdapat sekitar 30.000 objek dengan ukuran tersebut 
+                            di sekitar bumi, terdiri dari sampah manusia, pecahan 
+                            dari komet atau asteroid.</p>
+                    </div>
+                    <div class="content-lvl-1">
+                        <p>Objek dengan ukuran 1 cm dapat merusak lapisan 
+                            pelindung Stasiun Antariksa Internasional atau 
+                            International Space Station (ISS). Terdapat sekitar 
+                            670.000 objek dengan ukuran tersebut di sekitar bumi.</p>
+                        <img src="http://placehold.it/160x90" alt="">
+                    </div>
+                    <div class="content-lvl-1">
+                        <img src="http://placehold.it/160x90" alt="">
+                        <p>Objek dengan ukuran 1 mm dapat merusak kemampuan 
+                            pesawat luar angkasa untuk terbang ke ketinggian 
+                            tertentu jika bertabrakan. Terdapat sekitar 
+                            170.000.000 objek dengan ukuran tersebut di sekitar 
+                            bumi.</p>
+                    </div>
+                    <div>
+                        <p class="title-lvl-2 titles">Sampah-sampah unik yang pernah ditinggalkan astronot</p>
+                        <div class="content-lvl-2">
+                            <div>
+                                <p class="title-lvl-3 titles">Spatula</p>
+                                <hr>
+                                <p>Terjadi pada misi <i>Discovery's</i> 2006 
+                                    STS-121 menuju ISS, astronot Piers Sellers 
+                                    secara tidak sengaja kehilangan sebuah 
+                                    spatula pada saat <i>spacewalking</i> untuk 
+                                    menguji sistem keamanan baru setelah tragedi 
+                                    <i>Columbia 2003</i>.</p>
+                            </div>
+                            <img src="http://placehold.it/160x90" alt="">
+                        </div>
+                        <div class="content-lvl-2">
+                            <img src="http://placehold.it/160x90" alt="">
+                            <div>
+                                <p class="title-lvl-3 titles">Tas Peralatan</p>
+                                <hr>
+                                <p>Astronot Heide Stefanyshyn-Piper kehilangan 
+                                    genggaman pada tas peralatannya yang 
+                                    digunakan pada saat <i>spacewalk</i> pada 
+                                    November 2008 lalu. Tas tersebut berisikan 
+                                    beberapa peralatan pembersih panel surya serta 
+                                    beberapa kantung pecahan batuan yang diperkirakan 
+                                    senilai $100,000. Tas peralatan tersebut 
+                                    terkadang dapat terlihat melayang melintasi 
+                                    orbit bumi melalui teleskop di langit benua 
+                                    Amerika.</p>
+                            </div>
+                        </div>
+                        <div class="content-lvl-2">
+                            <div>
+                                <p class="title-lvl-3 titles">Sarung Tangan</p>
+                                <hr>
+                                <p>Astronot pertama yang memulai trend ini, 
+                                    Ed White kehilangan sarung tangannya pada 
+                                    saat <i>spacewalk</i> pertamanya pada misi 
+                                    <i>Gemini 4</i> Tahun 1965. Sarung tangan 
+                                    tersebut dapat diilihat pada orbit bumi 
+                                    selama satu bulan lalu terbakar habis pada 
+                                    saat memasuki atmosfer bumi.</p>
+                            </div>
+                            <img src="http://placehold.it/160x90" alt="">
+                        </div>
+                        <div class="content-lvl-2">
+                            <img src="http://placehold.it/160x90" alt="">
+                            <div>
+                                <p class="title-lvl-3 titles">Tangki Ammonia</p>
+                                <hr>
+                                <p>Yang ini dilakukan secara sengaja, pada 
+                                    Juli 2007 NASA menginstruksikan astronot 
+                                    untuk membuang tangki berisikan Ammonia 
+                                    seberat 635 Kilogram ke luar angkasa. Tangki 
+                                    tersebut merupakan bagian dari sistem 
+                                    pendingin ISS yang lama, namun dengan adanya 
+                                    pembaruan sistem; tangki tersebut tidak 
+                                    diperlukan lagi dan hanya akan memakan ruang 
+                                    kargo jika dibawa ke bumi. Sekitar satu tahun 
+                                    kemudian, tangki tersebut terbakar pada saat 
+                                    memasuki atmosfer bumi di sekitar Samudera 
+                                    Pasifik Selatan.</p>
+                            </div>
+                        </div>
+                        <div class="content-lvl-2">
+                            <div>
+                                <p class="title-lvl-3 titles">Abu Kremasi dari Gene Roddenberry</p>
+                                <hr>
+                                <p>Sebagian kecil dari abu kremasi Gene 
+                                    Roddenberry, pencipta seri <i>Star Trek</i> 
+                                    dikirimkan ke luar angkasa pada misi STS-52 
+                                    roket <i>Columbia</i> tahun 1992. Kapsul 
+                                    seukuran lipstik tersebut mengorbit bumi 
+                                    selama beberapa waktu sebelum terbakar di 
+                                    atmosfer bumi. </p>
+                            </div>
+                            <img src="http://placehold.it/160x90" alt="">
+                        </div>
+                        <div class="content-lvl-2">
+                            <img src="http://placehold.it/160x90" alt="">
+                            <div>
+                                <p class="title-lvl-3 titles">Urine</p>
+                                <hr>
+                                <p>Selama bertahun-tahun, semua urine astronot 
+                                    dibuang secara langsung ke luar angkasa. 
+                                    Pada saat urine tersebut berada di luar 
+                                    angkasa, akan langsung membeku menjadi 
+                                    kristal kecil yang lalu akan melayang di 
+                                    luar angkasa. Para astronot menceritakan 
+                                    bahwa melihat urine dilepaskan ke luar 
+                                    angkasa sebagai suatu pemandangan tercantik 
+                                    yang dapat dilihat di orbit.</p>
+                            </div>
+                        </div>
+                        <div class="content-lvl-2">
+                            <div>
+                                <p class="title-lvl-3 titles">Tang</p>
+                                <hr>
+                                <p>Pada saat memperbaiki panel surya yang rusak 
+                                    pada November 2007, astronot Scott Parazynski 
+                                    tanpa sengaja kehilangan sebuah tang yang 
+                                    lalu dapat terlihat melayang dibawah ISS.</p>
+                            </div>
+                            <img src="http://placehold.it/160x90" alt="">
+                        </div>
+                        <div class="content-lvl-2">
+                            <img src="http://placehold.it/160x90" alt="">
+                            <div>
+                                <p class="title-lvl-3 titles">Kamera</p>
+                                <hr>
+                                <p>Astronot Suni Williams berusaha menarik sebuah 
+                                    panel surya yang menyangkut pada ISS pada 
+                                    Juni 2007, kemudian kamera yang dibawanya 
+                                    dari tali pengaman yang terhubung dengan 
+                                    kostum astronot kemudian melayang menjauh 
+                                    dari ISS. Kejadian ini bukan karena kesalahan 
+                                    astronot melainkan karena tombol pengaman 
+                                    pada kamera mengalami kerusakkan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+    <div id="sky-content-container" class="content-container" onmouseover="document.body.style.overflow='hidden';"  onmouseout="document.body.style.overflow='auto';">
+        <div class="sky-content material-content" onmouseover="document.body.style.overflow='hidden';"  onmouseout="document.body.style.overflow='auto';">
+            
+            <div class="close-btn-container">
+                <button class="close-btn" onclick="CloseContent('sky-content-container')">
+                X
+                </button>
+            </div>
+
+            <p class="title-lvl-1 titles">Trash in The Sky</p>
+            <div class="content-lvl-1">
+                <p>Sampah anorganik seringkali berbau busuk, bau 
+                    busuk tersebut datang dari gas kimia yang 
+                    dilepaskan pada saat proses pembusukkan; 
+                    polusi udara ini umum ditemukan di sekitar 
+                    Tempat Pembuangan Akhir.  Salah satu komponen 
+                    dari gas tersebut adalah gas metana, yang 
+                    merupakan salah satu kontributor utama dari 
+                    efek rumah kaca.</p>
+                <img src="http://placehold.it/160x90" alt="">
+            </div>
+            <div class="content-lvl-1">
+                <img src="http://placehold.it/160x90" alt="">
+                <p>Pembakaran sampah secara sembarangan juga 
+                    merupakan salah satu kontributor terbesar 
+                    terhadap polusi udara. Pembakaran sampah 
+                    menghasilkan gas berupa karbon monoksida, 
+                    setiap tahunnya sekitar 240 warga Amerika 
+                    Serikat meninggal dunia karena keracunan 
+                    karbon monoksida.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="land-content-container" class="content-container" onmouseover="document.body.style.overflow='hidden';"  onmouseout="document.body.style.overflow='auto';">
+        <div class="land-content material-content" onmouseover="document.body.style.overflow='hidden';"  onmouseout="document.body.style.overflow='auto';">
+            
+            <div class="close-btn-container">
+                <button class="close-btn" onclick="CloseContent('land-content-container')">
+                X
+                </button>
+            </div>
+
+            <p class="title-lvl-1 titles">Trash in The Land</p>
+            <div class="content-lvl-1">
+                <p>Pencemaran tanah dapat terjadi karena adanya 
+                    pengendapan limbah organik maupun organik 
+                    dalam waktu yang lama, keberadaan limbah ini 
+                    dapat mempengaruhi kesuburan tanah dan 
+                    kesehatan tanaman disekitarnya.</p>
+                <img src="http://placehold.it/160x90" alt="">
+            </div>
+            <div class="content-lvl-1">
+                <img src="http://placehold.it/160x90" alt="">
+                <p>Keberadaan limbah tersebut dapat mengubah 
+                    kandungan senyawa kimiawi yang telah ada 
+                    pada tanah, polusi tanah terjadi bukan 
+                    karena adanya senyawa kimia namun karena 
+                    adanya senyawa kimia yang melebihi batas 
+                    wajar.</p>
+            </div>
+            <div class="content-lvl-1">
+                <p>Limbah ini berasal dari limbah rumah tangga, 
+                    limbah hasil produksi pabrik, limbah 
+                    pertambangan, penggunaan pestisida dan 
+                    limbah hasil pertanian.</p>
+                <img src="http://placehold.it/160x90" alt="">
+            </div>
+            <div>
+                <p class="title-lvl-2 titles">Dampak negatif polusi tanah</p>
+                <div class="content-lvl-2">
+                    <div>
+                        <p class="title-lvl-3 titles">Tanaman</p>
+                        <hr>
+                        <p>Tanaman akan sulit untuk tumbuh pada 
+                            tanah yang sudah tercemar, kandungan 
+                            pada buah dan tumbuhan juga akan 
+                            menjadi buruk untuk dikonsumsi karena 
+                            sebagian besar nutrisi yang ada pada 
+                            tumbuhan berasal dari tanah.</p>
+                    </div>
+                    <img src="http://placehold.it/160x90" alt="">
+                </div>
+                <div class="content-lvl-2">
+                    <img src="http://placehold.it/160x90" alt="">
+                    <div>
+                        <p class="title-lvl-3 titles">Hewan</p>
+                        <hr>
+                        <p>Ekosistem di sekitar tanah yang 
+                            tercemar juga akan mengalami gangguan, 
+                            hewan-hewan yang mengkonsumsi makanan 
+                            dari tanah akan rentan terserang 
+                            penyakit. Kepunahan spesies tertentu 
+                            dapat terjadi karena wabah penyakit 
+                            yang dapat menyebar dengan cepat.</p>
+                    </div>
+                </div>
+                <div class="content-lvl-2">
+                    <div>
+                        <p class="title-lvl-3 titles">Manusia</p>
+                        <hr>
+                        <p>Kesehatan manusia juga akan terpengaruh, 
+                            dari seberapa banyak manusia 
+                            menghirup udara yang terkontaminasi 
+                            sampai anak-anak yang mungkin bermain 
+                            tanah dapat lebih rentan terhadap 
+                            serangan penyakit.</p>
+                    </div>
+                    <img src="http://placehold.it/160x90" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sea-content-container" class="content-container" onmouseover="document.body.style.overflow='hidden';"  onmouseout="document.body.style.overflow='auto';">
+        <div class="sea-content material-content" onmouseover="document.body.style.overflow='hidden';"  onmouseout="document.body.style.overflow='auto';">
+            
+            <div class="close-btn-container">
+                <button class="close-btn" onclick="CloseContent('sea-content-container')">
+                X
+                </button>
+            </div>
+
+            <p class="title-lvl-1 titles">Trash in The Sea</p>
+            <div class="content-lvl-1">
+                <p>80% pencemaran laut berasal dari daratan, 
+                    pencemaran tersebut terdiri dari berbagai 
+                    jenis seperti bahan kimia, limbah padat, 
+                    pembuangan radioaktif ilegal, limbah 
+                    industri, limbah pertanian, dan tumpahan 
+                    minyak.</p>
+                <img src="http://placehold.it/160x90" alt="">
+            </div>
+            <div class="content-lvl-1">
+                <img src="http://placehold.it/160x90" alt="">
+                <p>Pestisida merupakan salah satu polusi yang 
+                    datang dari limbah pertanian, pestisida 
+                    dengan jumlah yang cukup dapat mengakibatkan 
+                    mutasi pada organisme laut dan penyakit yang 
+                    dapat menjangkit organisme tertentu sehingga 
+                    dapat mengancam seluruh sistem rantai makanan 
+                    di sekitar daerah yang tercemar.</p>
+            </div>
+            <div class="content-lvl-1">
+                <p>Pulau Sampah Samudra Pasifik (<i>The Great 
+                    Pacific Garbage Patch</i>) merupakan sebuah 
+                    tumpukan sampah yang mengambang pada 
+                    permukaan laut di samudera pasifik dengan 
+                    luas 1,6 juta km2 atau 3 kali ukuran negara 
+                    perancis.</p>
+                    <img src="http://placehold.it/160x90" alt="">
+            </div>
+            <div class="content-lvl-1">
+                <img src="http://placehold.it/160x90" alt="">
+                <p>Pulau sampah ini dapat terbentuk karena 
+                    pergerakan arus yang ada pada samudera 
+                    pasifik sehingga semua sampah tersebut 
+                    berkumpul di tengah-tengah samudera pasifik. 
+                    Rata-rata sampah yang terkumpul datang dari 
+                    industri perikanan dan agrikultur pada 
+                    beberapa negara seperti Jepang, China, Korea 
+                    Selatan, Amerika Serikat, dan Taiwan; 
+                    rata-rata sampah yang ada pada pulau tersebut 
+                    terdiri dari kantong plastik, botol plastik, 
+                    dan gelas styrofoam.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="top-footer">
+            <div class="left-footer">
+                <div class="pages-container">
+                    <p>More : </p>
+                    <ul>
+                        <!-- <li class="items">|</li> -->
+                        <li><a href="index.html" data-value="HOME" class="items footer-items footer-item1">HOME</a></li>
+                        <!-- <li class="items">|</li> -->
+                        <li><a href="guides.html" data-value="GUIDES" class="items footer-items footer-item2">GUIDES</a></li>
+                        <!-- <li class="items">|</li> -->
+                        <li><a href="articles-list.php" data-value="ARTICLES" class="items footer-items footer-item3">ARTICLES</a></li>
+                        <!-- <li class="items">|</li> -->
+                        <li><a href="about.html" data-value="ABOUT" class="items footer-items footer-item4">ABOUT</a></li>
+                        <!-- <li class="items">|</li> -->
+                    </ul>
+                </div>
+                <div class="social-container">
+                    <p>Follow Us : </p>
+                    <ul>
+                        <li>
+                            <a href="https://www.instagram.com/kkn.negerijemanten/" target="_blank">
+                                <img src="/Web Sampah/img/logo-instagram.svg" alt="Logo Instagram"
+                                height="30px"
+
+                                style="
+                                /* color: #252525; */
+
+                                filter: invert(0%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+                                "
+                                >
+
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.instagram.com/kkn.negerijemanten/" target="_blank">
+                                <img src="/Web Sampah/img/logo-tiktok.svg" alt="Logo Tiktok"
+                                height="30px"
+
+                                style="
+                                /* color: #252525; */
+
+                                filter: invert(7%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+                                "
+                                >
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/kkn.negerijemanten/" target="_blank">
+                                <img src="/Web Sampah/img/logo-youtube.svg" alt="Logo Youtube"
+                                height="30px"
+
+                                style="
+                                /* color: #252525; */
+
+                                filter: invert(0%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+                                "
+                                >
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://kknnegerijemanten.carrd.co/" target="_blank">
+                                <img src="/Web Sampah/img/logo-carrd.svg" alt="Logo Carrd"
+                                height="30px"
+
+                                style="
+                                /* color: #252525; */
+
+                                filter: invert(7%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+                                "
+                                >
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <hr class="footer-vertical">
+            </div>
+                <div class="right-footer">
+                <img src="/Web Sampah/img/logo-vertical.svg" alt="Logo Kelompok 186"
+                height="200px"
+
+                style="
+                /* color: #252525; */
+
+                filter: invert(100%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+                "
+                >
+            </div>
+        </div>
+        <hr class="footer-horizontal">
+        <div class="bottom-footer">
+            <p>&#169 Kelompok 186 | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        let interval = null;
+
+        document.querySelector(".nav-item1").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".nav-item2").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".nav-item3").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".nav-item4").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".footer-item1").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".footer-item2").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".footer-item3").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".footer-item4").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        const trash_word = ["poubelle","Müll","Sampah",
+                            "Trash","աղբարկղ","कचरा",
+                            "ごみ","쓰레기","ขยะ",
+                            "نفاية","asblik","qashinka",
+                            "inkunkuma","idọti","udoti",
+                            "basura","paru"]
+
+        const lang_word = ["-French","-German","-Indonesia",
+                            "-English","-Armenian","-Hindi",
+                            "-Japanese","-Korean","-Thai",
+                            "-Arabic","-Afrikaans","-Somali",
+                            "-Xhosa","-Yoruba","-Zulu","-Filipino","-Maori"]
+
+        document.querySelector(".trash-word").onmouseover = event =>{
+            let iterations = 0;
+
+            const interval = setInterval(()=>{
+                const change = Math.floor(Math.random() * 17);
+                event.target.innerText = trash_word[change];
+                document.querySelector(".lang-word").innerText = lang_word[change]
+
+                if(iterations==9) clearInterval(interval);
+
+                iterations+=1;
+            }, 30);
+        }
+
+        const quotes_sentence = ['"Great things are done by a series of small things brought together."',
+                                '"If you cannot do great things, do small things in a great way."',
+                                '"While it may seem small, the ripple effects of small things are extraordinary."',
+                                '"Small things sometimes mean a whole lot!"',
+                                '"Great things are not done by impulse, but by a series of small things brought together."',
+                                '"Even the largest avalanche is triggered by small things."',
+                                '"Small things can turn everything around."',
+                                '"You must be the change you wish to see in the world."',
+                                '“I alone cannot change the world, but I can cast a stone across the water to create many ripples."']
+
+        const quotes_name = ["-Vincent Van Gogh","-Napoleon Hill",
+                            "-Matt Bevin","-DanTDM","-George Eliot",
+                            "-Vernor Vinge","-Kai Havertz",
+                            "-Mahatma Gandhi","-Mother Teresa"]
+
+        document.querySelector(".quotes-sentence").onmouseover = event =>{
+            let iterations = 0;
+
+            const interval = setInterval(()=>{
+                const change = Math.floor(Math.random() * 9);
+                document.querySelector(".quotes-sentence").innerText = quotes_sentence[change];
+                document.querySelector(".quotes-name").innerText = quotes_name[change]
+
+                if(iterations==9) clearInterval(interval);
+
+                iterations+=1;
+            }, 30);
+        }
+
+        function OpenContent(element_id){
+            document.getElementById(element_id).style.display = "block";
+            document.getElementById("content-container").style.display = "none";
+            document.getElementById("footer").style.display = "none";
+        }
+
+        function CloseContent(element_id){
+            document.getElementById(element_id).style.display = "none";
+            document.getElementById("content-container").style.display = "block";
+            document.getElementById("footer").style.display = "block";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIDES</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        body{
+            background-color: #f0f0f0;
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body::-webkit-scrollbar{
+            display: none;
+        }
+
+        header{
+            font-family: 'Teko', sans-serif;
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .logo-container{
+            padding: 20px;
+            position: absolute;
+            left: 0;
+        }
+
+        .list-container{
+            justify-content: center;
+        }
+
+        .list-container ul{
+            display: flex;
+            justify-content: space-between;
+            width: 50vw;
+            font-size: 1.1rem;
+            color: #252525;
+        }
+
+        .list-container ul a{
+            padding: 2px 5px;
+            font-size: 1.1rem;
+            color: #252525;
+        }
+
+        .nav-items:hover{
+            padding: 2px 5px;
+            background-color: #252525;
+            color: #f0f0f0;
+            border-radius: 2px;
+        }
+
+        .category-title-section{
+            height: 100vh;
+            width: 100vw;
+            padding-top: 70px;
+
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            flex-direction: column;
+
+            position: sticky;
+            top: 0;
+
+            color: #252525;
+            font-family: 'Teko', monospace;
+            text-transform: uppercase;
+            font-size: 2.75rem;
+        }
+
+        .category-title-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: fit-content;
+            width: 100vw;
+        }
+
+        .category-item-container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+
+            height: 100%;
+
+            text-transform: none;
+            font-size: 1rem;
+        }
+
+        .category-item{
+            text-align: justify;
+
+            padding: 2% 5%;
+            width: 33vw;
+            flex-basis: 0 0 33.3333333%;
+        }
+
+        .category-item-title{
+            font-size: 1.5rem;
+        }
+
+        .horizontal-rule{
+            max-width: 100px;
+        }
+
+        .category-text{
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .vertical-rule{
+            display: flex;
+            flex-direction: row;
+
+            height: 200px;
+        }
+
+        .btn-section{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: end;
+
+            width: 100%;
+        }
+
+        .content-btn{
+            padding: 20px 0px;
+
+            background: none;
+            color: inherit;
+            border: none;
+            cursor: pointer;
+            outline: inherit;
+        }
+
+        .category-welcome-section{
+            /* background-image: url('/Web Sampah/img/pattern-team.svg'); */
+            background-color: #f0f0f0;
+            z-index: 1;
+            padding-top: 0;
+            margin-top: -30;
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        .category-type-section{
+            background-color: darkcyan;
+            z-index: 1;
+        }
+
+        .category-source-part-1-section{
+            background-color: darksalmon;
+            z-index: 1;
+        }
+
+        .category-source-part-2-section{
+            background-color: darkseagreen;
+            z-index: 1;
+        }
+
+        footer{
+            font-family: 'Teko', sans-serif;
+            position: sticky;
+            bottom: 0;
+            z-index: 0;
+
+            background-color: #f0f0f0;
+        }
+
+        .top-footer{
+            display: flex;
+            padding: 20px 20px 0px 20px;
+            width: 100vw;
+        }
+
+        .left-footer{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 50vw;
+        }
+
+        .left-footer p{
+            padding: 0px 0px 10px 0px;
+        }
+
+        .pages-container ul{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+
+            color: #252525;
+            font-size: 1.1rem;
+        }
+
+        .pages-container ul a{
+            padding: 2px 5px;
+            color: #252525;
+        }
+
+        .footer-items:hover{
+            padding: 2px 5px;
+            background-color: #f0f0f0;
+            color: #252525;
+            border-radius: 2px;
+        }
+
+        .social-container ul{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+
+            color: #252525;
+        }
+
+        .right-footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50vw;
+        }
+
+        .bottom-footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px 40px 40px 40px;
+        }
+
+        .footer-vertical{
+            margin: 0;
+            color: #252525;
+
+            display: flex;
+            flex-direction: row;
+
+            width: 0;
+            height: 100%;
+
+            border: 1px solid #252525;
+        }
+
+        .footer-horizontal{
+            margin: 10px 0px;
+            color: #252525;
+            width: 100vw;
+            stroke: 5px;
+
+            border: 1px solid #252525;
+        }
+
+        .footer-items:hover{
+            padding: 2px 5px;
+            background-color: #252525;
+            color: #f0f0f0;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="/Web Sampah/img/logo-square.svg" alt="Logo Kelompok 186"
+            height="30px"
+
+            style="
+            /* color: #252525; */
+
+            filter: invert(7%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+            "
+            >
+        </div>
+
+        <div class="list-container">
+            <ul>
+                <li class="items">|</li>
+                <li><a href="index.html" data-value="HOME" class="items nav-items nav-item1">HOME</a></li>
+                <li class="items">|</li>
+                <li><a href="guides.html" data-value="GUIDES" class="items nav-items nav-item2">GUIDES</a></li>
+                <li class="items">|</li>
+                <li><a href="articles-list.php" data-value="ARTICLES" class="items nav-items nav-item3">ARTICLES</a></li>
+                <li class="items">|</li>
+                <li><a href="about.html" data-value="ABOUT" class="items nav-items nav-item4">ABOUT</a></li>
+                <li class="items">|</li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <section class="category-welcome-section category-title-section">
+            <div class="category-title-container">
+                <p>Kategori Sampah</p>
+            </div>
+        </section>
+
+        <section class="category-type-section category-title-section">
+            <div class="category-title-container">
+                <p>Sampah Berdasarkan Jenisnya</p>
+            </div>
+            <div class="category-item-container">
+                <div class="category-item">
+                    <p class="category-item-title">Organik</p>
+                    <hr class="horizontal-rule">
+                    <p class="category-text">Merupakan sampah yang berasal dari bahan alami 
+                        yang dapat dengan mudah membusuk tanpa perlu 
+                        bantuan manusia. Sampah organik pada umumnya 
+                        dapat diurai secara cepat dan tanpa memiliki 
+                        pengaruh buruk pada lingkungan sekitarnya, 
+                        seperti sayur, daging, kulit buah, daun, dan 
+                        lain-lainnya.</p>
+                    <p>...</p>
+                    <section class="btn-section">
+                        <button class="content-btn" onclick="OpenContent('')">Selengkapnya &#8594</button>
+                    </section>
+                </div>
+                <div>
+                    <hr class="vertical-rule">
+                </div>
+                <div class="category-item">
+                    <p class="category-item-title">Anorganik</p>
+                    <hr class="horizontal-rule">
+                    <p class="category-text">Merupakan sampah yang sulit atau sama sekali 
+                        tidak dapat diurai secara alami dan memerlukan 
+                        bantuan manusia maupun penanganan khusus dalam 
+                        memprosesnya. 
+                        <br><br>
+                        Sampah anorganik jika dibiarkan 
+                        saja dapat menjadi pencemaran dan masalah bagi 
+                        ekosistem disekitarnya sehingga diperlukan 
+                        penanganan maupun pemanfaatan ulang agar tidak 
+                        menjadi masalah di kemudian hari.</p>
+                    <p>...</p>
+                    <section class="btn-section">
+                        <button class="content-btn" onclick="OpenContent('')">Selengkapnya &#8594</button>
+                    </section>
+                </div>
+                <div>
+                    <hr class="vertical-rule">
+                </div>
+                <div class="category-item">
+                    <p class="category-item-title">Bahan Berbahaya dan Beracun (B3)</p>
+                    <hr class="horizontal-rule">
+                    <p class="category-text">Merupakan sampah yang memiliki potensi bahaya 
+                        yang besar bagi lingkungan disekitarnya jika 
+                        dibiarkan saja. Sampah ini biasanya terdiri dari 
+                        bahan kimia yang harus ditangani secara khusus 
+                        agar tidak menimbulkan bahaya. 
+                        <br><br>
+                        Sampah ini biasanya berasal dari suatu kegiatan 
+                        dan proses produksi, baik pada skala rumah 
+                        tangga, industri, pertambangan dan sebagainya 
+                        yang terkontaminasi zat atau energi dan komponen 
+                        lain yang karena sifat, konsentrasi dan jumlahnya 
+                        baik secara langsung maupun tidak langsung dapat 
+                        mencemari dan merusak lingkungan hidup, 
+                        membahayakan lingkungan hidup, kesehatan serta 
+                        kelangsungan hidup manusia dan makhluk hidup lain.
+                        </p>
+                    <p>...</p>
+                    <section class="btn-section">
+                        <button class="content-btn" onclick="OpenContent('')">Selengkapnya &#8594</button>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-source-part-1-section category-title-section">
+            <div class="category-title-container">
+                <p>Sampah berdasarkan sumbernya</p>
+            </div>
+            <div class="category-item-container">
+                <div class="category-item">
+                    <p class="category-item-title">Sampah Rumah Tangga</p>
+                    <hr class="horizontal-rule">
+                    <p class="category-text">Menurut UU No. 18 Tahun 2008 tentang pengelolaan 
+                        sampah, sampah rumah tangga adalah sampah yang 
+                        berasal dari kegiatan sehari-hari dalam rumah 
+                        tangga, tidak termasuk tinja dan sampah spesifik 
+                        (sampah yang mengandung bahan racun). 
+                        <br><br>
+                        Umumnya sampah rumah tangga berupa sisa makanan, 
+                        perlengkapan rumah tangga bekas, kain, kertas, 
+                        kardus, gelas, dan sampah kebun.
+                        </p>
+                    <p>...</p>
+                    <section class="btn-section">
+                        <button class="content-btn" onclick="OpenContent('')">Selengkapnya &#8594</button>
+                    </section>
+                </div>
+                <div>
+                    <hr class="vertical-rule">
+                </div>
+                <div class="category-item">
+                    <p class="category-item-title">Sampah Pertanian</p>
+                    <hr class="horizontal-rule">
+                    <p class="category-text">Sampah dari kegiatan pertanian tergolong sampah 
+                        organik. Contohnya jerami, sisa sayur mayur, 
+                        batang jagung, dan sisa hasil panen. Sebagian 
+                        besar sampah yang dihasilkan selama musim panen 
+                        dibakar atau dimanfaatkan untuk pupuk. 
+                        <br><br>
+                        Sampah bahan kimia seperti pestisida dan pupuk 
+                        buatan perlu perlakuan khusus agar tidak 
+                        mencemari lingkungan.
+                        <br><br>
+                        Sampah pertanian lainnya adalah lembaran plastik 
+                        yang digunakan sebagai penutup tempat 
+                        tumbuh-tumbuhan yang berfungsi untuk mengurangi 
+                        penguapan dan penghambat pertumbuhan gulma, namun 
+                        plastik ini bisa didaur ulang.
+                        </p>
+                    <p>...</p>
+                    <section class="btn-section">
+                        <button class="content-btn" onclick="OpenContent('')">Selengkapnya &#8594</button>
+                    </section>
+                </div>
+                <div>
+                    <hr class="vertical-rule">
+                </div>
+                <div class="category-item">
+                    <p class="category-item-title">Sampah Konstruksi</p>
+                    <hr class="horizontal-rule">
+                    <p class="category-text">Sampah yang berasal dari kegiatan pembangunan 
+                        atau pemugaran gedung ini bisa berupa bahan 
+                        organik maupun anorganik. 
+                        <br><br>
+                        Sampah organik, misalnya: kayu, bambu, triplek. 
+                        Sementara sampah anorganik, misalnya: semen, 
+                        pasir, batu bata, keramik, besi, baja, kaca, 
+                        dan kaleng.
+                        </p>
+                    <p>...</p>
+                    <section class="btn-section">
+                        <button class="content-btn" onclick="OpenContent('')">Selengkapnya &#8594</button>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-source-part-2-section category-title-section">
+            <div class="category-title-container">
+                <p>Sampah berdasarkan sumbernya</p>
+            </div>
+            <div class="category-item-container">    
+                <div class="category-item">
+                    <p class="category-item-title">Sampah Perdagangan dan Perkantoran</p>
+                    <hr class="horizontal-rule">
+                    <p class="category-text">Sampah yang berasal dari daerah perdagangan 
+                        (toko, pasar tradisional, warung, pasar swalayan) 
+                        dapat berupa kardus, pembungkus, kertas, dan 
+                        bahan organik (sampah makanan dari restoran). 
+                        <br><br>
+                        Sampah yang berasal dari lembaga pendidikan, 
+                        kantor pemerintah dan kantor swasta biasanya 
+                        berupa kertas, alat tulis-menulis (pulpen, 
+                        pensil, spidol), toner fotokopi, pita printer, 
+                        baterai, bahan kimia dari laboratorium, dan 
+                        komputer rusak. 
+                        <br><br>
+                        Baterai bekas dan limbah bahan kimia harus 
+                        dikumpulkan secara terpisah dan memperoleh 
+                        perlakuan khusus karena mengandung zat berbahaya 
+                        dan beracun.
+                        </p>
+                    <p>...</p>
+                    <section class="btn-section">
+                        <button class="content-btn" onclick="OpenContent('')">Selengkapnya &#8594</button>
+                    </section>
+                </div>
+                <div>
+                    <hr class="vertical-rule">
+                </div>
+                <div class="category-item">
+                    <p class="category-item-title">Sampah Industri</p>
+                    <hr class="horizontal-rule">
+                    <p class="category-text">Sampah Industri berasal dari seluruh rangkaian 
+                        (bahan-bahan kimia dan sisa potongan bahan) 
+                        maupun perlakuan dan pengemasan produk (kertas, 
+                        kayu, plastik, kain atau lap). Sampah industri 
+                        kimia yang sering kali beracun harus memerlukan 
+                        perlakuan khusus sebelum dibuang.</p>
+                    <p>...</p>
+                    <section class="btn-section">
+                        <button class="content-btn" onclick="OpenContent('')">Selengkapnya &#8594</button>
+                    </section>
+                </div>
+                <div>
+                    <hr class="vertical-rule">
+                </div>
+                <div class="category-item">
+                    <p class="category-item-title">Sampah Nuklir</p>
+                    <hr class="horizontal-rule">
+                    <p class="category-text">Sampah nuklir dihasilkan dari kegiatan 
+                        pemanfaatan uranium dan thorium yang 
+                        menghasilkan energi nuklir yang sangat 
+                        berbahaya bagi lingkungan hidup dan juga 
+                        manusia.</p>
+                    <p>...</p>
+                    <section class="btn-section">
+                        <button class="content-btn" onclick="OpenContent('')">Selengkapnya &#8594</button>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="top-footer">
+            <div class="left-footer">
+                <div class="pages-container">
+                    <p>More : </p>
+                    <ul>
+                        <!-- <li class="items">|</li> -->
+                        <li><a href="index.html" data-value="HOME" class="items footer-items footer-item1">HOME</a></li>
+                        <!-- <li class="items">|</li> -->
+                        <li><a href="guides.html" data-value="GUIDES" class="items footer-items footer-item2">GUIDES</a></li>
+                        <!-- <li class="items">|</li> -->
+                        <li><a href="articles-list.php" data-value="ARTICLES" class="items footer-items footer-item3">ARTICLES</a></li>
+                        <!-- <li class="items">|</li> -->
+                        <li><a href="about.html" data-value="ABOUT" class="items footer-items footer-item4">ABOUT</a></li>
+                        <!-- <li class="items">|</li> -->
+                    </ul>
+                </div>
+                <div class="social-container">
+                    <p>Follow Us : </p>
+                    <ul>
+                        <li>
+                            <a href="https://www.instagram.com/kkn.negerijemanten/" target="_blank">
+                                <img src="/Web Sampah/img/logo-instagram.svg" alt="Logo Instagram"
+                                height="30px"
+
+                                style="
+                                /* color: #252525; */
+
+                                filter: invert(0%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+                                "
+                                >
+
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.instagram.com/kkn.negerijemanten/" target="_blank">
+                                <img src="/Web Sampah/img/logo-tiktok.svg" alt="Logo Tiktok"
+                                height="30px"
+
+                                style="
+                                /* color: #252525; */
+
+                                filter: invert(7%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+                                "
+                                >
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/kkn.negerijemanten/" target="_blank">
+                                <img src="/Web Sampah/img/logo-youtube.svg" alt="Logo Youtube"
+                                height="30px"
+
+                                style="
+                                /* color: #252525; */
+
+                                filter: invert(0%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+                                "
+                                >
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://kknnegerijemanten.carrd.co/" target="_blank">
+                                <img src="/Web Sampah/img/logo-carrd.svg" alt="Logo Carrd"
+                                height="30px"
+
+                                style="
+                                /* color: #252525; */
+
+                                filter: invert(7%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+                                "
+                                >
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <hr class="footer-vertical">
+            </div>
+                <div class="right-footer">
+                <img src="/Web Sampah/img/logo-vertical.svg" alt="Logo Kelompok 186"
+                height="200px"
+
+                style="
+                /* color: #252525; */
+
+                filter: invert(100%) sepia(7%) saturate(18%) hue-rotate(330deg) brightness(95%) contrast(82%);
+                "
+                >
+            </div>
+        </div>
+        <hr class="footer-horizontal">
+        <div class="bottom-footer">
+            <p>&#169 Kelompok 186 | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        let interval = null;
+
+        document.querySelector(".nav-item1").onmouseover = event => {  
+        let iteration = 0;
+
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".nav-item2").onmouseover = event => {  
+        let iteration = 0;
+
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".nav-item3").onmouseover = event => {  
+        let iteration = 0;
+
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".nav-item4").onmouseover = event => {  
+        let iteration = 0;
+
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".footer-item1").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".footer-item2").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".footer-item3").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+        document.querySelector(".footer-item4").onmouseover = event => {  
+        let iteration = 0;
+        
+        clearInterval(interval);
+        
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 30);
+        }
+
+    </script>
+</body>
+</html>
