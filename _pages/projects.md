@@ -7,39 +7,31 @@ published: true
 
 
 <div class="ProjectContainer">
-
-	<div class="gallery">
-
-
   {% for project in site.projects %}
 
-  {% if project.redirect %}
-  <div class="projectTile">
-          <a href="{{ project.redirect }}" target="_blank">
-          <span>
-              <h2>{{ project.title }}</h2>
-              <br/>
-              <p>{{ project.description }}</p>
-          </span>
-          </a>
-  </div>
+    {% if project.redirect %}
 
-  {% else %}
+    <h3 style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+    <a href="{{ project.redirect }}">{{ project.title }}</a>
+    <span style="margin: 0;">{{ project.num }}</span>
+    </h3>
+    <hr>
+    <em>{{ project.dates }} - {{ project.datef }}</em> <br>
+    {% if project.tech %}<strong>Tech Used</strong>: {{ project.tech }} <br> {% endif %}
+    <strong>Description</strong>: {{ project.desc }} <br><br>
 
-  <div class="projectTile">
-          <a href="{{ project.url | prepend: site.baseurl | prepend: site.url }}">
-          <span>
-              <h2>{{ project.title }}</h2>
-              <br/>
-              <p>{{ project.description }}</p>
-          </span>
-          </a>
-  </div>
+    {% else %}
 
-  {% endif %}
+    <h3 style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+    <a href="{{ project.url | prepend: site.baseurl | prepend: site.url }}">{{ project.title }}</a>
+    <span style="margin: 0;">{{ project.num }}</span>
+    </h3>
+    <hr>
+    <em>{{ project.dates }} - {{ project.datef }}</em> <br>
+    {% if project.tech %}<strong>Tech Used</strong>: {{ project.tech }} <br> {% endif %}
+    <strong>Description</strong>: {{ project.desc }} <br><br>
+
+    {% endif %}
 
   {% endfor %}
-
-	</div>
-
 </div>

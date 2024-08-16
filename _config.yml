@@ -1,11 +1,11 @@
 ### your site title here
 
-title: Your Name
-description: subtitle | affiliations | motto
+title: Kevin Pratama Setiawan
+description: Fullstack and Cloud Developer | Informatics Engineering Student | Based in Indonesia
 
-baseurl: "/" #name of GitHub repository
-url: "https://KevinPratamaSetiawan.github.io" #custom url to be used instead of GitHub repository
-email: #
+baseurl: "/KevinPratamaSetiawan.github.io" #name of GitHub repository
+url: "" #custom url to be used instead of GitHub repository
+email: kevin.pratama.s3tiawan@gmail.com
 
 # Pagination
 paginate: 4
@@ -13,15 +13,9 @@ permalink: /blog/:year/:title/
 paginate_path: /blog/page:num/
 
 # Social media links in footer
-twitter: "#"
-linkedin: "#"
-stackoverflow: "#"
-github: "#"
-researchgate: "#"
-orcid: "#"
-quora: "#"
-instagram: "#"
-facebook: "#"
+linkedin: "linkedin.com/in/kevin-pratama-setiawan-159060258"
+github: "https://github.com/KevinPratamaSetiawan"
+instagram: "https://www.instagram.com/kev1n_pratama/"
 
 
 # Markdown
@@ -47,13 +41,10 @@ collections:
   projects:
     output: true
     permalink: /projects/:name/
-    order:
-      - shortProject.md
-      - longerProjectTitle.md
-      - redirect.md
-      - project4.md
-      - project5.md
-      - project6.md
+
+  certifications:
+    output: true
+    permalink: /certifications/:name/
 
 sass:
   sass_dir: /assets/css/_sass
