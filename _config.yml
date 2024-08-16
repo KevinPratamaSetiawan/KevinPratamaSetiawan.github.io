@@ -41,10 +41,67 @@ collections:
   projects:
     output: true
     permalink: /projects/:name/
-
+  
   certifications:
     output: true
     permalink: /certifications/:name/
+    order:
+      - bangkit1.md
+      - dicoding1.md
+      - dicoding2.md
+      - dicoding3.md
+      - dicoding4.md
+      - dicoding5.md
+      - dicoding6.md
+      - dicoding7.md
+      - dicoding8.md
+      - dicoding9.md
+      - dicoding10.md
+      - dicoding11.md
+      - coursera1.md
+      - coursera2.md
+      - coursera3.md
+      - coursera4.md
+      - coursera5.md
+      - coursera6.md
+      - coursera7.md
+      - coursera8.md
+      - coursera9.md
+      - coursera10.md
+      - coursera11.md
+      - coursera12.md
+      - coursera13.md
+      - coursera14.md
+      - coursera15.md
+      - google1.md
+      - google2.md
+      - google3.md
+      - google4.md
+      - google5.md
+      - google6.md
+      - google7.md
+      - google8.md
+      - google9.md
+      - google10.md
+      - google11.md
+      - google12.md
+      - google13.md
+      - google14.md
+      - google15.md
+      - google16.md
+      - google17.md
+      - google18.md
+      - google19.md
+      - google20.md
+      - google21.md
+      - google22.md
+      - google23.md
+      - google24.md
+      - google25.md
+      - google26.md
+      - google27.md
+      - google28.md
+      - google29.md
 
 sass:
   sass_dir: /assets/css/_sass

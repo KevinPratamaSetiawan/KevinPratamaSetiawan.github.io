@@ -67,20 +67,20 @@ title: Resume
 * Simulasi Ujian Associate Cloud Engineer on Dicoding
 * Menjadi Google Cloud Architect on Dicoding
 * Google IT Support by Google on Coursera
-  * Technical Support Fundamentals
-  * The Bits and Bytes of Computer Networking
-  * Operating Systems and You: Becoming a Power User
-  * System Administration and IT Infrastructure Services
-  * IT Security: Defense against the digital dark arts
-* Google Cybersecurity by Google on Coursera
+  * Technical Support Fundamentals on Coursera
+  * The Bits and Bytes of Computer Networking on Coursera
+  * Operating Systems and You: Becoming a Power User on Coursera
+  * System Administration and IT Infrastructure Services on Coursera
+  * IT Security: Defense against the digital dark arts on Coursera
+* Google Cybersecurity by Google on Coursera on Coursera
   * Foundations of Cybersecurity
-  * Play It Safe: Manage Security Risks
-  * Connect and Protect: Networks and Network Security
-  * Tools of the Trade: Linux and SQL
-  * Assets, Threats, and Vulnerabilities
-  * Sound the Alarm: Detection and Response
-  * Automate Cybersecurity Tasks with Python
-  * Put It to Work: Prepare for Cybersecurity Jobs
+  * Play It Safe: Manage Security Risks on Coursera
+  * Connect and Protect: Networks and Network Security on Coursera
+  * Tools of the Trade: Linux and SQL on Coursera
+  * Assets, Threats, and Vulnerabilities on Coursera
+  * Sound the Alarm: Detection and Response on Coursera
+  * Automate Cybersecurity Tasks with Python on Coursera
+  * Put It to Work: Prepare for Cybersecurity Jobs on Coursera
 * Google Cloud Computing Foundations Certificate
   * Google Cloud Computing Foundations: Cloud Computing Fundamentals Completion Badge
   * Google Cloud Computing Foundations: Infrastructure in Google Cloud Completion Badge

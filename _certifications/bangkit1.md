@@ -1,7 +1,7 @@
 ---
 layout: post
 name: Cloud Computing Cohort of Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka
-category: Certificate
-img: ../cert-assets/01.bangkit1.png
-redirect: ../cert-assets/02.bangkit2.pdf
+category: Bangkit
+img: ../assets/cert-assets/bangkit1.png
+redirect: ../assets/cert-assets/bangkit2.pdf
 ---
