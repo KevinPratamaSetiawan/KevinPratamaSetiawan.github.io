@@ -199,4 +199,54 @@ blockquote {
   margin: 1em 0;
 }
 
+.cert-container{
+  /* border-bottom: 4px solid black; */
+  padding: 5px 0px;
+  gap: 10px;
+}
+
+.cert-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cert-category{
+  font-size: 0.7rem;
+  border: 3px dashed #60c17d;
+  border-radius: 5px;
+  padding: 3px;
+
+  min-width: 60px;
+  text-align: center;
+}
+
+.img-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+.img-container.open {
+  max-height: 400px; /* or some value larger than the content */
+}
+
+.cert-img{
+  width: 100%;
+    height: 350px;
+  object-fit: contain;
+}
+
+.toggle-button{
+  background: none; /* Remove background color */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  font: inherit; /* Inherit font from parent element */
+  cursor: pointer; /* Change cursor to pointer */
+  color: inherit; /* Inherit text color from parent */
+  text-align: left; /* Align text to the left */
+}
+
 
