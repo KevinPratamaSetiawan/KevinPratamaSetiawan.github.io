@@ -13,7 +13,7 @@ title: Resume
 
 **Name**   : Kevin Pratama Setiawan <br>
 **NIM**    : 121140039 <br>
-**E-mail** : kevin.pratama.s3tiawan@gmail.com
+**E-mail** : kevinpratama.kps@gmail.com
 
 **About Me** :
 * Currently studying for bachelor degree in Informatics Engineering at Institut Teknologi Sumatera.
