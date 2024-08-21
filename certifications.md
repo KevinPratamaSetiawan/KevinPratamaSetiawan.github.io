@@ -15,7 +15,9 @@ title: Certifications
 			</h5>
 		</div>
 		<div id="img-container-{{ forloop.index }}" class="img-container">
-			<img class="cert-img" src="{{ cert.img }}" alt="{{ cert.name }}">
+			<a href="{{ cert.redirect }}">
+				<img class="cert-img" src="{{ cert.img }}" alt="{{ cert.name }}">
+			</a>
 		</div>
 	</div>
 	{% endfor %}

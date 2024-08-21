@@ -1,11 +1,12 @@
 ### your site title here
+#Start The Localhost : bundle exec jekyll serve --incremental --trace
 
 title: Kevin Pratama Setiawan
 description: Fullstack and Cloud Developer | Informatics Engineering Student | Based in Indonesia
 
 baseurl: "" #name of GitHub repository
 url: "" #custom url to be used instead of GitHub repository
-email: kevin.pratama.s3tiawan@gmail.com
+email: kevinpratama.kps@gmail.com
 
 # Pagination
 paginate: 4

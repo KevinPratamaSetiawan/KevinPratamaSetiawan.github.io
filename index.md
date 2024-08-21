@@ -1,4 +1,5 @@
 ---
+title: Welcome
 layout: about
 permalink: /
 profile:
