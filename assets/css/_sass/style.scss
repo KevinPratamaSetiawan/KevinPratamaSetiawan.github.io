@@ -70,6 +70,12 @@ p a {
   }
 }
 
+a.none {
+  color: initial;
+  text-decoration: none;
+  cursor: none;
+}
+
 
 figure {
   margin: 0;
