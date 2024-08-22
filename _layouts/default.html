@@ -33,12 +33,15 @@
 
         <footer>
           <p class="copy">
-            <small style="display: flex; justify-content: center; align-items: center;"> &copy; {{site.title}} {{ site.time | date: '%Y' }}
-                    | <img src="/favicon2.png" alt="Logo" style="width: 40px;"> |
-                    <!-- Powered by Jekyll and
-                    <a target="_blank" href="https://github.com/jitinnair1/gradfolio/">Gradfolio</a>. -->
+            <p style="display: flex; justify-content: space-around; align-items: center;"> 
+                <small style="width: 275px; text-align: center;">&copy;{{site.title}} {{ site.time | date: '%Y' }}</small>
+                <small> | </small>
+                <img src="/favicon2.png" alt="Logo" style="width: 40px;">
+                <small> | </small>
+                <small style="width: 275px; text-align: center;">
                     Last updated on {{ site.time | date_to_long_string }}
-            </small>
+                </small>
+            </p>
           </p>
 
         {% include social-footer.html %}
