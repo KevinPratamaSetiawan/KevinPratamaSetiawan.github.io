@@ -5,7 +5,7 @@ html, body {
 body {
   max-width: $content-width;
   font-family: $base-font-family;
-  margin: 0;
+  margin: 0 auto;
   line-height: $base-line-height;
   font-size: $base-font-size;
   color: $text-color;
@@ -19,6 +19,20 @@ body {
     color: $text-color-dark;
   }
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body {
+  overflow: -moz-scrollbars-none;
+}
+
 
 h1,h2,h3,h4,h5,h6 {
   font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
