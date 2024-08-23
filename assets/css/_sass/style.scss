@@ -219,13 +219,13 @@ blockquote {
   font-weight: 600;
   border-radius: 8px;
   padding: 13px 23px;
-  border: 1px solid $brand-color;
+  border: 3px solid $text-color;
   transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
-  background: #fff;
-  color: #222222;
+  background: $background-color;
+  color: $text-color;
   :hover {
-      border-color: #000000;
-      background: #f7f7f7;
+      border-color: $background-color;
+      background: $text-color;
   }
 }
 
@@ -233,12 +233,14 @@ blockquote {
   padding: 10px;
   width: 250px;
   border: none;
-  border-bottom: 2px solid $brand-color;
+  border-bottom: 5px solid $text-color;
   border-radius: 0;
+  background-color: $background-color;
+  color: $text-color;
 }
 
 #submit-button {
-  width: 250px;
+  width: 100px;
   cursor: no-drop;
 }
 
