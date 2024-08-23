@@ -108,13 +108,13 @@ p a:not(.none) {
 a.none {
   color: inherit;
   text-decoration: none;
-  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-crosshairs" viewBox="0 0 16 16"><path d="M8 0a.5.5 0 0 1 .5.5V2.05A6.96 6.96 0 0 1 13.95 7.5H15.5a.5.5 0 0 1 0 1h-1.55A6.96 6.96 0 0 1 8.5 13.95V15.5a.5.5 0 0 1-1 0v-1.55A6.96 6.96 0 0 1 2.05 8.5H.5a.5.5 0 0 1 0-1h1.55A6.96 6.96 0 0 1 7.5 2.05V.5A.5.5 0 0 1 8 0zm-4.5 7.5A5.5 5.5 0 1 0 8 2.5a5.5 5.5 0 0 0-4.5 5z"/></svg>') 16 16, auto;
+  cursor: context-menu;
   line-height: 0;
 
   &:hover {
     color: inherit;
     text-decoration: none;
-    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-crosshairs" viewBox="0 0 16 16"><path d="M8 0a.5.5 0 0 1 .5.5V2.05A6.96 6.96 0 0 1 13.95 7.5H15.5a.5.5 0 0 1 0 1h-1.55A6.96 6.96 0 0 1 8.5 13.95V15.5a.5.5 0 0 1-1 0v-1.55A6.96 6.96 0 0 1 2.05 8.5H.5a.5.5 0 0 1 0-1h1.55A6.96 6.96 0 0 1 7.5 2.05V.5A.5.5 0 0 1 8 0zm-4.5 7.5A5.5 5.5 0 1 0 8 2.5a5.5 5.5 0 0 0-4.5 5z"/></svg>') 16 16, auto;
+    cursor: context-menu;
   }
 
   &.dark-mode {
@@ -288,7 +288,7 @@ blockquote {
   text-align: center;
   min-width: 160px;
   width: max-content;
-  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-crosshairs" viewBox="0 0 16 16"><path d="M8 0a.5.5 0 0 1 .5.5V2.05A6.96 6.96 0 0 1 13.95 7.5H15.5a.5.5 0 0 1 0 1h-1.55A6.96 6.96 0 0 1 8.5 13.95V15.5a.5.5 0 0 1-1 0v-1.55A6.96 6.96 0 0 1 2.05 8.5H.5a.5.5 0 0 1 0-1h1.55A6.96 6.96 0 0 1 7.5 2.05V.5A.5.5 0 0 1 8 0zm-4.5 7.5A5.5 5.5 0 1 0 8 2.5a5.5 5.5 0 0 0-4.5 5z"/></svg>') 16 16, auto;
+  cursor: pointer;
 }
 
 /* Article list in blog and archive page */
