@@ -228,6 +228,7 @@ blockquote {
 .simplebutton:hover {
     border-color: $background-color;
     background: $text-color;
+    color: $background-color;
 }
 
 #password {
