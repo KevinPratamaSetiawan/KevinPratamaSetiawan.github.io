@@ -43,6 +43,26 @@
   font-size: 25px;
 }
 
+.rounded-social-buttons .social-button.mode {
+  background: $text-color;
+
+  &.dark-mode{
+    background: $text-color-dark;
+  }
+}
+
+.rounded-social-buttons .social-button.mode:hover, .rounded-social-buttons .social-button.mode:focus {
+  color: $text-color;
+  background: $background-color;
+  border-color: $text-color;
+
+  &.dark-mode{
+    color: $text-color-dark;
+    background: $body-bg-dark;
+    border-color: $text-color-dark;
+  }
+}
+
 .rounded-social-buttons .social-button.facebook {
   background: #3b5998;
 }
