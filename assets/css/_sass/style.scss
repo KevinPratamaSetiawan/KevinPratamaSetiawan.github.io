@@ -272,12 +272,11 @@ blockquote {
   border: none;
   border-bottom: 3px solid $text-color;
   border-radius: 0;
-  background-color: $background-color;
+  background: none;
   color: $text-color;
 
   &.dark-mode{
     border-bottom: 3px solid $text-color-dark;
-    background-color: $body-bg-dark;
     color: $text-color-dark;
   }
 }
