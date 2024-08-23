@@ -219,7 +219,7 @@ blockquote {
   font-weight: 600;
   border-radius: 8px;
   padding: 13px 23px;
-  border: 1px solid #222222;
+  border: 1px solid $brand-color;
   transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
   background: #fff;
   color: #222222;
@@ -227,6 +227,19 @@ blockquote {
       border-color: #000000;
       background: #f7f7f7;
   }
+}
+
+#password {
+  padding: 10px;
+  width: 250px;
+  border: none;
+  border-bottom: 2px solid $brand-color;
+  border-radius: 0;
+}
+
+#submit-button {
+  width: 250px;
+  cursor: no-drop;
 }
 
 /* Article list in blog and archive page */
