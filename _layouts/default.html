@@ -40,7 +40,7 @@
                 <small style="width: 275px; text-align: center;">&copy;{{site.title}} {{ site.time | date: '%Y' }}</small>
                 <small> | </small>
                 <a class="none" href="{{site.baseurl}}/🔑/">
-                    <img src="/favicon2.png" alt="Logo" style="width: 50px;">
+                    <img id="mode-logo" src="/black-logo.png" alt="Logo" style="width: 50px;">
                 </a>
                 <small> | </small>
                 <small style="width: 275px; text-align: center;">
@@ -60,11 +60,15 @@
         document.addEventListener('DOMContentLoaded', () => {
             const toggleButton = document.getElementById('mode-btn');
             const body = document.body;
+            const logo = document.getElementById('mode-logo');
     
             // Check for saved mode in local storage on page load
             const savedMode = localStorage.getItem('mode');
             if (savedMode === 'dark-mode') {
                 body.classList.add('dark-mode');
+                logo.src = 'white-logo.png'; // Change to white logo in dark mode
+            } else {
+                logo.src = 'black-logo.png'; // Default to black logo in light mode
             }
     
             toggleButton.addEventListener('click', () => {
@@ -73,10 +77,13 @@
                 // Save the current mode to local storage
                 if (body.classList.contains('dark-mode')) {
                     localStorage.setItem('mode', 'dark-mode');
+                    logo.src = 'white-logo.png'; // Change to white logo in dark mode
                 } else {
                     localStorage.removeItem('mode');
+                    logo.src = 'black-logo.png'; // Change to black logo in light mode
                 }
             });
         });
-    </script>    
+    </script>
+      
 </html>
