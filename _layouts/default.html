@@ -59,16 +59,28 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const toggleButton = document.getElementById('mode-btn');
+            const certCategory = document.getElementByClass('cert-category');
             const body = document.body;
+            const docA = document.a;
+            const docP = document.p;
+            const docPre = document.pre;
+            const docCode = document.code;
+            const docBlockquote = document.blockquote;
             const logo = document.getElementById('mode-logo');
     
             // Check for saved mode in local storage on page load
             const savedMode = localStorage.getItem('mode');
             if (savedMode === 'dark-mode') {
                 body.classList.add('dark-mode');
-                logo.src = 'white-logo.png'; // Change to white logo in dark mode
+                docA.classList.add('dark-mode');
+                docP.classList.add('dark-mode');
+                docPre.classList.add('dark-mode');
+                docCode.classList.add('dark-mode');
+                docBlockquote.classList.add('dark-mode');
+                certCategory.classList.add('dark-mode');
+                logo.src = '/white-logo.png'; // Change to white logo in dark mode
             } else {
-                logo.src = 'black-logo.png'; // Default to black logo in light mode
+                logo.src = '/black-logo.png'; // Default to black logo in light mode
             }
     
             toggleButton.addEventListener('click', () => {
@@ -77,13 +89,13 @@
                 // Save the current mode to local storage
                 if (body.classList.contains('dark-mode')) {
                     localStorage.setItem('mode', 'dark-mode');
-                    logo.src = 'white-logo.png'; // Change to white logo in dark mode
+                    logo.src = '/white-logo.png'; // Change to white logo in dark mode
                 } else {
                     localStorage.removeItem('mode');
-                    logo.src = 'black-logo.png'; // Change to black logo in light mode
+                    logo.src = '/black-logo.png'; // Change to black logo in light mode
                 }
             });
         });
-    </script>
+    </script>  
       
 </html>
