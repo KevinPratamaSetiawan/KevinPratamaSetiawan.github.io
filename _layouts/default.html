@@ -62,7 +62,7 @@
             const body = document.body;
             const logo = document.getElementById('mode-logo');
             const passwordInput = document.getElementById('password');
-    
+            
             // Select all elements that need dark mode styling
             const certCategories = document.querySelectorAll('.cert-category');
             const links = document.querySelectorAll('a');
@@ -70,6 +70,7 @@
             const preBlocks = document.querySelectorAll('pre');
             const codes = document.querySelectorAll('code');
             const blockquotes = document.querySelectorAll('blockquote');
+            const modeButton = document.getElementById('mode-btn'); // Select the mode button
     
             // Check for saved mode in local storage on page load
             const savedMode = localStorage.getItem('mode');
@@ -77,6 +78,7 @@
                 body.classList.add('dark-mode');
                 logo.src = '/white-logo.png'; // Change to white logo in dark mode
                 passwordInput.classList.add('dark-mode'); // Add dark mode class to the password input
+                modeButton.classList.add('dark-mode'); // Add dark mode class to the mode button
     
                 // Apply dark mode class to all relevant elements
                 links.forEach(link => link.classList.add('dark-mode'));
@@ -88,6 +90,7 @@
             } else {
                 logo.src = '/black-logo.png'; // Default to black logo in light mode
                 passwordInput.classList.remove('dark-mode'); // Ensure dark mode class is removed in light mode
+                modeButton.classList.remove('dark-mode'); // Remove dark mode class from the mode button
             }
     
             toggleButton.addEventListener('click', () => {
@@ -98,6 +101,7 @@
                     localStorage.setItem('mode', 'dark-mode');
                     logo.src = '/white-logo.png'; // Change to white logo in dark mode
                     passwordInput.classList.add('dark-mode'); // Add dark mode class to the password input
+                    modeButton.classList.add('dark-mode'); // Add dark mode class to the mode button
     
                     // Apply dark mode class to all relevant elements
                     links.forEach(link => link.classList.add('dark-mode'));
@@ -110,6 +114,7 @@
                     localStorage.removeItem('mode');
                     logo.src = '/black-logo.png'; // Change to black logo in light mode
                     passwordInput.classList.remove('dark-mode'); // Remove dark mode class from the password input
+                    modeButton.classList.remove('dark-mode'); // Remove dark mode class from the mode button
     
                     // Remove dark mode class from all relevant elements
                     links.forEach(link => link.classList.remove('dark-mode'));
@@ -121,5 +126,6 @@
                 }
             });
         });
-    </script>    
+    </script>
+    
 </html>

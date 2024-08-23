@@ -54,12 +54,12 @@
 .rounded-social-buttons .social-button.mode:hover, .rounded-social-buttons .social-button.mode:focus {
   color: $text-color;
   background: $background-color;
-  border-color: $text-color;
+  border-color: $brand-color;
 
   &.dark-mode{
     color: $text-color-dark;
     background: $body-bg-dark;
-    border-color: $text-color-dark;
+    border-color: $brand-color-dark;
   }
 }
 
