@@ -223,10 +223,11 @@ blockquote {
   transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
   background: $background-color;
   color: $text-color;
-  :hover {
-      border-color: $background-color;
-      background: $text-color;
-  }
+}
+
+.simplebutton:hover {
+    border-color: $background-color;
+    background: $text-color;
 }
 
 #password {
