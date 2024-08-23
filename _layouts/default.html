@@ -9,16 +9,18 @@
         <meta content="width=device-width, initial-scale=1" name="viewport">
         <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
 
-        <h1 class="post-headline">{{site.title}}</h1>
-        <h3 class="post-description">{{site.description}}</h3>
-
-        {% include navigation.html %}
-
-        {% seo %}
-
-        {% include favicon.html %}
-
-        {% include mathjax.html %}
+        <div style="margin: 0; padding: 0;">
+            <h1 class="post-headline">{{site.title}}</h1>
+            <h3 class="post-description">{{site.description}}</h3>
+            
+            {% include navigation.html %}
+            
+            {% seo %}
+            
+            {% include favicon.html %}
+            
+            {% include mathjax.html %}
+        </div>
 
         <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
         <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.11.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
@@ -37,7 +39,7 @@
                 <small style="width: 275px; text-align: center;">&copy;{{site.title}} {{ site.time | date: '%Y' }}</small>
                 <small> | </small>
                 <a class="none" href="{{site.baseurl}}/🔑/">
-                    <img src="/favicon2.png" alt="Logo" style="width: 60px;">
+                    <img src="/favicon2.png" alt="Logo" style="width: 50px;">
                 </a>
                 <small> | </small>
                 <small style="width: 275px; text-align: center;">

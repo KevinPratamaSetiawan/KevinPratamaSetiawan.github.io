@@ -12,7 +12,11 @@ body {
   background-color: $body-bg;
   padding: 2em 1em;
   text-rendering: optimizeLegibility;
-  height: 100%;
+  height: max-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media (prefers-color-scheme: dark) {
     background-color: $body-bg-dark;
