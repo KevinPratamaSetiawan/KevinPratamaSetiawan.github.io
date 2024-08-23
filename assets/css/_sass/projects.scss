@@ -17,7 +17,7 @@
   flex: 1 0 200px;
   border-radius: 15px;
   background: $projectbox;
-  @media (prefers-color-scheme: dark) {
+  &.dark-mode {
     background: $projectbox-dark;
   }
   height: 200px;

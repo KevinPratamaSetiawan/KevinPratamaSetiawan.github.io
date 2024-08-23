@@ -18,11 +18,12 @@ body {
   flex-direction: column;
   justify-content: space-between;
 
-  @media (prefers-color-scheme: dark) {
+  &.dark-mode {
     background-color: $body-bg-dark;
     color: $text-color-dark;
   }
 }
+
 
 body::-webkit-scrollbar {
   display: none;
@@ -50,10 +51,15 @@ h1,h2,h3,h4,h5,h6 {
 a {
   color: $brand-color;
   text-decoration: none;
+
+  &.dark-mode {
+    color: $brand-color-dark;
+  }
+
   &:hover{
     color: $text-color;
 
-    @media (prefers-color-scheme: dark) {
+    &.dark-mode {
       color: $text-color-dark;
     }
 
@@ -80,27 +86,38 @@ p a:not(.none) {
     color: lighten($background-color, 50%);
     -webkit-box-shadow: inset 0 -100px 0 0 lighten($brand-color, 10%);
     box-shadow: inset 0 -100px 0 0 lighten($brand-color, 10%);
-
   }
 
-  @media (prefers-color-scheme: dark) {
+  &.dark-mode {
     color: $text-color-dark;
+    background: -webkit-linear-gradient(transparent 90%, lighten($brand-color-dark, 10%) 10%);
+    background: -moz-linear-gradient(transparent 90%, lighten($brand-color-dark, 10%) 10%);
+    background: linear-gradient(transparent 90%, lighten($brand-color-dark, 10%) 10%);
+
+    -webkit-box-shadow: inset 0 0 0 0 lighten($brand-color-dark, 10%);
+    box-shadow: inset 0 0 0 0 lighten($brand-color-dark, 10%);
+
+    &:hover {
+      color: lighten($background-color, 50%);
+      -webkit-box-shadow: inset 0 -100px 0 0 lighten($brand-color-dark, 10%);
+      box-shadow: inset 0 -100px 0 0 lighten($brand-color-dark, 10%);
+    }
   }
 }
 
 a.none {
   color: inherit;
   text-decoration: none;
-  cursor: no-drop;
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-crosshairs" viewBox="0 0 16 16"><path d="M8 0a.5.5 0 0 1 .5.5V2.05A6.96 6.96 0 0 1 13.95 7.5H15.5a.5.5 0 0 1 0 1h-1.55A6.96 6.96 0 0 1 8.5 13.95V15.5a.5.5 0 0 1-1 0v-1.55A6.96 6.96 0 0 1 2.05 8.5H.5a.5.5 0 0 1 0-1h1.55A6.96 6.96 0 0 1 7.5 2.05V.5A.5.5 0 0 1 8 0zm-4.5 7.5A5.5 5.5 0 1 0 8 2.5a5.5 5.5 0 0 0-4.5 5z"/></svg>') 16 16, auto;
   line-height: 0;
 
   &:hover {
     color: inherit;
     text-decoration: none;
-    cursor: no-drop;
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-crosshairs" viewBox="0 0 16 16"><path d="M8 0a.5.5 0 0 1 .5.5V2.05A6.96 6.96 0 0 1 13.95 7.5H15.5a.5.5 0 0 1 0 1h-1.55A6.96 6.96 0 0 1 8.5 13.95V15.5a.5.5 0 0 1-1 0v-1.55A6.96 6.96 0 0 1 2.05 8.5H.5a.5.5 0 0 1 0-1h1.55A6.96 6.96 0 0 1 7.5 2.05V.5A.5.5 0 0 1 8 0zm-4.5 7.5A5.5 5.5 0 1 0 8 2.5a5.5 5.5 0 0 0-4.5 5z"/></svg>') 16 16, auto;
   }
 
-  @media (prefers-color-scheme: dark) {
+  &.dark-mode {
     color: inherit;
   }
 }
@@ -123,6 +140,10 @@ code {
   > code {
     border: none;
   }
+
+  &.dark-mode{
+    border: 1px solid $brand-color-dark;
+  }
 }
 
 pre {
@@ -139,6 +160,10 @@ blockquote {
   font-family: Georgia,Times,Times New Roman,serif;
   font-size: 0.9*$base-font-size;
   font-style: italic;
+
+  &.dark-mode{
+    border-left: 2px solid $brand-color-dark;
+  }
 }
 
 
@@ -223,12 +248,24 @@ blockquote {
   transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
   background: $background-color;
   color: $text-color;
-}
 
-.simplebutton:hover {
+  &:hover {
     border-color: $background-color;
     background: $text-color;
     color: $background-color;
+  }
+
+  &.dark-mode{
+    border: 3px solid $text-color-dark;
+    background: $body-bg-dark;
+    color: $text-color-dark;
+
+    &:hover{
+      border-color: $body-bg-dark;
+      background: $text-color-dark;
+      color: $body-bg-dark;
+    }
+  }
 }
 
 #password {
@@ -239,13 +276,19 @@ blockquote {
   border-radius: 0;
   background-color: $background-color;
   color: $text-color;
+
+  &.dark-mode{
+    border-bottom: 3px solid $text-color-dark;
+    background-color: $body-bg-dark;
+    color: $text-color-dark;
+  }
 }
 
 #submit-button {
   text-align: center;
   min-width: 160px;
   width: max-content;
-  cursor: no-drop;
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-crosshairs" viewBox="0 0 16 16"><path d="M8 0a.5.5 0 0 1 .5.5V2.05A6.96 6.96 0 0 1 13.95 7.5H15.5a.5.5 0 0 1 0 1h-1.55A6.96 6.96 0 0 1 8.5 13.95V15.5a.5.5 0 0 1-1 0v-1.55A6.96 6.96 0 0 1 2.05 8.5H.5a.5.5 0 0 1 0-1h1.55A6.96 6.96 0 0 1 7.5 2.05V.5A.5.5 0 0 1 8 0zm-4.5 7.5A5.5 5.5 0 1 0 8 2.5a5.5 5.5 0 0 0-4.5 5z"/></svg>') 16 16, auto;
 }
 
 /* Article list in blog and archive page */
@@ -274,6 +317,10 @@ blockquote {
 
   min-width: 60px;
   text-align: center;
+
+  &.dark-mode{
+    border: 3px dashed $brand-color-dark;
+  }
 }
 
 .img-container {
@@ -292,15 +339,15 @@ blockquote {
   object-fit: contain;
 }
 
-.toggle-button{
-  background: none; /* Remove background color */
-  border: none; /* Remove border */
-  padding: 0; /* Remove padding */
-  margin: 0; /* Remove margin */
-  font: inherit; /* Inherit font from parent element */
-  cursor: pointer; /* Change cursor to pointer */
-  color: inherit; /* Inherit text color from parent */
-  text-align: left; /* Align text to the left */
+.mode-btn{
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  text-align: center;
 }
 
 

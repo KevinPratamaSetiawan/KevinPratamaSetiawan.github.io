@@ -7,27 +7,21 @@ $base-line-height: 1.7;
 
 $spacing-unit:     30px;
 $light-gray: gray;
-$brand-color:      #c16560;
-// $brand-color:      #60c17d;
 $copy-color: #23272d;
 
+$text-color:       #333;
+$background-color: #fdfdfd;
+$projectbox-text:  #1e2126;
+
 // Light Mode
-// $text-color:       #333;
-// $background-color: #fdfdfd;
-// $projectbox-text:  #1e2126;
-// $body-bg: #fdfdfd;
-// $projectbox: #c3e1c9;
-// $copy-color: #23272d;
+$brand-color:      #60c17d;
+$body-bg: #fdfdfd;
+$projectbox: #c3e1c9;
+$copy-color: #23272d;
 
 // Dark Mode
-$text-color:       #fff;
-$background-color: #23272d;
-$projectbox-text:  lighten(#fff, 2%);
-$body-bg: #23272d;
-$projectbox: lighten(#fff, 2%);
-$copy-color: #eeeeee;
-
-// Color scheme for dark modes
+$brand-color-dark : #c16560;
+$copy-color-dark: #eeeeee;
 $body-bg-dark: #23272d;
 $projectbox-dark: lighten(#fff, 2%);
 $text-color-dark: #fff;

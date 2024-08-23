@@ -4,7 +4,10 @@ permalink: /resume/
 title: Resume
 ---
 
-<a href="../assets/Resume of Kevin Pratama Setiawan.pdf" download>Click to Download My Resume</a>
+<a href="../assets/Resume of Kevin Pratama Setiawan.pdf" download>
+  <i class="fa-regular fa-file-pdf"> </i>
+  Click to Download My Resume
+</a>
 
 > Hello, my name is Kevin. <br> I'm currently pursuing a bachelor's program in Informatics Engineering at the Institut Teknologi Sumatera, a state engineering university located in Lampung, Indonesia.
 

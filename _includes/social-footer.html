@@ -1,5 +1,9 @@
 <div class="rounded-social-buttons">
 
+<button class="mode-btn">
+    <i class="fa-solid fa-palette mode-logo"></i>
+</button>
+
 {%- if site.email -%}
 <a title="{{ _locale_string_email }}"
 class="social-button email" itemprop="email"
@@ -90,3 +94,27 @@ target="_blank">
 {%- endif -%}
 
 </div>
+
+
+<script>
+    document.getElementById('mode-btn').addEventListener('click', () => {
+        const toggleButton = document.getElementById('mode-btn');
+        const body = document.body;
+
+        // Check for saved mode in local storage on page load
+        const savedMode = localStorage.getItem('mode');
+        if (savedMode === 'dark-mode') {
+        body.classList.add('dark-mode');
+        }
+
+        body.classList.toggle('dark-mode');
+
+        // Save the current mode to local storage
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('mode', 'dark-mode');
+        } else {
+            localStorage.removeItem('mode');
+        }
+    });
+
+</script>
