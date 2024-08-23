@@ -252,17 +252,17 @@ blockquote {
     background: $text-color;
     color: $background-color;
   }
+}
 
-  &.dark-mode{
-    border: 3px solid $text-color-dark;
-    background: $body-bg-dark;
-    color: $text-color-dark;
+.simplebutton.dark-mode{
+  border: 3px solid $text-color-dark;
+  background: $body-bg-dark;
+  color: $text-color-dark;
 
-    &:hover{
-      border-color: $body-bg-dark;
-      background: $text-color-dark;
-      color: $body-bg-dark;
-    }
+  &:hover{
+    border-color: $body-bg-dark;
+    background: $text-color-dark;
+    color: $body-bg-dark;
   }
 }
 
