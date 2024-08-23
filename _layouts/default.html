@@ -56,4 +56,27 @@
         {% include analytics.html %}
     </body>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('mode-btn');
+            const body = document.body;
+    
+            // Check for saved mode in local storage on page load
+            const savedMode = localStorage.getItem('mode');
+            if (savedMode === 'dark-mode') {
+                body.classList.add('dark-mode');
+            }
+    
+            toggleButton.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+    
+                // Save the current mode to local storage
+                if (body.classList.contains('dark-mode')) {
+                    localStorage.setItem('mode', 'dark-mode');
+                } else {
+                    localStorage.removeItem('mode');
+                }
+            });
+        });
+    </script>    
 </html>
