@@ -241,7 +241,9 @@ blockquote {
 }
 
 #submit-button {
-  width: 100px;
+  text-align: center;
+  min-width: 160px;
+  width: max-content;
   cursor: no-drop;
 }
 
