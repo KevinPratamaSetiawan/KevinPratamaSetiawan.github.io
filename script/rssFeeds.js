@@ -2,8 +2,6 @@ document.getElementById('tab-1-btn').addEventListener('click', openYard);
 document.getElementById('tab-2-btn').addEventListener('click', openPremium, fetchPodcastEpisodes);
 document.getElementById('tab-3-btn').addEventListener('click', openAdvice);
 
-document.getElementById('play-timer-btn').style.display = 'none';
-
 function openYard() {
     document.getElementById('tab-1-btn').style.display = 'none';
     document.getElementById('tab-1-tag').style.display = 'inline';
