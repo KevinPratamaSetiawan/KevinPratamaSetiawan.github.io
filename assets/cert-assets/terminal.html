@@ -1,0 +1,107 @@
+---
+# layout: compress
+title: Terminal
+permalink: /terminal/
+---
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
+            
+        {% seo %}
+            
+        {% include favicon.html %}
+            
+        {% include mathjax.html %}
+
+        <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
+        <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.11.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+
+    <body class="terminal-body">
+        <div class="terminal-nav">
+            <div class="timer">
+                <i class="fa-solid fa-hourglass-end fa-lg" id="hourglass"></i>
+                <div class="time-digit">
+                    <input type="number" id="hours" value="00" min="0" max="99">
+                    <span>:</span>
+                    <input type="number" id="minutes" value="00" min="0" max="59">
+                    <span>:</span>
+                    <input type="number" id="seconds" value="00" min="0" max="59">
+                </div>
+                <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <i class="fa-solid fa-play" id="play-timer-btn"></i>
+                        <i class="fa-solid fa-pause" id="pause-timer-btn" style="display:none;"></i>
+                        <i class="fa-solid fa-stop" id="reset-timer-btn" style="display:none;"></i>
+                    </div>
+                </div>
+            </div>            
+            <div class="logo">
+                <a class="none" href="{{site.baseurl}}/">
+                    <img id="mode-logo" src="/black-logo.png" alt="Logo" style="width: 50px;">
+                </a>
+            </div>
+            <div class="mode-toggle rounded-social-buttons" style="gap: 30px;">
+                <i class="fa-solid fa-bell-slash fa-xl" id="stop-alarm-btn"></i>
+                <i class="fa-solid fa-bell fa-shake fa-xl" id="start-alarm-btn" style="display:none;"></i>
+                <button id="mode-btn" class="social-button mode">
+                    <i class="fa-solid fa-sun mode-logo" style="display: flex; justify-content: center; align-items: center;"></i>
+                </button>  
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="todo-list">
+                <h4>To-do List</h4>
+                <div class="add-todo-area">
+                    <input type="text" id="new-item" placeholder="Add a new task...">
+                    <i class="fa-solid fa-plus fa-lg" id="add-item-btn"></i>
+                </div>
+                <ul id="todo-items">
+                    
+                </ul>
+            </div>
+            <div class="music-list">
+                <h4>Playlist</h4>
+            </div>
+            <div class="rss-feed">
+                <h4>RSS Feeds</h4>
+                <div class="tabs-nav">
+                    <div class="tab-item">
+                        <i class="fa-solid fa-1" id="tab-1-btn" style="display:none;"></i>
+                        <p id="tab-1-tag">The Yard</p>
+                    </div>
+                    <div class="tab-item">
+                        <i class="fa-solid fa-2" id="tab-2-btn"></i>
+                        <p id="tab-2-tag" style="display:none;">Premium</p>
+                    </div>
+                    <div class="tab-item">
+                        <i class="fa-solid fa-3" id="tab-3-btn"></i>
+                        <p id="tab-3-tag" style="display:none;">Advice Show</p>
+                    </div>
+                </div>
+                <ul id="yard-tab">
+                    <li>1</li>
+                </ul>
+                <ul id="premium-tab" style="display:none;">
+
+                </ul>
+                <ul id="advice-tab" style="display:none;">
+                    <li>3</li>
+                </ul>
+            </div>
+        </div>
+
+        {% include analytics.html %}
+    </body>
+
+    <script src="/script/timer.js"></script>
+    <script src="/script/modeToggle.js"></script>
+    <script src="/script/todo.js"></script>
+    <script src="/script/rssFeeds.js"></script> 
+</html>

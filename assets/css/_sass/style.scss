@@ -2,7 +2,7 @@ html, body {
   height: 100%;
 }
 
-body {
+body:not(.terminal-body) {
   max-width: $content-width;
   font-family: $base-font-family;
   margin: 0 auto;
@@ -351,4 +351,248 @@ blockquote {
   text-align: center;
 }
 
+.terminal-body *{
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+.terminal-body{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+
+  background-color: $background-color;
+  color: $text-color;
+
+  &.dark-mode{
+    background-color: $body-bg-dark;
+    color: $text-color-dark;
+  }
+}
+
+.terminal-nav{
+  width: 100%;
+  height: max-content;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 20px;
+}
+
+.terminal-nav > div{
+  height: 60px;
+  width: 30%;
+}
+
+.timer, .time-digit, .logo{
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.timer{
+  justify-content: left;
+}
+
+.logo, .logo div{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.mode-toggle{
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  text-align: right;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.time-digit {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.time-digit input {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+  font-size: $base-font-size;
+  color: $text-color;
+  border-bottom: 3px solid $brand-color;
+
+  &.dark-mode{
+    color: $text-color-dark;
+    border-bottom: 3px solid $brand-color-dark;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.main-content{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 1rem 0;
+}
+
+.main-content > div{
+  width: 30%;
+  height: 100%;
+
+  border: 3px solid $text-color;
+  border-radius: 10px;
+  padding: 10px;
+
+  &.dark-mode{
+    border: 3px solid $text-color-dark;
+  }
+}
+
+.main-content > div > h4{
+  width: 100%;
+  border-left: 5px solid $brand-color;
+  padding-left: 10px;
+
+  &.dark-mode{
+    border-left: 5px solid $brand-color-dark;
+  }
+}
+
+.todo-list, .rss-feed{
+  display: flex;
+  flex-direction: column;
+}
+
+.add-todo-area{
+  width: 100%;
+  padding: 20px 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 10px;
+
+  & #new-item{
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    padding: 5px;
+    color: $text-color;
+    border-bottom: 3px solid $brand-color;
+
+    &.dark-mode{
+      color: $text-color-dark;
+      border-bottom: 3px solid $brand-color-dark;
+    }
+  }
+}
+
+#todo-items, 
+#yard-tab, 
+#premium-tab, 
+#advice-tab{
+  width: 100%;
+  height: 460px;
+  padding: 0 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: scroll;
+  gap: 5px;
+
+  & li{
+    width: 100%;
+    padding: 10px;
+    border: 3px solid $text-color;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    i {
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .fa-trash-can {
+      margin-left: auto;
+    }
+
+    &.dark-mode{
+      border: 3px solid $text-color-dark;
+    }
+  }
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.tabs-nav{
+  width: 100%;
+  padding: 20px 10px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .tab-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    i{
+      color: $brand-color;
+
+      &.dark-mode{
+        color: $brand-color-dark;
+      }
+    }
+
+    p{
+      color: $text-color;
+      border-bottom: 3px solid $brand-color;
+
+      &.dark-mode{
+        color: $text-color-dark;
+        border-bottom: 3px solid $brand-color-dark;
+      }
+    }
+  }
+}
 
