@@ -62,40 +62,163 @@ permalink: /terminal/
                     <input type="text" id="new-item" placeholder="Add a new task...">
                     <i class="fa-solid fa-plus fa-lg" id="add-item-btn"></i>
                 </div>
-                <ul id="todo-items">
-                    
-                </ul>
+                <ul id="todo-items"></ul>
             </div>
             <div class="music-list">
-                <h4>Playlist</h4>
+                <h4>Mp3 Player</h4>
             </div>
             <div class="rss-feed">
-                <h4>RSS Feeds</h4>
+                <h4>Playlist</h4>
                 <div class="tabs-nav">
                     <div class="tab-item">
-                        <i class="fa-solid fa-1" id="tab-1-btn" style="display:none;"></i>
-                        <p id="tab-1-tag">The Yard</p>
+                        <i class="fa-solid fa-1 close-tab tab-1 tab-btn" id="tab-1-btn" style="display:none;"></i>
+                        <p id="tab-1-tag" class="close-tab tab-1">XML Link</p>
                     </div>
                     <div class="tab-item">
-                        <i class="fa-solid fa-2" id="tab-2-btn"></i>
-                        <p id="tab-2-tag" style="display:none;">Premium</p>
+                        <i class="fa-solid fa-2 close-tab tab-2 tab-btn" id="tab-2-btn"></i>
+                        <p id="tab-2-tag" style="display:none;" class="close-tab tab-2">The Yard</p>
                     </div>
                     <div class="tab-item">
-                        <i class="fa-solid fa-3" id="tab-3-btn"></i>
-                        <p id="tab-3-tag" style="display:none;">Advice Show</p>
+                        <i class="fa-solid fa-3 close-tab tab-3 tab-btn" id="tab-3-btn"></i>
+                        <p id="tab-3-tag" style="display:none;" class="close-tab tab-3">Premium</p>
+                    </div>
+                    <div class="tab-item">
+                        <i class="fa-solid fa-4 close-tab tab-4 tab-btn" id="tab-4-btn"></i>
+                        <p id="tab-4-tag" style="display:none;" class="close-tab tab-4">Advice Show</p>
+                    </div>
+                    <div class="tab-item">
+                        <i class="fa-solid fa-5 close-tab tab-5 tab-btn" id="tab-5-btn"></i>
+                        <p id="tab-5-tag" style="display:none;" class="close-tab tab-5">style.css</p>
+                    </div>
+                    <div class="tab-item">
+                        <i class="fa-solid fa-6 close-tab tab-6 tab-btn" id="tab-6-btn"></i>
+                        <p id="tab-6-tag" style="display:none;" class="close-tab tab-6">The Pop Out</p>
                     </div>
                 </div>
-                <ul id="yard-tab">
-                    <li>1</li>
+                <ul id="xml-tab" class="close-tab tab-1">
+                    <li>
+                        <i class="fa-solid fa-link"></i>
+                        <span>The Yard RSS Feed Link</span>
+                        <i class="fa-solid fa-clipboard fa-lg" id="copy-1-btn"></i>
+                        <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-1-bounce" style="display:none;"></i>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-link"></i>
+                        <span>The Yard Premium RSS Feed Link</span>
+                        <i class="fa-solid fa-clipboard fa-lg" id="copy-2-btn"></i>
+                        <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-2-bounce" style="display:none;"></i>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-link"></i>
+                        <span>The Advice Show RSS Feed Link</span>
+                        <i class="fa-solid fa-clipboard fa-lg" id="copy-3-btn"></i>
+                        <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-3-bounce" style="display:none;"></i>
+                    </li>
                 </ul>
-                <ul id="premium-tab" style="display:none;">
+                <ul id="yard-tab" style="display:none;" class="close-tab tab-2">
+                    <li>
+                        <label for="fileInput" class="custom-file-upload">
+                            <i class="fa-solid fa-file-arrow-up fa-lg"></i>
+                        </label>
+                        <input type="file" id="fileInput" accept=".xml" style="display:none;">
+                    </li>
+                </ul>
+                <ul id="premium-tab" style="display:none;" class="close-tab tab-3">
+                    <li>
+                        <label for="fileInput" class="custom-file-upload">
+                            <i class="fa-solid fa-file-arrow-up fa-lg"></i>
+                        </label>
+                        <input type="file" id="fileInput" accept=".xml" style="display:none;">
+                    </li>
+                </ul>
+                <ul id="advice-tab" style="display:none;" class="close-tab tab-4">
+                    <li>
+                        <label for="fileInput" class="custom-file-upload">
+                            <i class="fa-solid fa-file-arrow-up fa-lg"></i>
+                        </label>
+                        <input type="file" id="fileInput" accept=".xml" style="display:none;">
+                    </li>
+                </ul>
+                <ul id="style-tab" style="display:none;" class="close-tab tab-5">
+                    <li>5</li>
+                </ul>
+                <ul id="pop-out-tab" style="display:none;" class="close-tab tab-6">
+                    <li>6</li>
+                </ul>
 
-                </ul>
-                <ul id="advice-tab" style="display:none;">
-                    <li>3</li>
-                </ul>
             </div>
         </div>
+
+        <!-- <input type="file" id="fileInput" accept=".xml">
+        <button id="clearStorage">Clear Stored XML</button>
+        <div id="output"></div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Load and display XML content from local storage on page load
+                const storedXML = localStorage.getItem('xmlContent');
+                if (storedXML) {
+                    displayXMLContent(storedXML);
+                }
+            });
+    
+            document.getElementById('fileInput').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    if (file.type === 'application/xml' || file.type === 'text/xml') {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const xmlContent = e.target.result;
+                            try {
+                                // Validate XML content
+                                const parser = new DOMParser();
+                                const xmlDoc = parser.parseFromString(xmlContent, 'text/xml');
+                                const parserError = xmlDoc.getElementsByTagName('parsererror');
+                                if (parserError.length > 0) {
+                                    throw new Error('Invalid XML file');
+                                }
+    
+                                localStorage.setItem('xmlContent', xmlContent); // Save XML content to local storage
+                                displayXMLContent(xmlContent);
+                            } catch (error) {
+                                alert('Error processing XML file: ' + error.message);
+                            }
+                        };
+                        reader.readAsText(file);
+                    } else {
+                        alert('Please upload a valid XML file.');
+                    }
+                }
+            });
+    
+            document.getElementById('clearStorage').addEventListener('click', function() {
+                localStorage.removeItem('xmlContent'); // Clear XML content from local storage
+                document.getElementById('output').innerHTML = '';
+            });
+    
+            function displayXMLContent(xmlContent) {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlContent, 'text/xml');
+    
+                // Display the XML content in a readable format
+                const outputDiv = document.getElementById('output');
+                outputDiv.innerHTML = '';
+    
+                function traverseNode(node, indent = '') {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        outputDiv.innerHTML += `${indent}&lt;${node.nodeName}&gt;<br>`;
+                        for (let i = 0; i < node.childNodes.length; i++) {
+                            traverseNode(node.childNodes[i], indent + '  ');
+                        }
+                        outputDiv.innerHTML += `${indent}&lt;/${node.nodeName}&gt;<br>`;
+                    } else if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim() !== '') {
+                        outputDiv.innerHTML += `${indent}${node.nodeValue.trim()}<br>`;
+                    }
+                }
+    
+                traverseNode(xmlDoc.documentElement);
+            }
+        </script> -->
 
         {% include analytics.html %}
     </body>

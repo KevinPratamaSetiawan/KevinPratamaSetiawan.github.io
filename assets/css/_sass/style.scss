@@ -357,6 +357,8 @@ blockquote {
   text-decoration: none;
   margin: 0;
   padding: 0;
+
+  font-family: $base-font-family;
 }
 
 .terminal-body{
@@ -518,10 +520,13 @@ input[type=number] {
   }
 }
 
-#todo-items, 
+#todo-items,
+#xml-tab,
 #yard-tab, 
 #premium-tab, 
-#advice-tab{
+#advice-tab,
+#style-tab,
+#pop-out-tab{
   width: 100%;
   height: 460px;
   padding: 0 10px;
@@ -530,13 +535,13 @@ input[type=number] {
   flex-direction: column;
 
   overflow: scroll;
-  gap: 5px;
-
-  & li{
+  
+  li{
     width: 100%;
     padding: 10px;
     border: 3px solid $text-color;
     border-radius: 5px;
+    margin-bottom: 10px;
 
     display: flex;
     align-items: center;
@@ -554,6 +559,13 @@ input[type=number] {
     &.dark-mode{
       border: 3px solid $text-color-dark;
     }
+  }
+}
+
+.todo-item{
+  border: 3px solid $text-color;
+  &.dark-mode{
+    border: 3px solid $text-color-dark;
   }
 }
 
@@ -578,7 +590,6 @@ input[type=number] {
 
     i{
       color: $brand-color;
-
       &.dark-mode{
         color: $brand-color-dark;
       }
@@ -596,3 +607,29 @@ input[type=number] {
   }
 }
 
+/* Style the custom file upload button */
+.custom-file-upload {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 12px;
+  background-color: $text-color; /* Optional: customize button background */
+  border-radius: 4px;
+  color: $background-color; /* Optional: customize icon color */
+  font-size: 18px;
+  width: 100%;
+  height: 30px;
+
+  &.dark-mode{
+    background-color: $text-color-dark;
+    color: $body-bg-dark;
+  }
+}
+
+.custom-file-upload:hover {
+  background-color: $brand-color;
+  &.dark-mode{
+    background-color: $brand-color-dark;
+  }
+}

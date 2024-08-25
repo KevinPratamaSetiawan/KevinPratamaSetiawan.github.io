@@ -19,6 +19,11 @@ function addItem() {
 
 function createListItem(text, completed) {
     const li = document.createElement('li');
+    li.classList.add('todo-item');
+
+    if (document.body.classList.contains('dark-mode')) {
+        li.classList.add('dark-mode');
+    }
 
     // Create a span for the checkbox icon
     const checkboxIcon = document.createElement('i');
