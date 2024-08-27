@@ -44,3 +44,69 @@ function copyLink(link, id) {
     document.getElementById('copy-'+ id +'-bounce').style.display = 'none';
   }, 1000);
 }
+
+// Function to format duration to "minutes:seconds"
+function formatDuration(duration) {
+  const minutes = Math.floor(duration / 60);
+  const seconds = duration % 60;
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+// Function to parse XML and extract title, duration, and URL
+function parseXML(xmlContent) {
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xmlContent, "text/xml");
+  const items = xmlDoc.getElementsByTagName("item");
+  const parsedItems = [];
+
+  for (let i = 0; i < items.length; i++) {
+      const title = items[i].getElementsByTagName("title")[0].textContent;
+      const duration = items[i].getElementsByTagName("duration")[0].textContent;
+      const url = items[i].getElementsByTagName("url")[0].textContent;
+      const formattedDuration = formatDuration(parseInt(duration));
+      parsedItems.push({ title, duration: formattedDuration, url });
+  }
+
+  return parsedItems;
+}
+
+// Function to handle file upload and update the respective tab
+function handleFileUpload(tabId, fileInputId) {
+  const fileInput = document.getElementById(fileInputId);
+  fileInput.addEventListener('change', function () {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+          const xmlContent = e.target.result;
+          const items = parseXML(xmlContent);
+          const tab = document.getElementById(tabId);
+
+          // Clear existing list items
+          tab.innerHTML = '';
+
+          items.forEach(item => {
+              const li = document.createElement('li');
+              li.textContent = `${item.title} (${item.duration})`;
+              li.addEventListener('click', function () {
+                  playMP3(item.url);
+              });
+              tab.appendChild(li);
+          });
+          tab.style.display = "block";
+      };
+
+      reader.readAsText(file);
+  });
+}
+
+// Function to play the MP3 file
+// function playMP3(url) {
+//   const audioPlayer = document.getElementById('audioPlayer');
+//   audioPlayer.src = url;
+//   audioPlayer.play();
+// }
+
+yardFileInput.addEventListener('change', (event) => handleFileSelect(event, 'yard-tab'));
+premiumFileInput.addEventListener('change', (event) => handleFileSelect(event, 'premium-tab'));
+adviceFileInput.addEventListener('change', (event) => handleFileSelect(event, 'advice-tab'));

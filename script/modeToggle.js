@@ -28,6 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggle mode on button click
     toggleButton.addEventListener('click', () => {
+        let symbols = ['fa-sun','fa-radiation','fa-biohazard','fa-snowflake','fa-react','fa-fire-flame-curved','fa-galactic-senate','fa-jedi'];
+        let random = Math.floor(Math.random() * 1000) % symbols.length;
+
+        for(let i=0;i<symbols.length;i++){
+            let elements = document.getElementsByClassName(symbols[i]);
+            if (elements.length > 0) {
+                elements[0].style.display = 'none';
+            }
+        }
+
+        console.log(random," : ",document.getElementsByClassName(symbols[random]));
+        let selectedElement = document.getElementsByClassName(symbols[random]);
+        if (selectedElement.length > 0) {
+            selectedElement[0].style.display = 'flex';
+        }
+
         const isDarkMode = body.classList.toggle('dark-mode');
         localStorage.setItem('mode', isDarkMode ? 'dark-mode' : 'light-mode');
         applyMode(isDarkMode);
