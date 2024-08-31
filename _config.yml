@@ -108,6 +108,150 @@ collections:
       - google28.md
       - google29.md
 
+mp3_order:
+  thePopOut:
+    - Control.mp3
+    - Black Friday.mp3
+    - Medics.mp3
+    - The Story Of Adidon.mp3
+    - First Person Shooter.mp3
+    - Like That.mp3
+    - 7 Minute Drill.mp3
+    - Push Ups.mp3
+    - euphoria.mp3
+    - 6_16 in LA.mp3
+    - FAMILY MATTERS.mp3
+    - meet the grahams.mp3
+    - life goes on.mp3
+    - Not Like Us.mp3
+    - The Greatest.mp3
+  playlist1:
+    - Adonis Interlude.mp3
+    - 16.mp3
+    - a m a r i.mp3
+    - A.D.H.D.mp3
+    - All My Life.mp3
+    - Alright.mp3
+    - AMERICA HAS A PROBLEM.mp3
+    - Annihilate.mp3
+    - a lot.mp3
+    - Backseat Freestyle.mp3
+    - Bad Blood.mp3
+    - Better Now.mp3
+    - Big Shot.mp3
+    - Bitch Don't Kill My Vibe.mp3
+    - Black Friday.mp3
+    - Bless Up.mp3
+    - Brand New.mp3
+    - Calling.mp3
+    - Cash In Cash Out.mp3
+    - Control.mp3
+    - Count Me Out.mp3
+    - Dance Now.mp3
+    - Die Hard.mp3
+    - Diet Coke.mp3
+    - DNA.mp3
+    - DOGTOOTH.mp3
+    - Don't Do It.mp3
+    - Down Bad.mp3
+    - dreamy night.mp3
+    - EARFQUAKE.mp3
+    - ELEMENT.mp3
+    - FAMILY MATTERS.mp3
+    - Family ties.mp3
+    - Father Stretch My Hands Pt. 1.mp3
+    - First Person Shooter.mp3
+    - Follow God.mp3
+    - Fuck Your Ethnicity.mp3
+    - Fuckin' Problems.mp3
+    - Good News.mp3
+    - HEAVEN TO ME.mp3
+    - Hol' Up.mp3
+    - hooligan.mp3
+    - How Much A Dollar Cost.mp3
+    - How To Love.mp3
+    - HUMBLE.mp3
+    - i.mp3
+    - I Like You (A Happier Song).mp3
+    - I'm Better.mp3
+    - issues.mp3
+    - King Kunta.mp3
+    - 3005.mp3
+    - King's Dead.mp3
+    - LA Leakers 1.1.mp3
+    - LA Leakers 1.2.mp3
+    - Ladders.mp3
+    - LOYALTY..mp3
+    - M.a.a.D. city.mp3
+    - Mask Off.mp3
+    - Mean Street.mp3
+    - Mona Lisa.mp3
+    - Money Trees.mp3
+    - N95.mp3
+    - New Freezer.mp3
+    - no sense.mp3
+    - Nosetalgia.mp3
+    - Only Need.mp3
+    - Opps.mp3
+    - Paramedic!.mp3
+    - Potato Salad.mp3
+    - Praise The Lord (Da Shine).mp3
+    - Pray For Me.mp3
+    - PRIDE..mp3
+    - Rich Spirit.mp3
+    - RIOT (Rowdy Pipe'n).mp3
+    - rockstar.mp3
+    - Savior.mp3
+    - SEE YOU AGAIN.mp3
+    - Self Care.mp3
+    - SICKO MODE.mp3
+    - Stay.mp3
+    - Stick.mp3
+    - Sunflower.mp3
+    - Surround Sound.mp3
+    - Swimming Pool.mp3
+    - The Blacker The Berry.mp3
+    - The Heart part 5.mp3
+    - The Hillbillies.mp3
+    - The Story Of Adidon.mp3
+    - This is a Satire by Kendrick Lamar.mp3
+    - TPAB.mp3
+    - Tribe.mp3
+    - untitled [8 - 2].mp3
+    - Vanity Slave.mp3
+    - Vegas.mp3
+    - Vent.mp3
+    - WHARF TALK.mp3
+    - What's Up Danger.mp3
+    - Workin' Out.mp3
+    - Am I Dreaming.mp3
+    - Under The Sun (with J. Cole & Lute feat. DaBaby).mp3
+    - 1985.mp3
+    - Oklama Rich Spirit.mp3
+    - Medics.mp3
+    - Wow Freestyle.mp3
+    - XXX.mp3
+    - Ric Flair Drip.mp3
+    - Kant Nobody.mp3
+    - The London.mp3
+    - Ni__as In Paris.mp3
+    - You're an Ace, Kid.mp3
+    - wanting, getting, wanting.mp3
+    - take the bait.mp3
+    - dark hour.mp3
+    - fake ass gold.mp3
+    - end of a life.mp3
+    - Umeda Night Fever 19'.mp3
+    - Travolta Costum.mp3
+    - Like That.mp3
+    - 7 Minute Drill.mp3
+    - Push Ups.mp3
+    - euphoria.mp3
+    - 6_16 in LA.mp3
+    - life goes on.mp3
+    - Not Like Us.mp3
+    - Dior.mp3
+
 sass:
   sass_dir: /assets/css/_sass
   style: compressed

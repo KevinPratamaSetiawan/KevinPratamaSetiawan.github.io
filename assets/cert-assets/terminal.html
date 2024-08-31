@@ -74,16 +74,31 @@ permalink: /terminal/
             <div class="music-list">
                 <h4>Mp3 Player</h4>
                 <div id="mp3-player">
-                    <!-- <i class="fa-solid fa-backward-step"></i>
-                    <i class="fa-solid fa-backward"></i>
-                    <i class="fa-solid fa-circle-play"></i>
-                    <i class="fa-solid fa-circle-pause"></i>
-                    <i class="fa-solid fa-forward"></i>
-                    <i class="fa-solid fa-forward-step"></i>
-                    <i class="fa-solid fa-volume-xmark"></i>
-                    <i class="fa-solid fa-volume-off"></i>
-                    <i class="fa-solid fa-volume-low"></i>
-                    <i class="fa-solid fa-volume-high"></i> -->
+                    <div class="mp3-cover">
+                        <img src="../assets/images/mp3-cover/mp3-cover-1.jpeg" alt="" id="mp3-cover-img">
+                    </div>                    
+                    <div class="duration-slider">
+                        <p>00:00</p>
+                        <div class="slider-container">
+                            <input type="range" name="mp3-duration" id="mp3-duration" min="0" max="100" value="50">
+                            <i class="fa-solid fa-music" id="slider-icon"></i>
+                        </div>
+                        <p>00:00</p>
+                    </div>                    
+                    <div class="mp3-control">
+                        <i class="fa-solid fa-repeat fa-xl" style="display: none;"></i>
+                        <i class="fa-solid fa-shuffle fa-xl"></i>
+                        <i class="fa-solid fa-backward-step fa-xl"></i>
+                        <i class="fa-solid fa-backward fa-xl"></i>
+                        <i class="fa-solid fa-circle-play fa-xl"></i>
+                        <i class="fa-solid fa-circle-pause fa-xl" style="display: none;"></i>
+                        <i class="fa-solid fa-forward fa-xl"></i>
+                        <i class="fa-solid fa-forward-step fa-xl"></i>
+                        <i class="fa-solid fa-volume-xmark fa-xl" style="display: none;"></i>
+                        <i class="fa-solid fa-volume-off fa-xl" style="display: none;"></i>
+                        <i class="fa-solid fa-volume-low fa-xl" style="display: none;"></i>
+                        <i class="fa-solid fa-volume-high fa-xl"></i>
+                    </div>
                 </div>
             </div>
             <div class="rss-feed">
@@ -111,7 +126,7 @@ permalink: /terminal/
                     </div>
                     <div class="tab-item">
                         <i class="fa-solid fa-6 close-tab tab-6 tab-btn" id="tab-6-btn"></i>
-                        <p id="tab-6-tag" style="display:none;" class="close-tab tab-6">The Pop Out</p>
+                        <p id="tab-6-tag" style="display:none;" class="close-tab tab-6">thePopOut</p>
                     </div>
                 </div>
                 <ul id="xml-tab" class="close-tab tab-1">
@@ -135,43 +150,91 @@ permalink: /terminal/
                     </li>
                 </ul>
                 <ul id="yard-tab" style="display:none;" class="close-tab tab-2">
-                    <li style="padding: 0 10px; border: none; gap: 10px;">
+                    <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
                         <label for="fileInputYard" class="custom-file-upload">
                             <i class="fa-solid fa-file-arrow-up fa-lg"></i>
                         </label>
                         <input type="file" id="fileInputYard" accept=".xml" style="display:none;">
                         <label for="fileClearYard" class="custom-file-upload">
-                            <i class="fa-solid fa-dumpster fa-lg"></i>
+                            <i class="fa-solid fa-dumpster fa-lg" id="fileClearYard"></i>
                         </label>
                     </li>
                 </ul>
                 <ul id="premium-tab" style="display:none;" class="close-tab tab-3">
-                    <li style="padding: 0 10px; border: none; gap: 10px;">
+                    <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
                         <label for="fileInputPremium" class="custom-file-upload">
                             <i class="fa-solid fa-file-arrow-up fa-lg"></i>
                         </label>
                         <input type="file" id="fileInputPremium" accept=".xml" style="display:none;">
-                        <label for="fileClearYard" class="custom-file-upload">
-                            <i class="fa-solid fa-dumpster fa-lg"></i>
+                        <label for="fileClearPremium" class="custom-file-upload">
+                            <i class="fa-solid fa-dumpster fa-lg" id="fileClearPremium"></i>
                         </label>
                     </li>
                 </ul>
                 <ul id="advice-tab" style="display:none;" class="close-tab tab-4">
-                    <li style="padding: 0 10px; border: none; gap: 10px;">
+                    <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
                         <label for="fileInputAdvice" class="custom-file-upload">
                             <i class="fa-solid fa-file-arrow-up fa-lg"></i>
                         </label>
                         <input type="file" id="fileInputAdvice" accept=".xml" style="display:none;">
-                        <label for="fileClearYard" class="custom-file-upload">
-                            <i class="fa-solid fa-dumpster fa-lg"></i>
+                        <label for="fileClearAdvice" class="custom-file-upload">
+                            <i class="fa-solid fa-dumpster fa-lg" id="fileClearAdvice"></i>
                         </label>
                     </li>
                 </ul>
+
+                {% assign mp3_metadata = site.data.mp3_metadata.playlist1 %}
                 <ul id="style-tab" style="display:none;" class="close-tab tab-5">
-                    <li>5</li>
+                {% assign counter = 1 %}
+                {% for mp3 in mp3_metadata %}
+                    {% assign file = site.static_files | where: "name", mp3.name | first %}
+                    <li class="mp3-container">
+                        <a href="{{ file.path }}"><i class="fa-solid fa-play"></i></a>
+                        <div class='mp3-metadata'>
+                            <div class="mp3-title-number">
+                                <h4>{{ mp3.title }}</h4>
+                                <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
+                            </div>
+                            <div class='mp3-date-duration'>
+                                <p>{{ mp3.artist }}</p>
+                                <p>{{ mp3.duration }}</p>
+                            </div>
+                        </div>
+                    </li>
+                    {% if file %}
+                    {% assign counter = counter | plus: 1 %}
+                    {% else %}
+                    <li>File {{ mp3.name }} not found.</li>
+                    {% endif %}
+                {% endfor %}
                 </ul>
+
+                {% assign mp3_metadata = site.data.mp3_metadata.thePopOut %}
                 <ul id="pop-out-tab" style="display:none;" class="close-tab tab-6">
-                    <li>6</li>
+                {% assign counter = 1 %}
+                {% for mp3 in mp3_metadata %}
+                    {% assign file = site.static_files | where: "name", mp3.name | first %}
+                    <li class="mp3-container">
+                        <a href="{{ file.path }}"><i class="fa-solid fa-play"></i></a>
+                        <div class='mp3-metadata'>
+                            <div class="mp3-title-number">
+                                <h4>{{ mp3.title }}</h4>
+                                <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
+                            </div>
+                            <div class='mp3-date-duration'>
+                                <p>{{ mp3.artist }}</p>
+                                <p>{{ mp3.duration }}</p>
+                            </div>
+                        </div>
+                    </li>
+                    {% if file %}
+                    {% assign counter = counter | plus: 1 %}
+                    {% else %}
+                    <li>File {{ mp3.name }} not found.</li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+                            
                 </ul>
 
             </div>

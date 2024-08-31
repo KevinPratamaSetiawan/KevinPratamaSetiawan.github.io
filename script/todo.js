@@ -6,8 +6,14 @@ function addItem() {
     if (itemText !== '') {
         const ul = document.getElementById('todo-items');
         const li = createListItem(itemText, false);
-        
-        ul.prepend(li);
+
+        const match = itemText.match(/^(\d+)\.\s+(.*)$/);
+        if (match) {
+            const position = parseInt(match[1], 10) - 1; // Extract the integer and convert it to a zero-based index
+            insertItemAtPosition(ul, li, position);
+        } else {
+            appendOrInsertAfterNumbered(ul, li);
+        }
 
         // Save item to local storage
         saveItem(itemText, false);
@@ -112,4 +118,21 @@ function loadItems() {
         const li = createListItem(item.text, item.completed);
         ul.appendChild(li);
     });
+}
+
+function insertItemAtPosition(ul, li, position) {
+    if (position >= ul.children.length) {
+        ul.appendChild(li);
+    } else {
+        ul.insertBefore(li, ul.children[position]);
+    }
+}
+
+function appendOrInsertAfterNumbered(ul, li) {
+    const numberedItems = Array.from(ul.children).filter(item => /^\d+\.\s/.test(item.textContent));
+    if (numberedItems.length > 0) {
+        ul.insertBefore(li, numberedItems[numberedItems.length - 1].nextSibling);
+    } else {
+        ul.appendChild(li);
+    }
 }

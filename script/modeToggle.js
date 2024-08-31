@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const logo = document.getElementById('mode-logo');
     const elementsToToggle = document.querySelectorAll(
-        'a, p, pre, code, blockquote, .cert-category, .password, .social-button, input, div, .main-content > div > h4, li, .tab-btn, .todo-item, .custom-file-upload'
+        'a, p, pre, code, blockquote, .cert-category, .password, .social-button, input, div, .main-content > div > h4, li, .tab-btn, .todo-item, .custom-file-upload, #slider-icon, .mp3-play-btn, .mp3-numbers'
     );
 
     // Check and apply saved mode
@@ -18,6 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update dark mode for dynamically created todo items
         const todoItems = document.querySelectorAll('.todo-item');
         todoItems.forEach(item => {
+            item.classList.toggle('dark-mode', isDark);
+        });
+
+        const podItems = document.querySelectorAll('.mp3-container');
+        podItems.forEach(item => {
+            item.classList.toggle('dark-mode', isDark);
+        });
+
+        const podPlayBtn = document.querySelectorAll('.play');
+        podPlayBtn.forEach(item => {
+            item.classList.toggle('dark-mode', isDark);
+        });
+
+        const mp3Numbers = document.querySelectorAll('.mp3-numbers');
+        mp3Numbers.forEach(item => {
             item.classList.toggle('dark-mode', isDark);
         });
     };

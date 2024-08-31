@@ -533,7 +533,7 @@ input[type=number] {
 
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   overflow: scroll;
   
   li{
@@ -558,6 +558,78 @@ input[type=number] {
 
     &.dark-mode{
       border: 3px solid $text-color-dark;
+    }
+  }
+}
+
+.mp3-container{
+  gap: 5px;
+
+  &.dark-mode{
+    border: 3px solid $text-color-dark;
+  }
+
+  .mp3-metadata h4{
+    height: fit-content;
+    width: 320px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .mp3-metadata p:nth-child(1){
+    height: fit-content;
+    width: 280px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .mp3-title-number{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mp3-title-number .mp3-numbers{
+    padding: 2px 4px;
+    background-color: $brand-color;
+    border-radius: 5px;
+    font-weight: bold;
+
+    &.dark-mode{
+      background-color: $brand-color-dark;
+    }
+  }
+
+  .mp3-date-duration{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  i{
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    cursor: pointer;
+    color: $brand-color;
+  }
+
+  i:hover{
+    color: $text-color;
+  }
+
+  .dark-mode i{
+    color: $brand-color-dark;
+
+    &:hover{
+      color: $text-color-dark;
     }
   }
 }
@@ -631,5 +703,132 @@ input[type=number] {
   background-color: $brand-color;
   &.dark-mode{
     background-color: $brand-color-dark;
+  }
+}
+
+.music-list{
+  display: flex;
+  flex-direction: column;
+}
+
+#mp3-player{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+
+  padding: 10px 20px;
+  margin: 10px 0;
+}
+
+.mp3-cover{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  border-radius: 10px;
+  border: 5px solid $text-color;
+
+  &.dark-mode{
+    border: 5px solid $text-color-dark;
+  }
+
+  img{
+    border-radius: 5px;
+  }
+}
+
+.duration-slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 5px;
+
+  .slider-container {
+    position: relative;
+    width: 100%;
+    margin: 0 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #mp3-duration {
+    appearance: none;
+    overflow: hidden;
+    background-color: $text-color;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+
+    &.dark-mode{
+      background-color: $text-color-dark;
+    }
+  }
+
+  #mp3-duration::-webkit-slider-runnable-track {
+    height: 5px;
+    appearance: none;
+    margin-top: -1px;
+  }
+
+  #slider-icon{
+    position: absolute;
+    top: -5px; /* Adjust based on your design */
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none; /* Prevent the icon from blocking slider interaction */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $brand-color;
+    color: transparent;
+    border-radius: 50px;
+    width: 15px;
+    height: 15px;
+
+    &.dark-mode{
+      background: $brand-color-dark;
+    }
+  }
+}
+
+#mp3-duration {
+  &::-webkit-slider-thumb {
+    width: 10px;
+    appearance: none;
+    height: 10px;
+    cursor: grab;
+    background: transparent;
+    box-shadow: -150px 0 0px 150px $brand-color;
+    position: relative;
+  }
+  
+  body.dark-mode &::-webkit-slider-thumb {
+    box-shadow: -150px 0 0px 150px $brand-color-dark;
+  }
+}
+
+.mp3-control{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  width: 100%;
+  height: 50px;
+  padding: 10px 0;
+
+  border-left: 5px solid $brand-color;
+  border-right: 5px solid $brand-color;
+
+  &.dark-mode{
+    border-left: 5px solid $brand-color-dark;
+    border-right: 5px solid $brand-color-dark;
   }
 }
