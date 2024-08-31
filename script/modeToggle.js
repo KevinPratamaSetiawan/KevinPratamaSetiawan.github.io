@@ -43,24 +43,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggle mode on button click
     toggleButton.addEventListener('click', () => {
-        let symbols = ['fa-sun','fa-radiation','fa-biohazard','fa-snowflake','fa-react','fa-fire-flame-curved','fa-galactic-senate','fa-jedi'];
-        let random = Math.floor(Math.random() * 1000) % symbols.length;
+        // let symbols = ['fa-sun','fa-radiation','fa-biohazard','fa-snowflake','fa-react','fa-fire-flame-curved','fa-galactic-senate','fa-jedi'];
+        // let random = Math.floor(Math.random() * 1000) % symbols.length;
 
-        for(let i=0;i<symbols.length;i++){
-            let elements = document.getElementsByClassName(symbols[i]);
-            if (elements.length > 0) {
-                elements[0].style.display = 'none';
-            }
-        }
+        // for(let i=0;i<symbols.length;i++){
+        //     let elements = document.getElementsByClassName(symbols[i]);
+        //     if (elements.length > 0) {
+        //         elements[0].style.display = 'none';
+        //     }
+        // }
 
-        console.log(random," : ",document.getElementsByClassName(symbols[random]));
-        let selectedElement = document.getElementsByClassName(symbols[random]);
-        if (selectedElement.length > 0) {
-            selectedElement[0].style.display = 'flex';
-        }
+        // let selectedElement = document.getElementsByClassName(symbols[random]);
+        // if (selectedElement.length > 0) {
+        //     selectedElement[0].style.display = 'flex';
+        // }
 
         const isDarkMode = body.classList.toggle('dark-mode');
         localStorage.setItem('mode', isDarkMode ? 'dark-mode' : 'light-mode');
         applyMode(isDarkMode);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const accentButton = document.getElementById('accent-btn');
+
+    const applyMode = () => {
+        const savedBrandColor = localStorage.getItem('brand-color');
+        const savedBrandColorDark = localStorage.getItem('brand-color-dark');
+        if (savedBrandColor) {
+            document.documentElement.style.setProperty('--brand-color', savedBrandColor);
+        }
+        if (savedBrandColorDark) {
+            document.documentElement.style.setProperty('--brand-color-dark', savedBrandColorDark);
+        }
+    };
+
+    applyMode();
+
+    accentButton.addEventListener('click', () => {
+        //Brand Color Changer
+        const lightColors = ['#60c17d', '#336699', '#e7ab2a', '#004643', '#ADA282', '#BC9C35', '#A85D46', '#D8B37C', '#c2cb96', '#f5bda8', '#3f4d34'];
+        const darkColors =  ['#c16560', '#C6C2F2', '#f25f4c', '#ff8906', '#2cb67d', '#7f5af0', '#eecb75', '#cbdde9'];
+    
+        const lightRandomIndex = Math.floor(Math.random() * lightColors.length);
+        const darkRandomIndex = Math.floor(Math.random() * darkColors.length);
+    
+        const lightNewColor = lightColors[lightRandomIndex];
+        const darkNewColor = darkColors[darkRandomIndex];
+    
+        document.documentElement.style.setProperty('--brand-color', lightNewColor);
+        document.documentElement.style.setProperty('--brand-color-dark', darkNewColor);
+
+        localStorage.setItem('brand-color', lightNewColor);
+        localStorage.setItem('brand-color-dark', darkNewColor);
     });
 });
