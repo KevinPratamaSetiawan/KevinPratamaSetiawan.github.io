@@ -84,11 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
         //Brand Color Changer
         const colors = ['#60c17d', '#336699', '#e7ab2a', '#004643', '#ADA282', '#BC9C35', '#A85D46', '#D8B37C', '#c2cb96', '#f5bda8', '#3f4d34', '#c16560', '#C6C2F2', '#f25f4c', '#ff8906', '#2cb67d', '#7f5af0', '#eecb75', '#cbdde9'];
     
-        const lightRandomIndex = Math.floor(Math.random() * colors.length);
-        const darkRandomIndex = Math.floor(Math.random() * colors.length);
+        const randomIndex = Math.floor(Math.random() * colors.length);
     
-        const lightNewColor = colors[lightRandomIndex];
-        const darkNewColor = colors[darkRandomIndex];
+        const lightNewColor = colors[randomIndex];
+        const darkNewColor = colors[randomIndex];
     
         document.documentElement.style.setProperty('--brand-color', lightNewColor);
         document.documentElement.style.setProperty('--brand-color-dark', darkNewColor);
