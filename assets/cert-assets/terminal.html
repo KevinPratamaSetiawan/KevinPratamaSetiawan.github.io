@@ -67,7 +67,14 @@ permalink: /⌨️/
                     <input type="text" id="new-item" placeholder="Add a new task...">
                     <i class="fa-solid fa-plus fa-lg" id="add-item-btn"></i>
                 </div>
-                <ul id="todo-items"></ul>
+                <div class="todo-listing">
+                    <h5><i class="fa-regular fa-folder-open"></i> Priority</h5>
+                    <ul id="todo-priority"></ul>
+                    <h5><i class="fa-regular fa-folder-open"></i> Task</h5>
+                    <ul id="todo-items"></ul>
+                    <h5><i class="fa-regular fa-folder-open"></i> Completed</h5>
+                    <ul id="todo-finish"></ul>
+                </div>
             </div>
             <div class="music-list">
                 <h4>Mp3 Player</h4>
@@ -188,15 +195,13 @@ permalink: /⌨️/
                     {% assign file = site.static_files | where: "name", mp3.name | first %}
                     <li class="mp3-container">
                         <a href="{{ file.path }}"><i class="fa-solid fa-play"></i></a>
-                        <div class='mp3-metadata'>
-                            <div class="mp3-title-number">
-                                <h4>{{ mp3.title }}</h4>
-                                <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
-                            </div>
-                            <div class='mp3-date-duration'>
-                                <p>{{ mp3.artist }}</p>
-                                <p>{{ mp3.duration }}</p>
-                            </div>
+                        <div class="mp3-title-date">
+                            <h4>{{ mp3.title }}</h4>
+                            <p>{{ mp3.artist }}</p>
+                        </div>
+                        <div class='mp3-number-duration'>
+                            <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
+                            <p>{{ mp3.duration }}</p>
                         </div>
                     </li>
                     {% if file %}
@@ -214,15 +219,13 @@ permalink: /⌨️/
                     {% assign file = site.static_files | where: "name", mp3.name | first %}
                     <li class="mp3-container">
                         <a href="{{ file.path }}"><i class="fa-solid fa-play"></i></a>
-                        <div class='mp3-metadata'>
-                            <div class="mp3-title-number">
-                                <h4>{{ mp3.title }}</h4>
-                                <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
-                            </div>
-                            <div class='mp3-date-duration'>
-                                <p>{{ mp3.artist }}</p>
-                                <p>{{ mp3.duration }}</p>
-                            </div>
+                        <div class="mp3-title-date">
+                            <h4>{{ mp3.title }}</h4>
+                            <p>{{ mp3.artist }}</p>
+                        </div>
+                        <div class='mp3-number-duration'>
+                            <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
+                            <p>{{ mp3.duration }}</p>
                         </div>
                     </li>
                     {% if file %}

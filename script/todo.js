@@ -5,25 +5,22 @@ function addItem() {
     const itemText = document.getElementById('new-item').value.trim();
     if (itemText !== '') {
         const ul = document.getElementById('todo-items');
-        const li = createListItem(itemText, false);
+        const li = createListItem(itemText, false, false);
 
         const match = itemText.match(/^(\d+)\.\s+(.*)$/);
         if (match) {
-            const position = parseInt(match[1], 10) - 1; // Extract the integer and convert it to a zero-based index
+            const position = parseInt(match[1], 10) - 1;
             insertItemAtPosition(ul, li, position);
         } else {
             appendOrInsertAfterNumbered(ul, li);
         }
 
-        // Save item to local storage
-        saveItem(itemText, false);
-
-        // Clear the input field
+        saveItem(itemText, false, false);
         document.getElementById('new-item').value = '';
     }
 }
 
-function createListItem(text, completed) {
+function createListItem(text, completed, priority) {
     const li = document.createElement('li');
     li.classList.add('todo-item');
 
@@ -31,64 +28,103 @@ function createListItem(text, completed) {
         li.classList.add('dark-mode');
     }
 
-    // Create a span for the checkbox icon
     const checkboxIcon = document.createElement('i');
     checkboxIcon.classList.add('fa-regular', completed ? 'fa-circle-check' : 'fa-circle');
     checkboxIcon.addEventListener('click', toggleComplete);
 
-    // Create a span for the item text
     const span = document.createElement('span');
     span.textContent = text;
     if (completed) {
         span.classList.add('completed');
     }
 
-    // Create a delete button with trash icon
+    const priorityBtn = document.createElement('i');
+    priorityBtn.classList.add(priority ? 'fa-circle-exclamation' : 'fa-circle');
+    priorityBtn.classList.add(priority ? 'fa-solid' : 'fa-regular');
+    priorityBtn.addEventListener('click', togglePriority);
+
     const deleteBtn = document.createElement('i');
     deleteBtn.classList.add('fa-solid', 'fa-trash-can');
     deleteBtn.addEventListener('click', removeItem);
 
-    // Append checkbox icon, span, and delete button to the li element
     li.appendChild(checkboxIcon);
+    li.appendChild(priorityBtn);
     li.appendChild(span);
     li.appendChild(deleteBtn);
 
     return li;
 }
 
-function removeItem(event) {
-    const li = event.target.parentElement;
-    const itemText = li.querySelector('span').textContent;
-    li.remove();
-
-    // Remove item from local storage
-    deleteItem(itemText);
-}
-
 function toggleComplete(event) {
     const icon = event.target;
     const li = icon.parentElement;
-    const ul = document.getElementById('todo-items');
-    const span = icon.nextElementSibling;
+    const span = icon.nextElementSibling.nextElementSibling;
     const isChecked = icon.classList.contains('fa-circle');
 
     if (isChecked) {
         icon.classList.replace('fa-circle', 'fa-circle-check');
         span.classList.add('completed');
-        ul.appendChild(li); // Move to the bottom
+        updateItem(span.textContent, true, isPriority(li));
+        moveToList(li, true, isPriority(li));
     } else {
         icon.classList.replace('fa-circle-check', 'fa-circle');
         span.classList.remove('completed');
-        ul.prepend(li); // Move to the top
+        updateItem(span.textContent, false, isPriority(li));
+        moveToList(li, false, isPriority(li));
     }
-
-    // Update item completion status in local storage
-    updateItem(span.textContent, isChecked);
 }
 
-function saveItem(text, completed) {
+function togglePriority(event) {
+    const icon = event.target;
+    const li = icon.parentElement;
+    const span = li.querySelector('span');
+    const isPriority = icon.classList.contains('fa-circle-exclamation');
+
+    if (!isPriority) {
+        icon.classList.replace('fa-circle', 'fa-circle-exclamation');
+        icon.classList.replace('fa-regular', 'fa-solid');
+        updateItem(span.textContent, isCompleted(li), true);
+        moveToList(li, isCompleted(li), true);
+    } else {
+        icon.classList.replace('fa-circle-exclamation', 'fa-circle');
+        icon.classList.replace('fa-solid', 'fa-regular');
+        updateItem(span.textContent, isCompleted(li), false);
+        moveToList(li, isCompleted(li), false);
+    }
+}
+
+function moveToList(li, completed, priority) {
+    const ulItems = document.getElementById('todo-items');
+    const ulFinish = document.getElementById('todo-finish');
+    const ulPriority = document.getElementById('todo-priority');
+
+    if (completed) {
+        ulFinish.appendChild(li);
+    } else if (priority) {
+        ulPriority.appendChild(li);
+    } else {
+        ulItems.appendChild(li);
+    }
+}
+
+function isCompleted(li) {
+    return li.querySelector('span').classList.contains('completed');
+}
+
+function isPriority(li) {
+    return li.querySelector('.fa-circle-exclamation') !== null;
+}
+
+function removeItem(event) {
+    const li = event.target.parentElement;
+    const itemText = li.querySelector('span').textContent;
+    li.remove();
+    deleteItem(itemText);
+}
+
+function saveItem(text, completed, priority) {
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
-    items.push({ text: text, completed: completed });
+    items.push({ text: text, completed: completed, priority: priority });
     localStorage.setItem('todoItems', JSON.stringify(items));
 }
 
@@ -98,25 +134,27 @@ function deleteItem(text) {
     localStorage.setItem('todoItems', JSON.stringify(items));
 }
 
-function updateItem(text, completed) {
+function updateItem(text, completed, priority) {
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
     const item = items.find(item => item.text === text);
     if (item) {
         item.completed = completed;
+        item.priority = priority;
     }
     localStorage.setItem('todoItems', JSON.stringify(items));
 }
 
 function loadItems() {
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
-    const ul = document.getElementById('todo-items');
+    const ulItems = document.getElementById('todo-items');
+    const ulFinish = document.getElementById('todo-finish');
+    const ulPriority = document.getElementById('todo-priority');
 
-    // Sort items so that completed ones are at the bottom
     items.sort((a, b) => a.completed - b.completed);
 
     items.forEach(item => {
-        const li = createListItem(item.text, item.completed);
-        ul.appendChild(li);
+        const li = createListItem(item.text, item.completed, item.priority);
+        moveToList(li, item.completed, item.priority);
     });
 }
 

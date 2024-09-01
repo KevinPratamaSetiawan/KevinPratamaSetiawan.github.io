@@ -175,15 +175,13 @@ function displayResults(results, tabId) {
 
       resultElement.innerHTML = `
           <a href="${result.url}" target="_blank" class='none play'><i class="fa-solid fa-play"></i></a>
-          <div class='mp3-metadata'>
-          <div class='mp3-title-number'>
-          <h4>${result.title}</h4>
-          <p class='mp3-numbers'>#${formattedNumber}</p>
+          <div class='mp3-title-date'>
+            <h4>${result.title}</h4>
+            <p>${result.pubDateFormatted}</p>
           </div>
-          <div class='mp3-date-duration'>
-          <p>${result.pubDateFormatted}</p>
-          <p>${result.durationFormatted}</p>
-          </div>
+          <div class='mp3-number-duration'>
+            <p class='mp3-numbers'>#${formattedNumber}</p>
+            <p>${result.durationFormatted}</p>
           </div>
       `;
 
