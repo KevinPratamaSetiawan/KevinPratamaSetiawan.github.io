@@ -593,7 +593,7 @@ input[type=number] {
 
   @include media-query ( $on-palm ) {
     .mp3-metadata h4, .mp3-metadata p:nth-child(1){
-      width: 320px;
+      width: 250px;
     }
   }
 
