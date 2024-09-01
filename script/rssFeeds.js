@@ -8,7 +8,7 @@ document.getElementById('tab-6-btn').addEventListener('click', function() { open
 // Mp3 Player Cover Changer
 const coverImage = document.getElementById('mp3-cover-img');
 let currentImageIndex = 1;
-const totalImages = 7; // Update this number to match the total number of images you have
+const totalImages = 13; // Update this number to match the total number of images you have
 
 function changeCoverImage() {
     currentImageIndex++;
