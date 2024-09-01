@@ -415,6 +415,7 @@ blockquote {
   align-items: center;
   justify-content: right;
   text-align: right;
+  gap: 30px;
 }
 
 .timer {
@@ -851,28 +852,31 @@ input[type=number] {
     grid-template-columns: repeat(2, 1fr);
 
     padding: 5px 10px;
-    grid-gap: 5px;
-    margin-bottom: 20px;
+    grid-gap: 10px;
+    margin-bottom: 10px;
   }
 
   .terminal-nav > div{
     height: auto;
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
   }
 
   .logo{
-    grid-area: 1 / 1 / 2 / 3;
+    grid-area: 1 / 1 / 2 / 2;
+    justify-content: left;
   }
 
   .timer{
-    grid-area: 2 / 1 / 3 / 2;
+    grid-area: 2 / 1 / 3 / 3;
+    justify-content: center;
   }
   
   .mode-toggle{
-    grid-area: 2 / 2 / 3 / 3;
+    grid-area: 1 / 2 / 2 / 3;
+    justify-content: right;
+    gap: 10px;
   }
 
   .main-content { 
