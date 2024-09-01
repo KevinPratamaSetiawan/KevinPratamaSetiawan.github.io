@@ -577,23 +577,22 @@ input[type=number] {
   .mp3-metadata h4{
     height: fit-content;
     width: 320px;
-    overflow: hidden;
+    overflow-x: scroll;
     white-space: nowrap;
-    text-overflow: ellipsis;
+    // text-overflow: ellipsis;
   }
 
   .mp3-metadata p:nth-child(1){
     height: fit-content;
     width: 280px;
-    overflow: hidden;
+    overflow: scroll;
     white-space: nowrap;
-    text-overflow: ellipsis;
-    flex-shrink: 1;
+    // text-overflow: ellipsis;
   }
 
   @include media-query ( $on-palm ) {
     .mp3-metadata h4, .mp3-metadata p:nth-child(1){
-      width: 230px;
+      width: 220px;
     }
   }
 
