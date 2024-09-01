@@ -586,7 +586,7 @@ input[type=number] {
   .mp3-metadata p:nth-child(1){
     height: fit-content;
     width: 280px;
-    overflow: scroll;
+    overflow:scroll;
     white-space: nowrap;
     // text-overflow: ellipsis;
   }
@@ -620,6 +620,10 @@ input[type=number] {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+  }
+
+  .mp3-title-number, .mp3-date-duration{
+    gap: 10px;
   }
 
   i{
@@ -730,6 +734,7 @@ input[type=number] {
   align-items: center;
 
   height: 100%;
+  min-height: 470px;
   width: 100%;
 
   padding: 10px 20px;

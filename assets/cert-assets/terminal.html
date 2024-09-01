@@ -191,7 +191,7 @@ permalink: /⌨️/
                         <div class='mp3-metadata'>
                             <div class="mp3-title-number">
                                 <h4>{{ mp3.title }}</h4>
-                                <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
+                                <p class='mp3-numbers'>#{{ counter | prepend: '000' | slice: -3 }}</p>
                             </div>
                             <div class='mp3-date-duration'>
                                 <p>{{ mp3.artist }}</p>
@@ -217,7 +217,7 @@ permalink: /⌨️/
                         <div class='mp3-metadata'>
                             <div class="mp3-title-number">
                                 <h4>{{ mp3.title }}</h4>
-                                <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
+                                <p class='mp3-numbers'>#{{ counter | prepend: '000' | slice: -3 }}</p>
                             </div>
                             <div class='mp3-date-duration'>
                                 <p>{{ mp3.artist }}</p>
