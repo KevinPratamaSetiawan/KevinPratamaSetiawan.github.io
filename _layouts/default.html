@@ -52,12 +52,13 @@
         <footer>
           <p class="copy">
             <p style="display: flex; justify-content: space-around; align-items: center;"> 
+                <small style="width: 275px; text-align: center;">&copy;{{site.title}} {{ site.time | date: '%Y' }}</small>
                 <small> | </small>
                 <a class="none" href="{{site.baseurl}}/🔑/">
                     <img id="mode-logo" src="/black-logo.png" alt="Logo" style="width: 50px;">
                 </a>
                 <small> | </small>
-                <small style="width: 325px; text-align: center;">
+                <small style="width: 275px; text-align: center;">
                     Last updated on {{ site.time | date_to_long_string }}
                 </small>
             </p>
