@@ -1,17 +1,17 @@
 {
     "name":"Kevin Pratama Setiawan",
     "short_name":"KPS",
+    "theme_color":"#23272d",
+    "background_color":"#fdfdfd",
+    "display":"standalone",
     "icons":[{
-        "src":"/black-logo.png",
-        "sizes":"192x192",
+        "src":"../black-logo.png",
+        "sizes":"1000x1000",
         "type":"image/png"
     },
     {
-        "src":"/white-logo.png",
-        "sizes":"512x512",
+        "src":"../white-logo.png",
+        "sizes":"1000x1000",
         "type":"image/png"
-    }],
-        "theme_color":"#23272d",
-        "background_color":"#fdfdfd",
-        "display":"standalone"
+    }]
 }

@@ -7,7 +7,11 @@ function changeCoverImage() {
   let currentImageIndex = imageIndex;
 
   if (currentImageIndex === imageIndex) {
-    imageIndex++;
+    if(imageIndex === 27){
+        imageIndex -= 8;
+    }else{
+        imageIndex++;
+    }
   }
   coverImage.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.jpeg`;
 }

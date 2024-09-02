@@ -217,6 +217,10 @@ function numberToRoman(num) {
     ];
     
     let result = '';
+
+    if(num === 0){
+        result = '零';
+    }
     
     for (const { value, numeral } of romanNumerals) {
         while (num >= value) {
