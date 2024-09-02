@@ -519,7 +519,7 @@ input[type=number] {
 .todo-listing{
   overflow: scroll;
   h5{
-    padding: 10px 10px 5px 10px;
+    padding: 10px 5px 10px 5px;
     color: var(--brand-color);
   }
 }
@@ -549,6 +549,7 @@ input[type=number] {
     }
   }
 }
+
 #todo-priority,
 #todo-items,
 #todo-finish{
@@ -609,6 +610,18 @@ input[type=number] {
     &.dark-mode{
       border: 3px solid $text-color-dark;
     }
+  }
+}
+
+#xml-tab a{
+  color: $text-color;
+
+  :hover{
+    color: var(--brand-color);
+  }
+
+  &.dark-mode{
+    color: $text-color-dark;
   }
 }
 
@@ -821,14 +834,11 @@ input[type=number] {
   align-items: center;
   width: 90%;
   border-radius: 10px;
-  border: 5px solid $text-color;
+  border: 5px solid var(--brand-color);
 
-  &.dark-mode{
-    border: 5px solid $text-color-dark;
-  }
-
-  img{
+  .mp3-cover-img{
     border-radius: 5px;
+    object-fit: contain;
   }
 }
 

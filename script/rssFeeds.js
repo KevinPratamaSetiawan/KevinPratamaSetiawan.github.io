@@ -5,23 +5,7 @@ document.getElementById('tab-4-btn').addEventListener('click', function() { open
 document.getElementById('tab-5-btn').addEventListener('click', function() { openTab('tab-5'); });
 document.getElementById('tab-6-btn').addEventListener('click', function() { openTab('tab-6'); });
 
-// Mp3 Player Cover Changer
-const coverImage = document.getElementById('mp3-cover-img');
-let currentImageIndex = 1;
-const totalImages = 13; // Update this number to match the total number of images you have
-
-function changeCoverImage() {
-    currentImageIndex++;
-    if (currentImageIndex > totalImages) {
-        currentImageIndex = 1;
-    }
-    coverImage.src = `../assets/images/mp3-cover/mp3-cover-${currentImageIndex}.jpeg`;
-}
-
-// Change the image every 10 seconds (10000 milliseconds)
-setInterval(changeCoverImage, 30000);
-
-
+// Slider Button Setting
 const slider = document.getElementById('mp3-duration');
 const sliderIcon = document.getElementById('slider-icon');
 

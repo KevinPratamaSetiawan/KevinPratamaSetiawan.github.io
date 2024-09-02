@@ -68,11 +68,26 @@ permalink: /⌨️/
                     <i class="fa-solid fa-plus fa-lg" id="add-item-btn"></i>
                 </div>
                 <div class="todo-listing">
-                    <h5><i class="fa-regular fa-folder-open"></i> Priority</h5>
+                    <h5>
+                        <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                        <i class="fa-regular fa-folder-open"></i> 
+                        Priority
+                        <span id="priority-display-num">0</span>
+                    </h5> 
                     <ul id="todo-priority"></ul>
-                    <h5><i class="fa-regular fa-folder-open"></i> Task</h5>
+                    <h5>
+                        <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                        <i class="fa-regular fa-folder-open"></i> 
+                        Task
+                        <span id="items-display-num">0</span>
+                    </h5> 
                     <ul id="todo-items"></ul>
-                    <h5><i class="fa-regular fa-folder-open"></i> Completed</h5>
+                    <h5>
+                        <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                        <i class="fa-regular fa-folder-open"></i> 
+                        Completed 
+                        <span id="finish-display-num">0</span>
+                    </h5>
                     <ul id="todo-finish"></ul>
                 </div>
             </div>
@@ -80,7 +95,7 @@ permalink: /⌨️/
                 <h4>Mp3 Player</h4>
                 <div id="mp3-player">
                     <div class="mp3-cover">
-                        <img src="../assets/images/mp3-cover/mp3-cover-1.jpeg" alt="" id="mp3-cover-img">
+                        <img src="../assets/images/mp3-cover/mp3-cover-1.jpeg" alt="" id="mp3-cover-img" class="mp3-cover-img">
                     </div>                    
                     <div class="duration-slider">
                         <p>00:00</p>
@@ -136,19 +151,28 @@ permalink: /⌨️/
                 </div>
                 <ul id="xml-tab" class="close-tab tab-1">
                     <li>
-                        <i class="fa-solid fa-link"></i>
+                        <a href="https://feeds.redcircle.com/6d74984c-7d4b-450a-b3f2-0c33ac972eac" target="_blank" class="none">
+                            <i class="fa-solid fa-link" id="link-1-btn"></i>
+                            <i class="fa-solid fa-link fa-bounce" id="link-1-bounce" style="display:none;"></i>
+                        </a>
                         <span>The Yard RSS Feed Link</span>
                         <i class="fa-solid fa-clipboard fa-lg" id="copy-1-btn"></i>
                         <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-1-bounce" style="display:none;"></i>
                     </li>
                     <li>
-                        <i class="fa-solid fa-link"></i>
+                        <a href="https://mogulmoves.rodeo/rss/yard" target="_blank" class="none">
+                            <i class="fa-solid fa-link" id="link-2-btn"></i>
+                            <i class="fa-solid fa-link fa-bounce" id="link-2-bounce" style="display:none;"></i>
+                        </a>
                         <span>The Yard Premium RSS Feed Link</span>
                         <i class="fa-solid fa-clipboard fa-lg" id="copy-2-btn"></i>
                         <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-2-bounce" style="display:none;"></i>
                     </li>
                     <li>
-                        <i class="fa-solid fa-link"></i>
+                        <a href="https://mogulmoves.rodeo/rss/yardadvice" target="_blank" class="none">
+                            <i class="fa-solid fa-link" id="link-3-btn"></i>
+                            <i class="fa-solid fa-link fa-bounce" id="link-3-bounce" style="display:none;"></i>
+                        </a>
                         <span>The Advice Show RSS Feed Link</span>
                         <i class="fa-solid fa-clipboard fa-lg" id="copy-3-btn"></i>
                         <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-3-bounce" style="display:none;"></i>
@@ -247,5 +271,6 @@ permalink: /⌨️/
     <script src="/script/timer.js"></script>
     <script src="/script/modeToggle.js"></script>
     <script src="/script/todo.js"></script>
+    <script src="/script/mp3Player.js"></script>
     <script src="/script/rssFeeds.js"></script> 
 </html>

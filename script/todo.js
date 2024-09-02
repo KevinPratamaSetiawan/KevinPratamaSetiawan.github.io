@@ -17,6 +17,8 @@ function addItem() {
 
         saveItem(itemText, false, false);
         document.getElementById('new-item').value = '';
+
+        updateCounter();
     }
 }
 
@@ -72,6 +74,7 @@ function toggleComplete(event) {
         updateItem(span.textContent, false, isPriority(li));
         moveToList(li, false, isPriority(li));
     }
+    updateCounter();
 }
 
 function togglePriority(event) {
@@ -91,6 +94,7 @@ function togglePriority(event) {
         updateItem(span.textContent, isCompleted(li), false);
         moveToList(li, isCompleted(li), false);
     }
+    updateCounter();
 }
 
 function moveToList(li, completed, priority) {
@@ -105,6 +109,7 @@ function moveToList(li, completed, priority) {
     } else {
         ulItems.appendChild(li);
     }
+    updateCounter();
 }
 
 function isCompleted(li) {
@@ -120,6 +125,8 @@ function removeItem(event) {
     const itemText = li.querySelector('span').textContent;
     li.remove();
     deleteItem(itemText);
+
+    updateCounter();
 }
 
 function saveItem(text, completed, priority) {
@@ -142,6 +149,7 @@ function updateItem(text, completed, priority) {
         item.priority = priority;
     }
     localStorage.setItem('todoItems', JSON.stringify(items));
+    updateCounter();
 }
 
 function loadItems() {
@@ -156,6 +164,8 @@ function loadItems() {
         const li = createListItem(item.text, item.completed, item.priority);
         moveToList(li, item.completed, item.priority);
     });
+
+    updateCounter();
 }
 
 function insertItemAtPosition(ul, li, position) {
@@ -173,4 +183,47 @@ function appendOrInsertAfterNumbered(ul, li) {
     } else {
         ul.appendChild(li);
     }
+}
+
+function updateCounter(){
+    const priorityUl = document.querySelector("#todo-priority");
+    const priorityNum = numberToRoman(priorityUl.querySelectorAll("li").length);
+    document.getElementById('priority-display-num').textContent = priorityNum;
+
+    const itemsUl = document.querySelector("#todo-items");
+    const itemsNum = numberToRoman(itemsUl.querySelectorAll("li").length);
+    document.getElementById('items-display-num').textContent = itemsNum;
+
+    const finishUl = document.querySelector("#todo-finish");
+    const finishNum = numberToRoman(finishUl.querySelectorAll("li").length);
+    document.getElementById('finish-display-num').textContent = finishNum;
+}
+
+function numberToRoman(num) {
+    const romanNumerals = [
+        { value: 1000, numeral: 'M' },
+        { value: 900, numeral: 'CM' },
+        { value: 500, numeral: 'D' },
+        { value: 400, numeral: 'CD' },
+        { value: 100, numeral: 'C' },
+        { value: 90, numeral: 'XC' },
+        { value: 50, numeral: 'L' },
+        { value: 40, numeral: 'XL' },
+        { value: 10, numeral: 'X' },
+        { value: 9, numeral: 'IX' },
+        { value: 5, numeral: 'V' },
+        { value: 4, numeral: 'IV' },
+        { value: 1, numeral: 'I' }
+    ];
+    
+    let result = '';
+    
+    for (const { value, numeral } of romanNumerals) {
+        while (num >= value) {
+            result += numeral;
+            num -= value;
+        }
+    }
+    
+    return result;
 }
