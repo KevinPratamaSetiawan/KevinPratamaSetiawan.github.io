@@ -4,14 +4,15 @@
     "theme_color":"#23272d",
     "background_color":"#fdfdfd",
     "display":"standalone",
-    "start_url": "/index.html",
+    "start_url": "https://kevinpratamasetiawan.github.io/",
+    "prefer_related_applications": false,
     "icons":[{
-        "src":"../black-logo.png",
+        "src":"/black-logo.png",
         "sizes":"1000x1000",
         "type":"image/png"
     },
     {
-        "src":"../white-logo.png",
+        "src":"/white-logo.png",
         "sizes":"1000x1000",
         "type":"image/png"
     }]
