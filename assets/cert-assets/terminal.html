@@ -17,8 +17,6 @@ permalink: /⌨️/
             
         {% include mathjax.html %}
 
-        <link rel="manifest" href="../site.webmanifest">
-
         <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
         <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.11.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -276,4 +274,10 @@ permalink: /⌨️/
     <script type="module" src="/script/todo.js"></script>
     <script type="module" src="/script/mp3Player.js"></script>
     <script type="module" src="/script/rssFeeds.js"></script> 
+
+    <script>
+        if('serviceWorker' in navigator){
+            navigator.serviceWorker.register('/../../../script/service-worker.js');
+        }
+    </script>
 </html>
