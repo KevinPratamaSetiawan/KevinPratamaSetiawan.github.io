@@ -91,12 +91,21 @@ permalink: /⌨️/
             </div>
             <div class="music-list">
                 <h4>Mp3 Player</h4>
+                <div class="mp3-nav">
+                    <div class="tab-item">
+                        <p><i class="fa-solid fa-record-vinyl" id="ide-btn"></i> IDE</p>
+                    </div>
+                    <div class="tab-item">
+                        <p><i class="fa-solid fa-list" id="queue-btn"></i> Queue</p>
+                    </div>
+                </div>
+                <ul id="queue-tab" style="border: 5px solid white;"></ul>
                 <div id="mp3-player">
                     <div class="mp3-cover">
                         <img src="../assets/images/mp3-cover/mp3-cover-1.jpeg" alt="" id="mp3-cover-img" class="mp3-cover-img">
                     </div>
                     <div class="mp3-title">
-                        <h2 id="audioTitle">No Audio Played</h2>
+                        <h4 id="audioTitle">No Audio Played</h4>
                     </div>
                     <div class="duration-slider">
                         <p id="startDuration">00:00</p>

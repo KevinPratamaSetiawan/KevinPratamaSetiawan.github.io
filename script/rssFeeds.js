@@ -6,6 +6,8 @@ document.getElementById('tab-3-btn').addEventListener('click', function() { open
 document.getElementById('tab-4-btn').addEventListener('click', function() { openTab('tab-4'); });
 document.getElementById('tab-5-btn').addEventListener('click', function() { openTab('tab-5'); });
 document.getElementById('tab-6-btn').addEventListener('click', function() { openTab('tab-6'); });
+document.getElementById('ide-btn').addEventListener('click', function() { openMp3Tab('mp3-player'); });
+document.getElementById('queue-btn').addEventListener('click', function() { openMp3Tab('queue-tab'); });
 
 // Change Tab Function
 function openTab(tabClass) {
@@ -29,6 +31,16 @@ function openTab(tabClass) {
 
     // Hide the selected tab button
     document.getElementById(tabClass + '-btn').style.display = 'none';
+}
+
+function openMp3Tab(tabClass) {
+  if(tabClass === 'mp3-player'){
+    document.getElementById('mp3-player').style.display = 'flex';
+    document.getElementById('queue-tab').style.display = 'none';
+  }else if(tabClass === 'queue-tab'){
+    document.getElementById('mp3-player').style.display = 'none';
+    document.getElementById('queue-tab').style.display = 'block';
+  }
 }
 
 // Copy RSS Tab Function

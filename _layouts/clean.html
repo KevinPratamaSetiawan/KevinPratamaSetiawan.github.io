@@ -51,4 +51,10 @@
 
     </body>
 
+    <script src="/script/modeToggle.js"></script>
+    <script>
+        if('serviceWorker' in navigator){
+            navigator.serviceWorker.register('/../../../script/service-worker.js');
+        }
+    </script>
 </html>
