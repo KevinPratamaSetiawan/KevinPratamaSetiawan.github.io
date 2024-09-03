@@ -1,26 +1,11 @@
+import { playAudio } from './mp3Player.js';
+
 document.getElementById('tab-1-btn').addEventListener('click', function() { openTab('tab-1'); });
 document.getElementById('tab-2-btn').addEventListener('click', function() { openTab('tab-2'); });
 document.getElementById('tab-3-btn').addEventListener('click', function() { openTab('tab-3'); });
 document.getElementById('tab-4-btn').addEventListener('click', function() { openTab('tab-4'); });
 document.getElementById('tab-5-btn').addEventListener('click', function() { openTab('tab-5'); });
 document.getElementById('tab-6-btn').addEventListener('click', function() { openTab('tab-6'); });
-
-// Slider Button Setting
-const slider = document.getElementById('mp3-duration');
-const sliderIcon = document.getElementById('slider-icon');
-
-slider.addEventListener('input', () => {
-  const value = slider.value;
-  const max = slider.max;
-  const min = slider.min;
-
-  // Calculate the percentage of the slider's value
-  const percentage = ((value - min) / (max - min)) * 100;
-
-  // Move the icon according to the slider's thumb
-  sliderIcon.style.left = `calc(${percentage}%)`; // Adjust the '-5px' to fine-tune the icon position
-});
-
 
 // Change Tab Function
 function openTab(tabClass) {
@@ -158,7 +143,7 @@ function displayResults(results, tabId) {
       let formattedNumber = i.toString().padStart(3, '0');
 
       resultElement.innerHTML = `
-          <a href="${result.url}" target="_blank" class='none play'><i class="fa-solid fa-play"></i></a>
+          <a href="#" data-url="${result.url}" class='none play'><i class="fa-solid fa-play"></i></a>
           <div class='mp3-title-date'>
             <h4>${result.title}</h4>
             <p>${result.pubDateFormatted}</p>
@@ -169,19 +154,20 @@ function displayResults(results, tabId) {
           </div>
       `;
 
-      if (document.body.classList.contains('dark-mode')) {
-        let playBtns = document.getElementsByClassName('play');
-        for (let i = 0; i < playBtns.length; i++) {
-          playBtns[i].classList.add('dark-mode');
-        }
-        let mp3Numbers = document.getElementsByClassName('mp3-numbers');
-        for (let i = 0; i < mp3Numbers.length; i++) {
-          mp3Numbers[i].classList.add('dark-mode');
-        }
-      }
-
       tabContent.appendChild(resultElement);
       i++;
+  });
+  attachPlayButtonListeners(tabContent);
+}
+
+function attachPlayButtonListeners(tabContent) {
+  const playButtons = tabContent.querySelectorAll('.play');
+  playButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+          e.preventDefault();
+          const audioUrl = button.getAttribute('data-url');
+          playAudio(audioUrl);
+      });
   });
 }
 

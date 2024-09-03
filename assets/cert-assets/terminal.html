@@ -96,18 +96,21 @@ permalink: /⌨️/
                 <div id="mp3-player">
                     <div class="mp3-cover">
                         <img src="../assets/images/mp3-cover/mp3-cover-1.jpeg" alt="" id="mp3-cover-img" class="mp3-cover-img">
-                    </div>                    
+                    </div>
+                    <div class="mp3-title">
+                        <h2 id="audioTitle">No Audio Played</h2>
+                    </div>
                     <div class="duration-slider">
-                        <p>00:00</p>
+                        <p id="startDuration">00:00</p>
                         <div class="slider-container">
                             <input type="range" name="mp3-duration" id="mp3-duration" min="0" max="100" value="50">
-                            <i class="fa-solid fa-music" id="slider-icon"></i>
                         </div>
-                        <p>00:00</p>
+                        <p id="endDuration">00:00</p>
                     </div>                    
                     <div class="mp3-control">
+                        <i class="fa-solid fa-arrow-down-a-z fa-xl"></i>
                         <i class="fa-solid fa-repeat fa-xl" style="display: none;"></i>
-                        <i class="fa-solid fa-shuffle fa-xl"></i>
+                        <i class="fa-solid fa-shuffle fa-xl" style="display: none;"></i>
                         <i class="fa-solid fa-backward-step fa-xl"></i>
                         <i class="fa-solid fa-backward fa-xl"></i>
                         <i class="fa-solid fa-circle-play fa-xl"></i>
@@ -218,15 +221,15 @@ permalink: /⌨️/
                 {% for mp3 in mp3_metadata %}
                     {% assign file = site.static_files | where: "name", mp3.name | first %}
                     <li class="mp3-container">
-                        <a href="{{ file.path }}"><i class="fa-solid fa-play"></i></a>
-                        <div class="mp3-title-date">
-                            <h4>{{ mp3.title }}</h4>
-                            <p>{{ mp3.artist }}</p>
-                        </div>
-                        <div class='mp3-number-duration'>
-                            <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
-                            <p>{{ mp3.duration }}</p>
-                        </div>
+                    <a href="#" data-url="{{ file.path }}" class='none play'><i class="fa-solid fa-play"></i></a>
+                    <div class="mp3-title-date">
+                        <h4>{{ mp3.title }}</h4>
+                        <p>{{ mp3.artist }}</p>
+                    </div>
+                    <div class='mp3-number-duration'>
+                        <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
+                        <p>{{ mp3.duration }}</p>
+                    </div>
                     </li>
                     {% if file %}
                     {% assign counter = counter | plus: 1 %}
@@ -242,15 +245,15 @@ permalink: /⌨️/
                 {% for mp3 in mp3_metadata %}
                     {% assign file = site.static_files | where: "name", mp3.name | first %}
                     <li class="mp3-container">
-                        <a href="{{ file.path }}"><i class="fa-solid fa-play"></i></a>
-                        <div class="mp3-title-date">
-                            <h4>{{ mp3.title }}</h4>
-                            <p>{{ mp3.artist }}</p>
-                        </div>
-                        <div class='mp3-number-duration'>
-                            <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
-                            <p>{{ mp3.duration }}</p>
-                        </div>
+                    <a href="#" data-url="{{ file.path }}" class='none play'><i class="fa-solid fa-play"></i></a>
+                    <div class="mp3-title-date">
+                        <h4>{{ mp3.title }}</h4>
+                        <p>{{ mp3.artist }}</p>
+                    </div>
+                    <div class='mp3-number-duration'>
+                        <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
+                        <p>{{ mp3.duration }}</p>
+                    </div>
                     </li>
                     {% if file %}
                     {% assign counter = counter | plus: 1 %}
@@ -268,9 +271,9 @@ permalink: /⌨️/
         {% include analytics.html %}
     </body>
 
-    <script src="/script/timer.js"></script>
-    <script src="/script/modeToggle.js"></script>
-    <script src="/script/todo.js"></script>
-    <script src="/script/mp3Player.js"></script>
-    <script src="/script/rssFeeds.js"></script> 
+    <script type="module" src="/script/timer.js"></script>
+    <script type="module" src="/script/modeToggle.js"></script>
+    <script type="module" src="/script/todo.js"></script>
+    <script type="module" src="/script/mp3Player.js"></script>
+    <script type="module" src="/script/rssFeeds.js"></script> 
 </html>

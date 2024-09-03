@@ -82,7 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     accentButton.addEventListener('click', () => {
         //Brand Color Changer
-        const colors = ['#60c17d', '#336699', '#e7ab2a', '#004643', '#ADA282', '#BC9C35', '#A85D46', '#D8B37C', '#c2cb96', '#f5bda8', '#3f4d34', '#c16560', '#C6C2F2', '#f25f4c', '#ff8906', '#2cb67d', '#7f5af0', '#eecb75', '#cbdde9'];
+        const colors = [
+            '#60c17d', '#c16560', '#336699', '#e7ab2a',
+            '#004643', '#3f4d34', '#f25f4c', '#2cb67d', 
+            '#A8D672'
+        ];
     
         const randomIndex = Math.floor(Math.random() * colors.length);
     
