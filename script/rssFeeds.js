@@ -1,4 +1,4 @@
-import { playAudio } from './mp3Player.js';
+// import { playAudio } from './mp3Player.js';
 
 document.getElementById('tab-1-btn').addEventListener('click', function() { openTab('tab-1'); });
 document.getElementById('tab-2-btn').addEventListener('click', function() { openTab('tab-2'); });

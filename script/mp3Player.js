@@ -7,7 +7,7 @@ function changeCoverImage() {
   let currentImageIndex = imageIndex;
 
   if (currentImageIndex === imageIndex) {
-    if(imageIndex === 27){
+    if(imageIndex === 26){
         imageIndex -= 8;
     }else{
         imageIndex++;
