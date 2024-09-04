@@ -251,9 +251,16 @@ function startTime() {
     let m = today.getMinutes();
     let ampm = 'Ante Meridiem';
 
-    if(langChoice % 2 === 0){
-        document.getElementById('todo-date').innerHTML = dayNameIndo[day].slice(0, 3) + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
-        document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " ";
+    if (window.innerWidth > 660) {
+        if(langChoice % 2 === 0){
+            document.getElementById('todo-date').innerHTML = dayNameIndo[day].slice(0, 3) + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
+            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " ";
+        }
+    } else {
+        if(langChoice % 2 === 0){
+            document.getElementById('todo-date').innerHTML = (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
+            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " ";
+        }
     }
 
     if(h > 12){
@@ -261,9 +268,16 @@ function startTime() {
         ampm = 'PM';
     }
 
-    if(langChoice % 2 === 1){
-        document.getElementById('todo-date').innerHTML = dayNameEn[day].slice(0, 3) + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month].slice(0, 3) + ' ' + year;
-        document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " " + ampm;
+    if (window.innerWidth > 660) {
+        if(langChoice % 2 === 1){
+            document.getElementById('todo-date').innerHTML = dayNameEn[day].slice(0, 3) + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month].slice(0, 3) + ' ' + year;
+            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " " + ampm;
+        }
+    } else {
+        if(langChoice % 2 === 1){
+            document.getElementById('todo-date').innerHTML = (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month].slice(0, 3) + ' ' + year;
+            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " " + ampm;
+        }
     }
 
     setTimeout(startTime, 1000);
