@@ -18,6 +18,24 @@ function changeCoverImage() {
 
 setInterval(changeCoverImage, 20000);
 
+// KEEP! : Function to extract the audio duration
+// document.addEventListener('DOMContentLoaded', function() {
+//   const audioElements = document.querySelectorAll('#audio-files span');
+
+//   audioElements.forEach(function(element) {
+//     const audioPath = element.getAttribute('data-path');
+//     extractDuration(audioPath);
+//   });
+// });
+
+// function extractDuration(audioName) {
+//   let audio = new Audio(audioName);
+//   audio.onloadedmetadata = function() {
+//     console.log(audioName + " : " + audio.duration);
+//   };
+// }
+
+
 // function playAudio (audioLink) {
 //   let audio = new Audio(audioLink);
 

@@ -103,6 +103,8 @@ function loadResults(tabId) {
 
   const results = JSON.parse(savedResults);
   displayResults(results, tabId);
+
+  // console.log(results);
 }
 
 function handleFileInput(event, tabId) {
@@ -123,10 +125,10 @@ function handleFileInput(event, tabId) {
           const pubDateRaw = item.getElementsByTagName('pubDate')[0]?.textContent || 'No pubDate';
           const pubDateFormatted = formatPubDate(pubDateRaw);
           const durationSeconds = item.getElementsByTagName('itunes:duration')[0]?.textContent || calculateDurationFromLength(item);
-          const durationFormatted = formatDuration(durationSeconds);
+          const duration = formatDuration(durationSeconds);
           const url = item.getElementsByTagName('enclosure')[0]?.getAttribute('url') || 'No URL';
 
-          results.push({ title, pubDateFormatted, durationSeconds, durationFormatted, url });
+          results.push({ title, pubDateFormatted, durationSeconds, duration, url });
       });
 
       localStorage.setItem(tabId, JSON.stringify(results));
@@ -157,12 +159,12 @@ function displayResults(results, tabId) {
       resultElement.innerHTML = `
           <a href="#" data-url="${result.url}" class='none play'><i class="fa-solid fa-play"></i></a>
           <div class='mp3-title-date'>
-            <h4>${result.title}</h4>
+            <h3>${result.title}</h3>
             <p>${result.pubDateFormatted}</p>
           </div>
           <div class='mp3-number-duration'>
             <p class='mp3-numbers'>#${formattedNumber}</p>
-            <p>${result.durationFormatted}</p>
+            <p>${result.duration}</p>
           </div>
       `;
 

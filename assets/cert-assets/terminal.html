@@ -61,6 +61,13 @@ permalink: /⌨️/
         <div class="main-content">
             <div class="todo-list">
                 <h4>To-do List</h4>
+                <div class="todo-clock">
+                    <span>|</span>
+                    <p id="todo-time">00:00 PM</p>
+                    <span id="clock-lang">EN</span>
+                    <p id="todo-date">01 Jan 2024</p>
+                    <span>|</span>
+                </div>
                 <div class="add-todo-area">
                     <input type="text" id="new-item" placeholder="Add a new task...">
                     <i class="fa-solid fa-plus fa-lg" id="add-item-btn"></i>
@@ -226,11 +233,11 @@ permalink: /⌨️/
                 <ul id="style-tab" style="display:none;" class="close-tab tab-5">
                 {% assign counter = 1 %}
                 {% for mp3 in mp3_metadata %}
-                    {% assign file = site.static_files | where: "name", mp3.name | first %}
+                    {% assign file = site.static_files | where: "url", mp3.name | first %}
                     <li class="mp3-container">
                     <a href="#" data-url="{{ file.path }}" class='none play'><i class="fa-solid fa-play"></i></a>
                     <div class="mp3-title-date">
-                        <h4>{{ mp3.title }}</h4>
+                        <h3>{{ mp3.title }}</h3>
                         <p>{{ mp3.artist }}</p>
                     </div>
                     <div class='mp3-number-duration'>
@@ -241,7 +248,7 @@ permalink: /⌨️/
                     {% if file %}
                     {% assign counter = counter | plus: 1 %}
                     {% else %}
-                    <li>File {{ mp3.name }} not found.</li>
+                    <li class="mp3-container">File {{ mp3.name }} not found.</li>
                     {% endif %}
                 {% endfor %}
                 </ul>
@@ -250,11 +257,11 @@ permalink: /⌨️/
                 <ul id="pop-out-tab" style="display:none;" class="close-tab tab-6">
                 {% assign counter = 1 %}
                 {% for mp3 in mp3_metadata %}
-                    {% assign file = site.static_files | where: "name", mp3.name | first %}
+                    {% assign file = site.static_files | where: "url", mp3.name | first %}
                     <li class="mp3-container">
                     <a href="#" data-url="{{ file.path }}" class='none play'><i class="fa-solid fa-play"></i></a>
                     <div class="mp3-title-date">
-                        <h4>{{ mp3.title }}</h4>
+                        <h3>{{ mp3.title }}</h3>
                         <p>{{ mp3.artist }}</p>
                     </div>
                     <div class='mp3-number-duration'>
@@ -265,13 +272,21 @@ permalink: /⌨️/
                     {% if file %}
                     {% assign counter = counter | plus: 1 %}
                     {% else %}
-                    <li>File {{ mp3.name }} not found.</li>
+                    <li class="mp3-container">File {{ mp3.name }} not found.</li>
                     {% endif %}
                 {% endfor %}
                 </ul>
                             
                 </ul>
 
+                <!-- KEEP! : Funtion to extract audio duration -->
+                <!-- <div id="audio-files" style="display:none;">
+                    {% assign mp3_metadata = site.data.mp3_metadata.playlist1 %}
+                    {% for mp3 in mp3_metadata %}
+                      {% assign file = site.static_files | where: "name", mp3.name | first %}
+                      <span data-path="{{ file.path }}"></span>
+                    {% endfor %}
+                </div>                   -->
             </div>
         </div>
 

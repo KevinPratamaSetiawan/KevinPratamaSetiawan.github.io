@@ -231,3 +231,88 @@ function numberToRoman(num) {
     
     return result;
 }
+
+//Todo Clock
+document.addEventListener('DOMContentLoaded', function() {startTime();});
+
+let langChoice = 1;
+let dayNameEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+let monthNameEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+let dayNameIndo = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+let monthNameIndo = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+function startTime() {
+    const today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth();
+    let date = today.getDate();
+    let day = today.getDay();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let ampm = 'Ante Meridiem';
+
+    if(langChoice % 2 === 0){
+        document.getElementById('todo-date').innerHTML = dayNameIndo[day].slice(0, 3) + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
+        document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " ";
+    }
+
+    if(h > 12){
+        h -= 12;
+        ampm = 'PM';
+    }
+
+    if(langChoice % 2 === 1){
+        document.getElementById('todo-date').innerHTML = dayNameEn[day].slice(0, 3) + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month].slice(0, 3) + ' ' + year;
+        document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " " + ampm;
+    }
+
+    setTimeout(startTime, 1000);
+}
+
+document.getElementById('todo-date').addEventListener('click', function() { copyClock('todo-date'); });
+document.getElementById('todo-time').addEventListener('click', function() { copyClock('todo-time'); });
+document.getElementById('clock-lang').addEventListener('click', function() { 
+    if (langChoice % 2 === 1) {
+        document.getElementById('clock-lang').innerHTML = 'ID';
+    }else if (langChoice % 2 === 0) {
+        document.getElementById('clock-lang').innerHTML = 'EN';
+    }
+    langChoice++; 
+});
+
+
+function copyClock (type){
+    const today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth();
+    let date = today.getDate();
+    let day = today.getDay();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let ampm = 'AM';
+    let copyText;
+
+    if(langChoice % 2 === 0){
+        if(type === 'todo-date'){
+            copyText = dayNameIndo[day] + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month] + ' ' + year;
+        }else if(type === 'todo-time'){   
+            copyText = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " ";
+        }
+    }
+
+    if(h > 12){
+        h -= 12;
+        ampm = 'PM';
+    }
+
+    if(langChoice % 2 === 1){
+        if(type === 'todo-date'){
+            copyText = dayNameEn[day] + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month] + ' ' + year;
+        }else if(type === 'todo-time'){   
+            copyText = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " " + ampm;
+        }
+    }
+
+    navigator.clipboard.writeText(copyText);
+    document.getElementById(type).innerHTML = '<i class="fa-solid fa-copy"></i> Copied!';
+}

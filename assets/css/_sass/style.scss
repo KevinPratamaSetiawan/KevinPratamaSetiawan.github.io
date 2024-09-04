@@ -502,7 +502,11 @@ input[type=number] {
   grid-area: 1 / 1 / 2 / 2;
 }
 
-.add-todo-area, .tabs-nav{
+.add-todo-area {
+  grid-area: 2 / 1 / 4 / 2;
+}
+
+.tabs-nav{
   grid-area: 2 / 1 / 4 / 2;
 }
 
@@ -510,7 +514,34 @@ input[type=number] {
   grid-area: 2 / 1 / 3 / 2;
 }
 
-.todo-listing,
+.todo-clock{
+  grid-area: 4 / 1 / 5 / 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5px;
+
+  p{
+    background-color: var(--brand-color);
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bolder;
+    width: 40%;
+    text-align: center;
+    cursor: copy;
+  }
+
+  #clock-lang{
+    cursor: pointer;
+  }
+}
+
+.todo-listing {
+  grid-area: 5 / 1 / 21 / 2;
+}
+
 #xml-tab,
 #yard-tab, 
 #premium-tab, 
@@ -676,7 +707,9 @@ input[type=number] {
     height: 100%;
   }
 
-  .mp3-title-date h4{
+  .mp3-title-date h4,
+  .mp3-title-date h3,
+  .mp3-title-date h2{
     height: fit-content;
     width: 100%;
     overflow-x: scroll;

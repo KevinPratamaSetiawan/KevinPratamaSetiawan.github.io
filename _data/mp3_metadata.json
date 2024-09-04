@@ -1,0 +1,847 @@
+{
+    "thePopOut": [
+        {
+            "url": "Control.mp3",
+            "title": "Control",
+            "artist": "Kendrick Lamar",
+            "duration": "03:06"
+        },
+        {
+            "url": "Black Friday.mp3",
+            "title": "Black Friday",
+            "artist": "Kendrick Lamar",
+            "duration": "03:42"
+        },
+        {
+            "url": "Medics.mp3",
+            "title": "Medics",
+            "artist": "Kendrick Lamar",
+            "duration": "03:15"
+        },
+        {
+            "url": "The Story Of Adidon.mp3",
+            "title": "The Story Of Adidon",
+            "artist": "Pusha T",
+            "duration": "03:09"
+        },
+        {
+            "url": "First Person Shooter.mp3",
+            "title": "First Person Shooter",
+            "artist": "Drake, J. Cole",
+            "duration": "04:07"
+        },
+        {
+            "url": "Like That.mp3",
+            "title": "Like That",
+            "artist": "Future, Kendrick Lamar",
+            "duration": "04:27"
+        },
+        {
+            "url": "7 Minute Drill.mp3",
+            "title": "7 Minute Drill",
+            "artist": "J. Cole",
+            "duration": "03:32"
+        },
+        {
+            "url": "Push Ups.mp3",
+            "title": "Push Ups",
+            "artist": "Drake",
+            "duration": "03:52"
+        },
+        {
+            "url": "euphoria.mp3",
+            "title": "euphoria",
+            "artist": "Kendrick Lamar",
+            "duration": "06:23"
+        },
+        {
+            "url": "6_16 in LA.mp3",
+            "title": "6:16 in LA.mp3",
+            "artist": "Kendrick Lamar",
+            "duration": "03:45"
+        },
+        {
+            "url": "FAMILY MATTERS.mp3",
+            "title": "FAMILY MATTERS",
+            "artist": "Drake",
+            "duration": "07:37"
+        },
+        {
+            "url": "meet the grahams.mp3",
+            "title": "meet the grahams",
+            "artist": "Kendrick Lamar",
+            "duration": "06:32"
+        },
+        {
+            "url": "life goes on.mp3",
+            "title": "life goes on",
+            "artist": "Kendrick Lamar",
+            "duration": "01:17"
+        },
+        {
+            "url": "Not Like Us.mp3",
+            "title": "Not Like Us",
+            "artist": "Kendrick Lamar",
+            "duration": "04:34"
+        },
+        {
+            "url": "The Greatest.mp3",
+            "title": "The Greatest",
+            "artist": "Kendrick Lamar",
+            "duration": "00:57"
+        }
+    ],
+
+    "playlist1": [
+        {
+            "url": "Adonis Interlude.mp3",
+            "title": "Adonis Interlude",
+            "artist": "J. Cole",
+            "duration": "01:36"
+        },
+        {
+            "url": "16.mp3",
+            "title": "16",
+            "artist": "Baby Keem",
+            "duration": "03:14"
+        },
+        {
+            "url": "a m a r i.mp3",
+            "title": "a m a r i",
+            "artist": "J. Cole",
+            "duration": "02:34"
+        },
+        {
+            "url": "A.D.H.D.mp3",
+            "title": "A.D.H.D",
+            "artist": "Kendrick Lamar",
+            "duration": "03:35"
+        },
+        {
+            "url": "All My Life.mp3",
+            "title": "All My Life",
+            "artist": "Lil Durk, J. Cole",
+            "duration": "04:04"
+        },
+        {
+            "url": "Alright.mp3",
+            "title": "Alright",
+            "artist": "Kendrick Lamar",
+            "duration": "03:07"
+        },
+        {
+            "url": "AMERICA HAS A PROBLEM.mp3",
+            "title": "AMERICA HAS A PROBLEM",
+            "artist": "Kendrick Lamar",
+            "duration": "04:28"
+        },
+        {
+            "url": "Annihilate.mp3",
+            "title": "Annihilate",
+            "artist": "Lil Wayne, Offset",
+            "duration": "02:28"
+        },
+        {
+            "url": "a lot.mp3",
+            "title": "a lot",
+            "artist": "21 Savage, J. Cole",
+            "duration": "06:05"
+        },
+        {
+            "url": "Backseat Freestyle.mp3",
+            "title": "Backseat Freestyle",
+            "artist": "Kendrick Lamar",
+            "duration": "03:32"
+        },
+        {
+            "url": "Bad Blood.mp3",
+            "title": "Bad Blood",
+            "artist": "Tylor Swift, Kendrick Lamar",
+            "duration": "03:19"
+        },
+        {
+            "url": "Better Now.mp3",
+            "title": "Better Now",
+            "artist": "Post Malone",
+            "duration": "03:51"
+        },
+        {
+            "url": "Big Shot.mp3",
+            "title": "Big Shot",
+            "artist": "Kendrick Lamar, Travis Scott",
+            "duration": "03:42"
+        },
+        {
+            "url": "Bitch Don't Kill My Vibe.mp3",
+            "title": "Bitch Don't Kill My Vibe",
+            "artist": "Kendrick Lamar",
+            "duration": "05:04"
+        },
+        {
+            "url": "Black Friday.mp3",
+            "title": "Black Friday",
+            "artist": "Kendrick Lamar",
+            "duration": "03:42"
+        },
+        {
+            "url": "Bless Up.mp3",
+            "title": "Bless Up",
+            "artist": "Kendrick Lamar",
+            "duration": "02:18"
+        },
+        {
+            "url": "Brand New.mp3",
+            "title": "Brand New",
+            "artist": "Lil Wayne",
+            "duration": "01:54"
+        },
+        {
+            "url": "Calling.mp3",
+            "title": "Calling",
+            "artist": "Metro Boomin, Swae Lee, NAV, A Boogie Wit da Hoodie",
+            "duration": "03:39"
+        },
+        {
+            "url": "Cash In Cash Out.mp3",
+            "title": "Cash In Cash Out",
+            "artist": "21 Savage, Tyler, The Creator",
+            "duration": "03:36"
+        },
+        {
+            "url": "Control.mp3",
+            "title": "Control",
+            "artist": "Kendrick Lamar",
+            "duration": "03:07"
+        },
+        {
+            "url": "Count Me Out.mp3",
+            "title": "Count Me Out",
+            "artist": "Kendrick Lamar",
+            "duration": "04:43"
+        },
+        {
+            "url": "Dance Now.mp3",
+            "title": "Dance Now",
+            "artist": "JID",
+            "duration": "04:21"
+        },
+        {
+            "url": "Die Hard.mp3",
+            "title": "Die Hard",
+            "artist": "Kendrick Lamar",
+            "duration": "03:59"
+        },
+        {
+            "url": "Diet Coke.mp3",
+            "title": "Diet Coke",
+            "artist": "Pusha T",
+            "duration": "02:59"
+        },
+        {
+            "url": "DNA.mp3",
+            "title": "DNA.",
+            "artist": "Kendrick Lamar",
+            "duration": "03:08"
+        },
+        {
+            "url": "DOGTOOTH.mp3",
+            "title": "DOGTOOTH",
+            "artist": "Tyler, The Creator",
+            "duration": "02:56"
+        },
+        {
+            "url": "Don't Do It.mp3",
+            "title": "Don't do it",
+            "artist": "Kendrick Lamar",
+            "duration": "04:30"
+        },
+        {
+            "url": "Down Bad.mp3",
+            "title": "Down Bad",
+            "artist": "Dreamville/JID/Bas/J. Cole/EARTHGANG/Young Nudy",
+            "duration": "02:49"
+        },
+        {
+            "url": "dreamy night.mp3",
+            "title": "dreamy night",
+            "artist": "lilypichu",
+            "duration": "04:06"
+        },
+        {
+            "url": "EARFQUAKE.mp3",
+            "title": "EARFQUAKE",
+            "artist": "Tyler, The Creator",
+            "duration": "04:26"
+        },
+        {
+            "url": "ELEMENT.mp3",
+            "title": "ELEMENT.",
+            "artist": "Kendrick Lamar",
+            "duration": "03:29"
+        },
+        {
+            "url": "FAMILY MATTERS.mp3",
+            "title": "FAMILY MATTERS",
+            "artist": "Drake",
+            "duration": "07:37"
+        },
+        {
+            "url": "Family ties.mp3",
+            "title": "Family ties",
+            "artist": "Kendrick Lamar, Baby Keem",
+            "duration": "04:19"
+        },
+        {
+            "url": "Father Stretch My Hands Pt. 1.mp3",
+            "title": "Father Stretch My Hands Pt.1",
+            "artist": "Kanye West",
+            "duration": "02:16"
+        },
+        {
+            "url": "First Person Shooter.mp3",
+            "title": "First Person Shooter",
+            "artist": "Drake, J. Cole",
+            "duration": "04:07"
+        },
+        {
+            "url": "Follow God.mp3",
+            "title": "Follow God",
+            "artist": "Kanye West",
+            "duration": "01:44"
+        },
+        {
+            "url": "Fuck Your Ethnicity.mp3",
+            "title": "F*ck Your Ethnicity",
+            "artist": "Kendrick Lamar",
+            "duration": "03:44"
+        },
+        {
+            "url": "Fuckin' Problems.mp3",
+            "title": "Fuckin' Problems",
+            "artist": "Kendrick Lamar, A$AP ROCKY, Drake",
+            "duration": "03:52"
+        },
+        {
+            "url": "Good News.mp3",
+            "title": "Good News",
+            "artist": "Mac Miller",
+            "duration": "06:37"
+        },
+        {
+            "url": "HEAVEN TO ME.mp3",
+            "title": "HEAVEN TO ME",
+            "artist": "Tyler, The Creator",
+            "duration": "03:58"
+        },
+        {
+            "url": "Hol' Up.mp3",
+            "title": "Hol' Up",
+            "artist": "Kendrick Lamar",
+            "duration": "02:53"
+        },
+        {
+            "url": "hooligan.mp3",
+            "title": "hooligan",
+            "artist": "Baby Keem",
+            "duration": "02:39"
+        },
+        {
+            "url": "How Much A Dollar Cost.mp3",
+            "title": "How Much A Dollar Cost",
+            "artist": "Kendrick Lamar",
+            "duration": "04:21"
+        },
+        {
+            "url": "How To Love.mp3",
+            "title": "How To Love",
+            "artist": "Lil Wayne",
+            "duration": "04:00"
+        },
+        {
+            "url": "HUMBLE.mp3",
+            "title": "HUMBLE.",
+            "artist": "Kendrick Lamar",
+            "duration": "03:03"
+        },
+        {
+            "url": "i.mp3",
+            "title": "i",
+            "artist": "Kendrick Lamar",
+            "duration": "04:42"
+        },
+        {
+            "url": "I Like You (A Happier Song).mp3",
+            "title": "I Like You (A Happier Song)",
+            "artist": "Post Malone",
+            "duration": "03:13"
+        },
+        {
+            "url": "I'm Better.mp3",
+            "title": "I’m Better",
+            "artist": "Kendrick Lamar",
+            "duration": "04:11"
+        },
+        {
+            "url": "issues.mp3",
+            "title": "issues",
+            "artist": "Baby Keem",
+            "duration": "03:43"
+        },
+        {
+            "url": "King Kunta.mp3",
+            "title": "King Kunta",
+            "artist": "Kendrick Lamar",
+            "duration": "03:57"
+        },
+        {
+            "url": "3005.mp3",
+            "title": "3005",
+            "artist": "Childish Gambino",
+            "duration": "04:15"
+        },
+        {
+            "url": "King's Dead.mp3",
+            "title": "King's Dead",
+            "artist": "Kendrick Lamar, Jay Rock, Future",
+            "duration": "04:23"
+        },
+        {
+            "url": "LA Leakers 1.1.mp3",
+            "title": "LA Leakers 1.1",
+            "artist": "J. Cole",
+            "duration": "01:04"
+        },
+        {
+            "url": "LA Leakers 1.2.mp3",
+            "title": "LA Leakers 1.2",
+            "artist": "J. Cole",
+            "duration": "01:50"
+        },
+        {
+            "url": "Ladders.mp3",
+            "title": "Ladders",
+            "artist": "Mac Miller",
+            "duration": "04:47"
+        },
+        {
+            "url": "LOYALTY.mp3",
+            "title": "LOYALTY.",
+            "artist": "Kendrick Lamar",
+            "duration": "03:47"
+        },
+        {
+            "url": "M.a.a.D. city.mp3",
+            "title": "M.a.a.D. city",
+            "artist": "Kendrick Lamar",
+            "duration": "05:51"
+        },
+        {
+            "url": "Mask Off.mp3",
+            "title": "Mask Off",
+            "artist": "Kendrick Lamar, Future",
+            "duration": "04:19"
+        },
+        {
+            "url": "Mean Street.mp3",
+            "title": "Mean Street",
+            "artist": "DEMONDICE",
+            "duration": "02:53"
+        },
+        {
+            "url": "Mona Lisa.mp3",
+            "title": "Mona Lisa",
+            "artist": "Lil Wayne, Kendrick Lamar",
+            "duration": "05:30"
+        },
+        {
+            "url": "Money Trees.mp3",
+            "title": "Money Trees",
+            "artist": "Kendrick Lamar",
+            "duration": "06:57"
+        },
+        {
+            "url": "N95.mp3",
+            "title": "N95",
+            "artist": "Kendrick Lamar",
+            "duration": "03:26"
+        },
+        {
+            "url": "New Freezer.mp3",
+            "title": "New Freezer",
+            "artist": "Kendrick Lamar",
+            "duration": "03:11"
+        },
+        {
+            "url": "no sense.mp3",
+            "title": "no sense",
+            "artist": "Baby Keem",
+            "duration": "03:03"
+        },
+        {
+            "url": "Nosetalgia.mp3",
+            "title": "Nosetalgia",
+            "artist": "Pusha T, Kendrick Lamar",
+            "duration": "03:48"
+        },
+        {
+            "url": "Only Need.mp3",
+            "title": "Only Need",
+            "artist": "Kendrick Lamar",
+            "duration": "02:07"
+        },
+        {
+            "url": "Opps.mp3",
+            "title": "Opps",
+            "artist": "Kendrick Lamar",
+            "duration": "03:01"
+        },
+        {
+            "url": "Paramedic!.mp3",
+            "title": "Paramedic!",
+            "artist": "Kendrick Lamar",
+            "duration": "03:39"
+        },
+        {
+            "url": "Potato Salad.mp3",
+            "title": "Potato Salad",
+            "artist": "Tyler, The Creator",
+            "duration": "03:02"
+        },
+        {
+            "url": "Praise The Lord (Da Shine).mp3",
+            "title": "Praise The Lord (Da Shine)",
+            "artist": "A$AP ROCKY",
+            "duration": "03:46"
+        },
+        {
+            "url": "Pray For Me.mp3",
+            "title": "Pray For Me",
+            "artist": "Kendrick Lamar",
+            "duration": "03:33"
+        },
+        {
+            "url": "PRIDE.mp3",
+            "title": "PRIDE.",
+            "artist": "Kendrick Lamar",
+            "duration": "04:30"
+        },
+        {
+            "url": "Rich Spirit.mp3",
+            "title": "Rich Spirit",
+            "artist": "Kendrick Lamar",
+            "duration": "03:22"
+        },
+        {
+            "url": "RIOT (Rowdy Pipe'n).mp3",
+            "title": "RIOT (Rowdy Pipe'n)",
+            "artist": "A$AP ROCKY",
+            "duration": "03:50"
+        },
+        {
+            "url": "rockstar.mp3",
+            "title": "rockstar",
+            "artist": "Post Malone",
+            "duration": "03:38"
+        },
+        {
+            "url": "Savior.mp3",
+            "title": "Savior",
+            "artist": "Kendrick Lamar",
+            "duration": "03:44"
+        },
+        {
+            "url": "SEE YOU AGAIN.mp3",
+            "title": "SEE YOU AGAIN",
+            "artist": "Tyler, The Creator",
+            "duration": "03:23"
+        },
+        {
+            "url": "Self Care.mp3",
+            "title": "Self Care",
+            "artist": "Mac Miller",
+            "duration": "05:47"
+        },
+        {
+            "url": "SICKO MODE.mp3",
+            "title": "SICKO MODE",
+            "artist": "Travis Scott, Drake",
+            "duration": "05:13"
+        },
+        {
+            "url": "Stay.mp3",
+            "title": "Stay",
+            "artist": "Mac Miller",
+            "duration": "05:02"
+        },
+        {
+            "url": "Stick.mp3",
+            "title": "Stick",
+            "artist": "JID",
+            "duration": "05:09"
+        },
+        {
+            "url": "Sunflower.mp3",
+            "title": "Sunflower",
+            "artist": "Post Malone",
+            "duration": "02:42"
+        },
+        {
+            "url": "Surround Sound.mp3",
+            "title": "Surround Sound",
+            "artist": "JID",
+            "duration": "04:32"
+        },
+        {
+            "url": "Swimming Pool.mp3",
+            "title": "Swimming Pool",
+            "artist": "Kendrick Lamar",
+            "duration": "03:42"
+        },
+        {
+            "url": "The Blacker The Berry.mp3",
+            "title": "The Blacker The Berry",
+            "artist": "Kendrick Lamar",
+            "duration": "05:28"
+        },
+        {
+            "url": "The Heart part 5.mp3",
+            "title": "The Heart part 5",
+            "artist": "Kendrick Lamar",
+            "duration": "05:42"
+        },
+        {
+            "url": "The Hillbillies.mp3",
+            "title": "The Hillbillies",
+            "artist": "Kendrick Lamar",
+            "duration": "03:34"
+        },
+        {
+            "url": "The Story Of Adidon.mp3",
+            "title": "The Story Of Adidon",
+            "artist": "Pusha T",
+            "duration": "03:09"
+        },
+        {
+            "url": "This is a Satire by Kendrick Lamar.mp3",
+            "title": "This is a Satire by Kendrick Lamar",
+            "artist": "Kendrick Lamar",
+            "duration": "06:14"
+        },
+        {
+            "url": "TPAB.mp3",
+            "title": "TPAB",
+            "artist": "Kendrick Lamar",
+            "duration": "04:41"
+        },
+        {
+            "url": "Tribe.mp3",
+            "title": "Tribe",
+            "artist": "Bas",
+            "duration": "03:59"
+        },
+        {
+            "url": "untitled [8 - 2].mp3",
+            "title": "untitled [8 - 2]",
+            "artist": "Kendrick Lamar",
+            "duration": "04:38"
+        },
+        {
+            "url": "Vanity Slave.mp3",
+            "title": "Vanity Slave",
+            "artist": "Kendrick Lamar",
+            "duration": "04:42"
+        },
+        {
+            "url": "Vegas.mp3",
+            "title": "Vegas",
+            "artist": "Kendrick Lamar",
+            "duration": "01:35"
+        },
+        {
+            "url": "Vent.mp3",
+            "title": "Vent",
+            "artist": "Kendrick Lamar",
+            "duration": "04:03"
+        },
+        {
+            "url": "WHARF TALK.mp3",
+            "title": "WHARF TALK",
+            "artist": "Tyler, The Creator",
+            "duration": "03:39"
+        },
+        {
+            "url": "What's Up Danger.mp3",
+            "title": "What's Up Danger",
+            "artist": "Black Caviar, Blackway",
+            "duration": "03:35"
+        },
+        {
+            "url": "Workin' Out.mp3",
+            "title": "Workin' Out",
+            "artist": "JID",
+            "duration": "03:01"
+        },
+        {
+            "url": "Am I Dreaming.mp3",
+            "title": "Am I Dreaming",
+            "artist": "Metro Boomin/A$AP Rocky/Roisee",
+            "duration": "04:16"
+        },
+        {
+            "url": "Under The Sun (with J. Cole & Lute feat. DaBaby).mp3",
+            "title": "Under The Sun",
+            "artist": "Kendrick Lamar",
+            "duration": "03:22"
+        },
+        {
+            "url": "1985.mp3",
+            "title": "1985",
+            "artist": "J. Cole",
+            "duration": "03:10"
+        },
+        {
+            "url": "Oklama Rich Spirit.mp3",
+            "title": "Oklama Rich Spirit",
+            "artist": "Kendrick Lamar",
+            "duration": "03:02"
+        },
+        {
+            "url": "Medics.mp3",
+            "title": "Medics",
+            "artist": "Kendrick Lamar",
+            "duration": "03:15"
+        },
+        {
+            "url": "Wow Freestyle.mp3",
+            "title": "Wow Freestyle",
+            "artist": "Kendrick Lamar, Jay Rock",
+            "duration": "02:56"
+        },
+        {
+            "url": "XXX.mp3",
+            "title": "XXX.",
+            "artist": "Kendrick Lamar",
+            "duration": "04:14"
+        },
+        {
+            "url": "Ric Flair Drip.mp3",
+            "title": "Ric Flair Drip",
+            "artist": "Offset",
+            "duration": "02:52"
+        },
+        {
+            "url": "Kant Nobody.mp3",
+            "title": "Kant Nobody",
+            "artist": "Lil Wayne",
+            "duration": "03:00"
+        },
+        {
+            "url": "The London.mp3",
+            "title": "The London",
+            "artist": "Travis Scott, J. Cole",
+            "duration": "03:20"
+        },
+        {
+            "url": "Ni__as In Paris.mp3",
+            "title": "Ni**as In Paris",
+            "artist": "Kanye West, Jay Z",
+            "duration": "04:11"
+        },
+        {
+            "url": "You're an Ace, Kid.mp3",
+            "title": "You're an Ace, Kid",
+            "artist": "DEMONDICE",
+            "duration": "03:42"
+        },
+        {
+            "url": "wanting, getting, wanting.mp3",
+            "title": "wanting, getting, wanting",
+            "artist": "DEMONDICE",
+            "duration": "02:32"
+        },
+        {
+            "url": "take the bait.mp3",
+            "title": "take the bait",
+            "artist": "DEMONDICE",
+            "duration": "03:46"
+        },
+        {
+            "url": "dark hour.mp3",
+            "title": "dark hour",
+            "artist": "DEMONDICE",
+            "duration": "04:11"
+        },
+        {
+            "url": "fake ass gold.mp3",
+            "title": "fake ass gold",
+            "artist": "DEMONDICE",
+            "duration": "03:30"
+        },
+        {
+            "url": "end of a life.mp3",
+            "title": "end of a life",
+            "artist": "Mori Calliope",
+            "duration": "04:52"
+        },
+        {
+            "url": "Umeda Night Fever 19'.mp3",
+            "title": "Umeda Night Fever 19'",
+            "artist": "梅田サイファー",
+            "duration": "06:02"
+        },
+        {
+            "url": "Travolta Costum.mp3",
+            "title": "Travolta Costum",
+            "artist": "梅田サイファー",
+            "duration": "04:52"
+        },
+        {
+            "url": "Like That.mp3",
+            "title": "Like That",
+            "artist": "Kendrick Lamar",
+            "duration": "04:28"
+        },
+        {
+            "url": "7 Minute Drill.mp3",
+            "title": "7 Minute Drill",
+            "artist": "J. Cole",
+            "duration": "03:32"
+        },
+        {
+            "url": "Push Ups.mp3",
+            "title": "Push Ups",
+            "artist": "Drake",
+            "duration": "03:52"
+        },
+        {
+            "url": "euphoria.mp3",
+            "title": "euphoria",
+            "artist": "Kendrick Lamar",
+            "duration": "06:24"
+        },
+        {
+            "url": "6_16 in LA.mp3",
+            "title": "6:16 in LA",
+            "artist": "Kendrick Lamar",
+            "duration": "03:45"
+        },
+        {
+            "url": "life goes on.mp3",
+            "title": "life goes on",
+            "artist": "Kendrick Lamar",
+            "duration": "01:17"
+        },
+        {
+            "url": "Not Like Us.mp3",
+            "title": "Not Like Us",
+            "artist": "Kendrick Lamar",
+            "duration": "04:34"
+        },
+        {
+            "url": "Dior.mp3",
+            "title": "Dior",
+            "artist": "Pop Smoke",
+            "duration": "03:36"
+        }
+    ]
+}

@@ -84,8 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         //Brand Color Changer
         const colors = [
             '#60c17d', '#c16560', '#336699', '#e7ab2a',
-            '#004643', '#3f4d34', '#f25f4c', '#2cb67d', 
-            '#A8D672'
+            '#f25f4c', '#2cb67d', '#A8D672', '#339988',
+            '#ddd05b'
         ];
     
         const randomIndex = Math.floor(Math.random() * colors.length);
