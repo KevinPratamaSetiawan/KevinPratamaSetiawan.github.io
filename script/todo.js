@@ -334,5 +334,10 @@ function copyClock(type) {
     }
 
     navigator.clipboard.writeText(copyText);
+    const originalContent = document.getElementById(type).innerHTML;
     document.getElementById(type).innerHTML = '<i class="fa-solid fa-copy"></i> Copied!';
+    
+    setTimeout(function() {
+        document.getElementById(type).innerHTML = originalContent;
+    }, 1000);
 }
