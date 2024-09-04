@@ -254,12 +254,12 @@ function startTime() {
     if (window.innerWidth > 660) {
         if(langChoice % 2 === 0){
             document.getElementById('todo-date').innerHTML = dayNameIndo[day].slice(0, 3) + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
-            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " ";
+            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
         }
     } else {
         if(langChoice % 2 === 0){
             document.getElementById('todo-date').innerHTML = (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
-            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " ";
+            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
         }
     }
 
@@ -310,7 +310,7 @@ function copyClock (type){
         if(type === 'todo-date'){
             copyText = dayNameIndo[day] + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month] + ' ' + year;
         }else if(type === 'todo-time'){   
-            copyText = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " ";
+            copyText = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
         }
     }
 
