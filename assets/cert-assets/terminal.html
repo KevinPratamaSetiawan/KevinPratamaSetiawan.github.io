@@ -62,11 +62,17 @@ permalink: /⌨️/
             <div class="todo-list">
                 <h4>To-do List</h4>
                 <div class="todo-clock">
-                    <span>|</span>
-                    <p id="todo-time">00:00 PM</p>
+                    <!-- <span>|</span> -->
+                    <div id="todo-time">
+                        <p id="time-digit"></p>
+                        <p id="time-ampm"></p>
+                    </div>
                     <span id="clock-lang">EN</span>
-                    <p id="todo-date">01 Jan 2024</p>
-                    <span>|</span>
+                    <div id="todo-date">
+                        <p id="date-day"></p>
+                        <p id="date-digit"></p>
+                    </div>
+                    <!-- <span>|</span> -->
                 </div>
                 <div class="add-todo-area">
                     <input type="text" id="new-item" placeholder="Add a new task...">

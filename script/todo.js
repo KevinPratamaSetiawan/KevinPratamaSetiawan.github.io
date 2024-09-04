@@ -232,7 +232,7 @@ function numberToRoman(num) {
     return result;
 }
 
-//Todo Clock
+// Todo Clock
 document.addEventListener('DOMContentLoaded', function() {startTime();});
 
 let langChoice = 1;
@@ -251,51 +251,59 @@ function startTime() {
     let m = today.getMinutes();
     let ampm = 'Ante Meridiem';
 
-    if (window.innerWidth > 660) {
-        if(langChoice % 2 === 0){
-            document.getElementById('todo-date').innerHTML = dayNameIndo[day].slice(0, 3) + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
-            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
-        }
-    } else {
-        if(langChoice % 2 === 0){
-            document.getElementById('todo-date').innerHTML = (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
-            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
-        }
-    }
-
-    if(h > 12){
+    if (h > 12) {
         h -= 12;
-        ampm = 'PM';
+        ampm = 'Post Meridiem';
     }
 
     if (window.innerWidth > 660) {
-        if(langChoice % 2 === 1){
-            document.getElementById('todo-date').innerHTML = dayNameEn[day].slice(0, 3) + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month].slice(0, 3) + ' ' + year;
-            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " " + ampm;
+        if (langChoice % 2 === 0) {
+            document.getElementById('date-day').textContent = dayNameIndo[day].slice(0, 3) + ',';
+            document.getElementById('date-digit').textContent = (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
+            document.getElementById('time-digit').textContent = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
+            document.getElementById('time-ampm').textContent = "";
+        } else {
+            document.getElementById('date-day').textContent = dayNameEn[day].slice(0, 3) + ',';
+            document.getElementById('date-digit').textContent = (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month].slice(0, 3) + ' ' + year;
+            document.getElementById('time-digit').textContent = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
+            document.getElementById('time-ampm').textContent = ampm;
         }
     } else {
-        if(langChoice % 2 === 1){
-            document.getElementById('todo-date').innerHTML = (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month].slice(0, 3) + ' ' + year;
-            document.getElementById('todo-time').innerHTML = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " " + ampm;
+        if (ampm === 'Post Meridiem'){
+            ampm = 'PM';
+        }else {
+            ampm = 'AM';
+        }
+
+
+        if (langChoice % 2 === 0) {
+            document.getElementById('date-day').textContent = '';
+            document.getElementById('date-digit').textContent = (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
+            document.getElementById('time-digit').textContent = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
+            document.getElementById('time-ampm').textContent = "WIB";
+        } else {
+            document.getElementById('date-day').textContent = '';
+            document.getElementById('date-digit').textContent = (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month].slice(0, 3) + ' ' + year;
+            document.getElementById('time-digit').textContent = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
+            document.getElementById('time-ampm').textContent = ampm;
         }
     }
 
     setTimeout(startTime, 1000);
 }
 
-document.getElementById('todo-date').addEventListener('click', function() { copyClock('todo-date'); });
-document.getElementById('todo-time').addEventListener('click', function() { copyClock('todo-time'); });
-document.getElementById('clock-lang').addEventListener('click', function() { 
+document.getElementById('todo-date').addEventListener('click', function() {copyClock('todo-date');});
+document.getElementById('todo-time').addEventListener('click', function() {copyClock('todo-time');});
+document.getElementById('clock-lang').addEventListener('click', function() {
     if (langChoice % 2 === 1) {
         document.getElementById('clock-lang').innerHTML = 'ID';
-    }else if (langChoice % 2 === 0) {
+    } else {
         document.getElementById('clock-lang').innerHTML = 'EN';
     }
-    langChoice++; 
+    langChoice++;
 });
 
-
-function copyClock (type){
+function copyClock(type) {
     const today = new Date();
     let year = today.getFullYear();
     let month = today.getMonth();
@@ -303,26 +311,24 @@ function copyClock (type){
     let day = today.getDay();
     let h = today.getHours();
     let m = today.getMinutes();
-    let ampm = 'AM';
+    let ampm = 'Ante Meridiem';
     let copyText;
 
-    if(langChoice % 2 === 0){
-        if(type === 'todo-date'){
+    if (h > 12) {
+        h -= 12;
+        ampm = 'Post Meridiem';
+    }
+
+    if (langChoice % 2 === 0) {
+        if (type === 'todo-date') {
             copyText = dayNameIndo[day] + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month] + ' ' + year;
-        }else if(type === 'todo-time'){   
+        } else if (type === 'todo-time') {
             copyText = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
         }
-    }
-
-    if(h > 12){
-        h -= 12;
-        ampm = 'PM';
-    }
-
-    if(langChoice % 2 === 1){
-        if(type === 'todo-date'){
+    } else {
+        if (type === 'todo-date') {
             copyText = dayNameEn[day] + ', ' + (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month] + ' ' + year;
-        }else if(type === 'todo-time'){   
+        } else if (type === 'todo-time') {
             copyText = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m + " " + ampm;
         }
     }
