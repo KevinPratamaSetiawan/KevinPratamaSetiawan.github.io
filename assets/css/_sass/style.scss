@@ -928,8 +928,13 @@ input[type=number] {
   }
 }
 
-#queue-tab{
-  display: none;
+.current-played-item{
+  // background-color: var(--brand-color);
+  border: 3px solid var(--brand-color);
+
+  &.dark-mode{
+    border: 3px solid var(--brand-color);
+  }
 }
 
 .duration-slider {

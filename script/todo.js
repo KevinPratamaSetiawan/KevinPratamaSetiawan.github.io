@@ -277,12 +277,10 @@ function startTime() {
 
 
         if (langChoice % 2 === 0) {
-            document.getElementById('date-day').textContent = '';
             document.getElementById('date-digit').textContent = (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
             document.getElementById('time-digit').textContent = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
             document.getElementById('time-ampm').textContent = "WIB";
         } else {
-            document.getElementById('date-day').textContent = '';
             document.getElementById('date-digit').textContent = (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month].slice(0, 3) + ' ' + year;
             document.getElementById('time-digit').textContent = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
             document.getElementById('time-ampm').textContent = ampm;

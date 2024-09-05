@@ -127,8 +127,9 @@ function handleFileInput(event, tabId) {
           const durationSeconds = item.getElementsByTagName('itunes:duration')[0]?.textContent || calculateDurationFromLength(item);
           const duration = formatDuration(durationSeconds);
           const url = item.getElementsByTagName('enclosure')[0]?.getAttribute('url') || 'No URL';
+          const artist = 'The Yard, Ludwig, Slime, Aiden, Nick';
 
-          results.push({ title, pubDateFormatted, durationSeconds, duration, url });
+          results.push({ title, pubDateFormatted, durationSeconds, duration, url, artist });
       });
 
       localStorage.setItem(tabId, JSON.stringify(results));
@@ -157,7 +158,7 @@ function displayResults(results, tabId) {
       let formattedNumber = i.toString().padStart(3, '0');
 
       resultElement.innerHTML = `
-          <a href="#" data-url="${result.url}" class='none play'><i class="fa-solid fa-play"></i></a>
+          <a href="" data-url="${result.url}" data-ticketNum="${i-1}" data-tabType="${tabId}" class='none play'><i class="fa-solid fa-play"></i></a>
           <div class='mp3-title-date'>
             <h3>${result.title}</h3>
             <p>${result.pubDateFormatted}</p>
@@ -170,18 +171,6 @@ function displayResults(results, tabId) {
 
       tabContent.appendChild(resultElement);
       i++;
-  });
-  attachPlayButtonListeners(tabContent);
-}
-
-function attachPlayButtonListeners(tabContent) {
-  const playButtons = tabContent.querySelectorAll('.play');
-  playButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-          e.preventDefault();
-          const audioUrl = button.getAttribute('data-url');
-          playAudio(audioUrl);
-      });
   });
 }
 

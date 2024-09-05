@@ -6,308 +6,324 @@ permalink: /⌨️/
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1" name="viewport">
-        <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
-            
-        {% seo %}
-            
-        {% include favicon.html %}
-            
-        {% include mathjax.html %}
 
-        <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
-        <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.11.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
 
-    <body class="terminal-body">
-        <div class="terminal-nav">
-            <div class="timer">
-                <i class="fa-solid fa-hourglass-end fa-lg" id="hourglass"></i>
-                <div class="time-digit">
-                    <input type="number" id="hours" placeholder="00" min="0" max="99">
-                    <span>:</span>
-                    <input type="number" id="minutes" placeholder="00" min="0" max="59">
-                    <span>:</span>
-                    <input type="number" id="seconds" placeholder="00" min="0" max="59">
-                </div>
-                <div style="width: max-content; display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <i class="fa-solid fa-play" id="play-timer-btn"></i>
-                        <i class="fa-solid fa-pause" id="pause-timer-btn" style="display:none;"></i>
-                        <i class="fa-solid fa-stop" id="reset-timer-btn" style="display:none;"></i>
-                    </div>
-                </div>
-            </div>            
-            <div class="logo">
-                <a class="none" href="{{site.baseurl}}/">
-                    <img id="mode-logo" src="/black-logo.png" alt="Logo" style="width: 50px;">
-                </a>
+    {% seo %}
+
+    {% include favicon.html %}
+
+    {% include mathjax.html %}
+
+    <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
+    <script
+        type="text/javascript"> (function () { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.11.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="terminal-body">
+    <div class="terminal-nav">
+        <div class="timer">
+            <i class="fa-solid fa-hourglass-end fa-lg" id="hourglass"></i>
+            <div class="time-digit">
+                <input type="number" id="hours" placeholder="00" min="0" max="99">
+                <span>:</span>
+                <input type="number" id="minutes" placeholder="00" min="0" max="59">
+                <span>:</span>
+                <input type="number" id="seconds" placeholder="00" min="0" max="59">
             </div>
-            <div class="mode-toggle rounded-social-buttons">
-                <i class="fa-solid fa-bell-slash fa-xl" id="stop-alarm-btn"></i>
-                <i class="fa-solid fa-bell fa-shake fa-xl" id="start-alarm-btn" style="display:none;"></i>
-                <button id="accent-btn" class="social-button mode">
-                    <i class="fa-solid fa-dice-d20" style="display: flex; justify-content: center; align-items: center;"></i>
-                </button> 
-                <button id="mode-btn" class="social-button mode">
-                    <i class="fa-solid fa-sun mode-logo" style="display: flex; justify-content: center; align-items: center;"></i>
-                </button>  
+            <div style="width: max-content; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <i class="fa-solid fa-play" id="play-timer-btn"></i>
+                    <i class="fa-solid fa-pause" id="pause-timer-btn" style="display:none;"></i>
+                    <i class="fa-solid fa-stop" id="reset-timer-btn" style="display:none;"></i>
+                </div>
             </div>
         </div>
+        <div class="logo">
+            <a class="none" href="{{site.baseurl}}/">
+                <img id="mode-logo" src="/black-logo.png" alt="Logo" style="width: 50px;">
+            </a>
+        </div>
+        <div class="mode-toggle rounded-social-buttons">
+            <i class="fa-solid fa-bell-slash fa-xl" id="stop-alarm-btn"></i>
+            <i class="fa-solid fa-bell fa-shake fa-xl" id="start-alarm-btn" style="display:none;"></i>
+            <button id="accent-btn" class="social-button mode">
+                <i class="fa-solid fa-dice-d20"
+                    style="display: flex; justify-content: center; align-items: center;"></i>
+            </button>
+            <button id="mode-btn" class="social-button mode">
+                <i class="fa-solid fa-sun mode-logo"
+                    style="display: flex; justify-content: center; align-items: center;"></i>
+            </button>
+        </div>
+    </div>
 
-        <div class="main-content">
-            <div class="todo-list">
-                <h4>To-do List</h4>
-                <div class="todo-clock">
-                    <!-- <span>|</span> -->
-                    <div id="todo-time">
-                        <p id="time-digit"></p>
-                        <p id="time-ampm"></p>
-                    </div>
-                    <span id="clock-lang">EN</span>
-                    <div id="todo-date">
-                        <p id="date-day"></p>
-                        <p id="date-digit"></p>
-                    </div>
-                    <!-- <span>|</span> -->
+    <div class="main-content">
+        <div class="todo-list">
+            <h4>To-do List</h4>
+            <div class="todo-clock">
+                <!-- <span>|</span> -->
+                <div id="todo-time">
+                    <p id="time-digit"></p>
+                    <p id="time-ampm"></p>
                 </div>
-                <div class="add-todo-area">
-                    <input type="text" id="new-item" placeholder="Add a new task...">
-                    <i class="fa-solid fa-plus fa-lg" id="add-item-btn"></i>
+                <span id="clock-lang">EN</span>
+                <div id="todo-date">
+                    <p id="date-day"></p>
+                    <p id="date-digit"></p>
                 </div>
-                <div class="todo-listing">
-                    <h5>
-                        <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
-                        <i class="fa-regular fa-folder-open"></i> 
-                        Priority
-                        <span id="priority-display-num">0</span>
-                    </h5> 
-                    <ul id="todo-priority"></ul>
-                    <h5>
-                        <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
-                        <i class="fa-regular fa-folder-open"></i> 
-                        Task
-                        <span id="items-display-num">0</span>
-                    </h5> 
-                    <ul id="todo-items"></ul>
-                    <h5>
-                        <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
-                        <i class="fa-regular fa-folder-open"></i> 
-                        Completed 
-                        <span id="finish-display-num">0</span>
-                    </h5>
-                    <ul id="todo-finish"></ul>
+                <!-- <span>|</span> -->
+            </div>
+            <div class="add-todo-area">
+                <input type="text" id="new-item" placeholder="Add a new task...">
+                <i class="fa-solid fa-plus fa-lg" id="add-item-btn"></i>
+            </div>
+            <div class="todo-listing">
+                <h5>
+                    <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                    <i class="fa-regular fa-folder-open"></i>
+                    Priority
+                    <span id="priority-display-num">0</span>
+                </h5>
+                <ul id="todo-priority"></ul>
+                <h5>
+                    <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                    <i class="fa-regular fa-folder-open"></i>
+                    Task
+                    <span id="items-display-num">0</span>
+                </h5>
+                <ul id="todo-items"></ul>
+                <h5>
+                    <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                    <i class="fa-regular fa-folder-open"></i>
+                    Completed
+                    <span id="finish-display-num">0</span>
+                </h5>
+                <ul id="todo-finish"></ul>
+            </div>
+        </div>
+        <div class="music-list">
+            <h4>Mp3 Player</h4>
+            <div class="mp3-nav">
+                <div class="tab-item">
+                    <p><i class="fa-solid fa-record-vinyl" id="ide-btn"></i> IDE</p>
+                </div>
+                <div class="tab-item">
+                    <p><i class="fa-solid fa-list" id="queue-btn"></i> Queue</p>
                 </div>
             </div>
-            <div class="music-list">
-                <h4>Mp3 Player</h4>
-                <div class="mp3-nav">
-                    <div class="tab-item">
-                        <p><i class="fa-solid fa-record-vinyl" id="ide-btn"></i> IDE</p>
-                    </div>
-                    <div class="tab-item">
-                        <p><i class="fa-solid fa-list" id="queue-btn"></i> Queue</p>
-                    </div>
+            <ul id="queue-tab" style="display: none;"></ul>
+            <div id="mp3-player">
+                <div class="mp3-cover">
+                    <img src="../assets/images/mp3-cover/mp3-cover-1.jpeg" alt="" id="mp3-cover-img"
+                        class="mp3-cover-img">
                 </div>
-                <ul id="queue-tab" style="border: 5px solid white;"></ul>
-                <div id="mp3-player">
-                    <div class="mp3-cover">
-                        <img src="../assets/images/mp3-cover/mp3-cover-1.jpeg" alt="" id="mp3-cover-img" class="mp3-cover-img">
+                <div class="mp3-title">
+                    <h4 id="audioTitle">No Audio Played</h4>
+                </div>
+                <div class="duration-slider">
+                    <p id="startDuration">00:00</p>
+                    <div class="slider-container">
+                        <input type="range" name="mp3-duration" id="mp3-duration" min="0" max="100" value="50">
                     </div>
-                    <div class="mp3-title">
-                        <h4 id="audioTitle">No Audio Played</h4>
-                    </div>
-                    <div class="duration-slider">
-                        <p id="startDuration">00:00</p>
-                        <div class="slider-container">
-                            <input type="range" name="mp3-duration" id="mp3-duration" min="0" max="100" value="50">
-                        </div>
-                        <p id="endDuration">00:00</p>
-                    </div>                    
-                    <div class="mp3-control">
-                        <i class="fa-solid fa-arrow-down-a-z fa-xl"></i>
-                        <i class="fa-solid fa-repeat fa-xl" style="display: none;"></i>
-                        <i class="fa-solid fa-shuffle fa-xl" style="display: none;"></i>
-                        <i class="fa-solid fa-backward-step fa-xl"></i>
-                        <i class="fa-solid fa-backward fa-xl"></i>
-                        <i class="fa-solid fa-circle-play fa-xl"></i>
-                        <i class="fa-solid fa-circle-pause fa-xl" style="display: none;"></i>
-                        <i class="fa-solid fa-forward fa-xl"></i>
-                        <i class="fa-solid fa-forward-step fa-xl"></i>
-                        <i class="fa-solid fa-volume-xmark fa-xl" style="display: none;"></i>
-                        <i class="fa-solid fa-volume-off fa-xl" style="display: none;"></i>
-                        <i class="fa-solid fa-volume-low fa-xl" style="display: none;"></i>
-                        <i class="fa-solid fa-volume-high fa-xl"></i>
-                    </div>
+                    <p id="endDuration">00:00</p>
+                </div>
+                <div class="mp3-control">
+                    <i class="fa-solid fa-arrow-down-a-z fa-xl"></i>
+                    <i class="fa-solid fa-repeat fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-shuffle fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-backward-step fa-xl"></i>
+                    <i class="fa-solid fa-backward fa-xl"></i>
+                    <i class="fa-solid fa-circle-play fa-xl"></i>
+                    <i class="fa-solid fa-circle-pause fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-forward fa-xl"></i>
+                    <i class="fa-solid fa-forward-step fa-xl"></i>
+                    <i class="fa-solid fa-volume-xmark fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-volume-off fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-volume-low fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-volume-high fa-xl"></i>
+                    <input type="range" id="mp3-volume-control" min="0" max="100" value="50">
                 </div>
             </div>
-            <div class="rss-feed">
-                <h4>Playlist</h4>
-                <div class="tabs-nav">
-                    <div class="tab-item">
-                        <i class="fa-solid fa-1 close-tab tab-1 tab-btn" id="tab-1-btn" style="display:none;"></i>
-                        <p id="tab-1-tag" class="close-tab tab-1">XML Link</p>
-                    </div>
-                    <div class="tab-item">
-                        <i class="fa-solid fa-2 close-tab tab-2 tab-btn" id="tab-2-btn"></i>
-                        <p id="tab-2-tag" style="display:none;" class="close-tab tab-2">The Yard</p>
-                    </div>
-                    <div class="tab-item">
-                        <i class="fa-solid fa-3 close-tab tab-3 tab-btn" id="tab-3-btn"></i>
-                        <p id="tab-3-tag" style="display:none;" class="close-tab tab-3">Premium</p>
-                    </div>
-                    <div class="tab-item">
-                        <i class="fa-solid fa-4 close-tab tab-4 tab-btn" id="tab-4-btn"></i>
-                        <p id="tab-4-tag" style="display:none;" class="close-tab tab-4">Advice Show</p>
-                    </div>
-                    <div class="tab-item">
-                        <i class="fa-solid fa-5 close-tab tab-5 tab-btn" id="tab-5-btn"></i>
-                        <p id="tab-5-tag" style="display:none;" class="close-tab tab-5">style.css</p>
-                    </div>
-                    <div class="tab-item">
-                        <i class="fa-solid fa-6 close-tab tab-6 tab-btn" id="tab-6-btn"></i>
-                        <p id="tab-6-tag" style="display:none;" class="close-tab tab-6">thePopOut</p>
-                    </div>
+        </div>
+        <div class="rss-feed">
+            <h4>Playlist</h4>
+            <div class="tabs-nav">
+                <div class="tab-item">
+                    <i class="fa-solid fa-1 close-tab tab-1 tab-btn" id="tab-1-btn" style="display:none;"></i>
+                    <p id="tab-1-tag" class="close-tab tab-1">XML Link</p>
                 </div>
-                <ul id="xml-tab" class="close-tab tab-1">
-                    <li>
-                        <a href="https://feeds.redcircle.com/6d74984c-7d4b-450a-b3f2-0c33ac972eac" target="_blank" class="none">
-                            <i class="fa-solid fa-link" id="link-1-btn"></i>
-                            <i class="fa-solid fa-link fa-bounce" id="link-1-bounce" style="display:none;"></i>
-                        </a>
-                        <span>The Yard RSS Feed Link</span>
-                        <i class="fa-solid fa-clipboard fa-lg" id="copy-1-btn"></i>
-                        <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-1-bounce" style="display:none;"></i>
-                    </li>
-                    <li>
-                        <a href="https://mogulmoves.rodeo/rss/yard" target="_blank" class="none">
-                            <i class="fa-solid fa-link" id="link-2-btn"></i>
-                            <i class="fa-solid fa-link fa-bounce" id="link-2-bounce" style="display:none;"></i>
-                        </a>
-                        <span>The Yard Premium RSS Feed Link</span>
-                        <i class="fa-solid fa-clipboard fa-lg" id="copy-2-btn"></i>
-                        <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-2-bounce" style="display:none;"></i>
-                    </li>
-                    <li>
-                        <a href="https://mogulmoves.rodeo/rss/yardadvice" target="_blank" class="none">
-                            <i class="fa-solid fa-link" id="link-3-btn"></i>
-                            <i class="fa-solid fa-link fa-bounce" id="link-3-bounce" style="display:none;"></i>
-                        </a>
-                        <span>The Advice Show RSS Feed Link</span>
-                        <i class="fa-solid fa-clipboard fa-lg" id="copy-3-btn"></i>
-                        <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-3-bounce" style="display:none;"></i>
-                    </li>
-                </ul>
-                <ul id="yard-tab" style="display:none;" class="close-tab tab-2">
-                    <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
-                        <label for="fileInputYard" class="custom-file-upload">
-                            <i class="fa-solid fa-file-arrow-up fa-lg"></i>
-                        </label>
-                        <input type="file" id="fileInputYard" accept=".xml" style="display:none;">
-                        <label for="fileClearYard" class="custom-file-upload">
-                            <i class="fa-solid fa-dumpster fa-lg" id="fileClearYard"></i>
-                        </label>
-                    </li>
-                </ul>
-                <ul id="premium-tab" style="display:none;" class="close-tab tab-3">
-                    <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
-                        <label for="fileInputPremium" class="custom-file-upload">
-                            <i class="fa-solid fa-file-arrow-up fa-lg"></i>
-                        </label>
-                        <input type="file" id="fileInputPremium" accept=".xml" style="display:none;">
-                        <label for="fileClearPremium" class="custom-file-upload">
-                            <i class="fa-solid fa-dumpster fa-lg" id="fileClearPremium"></i>
-                        </label>
-                    </li>
-                </ul>
-                <ul id="advice-tab" style="display:none;" class="close-tab tab-4">
-                    <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
-                        <label for="fileInputAdvice" class="custom-file-upload">
-                            <i class="fa-solid fa-file-arrow-up fa-lg"></i>
-                        </label>
-                        <input type="file" id="fileInputAdvice" accept=".xml" style="display:none;">
-                        <label for="fileClearAdvice" class="custom-file-upload">
-                            <i class="fa-solid fa-dumpster fa-lg" id="fileClearAdvice"></i>
-                        </label>
-                    </li>
-                </ul>
+                <div class="tab-item">
+                    <i class="fa-solid fa-2 close-tab tab-2 tab-btn" id="tab-2-btn"></i>
+                    <p id="tab-2-tag" style="display:none;" class="close-tab tab-2">The Yard</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-3 close-tab tab-3 tab-btn" id="tab-3-btn"></i>
+                    <p id="tab-3-tag" style="display:none;" class="close-tab tab-3">Premium</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-4 close-tab tab-4 tab-btn" id="tab-4-btn"></i>
+                    <p id="tab-4-tag" style="display:none;" class="close-tab tab-4">Advice Show</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-5 close-tab tab-5 tab-btn" id="tab-5-btn"></i>
+                    <p id="tab-5-tag" style="display:none;" class="close-tab tab-5">style.css</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-6 close-tab tab-6 tab-btn" id="tab-6-btn"></i>
+                    <p id="tab-6-tag" style="display:none;" class="close-tab tab-6">thePopOut</p>
+                </div>
+            </div>
+            <ul id="xml-tab" class="close-tab tab-1">
+                <li>
+                    <a href="https://feeds.redcircle.com/6d74984c-7d4b-450a-b3f2-0c33ac972eac" target="_blank"
+                        class="none">
+                        <i class="fa-solid fa-link" id="link-1-btn"></i>
+                        <i class="fa-solid fa-link fa-bounce" id="link-1-bounce" style="display:none;"></i>
+                    </a>
+                    <span>The Yard RSS Feed Link</span>
+                    <i class="fa-solid fa-clipboard fa-lg" id="copy-1-btn"></i>
+                    <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-1-bounce" style="display:none;"></i>
+                </li>
+                <li>
+                    <a href="https://mogulmoves.rodeo/rss/yard" target="_blank" class="none">
+                        <i class="fa-solid fa-link" id="link-2-btn"></i>
+                        <i class="fa-solid fa-link fa-bounce" id="link-2-bounce" style="display:none;"></i>
+                    </a>
+                    <span>The Yard Premium RSS Feed Link</span>
+                    <i class="fa-solid fa-clipboard fa-lg" id="copy-2-btn"></i>
+                    <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-2-bounce" style="display:none;"></i>
+                </li>
+                <li>
+                    <a href="https://mogulmoves.rodeo/rss/yardadvice" target="_blank" class="none">
+                        <i class="fa-solid fa-link" id="link-3-btn"></i>
+                        <i class="fa-solid fa-link fa-bounce" id="link-3-bounce" style="display:none;"></i>
+                    </a>
+                    <span>The Advice Show RSS Feed Link</span>
+                    <i class="fa-solid fa-clipboard fa-lg" id="copy-3-btn"></i>
+                    <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-3-bounce" style="display:none;"></i>
+                </li>
+            </ul>
+            <ul id="yard-tab" style="display:none;" class="close-tab tab-2">
+                <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
+                    <label for="fileInputYard" class="custom-file-upload">
+                        <i class="fa-solid fa-file-arrow-up fa-lg"></i>
+                    </label>
+                    <input type="file" id="fileInputYard" accept=".xml" style="display:none;">
+                    <label for="fileClearYard" class="custom-file-upload">
+                        <i class="fa-solid fa-dumpster fa-lg" id="fileClearYard"></i>
+                    </label>
+                </li>
+            </ul>
+            <ul id="premium-tab" style="display:none;" class="close-tab tab-3">
+                <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
+                    <label for="fileInputPremium" class="custom-file-upload">
+                        <i class="fa-solid fa-file-arrow-up fa-lg"></i>
+                    </label>
+                    <input type="file" id="fileInputPremium" accept=".xml" style="display:none;">
+                    <label for="fileClearPremium" class="custom-file-upload">
+                        <i class="fa-solid fa-dumpster fa-lg" id="fileClearPremium"></i>
+                    </label>
+                </li>
+            </ul>
+            <ul id="advice-tab" style="display:none;" class="close-tab tab-4">
+                <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
+                    <label for="fileInputAdvice" class="custom-file-upload">
+                        <i class="fa-solid fa-file-arrow-up fa-lg"></i>
+                    </label>
+                    <input type="file" id="fileInputAdvice" accept=".xml" style="display:none;">
+                    <label for="fileClearAdvice" class="custom-file-upload">
+                        <i class="fa-solid fa-dumpster fa-lg" id="fileClearAdvice"></i>
+                    </label>
+                </li>
+            </ul>
 
-                {% assign mp3_metadata = site.data.mp3_metadata.playlist1 %}
-                <ul id="style-tab" style="display:none;" class="close-tab tab-5">
+            {% assign mp3_metadata = site.data.mp3_metadata.playlist1 %}
+            <ul id="style-tab" style="display:none;" class="close-tab tab-5">
                 {% assign counter = 1 %}
+                {% assign ticketNum = 0 %}
                 {% for mp3 in mp3_metadata %}
-                    {% assign file = site.static_files | where: "url", mp3.name | first %}
-                    <li class="mp3-container">
-                    <a href="#" data-url="{{ file.path }}" class='none play'><i class="fa-solid fa-play"></i></a>
+                {% assign file = site.static_files | where: "path", mp3.url | first %}
+                <li class="mp3-container">
+                    <a href="#" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="style-tab" class='none play'>
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>{{ mp3.title }}</h3>
+                        <p>{{ mp3.artist }}</p>
+                    </div>
+                    <div class='mp3-number-duration'>
+                        <p class='mp3-numbers'>#{{ counter | prepend: '000' | slice: -3,3 }}</p>
+                        <p>{{ mp3.duration }}</p>
+                    </div>
+                </li>
+                {% assign counter = counter | plus: 1 %}
+                {% assign ticketNum = ticketNum | plus: 1 %}
+                {% if file %}
+                {% else %}
+                <li class="mp3-container">File {{ mp3.url }} not found.</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+            {% assign mp3_metadata = site.data.mp3_metadata.thePopOut %}
+            <ul id="pop-out-tab" style="display:none;" class="close-tab tab-6">
+                {% assign counter = 1 %}
+                {% assign ticketNum = 0 %}
+                {% for mp3 in mp3_metadata %}
+                {% assign file = site.static_files | where: "path", mp3.url | first %}
+                <li class="mp3-container">
+                    <a href="#" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="pop-out-tab" class='none play'>
+                    <i class="fa-solid fa-play"></i>
+                    </a>
                     <div class="mp3-title-date">
                         <h3>{{ mp3.title }}</h3>
                         <p>{{ mp3.artist }}</p>
                     </div>
                     <div class='mp3-number-duration'>
-                        <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
+                        <p class='mp3-numbers'>#{{ counter | prepend: '000' | slice: -3,3 }}</p>
                         <p>{{ mp3.duration }}</p>
                     </div>
-                    </li>
-                    {% if file %}
-                    {% assign counter = counter | plus: 1 %}
-                    {% else %}
-                    <li class="mp3-container">File {{ mp3.name }} not found.</li>
-                    {% endif %}
+                </li>
+                {% assign counter = counter | plus: 1 %}
+                {% assign ticketNum = ticketNum | plus: 1 %}
+                {% if file %}
+                {% else %}
+                <li class="mp3-container">File {{ mp3.url }} not found.</li>
+                {% endif %}
                 {% endfor %}
-                </ul>
+            </ul>
 
-                {% assign mp3_metadata = site.data.mp3_metadata.thePopOut %}
-                <ul id="pop-out-tab" style="display:none;" class="close-tab tab-6">
-                {% assign counter = 1 %}
-                {% for mp3 in mp3_metadata %}
-                    {% assign file = site.static_files | where: "url", mp3.name | first %}
-                    <li class="mp3-container">
-                    <a href="#" data-url="{{ file.path }}" class='none play'><i class="fa-solid fa-play"></i></a>
-                    <div class="mp3-title-date">
-                        <h3>{{ mp3.title }}</h3>
-                        <p>{{ mp3.artist }}</p>
-                    </div>
-                    <div class='mp3-number-duration'>
-                        <p class='mp3-numbers'>#<script>document.write(('000' + {{ counter }}).slice(-3));</script></p>
-                        <p>{{ mp3.duration }}</p>
-                    </div>
-                    </li>
-                    {% if file %}
-                    {% assign counter = counter | plus: 1 %}
-                    {% else %}
-                    <li class="mp3-container">File {{ mp3.name }} not found.</li>
-                    {% endif %}
-                {% endfor %}
-                </ul>
-                            
-                </ul>
+            </ul>
 
-                <!-- KEEP! : Funtion to extract audio duration -->
-                <!-- <div id="audio-files" style="display:none;">
+            <!-- KEEP! : Funtion to extract audio duration -->
+            <!-- <div id="audio-files" style="display:none;">
                     {% assign mp3_metadata = site.data.mp3_metadata.playlist1 %}
                     {% for mp3 in mp3_metadata %}
                       {% assign file = site.static_files | where: "name", mp3.name | first %}
                       <span data-path="{{ file.path }}"></span>
                     {% endfor %}
                 </div>                   -->
-            </div>
         </div>
+    </div>
 
-        {% include analytics.html %}
-    </body>
+    {% include analytics.html %}
+</body>
 
-    <script type="module" src="/script/timer.js"></script>
-    <script type="module" src="/script/modeToggle.js"></script>
-    <script type="module" src="/script/todo.js"></script>
-    <script type="module" src="/script/mp3Player.js"></script>
-    <script type="module" src="/script/rssFeeds.js"></script> 
+<script type="module" src="/script/timer.js"></script>
+<script type="module" src="/script/modeToggle.js"></script>
+<script type="module" src="/script/todo.js"></script>
+<script type="module" src="/script/mp3Player.js"></script>
+<script type="module" src="/script/rssFeeds.js"></script>
 
-    <script>
-        if('serviceWorker' in navigator){
-            navigator.serviceWorker.register('/../../../script/service-worker.js');
-        }
-    </script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/../../../script/service-worker.js');
+    }
+</script>
+
 </html>

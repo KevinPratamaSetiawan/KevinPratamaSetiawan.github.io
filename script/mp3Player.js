@@ -18,6 +18,189 @@ function changeCoverImage() {
 
 setInterval(changeCoverImage, 20000);
 
+let currentAudio;
+let currentIndex;
+let currentQueue = [];
+
+let playButton        = document.querySelector('.fa-circle-play');
+let pauseButton       = document.querySelector('.fa-circle-pause');
+let forwardButton     = document.querySelector('.fa-forward');
+let rewindButton      = document.querySelector('.fa-backward');
+let nextButton        = document.querySelector('.fa-forward-step');
+let previousButton    = document.querySelector('.fa-backward-step');
+let normalQueueButton = document.querySelector('.fa-arrow-down-a-z');
+let shuffleButton     = document.querySelector('.fa-shuffle');
+let repeatButton      = document.querySelector('.fa-repeat');
+
+playButton.addEventListener('click', replayAudio);
+pauseButton.addEventListener('click', pauseAudio);
+forwardButton.addEventListener('click', forwardAudio);
+rewindButton.addEventListener('click', rewindAudio);
+nextButton.addEventListener('click', nextAudio);
+previousButton.addEventListener('click', previousAudio);
+
+
+const playBtn = document.querySelectorAll('.play');
+
+playBtn.forEach(function(button) {
+  button.addEventListener('click', function() {
+      currentQueue = []; // Reset queue on new play
+      let ticketNum = button.getAttribute('data-ticketNum');
+      let url = button.getAttribute('data-url');
+      let tabType = button.getAttribute('data-tabType');
+
+      console.log(ticketNum);
+      console.log(url);
+      console.log(tabType);
+
+      // Call your function with the values
+      initiateQueue(ticketNum, url, tabType);
+  });
+});
+
+const playOnQueueBtn = document.querySelectorAll('.queue-item');
+
+playOnQueueBtn.forEach(function(button) {
+  button.addEventListener('click', function() {
+    console.log('inside queue about to play')
+      let ticketNum = button.getAttribute('data-ticketNum');
+      let url = button.getAttribute('data-url');
+
+      console.log(ticketNum);
+      console.log(url);
+
+      currentIndex = parseInt(ticketNum, 10); // Ensure ticketNum is an integer
+
+      playAudio(url);
+      displayQueueTab(currentQueue, currentIndex);
+  });
+});
+
+function initiateQueue(ticketNum, url, tabType) {
+  if (tabType === 'yard-tab' || tabType === 'premium-tab' || tabType === 'advice-tab') {
+    const savedResults = localStorage.getItem(tabType);
+    if (savedResults) {
+      const results = JSON.parse(savedResults);
+      currentQueue = results || []; // Ensure currentQueue is an array
+    }
+
+  } else if (tabType === 'style-tab' || tabType === 'pop-out-tab') {
+    fetch('/script/data/mp3_metadata.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      tabType = (tabType === 'style-tab') ? 'playlist1' : 'thePopOut';
+      let results = data[tabType] || []; // Ensure results is an array
+
+      currentQueue = results;
+
+      displayQueueTab(currentQueue, parseInt(ticketNum, 10)); // Ensure ticketNum is an integer
+      playAudio(url);
+    })
+    .catch(error => {
+      console.error('Error fetching the JSON file:', error);
+    });
+  }
+
+  currentIndex = parseInt(ticketNum, 10); // Ensure ticketNum is an integer
+}
+
+function displayQueueTab(queueList, index) {
+  const queueTab = document.getElementById('queue-tab');
+  if (!queueTab) return;
+  queueTab.innerHTML = '';
+
+  queueList.forEach((queue, i) => {
+    const queueElement = document.createElement('li');
+    queueElement.classList.add('mp3-container');
+    
+    if (document.body.classList.contains('dark-mode')) {
+      queueElement.classList.add('dark-mode');
+    }
+
+    if (i === index) {
+      queueElement.classList.add('current-played-item');
+    }
+
+    let formattedNumber = (i + 1).toString().padStart(3, '0');
+
+    queueElement.innerHTML = `
+        <a href="" data-url="${queue.url}" data-ticketNum="${i}" class='none queue-item'><i class="fa-solid fa-play"></i></a>
+        <div class='mp3-title-date'>
+          <h3>${queue.title}</h3>
+          <p>${queue.artist}</p>
+        </div>
+        <div class='mp3-number-duration'>
+          <p class='mp3-numbers'>#${formattedNumber}</p>
+          <p>${queue.duration}</p>
+        </div>
+    `;
+
+    queueTab.appendChild(queueElement);
+  });
+}
+
+function playAudio(audioLink) {
+  if (currentAudio) {
+    currentAudio.pause();
+  }
+
+  currentAudio = new Audio(audioLink);
+  currentAudio.play();
+
+  currentAudio.addEventListener('ended', function() {
+    nextAudio(); // Play the next audio in the queue
+  });
+
+  playButton.style.display = 'none';
+  pauseButton.style.display = 'block';
+}
+
+function pauseAudio() {
+  if (currentAudio) {
+    currentAudio.pause();
+    playButton.style.display = 'block';
+    pauseButton.style.display = 'none';
+  }
+}
+
+function replayAudio () {
+  currentAudio.play();
+
+  playButton.style.display = 'none';
+  pauseButton.style.display = 'block';
+}
+
+function forwardAudio() {
+  if (currentAudio) {
+    currentAudio.currentTime = Math.min(currentAudio.currentTime + 15, currentAudio.duration);
+  }
+}
+
+function rewindAudio() {
+  if (currentAudio) {
+    currentAudio.currentTime = Math.max(currentAudio.currentTime - 15, 0);
+  }
+}
+
+function nextAudio() {
+  if (currentQueue.length > 0) {
+    currentIndex = (currentIndex + 1) % currentQueue.length;
+    playAudio(currentQueue[currentIndex].url);
+  }
+}
+
+function previousAudio() {
+  if (currentQueue.length > 0) {
+    currentIndex = (currentIndex - 1 + currentQueue.length) % currentQueue.length;
+    playAudio(currentQueue[currentIndex].url);
+  }
+}
+
 // KEEP! : Function to extract the audio duration
 // document.addEventListener('DOMContentLoaded', function() {
 //   const audioElements = document.querySelectorAll('#audio-files span');
@@ -35,49 +218,12 @@ setInterval(changeCoverImage, 20000);
 //   };
 // }
 
-
-// function playAudio (audioLink) {
-//   let audio = new Audio(audioLink);
-
-//   audio.play();
-
-//   return audio;
-// }
-
-// function pauseAudio (audio) {
-//   audio.pause();
-// }
-
-// function forwardAudio (audio) {
-//   if (audio.currentTime + 15 <= audio.duration) {
-//     audio.currentTime += 15;
-//   } else {
-//     audio.currentTime = audio.duration;
-//   }
-// }
-
-// function rewindAudio (audio) {
-//   if (audio.currentTime - 15 >= 0) {
-//     audio.currentTime -= 15;
-//   } else {
-//     audio.currentTime = 0;
-//   }
-// }
-
 // function repeatAudio (audio) {
 //   audio.loop = true;
 // }
 
 // function setVolumeAudio (audio, setVolume) {
 //   audio.volume = (setVolume/100);
-// }
-
-// function displayAudioMetadata () {
-
-// }
-
-// function updateAudioDurationSlider () {
-
 // }
 
 // // Initialize current play mode
@@ -162,62 +308,6 @@ setInterval(changeCoverImage, 20000);
 //     });
 // }
 
-// // Function to pause audio
-// function pauseAudio() {
-//     if (audio) {
-//         audio.pause();
-//         playIcon.style.display = 'block';
-//         pauseIcon.style.display = 'none';
-//     }
-// }
-
-// // Function to skip forward 15 seconds
-// function forwardAudio() {
-//     if (audio && audio.currentTime + 15 <= audio.duration) {
-//         audio.currentTime += 15;
-//     } else if (audio) {
-//         audio.currentTime = audio.duration;
-//     }
-// }
-
-// // Function to rewind 15 seconds
-// function rewindAudio() {
-//     if (audio && audio.currentTime - 15 >= 0) {
-//         audio.currentTime -= 15;
-//     } else if (audio) {
-//         audio.currentTime = 0;
-//     }
-// }
-
-// // Function to set volume
-// function setVolumeAudio(setVolume) {
-//     if (audio) {
-//         audio.volume = setVolume / 100;
-
-//         // Update volume icons based on the volume level
-//         if (audio.volume === 0) {
-//             volumeIcons.mute.style.display = 'block';
-//             volumeIcons.off.style.display = 'none';
-//             volumeIcons.low.style.display = 'none';
-//             volumeIcons.high.style.display = 'none';
-//         } else if (audio.volume <= 0.3) {
-//             volumeIcons.mute.style.display = 'none';
-//             volumeIcons.off.style.display = 'block';
-//             volumeIcons.low.style.display = 'none';
-//             volumeIcons.high.style.display = 'none';
-//         } else if (audio.volume <= 0.6) {
-//             volumeIcons.mute.style.display = 'none';
-//             volumeIcons.off.style.display = 'none';
-//             volumeIcons.low.style.display = 'block';
-//             volumeIcons.high.style.display = 'none';
-//         } else {
-//             volumeIcons.mute.style.display = 'none';
-//             volumeIcons.off.style.display = 'none';
-//             volumeIcons.low.style.display = 'none';
-//             volumeIcons.high.style.display = 'block';
-//         }
-//     }
-// }
 
 // // Function to update the duration slider and time display
 // function updateAudioDurationSlider() {
