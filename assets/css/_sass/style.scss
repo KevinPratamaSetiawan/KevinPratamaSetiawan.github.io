@@ -1059,6 +1059,17 @@ input[type=number] {
     align-items: center;
   }
 
+  .duration-slider {
+    .slider-container {
+      width: 60%;
+      margin: 0 5px;
+    }
+  
+    p{
+      width: 20%;
+    }
+  }
+
   .logo{
     grid-area: 1 / 1 / 2 / 2;
     justify-content: left;
