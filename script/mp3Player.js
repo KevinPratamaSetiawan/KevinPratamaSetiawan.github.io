@@ -31,6 +31,12 @@ let previousButton    = document.querySelector('.fa-backward-step');
 let normalQueueButton = document.querySelector('.fa-arrow-down-a-z');
 let shuffleButton     = document.querySelector('.fa-shuffle');
 let repeatButton      = document.querySelector('.fa-repeat');
+let volumeButton1     = document.querySelector('.fa-ear-listen');
+let volumeButton2     = document.querySelector('.fa-volume-high');
+let volumeButton3     = document.querySelector('.fa-volume-low');
+let volumeButton4     = document.querySelector('.fa-volume-off');
+let volumeButton5     = document.querySelector('.fa-volume-xmark');
+let volumeSlider      = document.getElementById('mp3-volume-control')
 
 playButton.addEventListener('click', replayAudio);
 pauseButton.addEventListener('click', pauseAudio);
@@ -38,7 +44,12 @@ forwardButton.addEventListener('click', forwardAudio);
 rewindButton.addEventListener('click', rewindAudio);
 nextButton.addEventListener('click', nextAudio);
 previousButton.addEventListener('click', previousAudio);
-
+volumeButton1.addEventListener('click', showVolumeSlider);
+volumeButton2.addEventListener('click', showVolumeSlider);
+volumeButton3.addEventListener('click', showVolumeSlider);
+volumeButton4.addEventListener('click', showVolumeSlider);
+volumeButton5.addEventListener('click', showVolumeSlider);
+volumeSlider.addEventListener('input', changeAudioVolume);
 
 const playBtn = document.querySelectorAll('.play');
 
@@ -58,31 +69,14 @@ playBtn.forEach(function(button) {
   });
 });
 
-const playOnQueueBtn = document.querySelectorAll('.queue-item');
-
-playOnQueueBtn.forEach(function(button) {
-  button.addEventListener('click', function() {
-    console.log('inside queue about to play')
-      let ticketNum = button.getAttribute('data-ticketNum');
-      let url = button.getAttribute('data-url');
-
-      console.log(ticketNum);
-      console.log(url);
-
-      currentIndex = parseInt(ticketNum, 10); // Ensure ticketNum is an integer
-
-      playAudio(url);
-      displayQueueTab(currentQueue, currentIndex);
-  });
-});
-
 function initiateQueue(ticketNum, url, tabType) {
   if (tabType === 'yard-tab' || tabType === 'premium-tab' || tabType === 'advice-tab') {
     const savedResults = localStorage.getItem(tabType);
-    if (savedResults) {
-      const results = JSON.parse(savedResults);
-      currentQueue = results || []; // Ensure currentQueue is an array
-    }
+    if (!savedResults) return;
+    const results = JSON.parse(savedResults);
+    currentQueue = results || [];
+
+    console.log(results);
 
   } else if (tabType === 'style-tab' || tabType === 'pop-out-tab') {
     fetch('/script/data/mp3_metadata.json')
@@ -97,22 +91,32 @@ function initiateQueue(ticketNum, url, tabType) {
       let results = data[tabType] || []; // Ensure results is an array
 
       currentQueue = results;
-
-      displayQueueTab(currentQueue, parseInt(ticketNum, 10)); // Ensure ticketNum is an integer
-      playAudio(url);
     })
     .catch(error => {
       console.error('Error fetching the JSON file:', error);
     });
   }
-
   currentIndex = parseInt(ticketNum, 10); // Ensure ticketNum is an integer
+
+  playAudio(url);
+  displayQueueTab(currentQueue, parseInt(ticketNum, 10));
 }
 
 function displayQueueTab(queueList, index) {
   const queueTab = document.getElementById('queue-tab');
+  const playTitle = document.getElementById('audioTitle');
+  const endDuration = document.getElementById('endDuration');
+  const durationSlider = document.getElementById('mp3-duration');
+
   if (!queueTab) return;
   queueTab.innerHTML = '';
+  
+  currentAudio.onloadedmetadata = function() {
+    playTitle.innerHTML = currentQueue[currentIndex].title + '<br> by. <em>' + currentQueue[currentIndex].artist + '</em>';
+    endDuration.innerHTML = currentQueue[currentIndex].duration;
+    durationSlider.max = parseInt(currentAudio.duration);
+    console.log(currentAudio.duration);
+  };
 
   queueList.forEach((queue, i) => {
     const queueElement = document.createElement('li');
@@ -141,10 +145,25 @@ function displayQueueTab(queueList, index) {
     `;
 
     queueTab.appendChild(queueElement);
+
+    const playQueueLink = queueElement.querySelector('a.queue-item');
+    playQueueLink.addEventListener('click', function (event) {
+      event.preventDefault();  // Prevent default anchor behavior (navigation)
+
+      let ticketNum = playQueueLink.getAttribute('data-ticketNum');
+      let url = playQueueLink.getAttribute('data-url');
+
+      currentIndex = parseInt(ticketNum, 10);
+
+      playAudio(url);
+      displayQueueTab(currentQueue, currentIndex);
+    });
   });
 }
 
 function playAudio(audioLink) {
+  let volumeSlider = document.getElementById('mp3-volume-control');
+
   if (currentAudio) {
     currentAudio.pause();
   }
@@ -158,6 +177,17 @@ function playAudio(audioLink) {
 
   playButton.style.display = 'none';
   pauseButton.style.display = 'block';
+
+  if(currentAudio){
+    currentAudio.volume = (volumeSlider.value / 100);
+  }
+
+  currentAudio.addEventListener('timeupdate', updateDurationSlider);
+
+  const durationSlider = document.getElementById('mp3-duration');
+  durationSlider.addEventListener('input', () => {
+      currentAudio.currentTime = durationSlider.value;
+  });
 }
 
 function pauseAudio() {
@@ -191,6 +221,7 @@ function nextAudio() {
   if (currentQueue.length > 0) {
     currentIndex = (currentIndex + 1) % currentQueue.length;
     playAudio(currentQueue[currentIndex].url);
+    displayQueueTab(currentQueue, currentIndex);
   }
 }
 
@@ -198,8 +229,91 @@ function previousAudio() {
   if (currentQueue.length > 0) {
     currentIndex = (currentIndex - 1 + currentQueue.length) % currentQueue.length;
     playAudio(currentQueue[currentIndex].url);
+    displayQueueTab(currentQueue, currentIndex);
   }
 }
+
+function showVolumeSlider () {
+  let volumeContainer = document.getElementById('volume-slider-container');
+
+  if (volumeContainer.style.display === 'none'){
+    volumeContainer.style.display = 'flex';
+  }else {
+    volumeContainer.style.display = 'none';
+  }
+}
+
+function changeAudioVolume () {
+  let volumeSlider = document.getElementById('mp3-volume-control');
+
+  if(currentAudio){
+    currentAudio.volume = (volumeSlider.value / 100);
+  }
+
+  document.getElementById('plus-volume').innerHTML = '+ ' + volumeSlider.value + '%';
+  document.getElementById('minus-volume').innerHTML = '- ' + (100 - volumeSlider.value) + '%';
+
+  if (volumeSlider.value >= 75) {
+    volumeButton1.style.display = 'block';
+    volumeButton2.style.display = 'none';
+    volumeButton3.style.display = 'none';
+    volumeButton4.style.display = 'none';
+    volumeButton5.style.display = 'none';
+  }else if (volumeSlider.value >= 50) {
+    volumeButton1.style.display = 'none';
+    volumeButton2.style.display = 'block';
+    volumeButton3.style.display = 'none';
+    volumeButton4.style.display = 'none';
+    volumeButton5.style.display = 'none';
+  }else if (volumeSlider.value >= 25) {
+    volumeButton1.style.display = 'none';
+    volumeButton2.style.display = 'none';
+    volumeButton3.style.display = 'block';
+    volumeButton4.style.display = 'none';
+    volumeButton5.style.display = 'none';
+  }else if (volumeSlider.value > 0) {
+    volumeButton1.style.display = 'none';
+    volumeButton2.style.display = 'none';
+    volumeButton3.style.display = 'none';
+    volumeButton4.style.display = 'block';
+    volumeButton5.style.display = 'none';
+  }else {
+    volumeButton1.style.display = 'none';
+    volumeButton2.style.display = 'none';
+    volumeButton3.style.display = 'none';
+    volumeButton4.style.display = 'none';
+    volumeButton5.style.display = 'block';
+  }
+}
+
+function updateDurationSlider () {
+  if(currentAudio){
+    const durationSlider = document.getElementById('mp3-duration');
+    const startDuration = document.getElementById('startDuration');
+
+    durationSlider.value = currentAudio.currentTime;
+    startDuration.innerHTML = formatTime(currentAudio.currentTime);
+  }
+}
+
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${minutes < 10 ? '0' : ''}${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+window.initiateQueue = initiateQueue;
+window.displayQueueTab = displayQueueTab;
+window.playAudio = playAudio;
+window.pauseAudio = pauseAudio;
+window.replayAudio = replayAudio;
+window.forwardAudio = forwardAudio;
+window.rewindAudio = rewindAudio;
+window.nextAudio = nextAudio;
+window.previousAudio = previousAudio;
+window.showVolumeSlider = showVolumeSlider;
+window.changeAudioVolume = changeAudioVolume;
+window.updateDurationSlider = updateDurationSlider;
 
 // KEEP! : Function to extract the audio duration
 // document.addEventListener('DOMContentLoaded', function() {
@@ -217,155 +331,3 @@ function previousAudio() {
 //     console.log(audioName + " : " + audio.duration);
 //   };
 // }
-
-// function repeatAudio (audio) {
-//   audio.loop = true;
-// }
-
-// function setVolumeAudio (audio, setVolume) {
-//   audio.volume = (setVolume/100);
-// }
-
-// // Initialize current play mode
-// let currentPlayMode = 'normal'; // can be 'normal', 'shuffle', 'repeat'
-
-// // References to the control elements
-// const normalPlayIcon = document.querySelector('.fa-arrow-down-a-z');
-// const shuffleIcon = document.querySelector('.fa-shuffle');
-// const repeatIcon = document.querySelector('.fa-repeat');
-// const playIcon = document.querySelector('.fa-circle-play');
-// const pauseIcon = document.querySelector('.fa-circle-pause');
-// const volumeIcons = {
-//     mute: document.querySelector('.fa-volume-xmark'),
-//     off: document.querySelector('.fa-volume-off'),
-//     low: document.querySelector('.fa-volume-low'),
-//     high: document.querySelector('.fa-volume-high')
-// };
-
-// // Initialize the audio element
-// let audio;
-// let currentTrackIndex = 0;
-// let playlist = []; // this should be populated with the audio links
-
-// // Function to update the play mode
-// function updatePlayMode() {
-//     normalPlayIcon.style.display = 'none';
-//     shuffleIcon.style.display = 'none';
-//     repeatIcon.style.display = 'none';
-
-//     switch (currentPlayMode) {
-//         case 'normal':
-//             normalPlayIcon.style.display = 'block';
-//             break;
-//         case 'shuffle':
-//             shuffleIcon.style.display = 'block';
-//             break;
-//         case 'repeat':
-//             repeatIcon.style.display = 'block';
-//             break;
-//     }
-// }
-
-// // Event listeners to change play mode
-// normalPlayIcon.addEventListener('click', () => {
-//     currentPlayMode = 'shuffle';
-//     updatePlayMode();
-// });
-
-// shuffleIcon.addEventListener('click', () => {
-//     currentPlayMode = 'repeat';
-//     updatePlayMode();
-// });
-
-// repeatIcon.addEventListener('click', () => {
-//     currentPlayMode = 'normal';
-//     updatePlayMode();
-// });
-
-// // Function to play audio
-// export function playAudio(audioLink) {
-//     if (audio) {
-//         audio.pause();
-//     }
-//     audio = new Audio(audioLink);
-
-//     if (currentPlayMode === 'repeat') {
-//         audio.loop = true;
-//     } else {
-//         audio.loop = false;
-//     }
-
-//     audio.play();
-//     playIcon.style.display = 'none';
-//     pauseIcon.style.display = 'block';
-
-//     audio.addEventListener('timeupdate', updateAudioDurationSlider);
-
-//     // Make sure to set up slider change event
-//     const durationSlider = document.getElementById('mp3-duration');
-//     durationSlider.addEventListener('input', () => {
-//         audio.currentTime = durationSlider.value;
-//     });
-// }
-
-
-// // Function to update the duration slider and time display
-// function updateAudioDurationSlider() {
-//     if (audio) {
-//         const durationSlider = document.getElementById('mp3-duration');
-//         durationSlider.max = audio.duration;
-//         durationSlider.value = audio.currentTime;
-
-//         const startDuration = document.getElementById('startDuration');
-//         const endDuration = document.getElementById('endDuration');
-//         startDuration.textContent = formatTime(audio.currentTime);
-//         endDuration.textContent = formatTime(audio.duration);
-//     }
-// }
-
-// // Utility function to format time in "MM:SS"
-// function formatTime(seconds) {
-//     const minutes = Math.floor(seconds / 60);
-//     const secs = Math.floor(seconds % 60);
-//     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-// }
-
-// // Function to handle play/pause button click
-// playIcon.addEventListener('click', () => {
-//     if (audio && !audio.paused) {
-//         pauseAudio();
-//     } else if (playlist.length > 0) {
-//         playAudio(playlist[currentTrackIndex]);
-//     }
-// });
-
-// pauseIcon.addEventListener('click', () => {
-//     pauseAudio();
-// });
-
-// // Function to handle forward/backward skip
-// document.querySelector('.fa-forward').addEventListener('click', forwardAudio);
-// document.querySelector('.fa-backward').addEventListener('click', rewindAudio);
-
-// // Function to change to next track
-// document.querySelector('.fa-forward-step').addEventListener('click', () => {
-//     if (currentPlayMode === 'shuffle') {
-//         currentTrackIndex = Math.floor(Math.random() * playlist.length);
-//     } else {
-//         currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
-//     }
-//     playAudio(playlist[currentTrackIndex]);
-// });
-
-// // Function to change to previous track
-// document.querySelector('.fa-backward-step').addEventListener('click', () => {
-//     if (currentTrackIndex > 0) {
-//         currentTrackIndex--;
-//     } else {
-//         currentTrackIndex = playlist.length - 1;
-//     }
-//     playAudio(playlist[currentTrackIndex]);
-// });
-
-// // Initial setup
-// updatePlayMode();

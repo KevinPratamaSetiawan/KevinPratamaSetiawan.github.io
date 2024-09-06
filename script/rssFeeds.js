@@ -1,5 +1,3 @@
-// import { playAudio } from './mp3Player.js';
-
 document.getElementById('tab-1-btn').addEventListener('click', function() { openTab('tab-1'); });
 document.getElementById('tab-2-btn').addEventListener('click', function() { openTab('tab-2'); });
 document.getElementById('tab-3-btn').addEventListener('click', function() { openTab('tab-3'); });
@@ -170,6 +168,24 @@ function displayResults(results, tabId) {
       `;
 
       tabContent.appendChild(resultElement);
+
+      // Add event listener for the <a> tag
+      const playLink = resultElement.querySelector('a.play');
+      playLink.addEventListener('click', function (event) {
+        event.preventDefault();  // Prevent default anchor behavior (navigation)
+
+        const ticketNum = playLink.getAttribute('data-ticketNum');
+        const url = playLink.getAttribute('data-url');
+        const tabType = playLink.getAttribute('data-tabType');
+
+        console.log(ticketNum);
+        console.log(url);
+        console.log(tabType);
+
+        // Call the function with the values extracted from the <a> tag
+        initiateQueue(ticketNum, url, tabType);
+      });
+
       i++;
   });
 }

@@ -123,14 +123,21 @@ permalink: /⌨️/
                         class="mp3-cover-img">
                 </div>
                 <div class="mp3-title">
-                    <h4 id="audioTitle">No Audio Played</h4>
+                    <h3 id="audioTitle">No Audio Played</h3>
                 </div>
                 <div class="duration-slider">
-                    <p id="startDuration">00:00</p>
+                    <p id="startDuration" class="start-slider-p">00:00</p>
                     <div class="slider-container">
-                        <input type="range" name="mp3-duration" id="mp3-duration" min="0" max="100" value="50">
+                        <input type="range" name="mp3-duration" id="mp3-duration" class="mp3-slider" min="0" max="100" value="0">
                     </div>
-                    <p id="endDuration">00:00</p>
+                    <p id="endDuration" class="end-slider-p">00:00</p>
+                </div>
+                <div class="duration-slider" id="volume-slider-container" style="display: none;">
+                    <p id="plus-volume" class="start-slider-p">+ 100%</p>
+                    <div class="slider-container">
+                        <input type="range" id="mp3-volume-control" class="mp3-slider" min="0" max="100" value="100" step="5">
+                    </div>
+                    <p id="minus-volume" class="end-slider-p">- 0%</p>
                 </div>
                 <div class="mp3-control">
                     <i class="fa-solid fa-arrow-down-a-z fa-xl"></i>
@@ -145,8 +152,8 @@ permalink: /⌨️/
                     <i class="fa-solid fa-volume-xmark fa-xl" style="display: none;"></i>
                     <i class="fa-solid fa-volume-off fa-xl" style="display: none;"></i>
                     <i class="fa-solid fa-volume-low fa-xl" style="display: none;"></i>
-                    <i class="fa-solid fa-volume-high fa-xl"></i>
-                    <input type="range" id="mp3-volume-control" min="0" max="100" value="50">
+                    <i class="fa-solid fa-volume-high fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-ear-listen fa-xl"></i>
                 </div>
             </div>
         </div>
@@ -312,18 +319,19 @@ permalink: /⌨️/
     </div>
 
     {% include analytics.html %}
+    
+    <script type="module" src="/script/mp3Player.js"></script>
+    <script type="module" src="/script/timer.js"></script>
+    <script type="module" src="/script/modeToggle.js"></script>
+    <script type="module" src="/script/todo.js"></script>
+    <script type="module" src="/script/rssFeeds.js"></script>
+    
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/../../../script/service-worker.js');
+        }
+    </script>
 </body>
 
-<script type="module" src="/script/timer.js"></script>
-<script type="module" src="/script/modeToggle.js"></script>
-<script type="module" src="/script/todo.js"></script>
-<script type="module" src="/script/mp3Player.js"></script>
-<script type="module" src="/script/rssFeeds.js"></script>
-
-<script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/../../../script/service-worker.js');
-    }
-</script>
 
 </html>

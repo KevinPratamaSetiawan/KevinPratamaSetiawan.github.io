@@ -928,6 +928,11 @@ input[type=number] {
   }
 }
 
+.mp3-title{
+  width: 100%;
+  text-align: center;
+}
+
 .current-played-item{
   // background-color: var(--brand-color);
   border: 3px solid var(--brand-color);
@@ -946,7 +951,7 @@ input[type=number] {
 
   .slider-container {
     position: relative;
-    width: 100%;
+    width: 70%;
     margin: 0 10px;
 
     display: flex;
@@ -954,13 +959,35 @@ input[type=number] {
     align-items: center;
   }
 
-  #mp3-duration {
+  p{
+    width: 15%;
+  }
+
+  .start-slider-p{
+    text-align: left;
+    border-right: 3px solid $text-color;
+
+    &.dark-mode{
+      border-right: 3px solid $text-color-dark;
+    }
+  }
+
+  .end-slider-p{
+    text-align: end;
+    border-left: 3px solid $text-color;
+
+    &.dark-mode{
+      border-left: 3px solid $text-color-dark;
+    }
+  }
+
+  .mp3-slider {
     appearance: none;
     overflow: hidden;
     background-color: $text-color;
     width: 100%;
     height: 20px;
-    border-radius: 3px;
+    // border-radius: 3px;
     // border: 2px solid $text-color;
 
     &.dark-mode{
@@ -969,25 +996,25 @@ input[type=number] {
     }
   }
 
-  #mp3-duration::-webkit-slider-runnable-track {
+  .mp3-slider::-webkit-slider-runnable-track {
     height: 20px;
     appearance: none;
     // margin-top: -1px;
   }
 }
 
-#mp3-duration {
+.mp3-slider {
   &::-webkit-slider-thumb {
     width: 10px;
     appearance: none;
     height: 40px;
     cursor: grab;
-    background: $text-color-dark;
+    background: $light-gray;
     box-shadow: -250px 0 0px 250px var(--brand-color);
   }
   
   body.dark-mode &::-webkit-slider-thumb {
-    background: $text-color;
+    background: $light-gray;
     box-shadow: -250px 0 0px 250px var(--brand-color-dark);
   }
 }
@@ -1003,6 +1030,10 @@ input[type=number] {
 
   border-left: 5px solid var(--brand-color);
   border-right: 5px solid var(--brand-color);
+
+  i{
+    width: 10%;
+  }
 
   &.dark-mode{
     border-left: 5px solid var(--brand-color-dark);
