@@ -2,21 +2,30 @@
 const coverImage = document.getElementById('mp3-cover-img');
 
 function changeCoverImage() {
-  const totalImages = 26;
+  const totalImages = 43;
+  const gifIndex = [38, 39, 40, 41, 42, 43];
   let imageIndex = Math.floor(Math.random() * totalImages) + 1;
   let currentImageIndex = imageIndex;
+  let selectedFormat = 'jpeg';
 
   if (currentImageIndex === imageIndex) {
-    if(imageIndex === 26){
+    if(imageIndex === 43){
         imageIndex -= 8;
     }else{
         imageIndex++;
     }
   }
-  coverImage.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.jpeg`;
+
+  if (gifIndex.includes(imageIndex)){
+    selectedFormat = 'gif';
+  }else {
+    selectedFormat = 'jpeg';
+  }
+
+  coverImage.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.${selectedFormat}`;
 }
 
-setInterval(changeCoverImage, 20000);
+setInterval(changeCoverImage, 30000);
 
 let currentAudio;
 let currentIndex;

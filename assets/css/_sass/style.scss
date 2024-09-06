@@ -923,8 +923,10 @@ input[type=number] {
   border: 5px solid var(--brand-color);
 
   .mp3-cover-img{
+    width: 100%;
     border-radius: 5px;
-    object-fit: contain;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
   }
 }
 
