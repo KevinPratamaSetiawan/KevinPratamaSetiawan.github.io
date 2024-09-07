@@ -1,15 +1,29 @@
-// Mp3 Player Cover Changer
 const coverImage = document.getElementById('mp3-cover-img');
+const coverImageMax = document.getElementById('mp3-cover-img-max');
+const coverImageFull = document.getElementById('max-cover-img');
+const maximizeCoverImage = document.getElementById('maximize-cover');
 
+// Show the cover image when maximizeCoverImage is clicked
+maximizeCoverImage.addEventListener('click', function() {
+  coverImageFull.classList.add('show');
+});
+
+// Hide the cover image when clicking on it
+coverImageFull.addEventListener('click', function() {
+  coverImageFull.classList.remove('show');
+});
+
+// Mp3 Player Cover Changer
 function changeCoverImage() {
-  const totalImages = 43;
-  const gifIndex = [38, 39, 40, 41, 42, 43];
+  const totalImages = 46;
+  const jpgIndex = [44, 45, 46];
+  const gifIndex = [38, 39, 40, 41, 42, 43, 47];
   let imageIndex = Math.floor(Math.random() * totalImages) + 1;
   let currentImageIndex = imageIndex;
   let selectedFormat = 'jpeg';
 
   if (currentImageIndex === imageIndex) {
-    if(imageIndex === 43){
+    if(imageIndex === totalImages){
         imageIndex -= 8;
     }else{
         imageIndex++;
@@ -18,11 +32,14 @@ function changeCoverImage() {
 
   if (gifIndex.includes(imageIndex)){
     selectedFormat = 'gif';
+  }else if (jpgIndex.includes(imageIndex)){
+    selectedFormat = 'jpg';
   }else {
     selectedFormat = 'jpeg';
   }
 
   coverImage.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.${selectedFormat}`;
+  coverImageMax.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.${selectedFormat}`;
 }
 
 setInterval(changeCoverImage, 30000);

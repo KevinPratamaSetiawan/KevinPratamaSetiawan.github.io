@@ -261,7 +261,7 @@ function startTime() {
             document.getElementById('date-day').textContent = dayNameIndo[day].slice(0, 3) + ',';
             document.getElementById('date-digit').textContent = (date < 10 ? '0' : '') + date + ' ' + monthNameIndo[month].slice(0, 3) + ' ' + year;
             document.getElementById('time-digit').textContent = (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
-            document.getElementById('time-ampm').textContent = "";
+            document.getElementById('time-ampm').textContent = "WIB";
         } else {
             document.getElementById('date-day').textContent = dayNameEn[day].slice(0, 3) + ',';
             document.getElementById('date-digit').textContent = (date < 10 ? '0' : '') + date + ' ' + monthNameEn[month].slice(0, 3) + ' ' + year;
