@@ -178,10 +178,6 @@ function displayResults(results, tabId) {
         const url = playLink.getAttribute('data-url');
         const tabType = playLink.getAttribute('data-tabType');
 
-        console.log(ticketNum);
-        console.log(url);
-        console.log(tabType);
-
         // Call the function with the values extracted from the <a> tag
         initiateQueue(ticketNum, url, tabType);
       });

@@ -30,6 +30,8 @@ setInterval(changeCoverImage, 30000);
 let currentAudio;
 let currentIndex;
 let currentQueue = [];
+let normalQueue;
+let currentMode = 'normal';
 
 let playButton        = document.querySelector('.fa-circle-play');
 let pauseButton       = document.querySelector('.fa-circle-pause');
@@ -38,6 +40,7 @@ let rewindButton      = document.querySelector('.fa-backward');
 let nextButton        = document.querySelector('.fa-forward-step');
 let previousButton    = document.querySelector('.fa-backward-step');
 let normalQueueButton = document.querySelector('.fa-arrow-down-a-z');
+let reverseQueueButton= document.querySelector('.fa-arrow-down-z-a');
 let shuffleButton     = document.querySelector('.fa-shuffle');
 let repeatButton      = document.querySelector('.fa-repeat');
 let volumeButton1     = document.querySelector('.fa-ear-listen');
@@ -53,6 +56,10 @@ forwardButton.addEventListener('click', forwardAudio);
 rewindButton.addEventListener('click', rewindAudio);
 nextButton.addEventListener('click', nextAudio);
 previousButton.addEventListener('click', previousAudio);
+normalQueueButton.addEventListener('click', reverseQueue);
+reverseQueueButton.addEventListener('click', shuffleQueue);
+shuffleButton.addEventListener('click', repeatAudio);
+repeatButton.addEventListener('click', normalizeQueue);
 volumeButton1.addEventListener('click', showVolumeSlider);
 volumeButton2.addEventListener('click', showVolumeSlider);
 volumeButton3.addEventListener('click', showVolumeSlider);
@@ -65,13 +72,10 @@ const playBtn = document.querySelectorAll('.play');
 playBtn.forEach(function(button) {
   button.addEventListener('click', function() {
       currentQueue = []; // Reset queue on new play
+      normalQueue = []; // Reset queue on new play
       let ticketNum = button.getAttribute('data-ticketNum');
       let url = button.getAttribute('data-url');
       let tabType = button.getAttribute('data-tabType');
-
-      console.log(ticketNum);
-      console.log(url);
-      console.log(tabType);
 
       // Call your function with the values
       initiateQueue(ticketNum, url, tabType);
@@ -83,9 +87,8 @@ function initiateQueue(ticketNum, url, tabType) {
     const savedResults = localStorage.getItem(tabType);
     if (!savedResults) return;
     const results = JSON.parse(savedResults);
-    currentQueue = results || [];
-
-    console.log(results);
+    currentQueue = [...results] || [];
+    normalQueue = [...results];
 
   } else if (tabType === 'style-tab' || tabType === 'pop-out-tab') {
     fetch('/script/data/mp3_metadata.json')
@@ -99,13 +102,23 @@ function initiateQueue(ticketNum, url, tabType) {
       tabType = (tabType === 'style-tab') ? 'playlist1' : 'thePopOut';
       let results = data[tabType] || []; // Ensure results is an array
 
-      currentQueue = results;
+      currentQueue = [...results];
+      normalQueue = [...results];
     })
     .catch(error => {
       console.error('Error fetching the JSON file:', error);
     });
   }
-  currentIndex = parseInt(ticketNum, 10); // Ensure ticketNum is an integer
+  currentIndex = parseInt(ticketNum, 10);
+  console.log(currentIndex);
+
+  if (currentMode === 'reverse'){
+    reverseQueue();
+  }
+
+  if (currentMode === 'shuffle'){
+    shuffleQueue();
+  }
 
   playAudio(url);
   displayQueueTab(currentQueue, parseInt(ticketNum, 10));
@@ -117,14 +130,12 @@ function displayQueueTab(queueList, index) {
   const endDuration = document.getElementById('endDuration');
   const durationSlider = document.getElementById('mp3-duration');
 
-  if (!queueTab) return;
   queueTab.innerHTML = '';
   
   currentAudio.onloadedmetadata = function() {
     playTitle.innerHTML = currentQueue[currentIndex].title + '<br> by. <em>' + currentQueue[currentIndex].artist + '</em>';
     endDuration.innerHTML = currentQueue[currentIndex].duration;
     durationSlider.max = parseInt(currentAudio.duration);
-    console.log(currentAudio.duration);
   };
 
   queueList.forEach((queue, i) => {
@@ -179,6 +190,10 @@ function playAudio(audioLink) {
 
   currentAudio = new Audio(audioLink);
   currentAudio.play();
+
+  if (currentMode === 'repeat'){
+    repeatAudio();
+  }
 
   currentAudio.addEventListener('ended', function() {
     nextAudio(); // Play the next audio in the queue
@@ -309,6 +324,98 @@ function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${minutes < 10 ? '0' : ''}${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+function normalizeQueue () {
+  currentMode = 'normal';
+
+  normalQueueButton.style.display   = 'block';
+  reverseQueueButton.style.display  = 'none';
+  shuffleButton.style.display       = 'none';
+  repeatButton.style.display        = 'none';
+
+  if (currentQueue.length > 0) {
+    let trackAudioTitle = currentQueue[currentIndex].title;
+    currentQueue = [];
+    currentQueue = normalQueue;
+
+    for (let i=0; i<currentQueue.length; i++){
+      if (trackAudioTitle === currentQueue[i].title){
+        currentIndex = i;
+      }
+    }
+
+    displayQueueTab(currentQueue, currentIndex);
+  }
+}
+
+function reverseQueue () {
+  currentMode = 'reverse';
+
+  normalQueueButton.style.display   = 'none';
+  reverseQueueButton.style.display  = 'block';
+  shuffleButton.style.display       = 'none';
+  repeatButton.style.display        = 'none';
+
+  if (currentQueue.length > 0){
+    let trackAudioTitle = currentQueue[currentIndex].title;
+    
+    currentQueue = currentQueue.reverse();
+    
+    for (let i=0; i<currentQueue.length; i++){
+      if (trackAudioTitle === currentQueue[i].title){
+        currentIndex = i;
+      }
+    }
+
+    displayQueueTab(currentQueue, currentIndex);
+  }
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function shuffleQueue () {
+  currentMode = 'shuffle';
+
+  normalQueueButton.style.display   = 'none';
+  reverseQueueButton.style.display  = 'none';
+  shuffleButton.style.display       = 'block';
+  repeatButton.style.display        = 'none';
+
+  if (currentQueue.length > 0){
+    let trackAudioTitle = currentQueue[currentIndex].title;
+    
+    shuffleArray(currentQueue);
+    
+    if(currentAudio){
+      for (let i=0; i<currentQueue.length; i++){
+        if (trackAudioTitle === currentQueue[i].title){
+          currentIndex = i;
+        }
+      }
+    }
+
+    displayQueueTab(currentQueue, currentIndex);
+  }
+}
+
+function repeatAudio () {
+  currentMode = 'repeat';
+
+  normalQueueButton.style.display   = 'none';
+  reverseQueueButton.style.display  = 'none';
+  shuffleButton.style.display       = 'none';
+  repeatButton.style.display        = 'block';
+
+  if (currentAudio){
+    currentAudio.loop = true;
+    displayQueueTab(currentQueue, currentIndex);
+  }
 }
 
 window.initiateQueue = initiateQueue;
