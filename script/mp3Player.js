@@ -27,6 +27,26 @@ function changeCoverImage() {
 
 setInterval(changeCoverImage, 30000);
 
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('/script/data/mp3_metadata.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      const playlist1 = data['playlist1'] || [];
+      const thePopOut = data['thePopOut'] || [];
+
+      localStorage.setItem('style-tab', JSON.stringify(playlist1));
+      localStorage.setItem('pop-out-tab', JSON.stringify(thePopOut));
+    })
+    .catch(error => {
+      console.error('Error fetching the JSON file:', error);
+    });
+});
+
 let currentAudio;
 let currentIndex;
 let currentQueue = [];
@@ -83,45 +103,28 @@ playBtn.forEach(function(button) {
 });
 
 function initiateQueue(ticketNum, url, tabType) {
-  if (tabType === 'yard-tab' || tabType === 'premium-tab' || tabType === 'advice-tab') {
-    const savedResults = localStorage.getItem(tabType);
-    if (!savedResults) return;
-    const results = JSON.parse(savedResults);
-    currentQueue = [...results] || [];
-    normalQueue = [...results];
+  const savedResults = localStorage.getItem(tabType);
+  if (!savedResults) return;
+  const results = JSON.parse(savedResults);
+  currentQueue = [...results] || [];
+  normalQueue = [...results];
 
-  } else if (tabType === 'style-tab' || tabType === 'pop-out-tab') {
-    fetch('/script/data/mp3_metadata.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      tabType = (tabType === 'style-tab') ? 'playlist1' : 'thePopOut';
-      let results = data[tabType] || []; // Ensure results is an array
-
-      currentQueue = [...results];
-      normalQueue = [...results];
-    })
-    .catch(error => {
-      console.error('Error fetching the JSON file:', error);
-    });
-  }
   currentIndex = parseInt(ticketNum, 10);
-  console.log(currentIndex);
 
   if (currentMode === 'reverse'){
-    reverseQueue();
+    playAudio(url);
+    setTimeout(reverseQueue(), 5000);
   }
 
   if (currentMode === 'shuffle'){
-    shuffleQueue();
+    playAudio(url);
+    setTimeout(shuffleQueue(), 5000);
   }
 
-  playAudio(url);
-  displayQueueTab(currentQueue, parseInt(ticketNum, 10));
+  if (currentMode === 'normal'){
+    playAudio(url);
+    setTimeout(displayQueueTab(currentQueue, parseInt(ticketNum, 10)), 5000);
+  }
 }
 
 function displayQueueTab(queueList, index) {
@@ -337,7 +340,7 @@ function normalizeQueue () {
   if (currentQueue.length > 0) {
     let trackAudioTitle = currentQueue[currentIndex].title;
     currentQueue = [];
-    currentQueue = normalQueue;
+    currentQueue = [...normalQueue];
 
     for (let i=0; i<currentQueue.length; i++){
       if (trackAudioTitle === currentQueue[i].title){
@@ -373,8 +376,14 @@ function reverseQueue () {
 }
 
 function shuffleArray(array) {
-  for (let i = array.length - 1; i >= 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+  // Ensure the current audio is at index 0
+  if (currentIndex > 0) {
+      [array[0], array[currentIndex]] = [array[currentIndex], array[0]];
+  }
+
+  // Shuffle the rest of the array, starting from index 1
+  for (let i = array.length - 1; i > 1; i--) {
+      const j = Math.floor(Math.random() * (i - 1)) + 1; // Shuffle from index 1 onwards
       [array[i], array[j]] = [array[j], array[i]];
   }
 }
@@ -388,17 +397,8 @@ function shuffleQueue () {
   repeatButton.style.display        = 'none';
 
   if (currentQueue.length > 0){
-    let trackAudioTitle = currentQueue[currentIndex].title;
-    
     shuffleArray(currentQueue);
-    
-    if(currentAudio){
-      for (let i=0; i<currentQueue.length; i++){
-        if (trackAudioTitle === currentQueue[i].title){
-          currentIndex = i;
-        }
-      }
-    }
+    currentIndex = 0;
 
     displayQueueTab(currentQueue, currentIndex);
   }
