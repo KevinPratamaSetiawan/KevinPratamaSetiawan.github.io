@@ -13,6 +13,21 @@ coverImageFull.addEventListener('click', function() {
   coverImageFull.classList.remove('show');
 });
 
+function setMaxCoverImgHeight() {
+  const bodyElement = document.getElementById('terminal-body');
+  const maxCoverImg = document.getElementById('max-cover-img');
+
+  // Get the height of the reference element
+  const bodyHeight = bodyElement.offsetHeight;
+
+  // Set the height of the max-cover-img
+  maxCoverImg.style.height = `${bodyHeight}px`;
+}
+
+setMaxCoverImgHeight();
+
+window.addEventListener('resize', setMaxCoverImgHeight);
+
 // Mp3 Player Cover Changer
 function changeCoverImage() {
   const totalImages = 46;
