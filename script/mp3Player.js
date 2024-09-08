@@ -6,6 +6,7 @@ const coverFileName = document.getElementById('cover-file-name');
 const coverCountdown = document.getElementById('cover-countdown');
 let coverChangeInterval = 30000;
 let countdownValue = coverChangeInterval;
+let coverChangeCounter = 0;
 
 // Show the cover image when maximizeCoverImage is clicked
 maximizeCoverImage.addEventListener('click', function() {
@@ -15,6 +16,7 @@ maximizeCoverImage.addEventListener('click', function() {
 // Hide the cover image when clicking on it
 coverImageFull.addEventListener('click', function() {
   coverImageFull.classList.remove('show');
+  coverChangeCounter = 0;
 });
 
 // Mp3 Player Cover Changer
@@ -42,9 +44,11 @@ function changeCoverImage() {
     selectedFormat = 'jpeg';
   }
 
+  coverChangeCounter++;
+
   coverImage.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.${selectedFormat}`;
   coverImageMax.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.${selectedFormat}`;
-  coverFileName.innerHTML = `../mp3-cover-${imageIndex}.${selectedFormat}`;
+  coverFileName.innerHTML = `../mp3-cover-${imageIndex}.${selectedFormat} 「${numberToRoman(coverChangeCounter)}」`;
 
   countdownValue = coverChangeInterval;
 }
@@ -55,15 +59,44 @@ function changeCountdown () {
 
   coverCountdown.textContent = seconds.toString().padStart(2, '0') + ':' + milliseconds.toString().padStart(3, '0');
 
-  countdownValue -= 1;
+  countdownValue -= 10;
 
   if (countdownValue <= 0) {
     countdownValue = coverChangeInterval;
   }
 }
 
+function numberToRoman(num) {
+  const romanNumerals = [
+      { value: 1000, numeral: 'M' },
+      { value: 900, numeral: 'CM' },
+      { value: 500, numeral: 'D' },
+      { value: 400, numeral: 'CD' },
+      { value: 100, numeral: 'C' },
+      { value: 90, numeral: 'XC' },
+      { value: 50, numeral: 'L' },
+      { value: 40, numeral: 'XL' },
+      { value: 10, numeral: 'X' },
+      { value: 9, numeral: 'IX' },
+      { value: 5, numeral: 'V' },
+      { value: 4, numeral: 'IV' },
+      { value: 1, numeral: 'I' }
+  ];
+  
+  let result = '';
+  
+  for (const { value, numeral } of romanNumerals) {
+      while (num >= value) {
+          result += numeral;
+          num -= value;
+      }
+  }
+  
+  return result;
+}
+
 setInterval(changeCoverImage, coverChangeInterval);
-setInterval(changeCountdown, 1);
+setInterval(changeCountdown, 10);
 
 document.addEventListener('DOMContentLoaded', () => {
   fetch('/script/data/mp3_metadata.json')
