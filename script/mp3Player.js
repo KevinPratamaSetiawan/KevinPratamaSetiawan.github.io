@@ -57,7 +57,7 @@ function changeCountdown () {
   const seconds = Math.floor(countdownValue / 1000);
   const milliseconds = countdownValue % 1000;
 
-  coverCountdown.textContent = seconds.toString().padStart(2, '0') + ':' + milliseconds.toString().padStart(3, '0');
+  coverCountdown.textContent = seconds.toString().padStart(2, '0') + ':' + milliseconds.toString().padStart(2, '0').slice(0, 2);
 
   countdownValue -= 10;
 
