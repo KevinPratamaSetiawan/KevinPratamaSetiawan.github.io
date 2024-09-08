@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleButtonLogo.classList.add('fa-flip-horizontal')
                 logo.src = '/black-logo.png';
                 document.documentElement.style.setProperty('--background-color', '#fdfdfd');
+                document.documentElement.style.setProperty('--background-color-rgb', '253,253,253');
                 document.documentElement.style.setProperty('--text-color', '#333');
                 document.documentElement.style.setProperty('--copy-color', '#23272d');
                 document.documentElement.style.setProperty('--projectbox', '#c3e1c9');
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleButtonLogo.classList.remove('fa-flip-horizontal')
                 logo.src = '/white-logo.png';
                 document.documentElement.style.setProperty('--background-color', '#23272d');
+                document.documentElement.style.setProperty('--background-color-rgb', '35,39,45');
                 document.documentElement.style.setProperty('--text-color', '#fff');
                 document.documentElement.style.setProperty('--copy-color', '#fff');
                 document.documentElement.style.setProperty('--projectbox', '#1e2126');
@@ -54,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleButtonLogo.classList.add('fa-flip-horizontal')
             logo.src = '/black-logo.png';
             document.documentElement.style.setProperty('--background-color', '#fdfdfd');
+            document.documentElement.style.setProperty('--background-color-rgb', '253,253,253');
             document.documentElement.style.setProperty('--text-color', '#333');
             document.documentElement.style.setProperty('--copy-color', '#23272d');
             document.documentElement.style.setProperty('--projectbox', '#c3e1c9');
@@ -64,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleButtonLogo.classList.remove('fa-flip-horizontal')
             logo.src = '/white-logo.png';
             document.documentElement.style.setProperty('--background-color', '#23272d');
+            document.documentElement.style.setProperty('--background-color-rgb', '35,39,45');
             document.documentElement.style.setProperty('--text-color', '#fff');
             document.documentElement.style.setProperty('--copy-color', '#fff');
             document.documentElement.style.setProperty('--projectbox', '#1e2126');

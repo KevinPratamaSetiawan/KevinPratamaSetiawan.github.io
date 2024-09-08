@@ -2,6 +2,10 @@ const coverImage = document.getElementById('mp3-cover-img');
 const coverImageMax = document.getElementById('mp3-cover-img-max');
 const coverImageFull = document.getElementById('max-cover-img');
 const maximizeCoverImage = document.getElementById('maximize-cover');
+const coverFileName = document.getElementById('cover-file-name');
+const coverCountdown = document.getElementById('cover-countdown');
+let coverChangeInterval = 30000;
+let countdownValue = coverChangeInterval;
 
 // Show the cover image when maximizeCoverImage is clicked
 maximizeCoverImage.addEventListener('click', function() {
@@ -40,9 +44,26 @@ function changeCoverImage() {
 
   coverImage.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.${selectedFormat}`;
   coverImageMax.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.${selectedFormat}`;
+  coverFileName.innerHTML = `../mp3-cover-${imageIndex}.${selectedFormat}`;
+
+  countdownValue = coverChangeInterval;
 }
 
-setInterval(changeCoverImage, 30000);
+function changeCountdown () {
+  const seconds = Math.floor(countdownValue / 1000);
+  const milliseconds = countdownValue % 1000;
+
+  coverCountdown.textContent = seconds.toString().padStart(2, '0') + ':' + milliseconds.toString().padStart(3, '0');
+
+  countdownValue -= 1;
+
+  if (countdownValue <= 0) {
+    countdownValue = coverChangeInterval;
+  }
+}
+
+setInterval(changeCoverImage, coverChangeInterval);
+setInterval(changeCountdown, 1);
 
 document.addEventListener('DOMContentLoaded', () => {
   fetch('/script/data/mp3_metadata.json')
