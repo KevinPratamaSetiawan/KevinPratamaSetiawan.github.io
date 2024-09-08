@@ -1,9 +1,12 @@
 :root{
-    // Light Mode
+    --light-gray:       gray;
     --brand-color:      #60c17d;
-
-    // Dark Mode
-    --brand-color-dark : #c16560;
+    
+    --background-color: #fdfdfd;
+    --text-color:       #333;
+    --copy-color:       #23272d;
+    --projectbox:       #c3e1c9;
+    --projectbox-text:  #1e2126;
 }
 
 // $base-font-family: 'Work Sans', sans-serif;
@@ -12,26 +15,7 @@ $base-font-size:   20px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.7;
-
 $spacing-unit:     30px;
-$light-gray:gray;
-$copy-color: #23272d;
 
-$text-color:       #333;
-$background-color: #fdfdfd;
-$projectbox-text:  #1e2126;
-
-// Light Mode
-$brand-color: #60c17d;
 $light-brand-color: var(--brand-color);
-$body-bg: #fdfdfd;
-$projectbox: #c3e1c9;
-$copy-color: #23272d;
-
-// Dark Mode
-$brand-color-dark : #c16560;
 $light-brand-color-dark : var(--brand-color-dark);
-$copy-color-dark: #fff;
-$body-bg-dark: #23272d;
-$projectbox-dark: lighten(#fff, 2%);
-$text-color-dark: #fff;

@@ -47,25 +47,14 @@
 }
 
 .rounded-social-buttons .social-button.mode {
-  background: $text-color;
-  color: $body-bg;
-
-  &.dark-mode{
-    background: $text-color-dark;
-    color: $body-bg-dark;
-  }
+  background: var(--text-color);
+  color: var(--background-color);
 }
 
 .rounded-social-buttons .social-button.mode:hover, .rounded-social-buttons .social-button.mode:focus {
-  color: $text-color;
-  background: $background-color;
+  color: var(--text-color);
+  background: var(--background-color);
   border-color: var(--brand-color);
-
-  &.dark-mode{
-    color: $text-color-dark;
-    background: $body-bg-dark;
-    border-color: var(--brand-color-dark);
-  }
 }
 
 .rounded-social-buttons .social-button.facebook {

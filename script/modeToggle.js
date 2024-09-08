@@ -1,66 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('mode-btn');
-    const body = document.body;
+    const toggleButtonLogo = document.getElementById('mode-icon');
     const logo = document.getElementById('mode-logo');
-    const elementsToToggle = document.querySelectorAll(
-        'a, p, pre, code, blockquote, .cert-category, .password, .social-button, input, div, .main-content > div > h4, li, .tab-btn, .todo-item, .custom-file-upload, #slider-icon, .mp3-play-btn, .mp3-numbers, .mp3-cover-image'
-    );
 
-    // Check and apply saved mode
-    const applyMode = (isDark) => {
-        body.classList.toggle('dark-mode', isDark);
-        logo.src = isDark ? '/white-logo.png' : '/black-logo.png';
-    
-        elementsToToggle.forEach(element => {
-            element.classList.toggle('dark-mode', isDark);
-        });
-    
-        // Update dark mode for dynamically created todo items
-        const todoItems = document.querySelectorAll('.todo-item');
-        todoItems.forEach(item => {
-            item.classList.toggle('dark-mode', isDark);
-        });
+    const applyMode = () => {
+        const savedMode = localStorage.getItem('currentMode');
 
-        const podItems = document.querySelectorAll('.mp3-container');
-        podItems.forEach(item => {
-            item.classList.toggle('dark-mode', isDark);
-        });
-
-        const podPlayBtn = document.querySelectorAll('.play');
-        podPlayBtn.forEach(item => {
-            item.classList.toggle('dark-mode', isDark);
-        });
-
-        const mp3Numbers = document.querySelectorAll('.mp3-numbers');
-        mp3Numbers.forEach(item => {
-            item.classList.toggle('dark-mode', isDark);
-        });
+        if (savedMode){
+            if (savedMode === 'light') {
+                toggleButtonLogo.classList.remove('fa-sun')
+                toggleButtonLogo.classList.add('fa-moon')
+                toggleButtonLogo.classList.add('fa-flip-horizontal')
+                logo.src = '/black-logo.png';
+                document.documentElement.style.setProperty('--background-color', '#fdfdfd');
+                document.documentElement.style.setProperty('--text-color', '#333');
+                document.documentElement.style.setProperty('--copy-color', '#23272d');
+                document.documentElement.style.setProperty('--projectbox', '#c3e1c9');
+                document.documentElement.style.setProperty('--projectbox-text', '#1e2126');
+            }else if (savedMode === 'dark') {
+                toggleButtonLogo.classList.add('fa-sun')
+                toggleButtonLogo.classList.remove('fa-moon')
+                toggleButtonLogo.classList.remove('fa-flip-horizontal')
+                logo.src = '/white-logo.png';
+                document.documentElement.style.setProperty('--background-color', '#23272d');
+                document.documentElement.style.setProperty('--text-color', '#fff');
+                document.documentElement.style.setProperty('--copy-color', '#fff');
+                document.documentElement.style.setProperty('--projectbox', '#1e2126');
+                document.documentElement.style.setProperty('--projectbox-text', '#c3e1c9');
+            }
+        }else {
+            localStorage.setItem('currentMode', 'light');
+        }
     };
-    
 
-    const savedMode = localStorage.getItem('mode');
-    applyMode(savedMode === 'dark-mode');
+    applyMode();
 
-    // Toggle mode on button click
     toggleButton.addEventListener('click', () => {
-        // let symbols = ['fa-sun','fa-radiation','fa-biohazard','fa-snowflake','fa-react','fa-fire-flame-curved','fa-galactic-senate','fa-jedi'];
-        // let random = Math.floor(Math.random() * 1000) % symbols.length;
+        let savedMode = localStorage.getItem('currentMode');
 
-        // for(let i=0;i<symbols.length;i++){
-        //     let elements = document.getElementsByClassName(symbols[i]);
-        //     if (elements.length > 0) {
-        //         elements[0].style.display = 'none';
-        //     }
-        // }
+        if (!savedMode){
+            savedMode = 'light';
+        }
 
-        // let selectedElement = document.getElementsByClassName(symbols[random]);
-        // if (selectedElement.length > 0) {
-        //     selectedElement[0].style.display = 'flex';
-        // }
+        if (savedMode === 'light') {
+            savedMode = 'dark';
+        }else if (savedMode === 'dark') {
+            savedMode = 'light';
+        }
+    
+        if (savedMode === 'light') {
+            toggleButtonLogo.classList.remove('fa-sun')
+            toggleButtonLogo.classList.add('fa-cloud-moon')
+            toggleButtonLogo.classList.add('fa-flip-horizontal')
+            logo.src = '/black-logo.png';
+            document.documentElement.style.setProperty('--background-color', '#fdfdfd');
+            document.documentElement.style.setProperty('--text-color', '#333');
+            document.documentElement.style.setProperty('--copy-color', '#23272d');
+            document.documentElement.style.setProperty('--projectbox', '#c3e1c9');
+            document.documentElement.style.setProperty('--projectbox-text', '#1e2126');
+        }else if (savedMode === 'dark') {
+            toggleButtonLogo.classList.add('fa-sun')
+            toggleButtonLogo.classList.remove('fa-cloud-moon')
+            toggleButtonLogo.classList.remove('fa-flip-horizontal')
+            logo.src = '/white-logo.png';
+            document.documentElement.style.setProperty('--background-color', '#23272d');
+            document.documentElement.style.setProperty('--text-color', '#fff');
+            document.documentElement.style.setProperty('--copy-color', '#fff');
+            document.documentElement.style.setProperty('--projectbox', '#1e2126');
+            document.documentElement.style.setProperty('--projectbox-text', '#c3e1c9');
+        }
 
-        const isDarkMode = body.classList.toggle('dark-mode');
-        localStorage.setItem('mode', isDarkMode ? 'dark-mode' : 'light-mode');
-        applyMode(isDarkMode);
+        localStorage.setItem('currentMode', savedMode);
     });
 });
 
@@ -69,12 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const applyMode = () => {
         const savedBrandColor = localStorage.getItem('brand-color');
-        const savedBrandColorDark = localStorage.getItem('brand-color-dark');
         if (savedBrandColor) {
             document.documentElement.style.setProperty('--brand-color', savedBrandColor);
-        }
-        if (savedBrandColorDark) {
-            document.documentElement.style.setProperty('--brand-color-dark', savedBrandColorDark);
         }
     };
 
@@ -90,13 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
         const randomIndex = Math.floor(Math.random() * colors.length);
     
-        const lightNewColor = colors[randomIndex];
-        const darkNewColor = colors[randomIndex];
+        const newColor = colors[randomIndex];
     
-        document.documentElement.style.setProperty('--brand-color', lightNewColor);
-        document.documentElement.style.setProperty('--brand-color-dark', darkNewColor);
+        document.documentElement.style.setProperty('--brand-color', newColor);
 
-        localStorage.setItem('brand-color', lightNewColor);
-        localStorage.setItem('brand-color-dark', darkNewColor);
+        localStorage.setItem('brand-color', newColor);
     });
 });

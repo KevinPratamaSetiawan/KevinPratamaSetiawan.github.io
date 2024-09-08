@@ -8,8 +8,8 @@ body:not(.terminal-body) {
   margin: 0 auto;
   line-height: $base-line-height;
   font-size: $base-font-size;
-  color: $text-color;
-  background-color: $body-bg;
+  color: var(--text-color);
+  background-color: var(--background-color);
   padding: 2em 1em;
   text-rendering: optimizeLegibility;
   height: max-content;
@@ -17,11 +17,6 @@ body:not(.terminal-body) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  &.dark-mode {
-    background-color: $body-bg-dark;
-    color: $text-color-dark;
-  }
 }
 
 
@@ -51,23 +46,14 @@ h1,h2,h3,h4,h5,h6 {
 a {
   color: var(--brand-color);
   text-decoration: none;
-
-  &.dark-mode {
-    color: var(--brand-color-dark);
-  }
 }
 
 a:hover{
-  color: $text-color;
-
-  &.dark-mode {
-    color: $text-color-dark;
-  }
-
+  color: var(--text-color);
 }
 
 p a:not(.none) {
-  color: $text-color;
+  color: var(--text-color);
   text-decoration: none;
   background: -webkit-linear-gradient(transparent 90%, $light-brand-color 10%);
   background: -moz-linear-gradient(transparent 90%, $light-brand-color 10%);
@@ -86,21 +72,6 @@ p a:not(.none) {
   }
 }
 
-p a:not(.none).dark-mode {
-  color: $text-color-dark;
-  background: -webkit-linear-gradient(transparent 90%, $light-brand-color-dark 10%);
-  background: -moz-linear-gradient(transparent 90%, $light-brand-color-dark 10%);
-  background: linear-gradient(transparent 90%, $light-brand-color-dark 10%);
-
-  -webkit-box-shadow: inset 0 0 0 0 $light-brand-color-dark;
-  box-shadow: inset 0 0 0 0 $light-brand-color-dark;
-
-  &:hover {
-    -webkit-box-shadow: inset 0 -100px 0 0 $light-brand-color-dark;
-    box-shadow: inset 0 -100px 0 0 $light-brand-color-dark;
-  }
-}
-
 a.none {
   color: inherit;
   text-decoration: none;
@@ -111,10 +82,6 @@ a.none {
     color: inherit;
     text-decoration: none;
     cursor: context-menu;
-  }
-
-  &.dark-mode {
-    color: inherit;
   }
 }
 
@@ -136,10 +103,6 @@ code {
   > code {
     border: none;
   }
-
-  &.dark-mode{
-    border: 1px solid var(--brand-color-dark);
-  }
 }
 
 pre {
@@ -156,10 +119,6 @@ blockquote {
   font-family: Georgia,Times,Times New Roman,serif;
   font-size: 0.9*$base-font-size;
   font-style: italic;
-
-  &.dark-mode{
-    border-left: 2px solid var(--brand-color-dark);
-  }
 }
 
 
@@ -240,27 +199,15 @@ blockquote {
   font-weight: 600;
   border-radius: 8px;
   padding: 13px 23px;
-  border: 3px solid $text-color;
+  border: 3px solid var(--text-color);
   transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
-  background: $background-color;
-  color: $text-color;
+  background: var(--background-color);
+  color: var(--text-color);
 
   &:hover {
-    border-color: $background-color;
-    background: $text-color;
-    color: $background-color;
-  }
-}
-
-.simplebutton.dark-mode{
-  border: 3px solid $text-color-dark;
-  background: $body-bg-dark;
-  color: $text-color-dark;
-
-  &:hover{
-    border-color: $body-bg-dark;
-    background: $text-color-dark;
-    color: $body-bg-dark;
+    border-color: var(--background-color);
+    background: var(--text-color);
+    color: var(--background-color);
   }
 }
 
@@ -268,15 +215,10 @@ blockquote {
   padding: 10px;
   width: 250px;
   border: none;
-  border-bottom: 3px solid $text-color;
+  border-bottom: 3px solid var(--text-color);
   border-radius: 0;
   background: none;
-  color: $text-color;
-
-  &.dark-mode{
-    border-bottom: 3px solid $text-color-dark;
-    color: $text-color-dark;
-  }
+  color: var(--text-color);
 }
 
 #submit-button {
@@ -312,10 +254,6 @@ blockquote {
 
   min-width: 60px;
   text-align: center;
-
-  &.dark-mode{
-    border: 3px dashed var(--brand-color-dark);
-  }
 }
 
 .img-container {
@@ -365,16 +303,9 @@ blockquote {
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-
   margin: 0;
-
-  background-color: $background-color;
-  color: $text-color;
-
-  &.dark-mode{
-    background-color: $body-bg-dark;
-    color: $text-color-dark;
-  }
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .terminal-nav{
@@ -436,13 +367,8 @@ blockquote {
   box-shadow: none;
   text-align: center;
   font-size: $base-font-size;
-  color: $text-color;
+  color: var(--text-color);
   border-bottom: 3px solid var(--brand-color);
-
-  &.dark-mode{
-    color: $text-color-dark;
-    border-bottom: 3px solid var(--brand-color-dark);
-  }
 }
 
 input::-webkit-outer-spin-button,
@@ -470,28 +396,18 @@ input[type=number] {
   width: 30%;
   height: 100%;
 
-  border: 3px solid $text-color;
+  border: 3px solid var(--text-color);
   border-radius: 10px;
   padding: 10px;
-
-  &.dark-mode{
-    border: 3px solid $text-color-dark;
-  }
 }
 
 .main-content > div > h4{
   width: 100%;
   border-left: 5px solid var(--brand-color);
   padding-left: 10px;
-
-  &.dark-mode{
-    border-left: 5px solid var(--brand-color-dark);
-  }
 }
 
 .todo-list, .rss-feed, .music-list{
-  // display: flex;
-  // flex-direction: column;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(20, 1fr);
@@ -524,13 +440,8 @@ input[type=number] {
   padding: 0 5px;
   margin-bottom: 10px;
 
-  border-left: 3px solid $text-color;
-  border-right: 3px solid $text-color;
-
-  &.dark-mode{
-    border-left: 3px solid $text-color-dark;
-    border-right: 3px solid $text-color-dark;
-  }
+  border-left: 3px solid var(--text-color);
+  border-right: 3px solid var(--text-color);
 
   div{
     display: flex;
@@ -597,13 +508,8 @@ input[type=number] {
     box-shadow: none;
     width: 100%;
     padding: 5px;
-    color: $text-color;
+    color: var(--text-color);
     border-bottom: 3px solid var(--brand-color);
-
-    &.dark-mode{
-      color: $text-color-dark;
-      border-bottom: 3px solid var(--brand-color-dark);
-    }
   }
 }
 
@@ -644,7 +550,7 @@ input[type=number] {
   li{
     width: 100%;
     padding: 10px;
-    border: 3px solid $text-color;
+    border: 3px solid var(--text-color);
     border-radius: 5px;
     margin-bottom: 10px;
     
@@ -664,39 +570,27 @@ input[type=number] {
     .fa-circle-exclamation{
       color: var(--brand-color);
     }
-    
-    &.dark-mode{
-      border: 3px solid $text-color-dark;
-    }
   }
 }
 
 #xml-tab a{
-  color: $text-color;
+  color: var(--text-color);
 
   :hover{
     color: var(--brand-color);
-  }
-
-  &.dark-mode{
-    color: $text-color-dark;
   }
 }
 
 .io-item{
   width: 100%;
   padding: 10px;
-  border: 3px solid $text-color;
+  border: 3px solid var(--text-color);
   border-radius: 5px;
   margin-bottom: 10px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  &.dark-mode{
-    border: 3px solid $text-color-dark;
-  }
 }
 
 .mp3-container{
@@ -706,13 +600,9 @@ input[type=number] {
 
   width: 100%;
   padding: 10px;
-  border: 3px solid $text-color;
+  border: 3px solid var(--text-color);
   border-radius: 5px;
   margin-bottom: 10px;
-
-  &.dark-mode{
-    border: 3px solid $text-color-dark;
-  }
 
   .mp3-title-date{
     grid-area: 1 / 2 / 2 / 9;
@@ -758,10 +648,6 @@ input[type=number] {
     background-color: var(--brand-color);
     border-radius: 5px;
     font-weight: bold;
-
-    &.dark-mode{
-      background-color: var(--brand-color-dark);
-    }
   }
 
   .mp3-title-date, .mp3-number-duration{
@@ -785,28 +671,17 @@ input[type=number] {
   }
 
   i:hover{
-    color: $text-color;
-  }
-
-  .dark-mode i{
-    color: var(--brand-color-dark);
-
-    &:hover{
-      color: $text-color-dark;
-    }
+    color: var(--text-color);
   }
 }
 
 .todo-item{
-  border: 3px solid $text-color;
-  &.dark-mode{
-    border: 3px solid $text-color-dark;
-  }
+  border: 3px solid var(--text-color);
 }
 
 .completed {
   text-decoration: line-through;
-  color: gray;
+  color: var(--light-gray);
 }
 
 .tabs-nav{
@@ -825,48 +700,31 @@ input[type=number] {
 
     i{
       color: var(--brand-color);
-      &.dark-mode{
-        color: var(--brand-color-dark);
-      }
     }
 
     p{
-      color: $text-color;
+      color: var(--text-color);
       border-bottom: 3px solid var(--brand-color);
-
-      &.dark-mode{
-        color: $text-color-dark;
-        border-bottom: 3px solid var(--brand-color-dark);
-      }
     }
   }
 }
 
-/* Style the custom file upload button */
 .custom-file-upload {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   padding: 12px;
-  background-color: $text-color; /* Optional: customize button background */
+  background-color: var(--text-color);
   border-radius: 5px;
-  color: $background-color; /* Optional: customize icon color */
+  color: var(--background-color);
   font-size: 18px;
   width: 100%;
   height: 40px;
-
-  &.dark-mode{
-    background-color: $text-color-dark;
-    color: $body-bg-dark;
-  }
 }
 
 .custom-file-upload:hover {
   background-color: var(--brand-color);
-  &.dark-mode{
-    background-color: var(--brand-color-dark);
-  }
 }
 
 #mp3-player{
@@ -897,19 +755,11 @@ input[type=number] {
 
     i{
       color: var(--brand-color);
-      &.dark-mode{
-        color: var(--brand-color-dark);
-      }
     }
 
     p{
-      color: $text-color;
+      color: var(--text-color);
       border-bottom: 3px solid var(--brand-color);
-
-      &.dark-mode{
-        color: $text-color-dark;
-        border-bottom: 3px solid var(--brand-color-dark);
-      }
     }
   }
 }
@@ -920,7 +770,7 @@ input[type=number] {
   display: none; /* Initially hidden */
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
@@ -934,7 +784,7 @@ input[type=number] {
 }
 
 #max-cover-img.show {
-  display: flex; /* Show when .show class is added */
+  display: flex;
 }
 
 .mp3-cover {
@@ -983,10 +833,6 @@ input[type=number] {
 .current-played-item{
   // background-color: var(--brand-color);
   border: 3px solid var(--brand-color);
-
-  &.dark-mode{
-    border: 3px solid var(--brand-color);
-  }
 }
 
 .duration-slider {
@@ -1012,35 +858,26 @@ input[type=number] {
 
   .start-slider-p{
     text-align: left;
-    border-right: 3px solid $text-color;
-
-    &.dark-mode{
-      border-right: 3px solid $text-color-dark;
-    }
+    border-right: 3px solid var(--text-color);
   }
 
   .end-slider-p{
     text-align: end;
-    border-left: 3px solid $text-color;
+    border-left: 3px solid var(--text-color);
 
     &.dark-mode{
-      border-left: 3px solid $text-color-dark;
+      border-left: 3px solid var(--text-color)-dark;
     }
   }
 
   .mp3-slider {
     appearance: none;
     overflow: hidden;
-    background-color: $text-color;
+    background-color: var(--text-color);
     width: 100%;
     height: 20px;
     // border-radius: 3px;
-    // border: 2px solid $text-color;
-
-    &.dark-mode{
-      background-color: $text-color-dark;
-      // border: 2px solid $text-color-dark;
-    }
+    // border: 2px solid var(--text-color);
   }
 
   .mp3-slider::-webkit-slider-runnable-track {
@@ -1056,13 +893,8 @@ input[type=number] {
     appearance: none;
     height: 40px;
     cursor: grab;
-    background: $light-gray;
+    background: var(--light-gray);
     box-shadow: -250px 0 0px 250px var(--brand-color);
-  }
-  
-  body.dark-mode &::-webkit-slider-thumb {
-    background: $light-gray;
-    box-shadow: -250px 0 0px 250px var(--brand-color-dark);
   }
 }
 
@@ -1080,11 +912,6 @@ input[type=number] {
 
   i{
     width: 10%;
-  }
-
-  &.dark-mode{
-    border-left: 5px solid var(--brand-color-dark);
-    border-right: 5px solid var(--brand-color-dark);
   }
 }
 
