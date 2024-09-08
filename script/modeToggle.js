@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         if (savedMode === 'light') {
             toggleButtonLogo.classList.remove('fa-sun')
-            toggleButtonLogo.classList.add('fa-cloud-moon')
+            toggleButtonLogo.classList.add('fa-moon')
             toggleButtonLogo.classList.add('fa-flip-horizontal')
             logo.src = '/black-logo.png';
             document.documentElement.style.setProperty('--background-color', '#fdfdfd');
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.style.setProperty('--projectbox-text', '#1e2126');
         }else if (savedMode === 'dark') {
             toggleButtonLogo.classList.add('fa-sun')
-            toggleButtonLogo.classList.remove('fa-cloud-moon')
+            toggleButtonLogo.classList.remove('fa-moon')
             toggleButtonLogo.classList.remove('fa-flip-horizontal')
             logo.src = '/white-logo.png';
             document.documentElement.style.setProperty('--background-color', '#23272d');
