@@ -6,6 +6,7 @@ document.getElementById('tab-5-btn').addEventListener('click', function() { open
 document.getElementById('tab-6-btn').addEventListener('click', function() { openTab('tab-6'); });
 document.getElementById('ide-btn').addEventListener('click', function() { openMp3Tab('mp3-player'); });
 document.getElementById('queue-btn').addEventListener('click', function() { openMp3Tab('queue-tab'); });
+document.getElementById('settings-btn').addEventListener('click', function() { openMp3Tab('settings-tab'); });
 
 // Change Tab Function
 function openTab(tabClass) {
@@ -35,9 +36,15 @@ function openMp3Tab(tabClass) {
   if(tabClass === 'mp3-player'){
     document.getElementById('mp3-player').style.display = 'flex';
     document.getElementById('queue-tab').style.display = 'none';
+    document.getElementById('settings-tab').style.display = 'none';
   }else if(tabClass === 'queue-tab'){
     document.getElementById('mp3-player').style.display = 'none';
     document.getElementById('queue-tab').style.display = 'block';
+    document.getElementById('settings-tab').style.display = 'none';
+  }else if(tabClass === 'settings-tab'){
+    document.getElementById('mp3-player').style.display = 'none';
+    document.getElementById('queue-tab').style.display = 'none';
+    document.getElementById('settings-tab').style.display = 'block';
   }
 }
 

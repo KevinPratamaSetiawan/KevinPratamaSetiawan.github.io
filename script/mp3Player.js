@@ -7,6 +7,7 @@ const coverCountdown = document.getElementById('cover-countdown');
 let coverChangeInterval = 30000;
 let countdownValue = coverChangeInterval;
 let coverChangeCounter = 0;
+let coverDoctype = 'all'
 
 // Show the cover image when maximizeCoverImage is clicked
 maximizeCoverImage.addEventListener('click', function() {
@@ -21,27 +22,47 @@ coverImageFull.addEventListener('click', function() {
 
 // Mp3 Player Cover Changer
 function changeCoverImage() {
+  let imageIndex
   const totalImages = 46;
   const jpgIndex = [44, 45, 46];
   const gifIndex = [38, 39, 40, 41, 42, 43, 47];
-  let imageIndex = Math.floor(Math.random() * totalImages) + 1;
-  let currentImageIndex = imageIndex;
   let selectedFormat = 'jpeg';
 
-  if (currentImageIndex === imageIndex) {
-    if(imageIndex === totalImages){
+  if (coverDoctype === 'all'){
+    imageIndex = Math.floor(Math.random() * totalImages) + 1;
+    let currentImageIndex = imageIndex;
+    
+    if (currentImageIndex === imageIndex) {
+      if(imageIndex === totalImages){
         imageIndex -= 8;
     }else{
         imageIndex++;
+      }
     }
-  }
+    
+    if (gifIndex.includes(imageIndex)){
+      selectedFormat = 'gif';
+    }else if (jpgIndex.includes(imageIndex)){
+      selectedFormat = 'jpg';
+    }else {
+      selectedFormat = 'jpeg';
+    }
 
-  if (gifIndex.includes(imageIndex)){
-    selectedFormat = 'gif';
-  }else if (jpgIndex.includes(imageIndex)){
-    selectedFormat = 'jpg';
-  }else {
+  }else if(coverDoctype === 'jpeg'){
     selectedFormat = 'jpeg';
+    imageIndex = Math.floor(Math.random() * (totalImages - jpgIndex.length - gifIndex.length));
+
+    if (gifIndex.includes(imageIndex) || jpgIndex.includes(imageIndex)){
+      imageIndex = 1;
+    }
+
+  }else if(coverDoctype === 'gif'){
+    selectedFormat = coverDoctype;
+    imageIndex = gifIndex[Math.floor(Math.random() * gifIndex.length)];
+
+  }else if(coverDoctype === 'jpg'){
+    selectedFormat = coverDoctype;
+    imageIndex = jpgIndex[Math.floor(Math.random() * jpgIndex.length)];
   }
 
   coverChangeCounter++;
@@ -123,6 +144,7 @@ let currentIndex;
 let currentQueue = [];
 let normalQueue;
 let currentMode = 'normal';
+let frRate = 15;
 
 let playButton        = document.querySelector('.fa-circle-play');
 let pauseButton       = document.querySelector('.fa-circle-pause');
@@ -140,6 +162,10 @@ let volumeButton3     = document.querySelector('.fa-volume-low');
 let volumeButton4     = document.querySelector('.fa-volume-off');
 let volumeButton5     = document.querySelector('.fa-volume-xmark');
 let volumeSlider      = document.getElementById('mp3-volume-control')
+let audioSpeedSlider  = document.getElementById('audio-speed-control')
+let frRateSlider      = document.getElementById('fr-rate-control')
+let coverRateSlider   = document.getElementById('cover-rate-control')
+let doctypeSlider     = document.getElementById('doctype-control')
 
 playButton.addEventListener('click', replayAudio);
 pauseButton.addEventListener('click', pauseAudio);
@@ -157,6 +183,10 @@ volumeButton3.addEventListener('click', showVolumeSlider);
 volumeButton4.addEventListener('click', showVolumeSlider);
 volumeButton5.addEventListener('click', showVolumeSlider);
 volumeSlider.addEventListener('input', changeAudioVolume);
+audioSpeedSlider.addEventListener('input', changeAudioSpeed);
+frRateSlider.addEventListener('input', changeFrRate);
+coverRateSlider.addEventListener('input', changeCoverRate);
+doctypeSlider.addEventListener('input', changeDoctype);
 
 const playBtn = document.querySelectorAll('.play');
 
@@ -269,6 +299,10 @@ function playAudio(audioLink) {
     repeatAudio();
   }
 
+  if (currentAudio.playbackRate != 1){
+    changeAudioSpeed();
+  }
+
   currentAudio.addEventListener('ended', function() {
     nextAudio(); // Play the next audio in the queue
   });
@@ -305,13 +339,13 @@ function replayAudio () {
 
 function forwardAudio() {
   if (currentAudio) {
-    currentAudio.currentTime = Math.min(currentAudio.currentTime + 15, currentAudio.duration);
+    currentAudio.currentTime = Math.min(currentAudio.currentTime + frRate, currentAudio.duration);
   }
 }
 
 function rewindAudio() {
   if (currentAudio) {
-    currentAudio.currentTime = Math.max(currentAudio.currentTime - 15, 0);
+    currentAudio.currentTime = Math.max(currentAudio.currentTime - frRate, 0);
   }
 }
 
@@ -486,6 +520,56 @@ function repeatAudio () {
   if (currentAudio){
     currentAudio.loop = true;
     displayQueueTab(currentQueue, currentIndex);
+  }
+}
+
+function changeAudioSpeed () {
+  if (currentAudio) {
+    currentAudio.playbackRate = (audioSpeedSlider.value/10);
+  }
+
+  document.getElementById('audio-speed-value-display').innerHTML = 'x' + audioSpeedSlider.value/10;
+
+  if (audioSpeedSlider.value < 8){
+    document.getElementById('fa-gauge-low').style.display = 'block';
+    document.getElementById('fa-gauge-mid').style.display = 'none';
+    document.getElementById('fa-gauge-high').style.display = 'none';
+  }else if (audioSpeedSlider.value < 15){
+    document.getElementById('fa-gauge-low').style.display = 'none';
+    document.getElementById('fa-gauge-mid').style.display = 'block';
+    document.getElementById('fa-gauge-high').style.display = 'none';
+  }else if (audioSpeedSlider.value < 20){
+    document.getElementById('fa-gauge-low').style.display = 'none';
+    document.getElementById('fa-gauge-mid').style.display = 'none';
+    document.getElementById('fa-gauge-high').style.display = 'block';
+  }
+}
+
+function changeFrRate () {
+  document.getElementById('fr-rate-value-display').innerHTML = (frRateSlider.value*5) + 's';
+
+  frRate = frRateSlider.value * 5;
+}
+
+function changeCoverRate () {
+  document.getElementById('cover-rate-value-display').innerHTML = (coverRateSlider.value*10) + 's';
+
+  coverChangeInterval = coverRateSlider.value*10000;
+}
+
+function changeDoctype () {
+  if (doctypeSlider.value == 1){
+    coverDoctype = 'all';
+    document.getElementById('doctype-value-display').innerHTML = 'All';
+  }else if (doctypeSlider.value == 2){
+    coverDoctype = 'jpeg';
+    document.getElementById('doctype-value-display').innerHTML = '.jpeg';
+  }else if (doctypeSlider.value == 3){
+    coverDoctype = 'gif';
+    document.getElementById('doctype-value-display').innerHTML = '.gif';
+  }else if (doctypeSlider.value == 4){
+    coverDoctype = 'jpg';
+    document.getElementById('doctype-value-display').innerHTML = 'Manga Cover';
   }
 }
 

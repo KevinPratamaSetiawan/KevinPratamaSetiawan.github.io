@@ -387,7 +387,7 @@ input[type=number] {
   align-items: center;
 
   width: 100%;
-  height: calc(100vh - 80px);;
+  height: calc(100vh - 80px);
 
   padding: 1rem 0;
 }
@@ -480,6 +480,7 @@ input[type=number] {
 }
 
 #queue-tab,
+#settings-tab,
 #mp3-player{
   grid-area: 3 / 1 / 21 / 2;
 }
@@ -526,6 +527,7 @@ input[type=number] {
   overflow: scroll;
 }
 
+#settings-tab,
 #queue-tab,
 #xml-tab,
 #yard-tab, 
@@ -880,10 +882,6 @@ input[type=number] {
   .end-slider-p{
     text-align: end;
     border-left: 3px solid var(--text-color);
-
-    &.dark-mode{
-      border-left: 3px solid var(--text-color)-dark;
-    }
   }
 
   .mp3-slider {
@@ -928,6 +926,27 @@ input[type=number] {
 
   i{
     width: 10%;
+  }
+}
+
+#settings-tab{
+  padding: 20px 0;
+
+  .setting-item{
+    padding: 0 10px;
+    border-left: 3px solid var(--brand-color);
+  }
+
+  .duration-slider{
+    margin-bottom: 15px;
+  }
+
+  p{
+    text-align: left;
+  }
+
+  .start-slider-p, .end-slider-p{
+    text-align: center;
   }
 }
 
@@ -977,6 +996,7 @@ input[type=number] {
   }
 
   .main-content { 
+    height: 100dvh;
     flex-direction: column;
     gap: 20px;
   }

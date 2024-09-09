@@ -115,10 +115,13 @@ permalink: /⌨️/
             <h4>Mp3 Player</h4>
             <div class="mp3-nav">
                 <div class="tab-item">
-                    <p><i class="fa-solid fa-record-vinyl" id="ide-btn"></i> IDE</p>
+                    <p><i class="fa-solid fa-record-vinyl" id="ide-btn"></i> Turntable</p>
                 </div>
                 <div class="tab-item">
                     <p><i class="fa-solid fa-list" id="queue-btn"></i> Queue</p>
+                </div>
+                <div class="tab-item">
+                    <p><i class="fa-solid fa-sliders" id="settings-btn"></i> Settings</p>
                 </div>
             </div>
             <ul id="queue-tab" style="display: none;"></ul>
@@ -162,6 +165,52 @@ permalink: /⌨️/
                     <i class="fa-solid fa-volume-low fa-xl" style="display: none;"></i>
                     <i class="fa-solid fa-volume-high fa-xl" style="display: none;"></i>
                     <i class="fa-solid fa-ear-listen fa-xl"></i>
+                </div>
+            </div>
+            <div id="settings-tab" style="display: none;">
+                <p class="setting-item">Audio Speed</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-gauge-high fa-flip-horizontal" id="fa-gauge-low" style="display: none;"></i>
+                        <i class="fa-solid fa-gauge" id="fa-gauge-mid"></i>
+                        <i class="fa-solid fa-gauge-high" id="fa-gauge-high" style="display: none;"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="audio-speed-control" min="1" max="20" value="10" step="1">
+                    </div>
+                    <p class="end-slider-p" id="audio-speed-value-display">x1</p>
+                </div>
+                <p class="setting-item">Forward/Rewind Rate</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-backward"></i>
+                        <i class="fa-solid fa-forward"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="fr-rate-control" min="1" max="12" value="3" step="1">
+                    </div>
+                    <p class="end-slider-p" id="fr-rate-value-display">15s</p>
+                </div>
+                <p class="setting-item">Cover Change Rate</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-images"></i>
+                        <i class="fa-solid fa-stopwatch"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="cover-rate-control" min="1" max="10" value="3" step="1">
+                    </div>
+                    <p class="end-slider-p" id="cover-rate-value-display">30s</p>
+                </div>
+                <p class="setting-item">Cover Doctype</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-file-image"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="doctype-control" min="1" max="4" value="1" step="1">
+                    </div>
+                    <p class="end-slider-p" id="doctype-value-display">All</p>
                 </div>
             </div>
         </div>
