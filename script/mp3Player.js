@@ -139,6 +139,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.getElementById('ide-btn').addEventListener('click', function() { openMp3Tab('mp3-player'); });
+document.getElementById('queue-btn').addEventListener('click', function() { openMp3Tab('queue-tab'); });
+document.getElementById('settings-btn').addEventListener('click', function() { openMp3Tab('settings-tab'); });
+
+function openMp3Tab(tabClass) {
+  if(tabClass === 'mp3-player'){
+    document.getElementById('ide-btn').style.display = 'none';
+    document.getElementById('ide-label').style.display = 'block';
+    document.getElementById('mp3-player').style.display = 'flex';
+    document.getElementById('queue-btn').style.display = 'block';
+    document.getElementById('queue-label').style.display = 'none';
+    document.getElementById('queue-tab').style.display = 'none';
+    document.getElementById('settings-btn').style.display = 'block';
+    document.getElementById('settings-label').style.display = 'none';
+    document.getElementById('settings-tab').style.display = 'none';
+  }else if(tabClass === 'queue-tab'){
+    document.getElementById('ide-btn').style.display = 'block';
+    document.getElementById('ide-label').style.display = 'none';
+    document.getElementById('mp3-player').style.display = 'none';
+    document.getElementById('queue-btn').style.display = 'none';
+    document.getElementById('queue-label').style.display = 'block';
+    document.getElementById('queue-tab').style.display = 'flex';
+    document.getElementById('settings-btn').style.display = 'block';
+    document.getElementById('settings-label').style.display = 'none';
+    document.getElementById('settings-tab').style.display = 'none';
+  }else if(tabClass === 'settings-tab'){
+    document.getElementById('ide-btn').style.display = 'block';
+    document.getElementById('ide-label').style.display = 'none';
+    document.getElementById('mp3-player').style.display = 'none';
+    document.getElementById('queue-btn').style.display = 'block';
+    document.getElementById('queue-label').style.display = 'none';
+    document.getElementById('queue-tab').style.display = 'none';
+    document.getElementById('settings-btn').style.display = 'none';
+    document.getElementById('settings-label').style.display = 'block';
+    document.getElementById('settings-tab').style.display = 'flex';
+  }
+}
+
 let currentAudio;
 let currentIndex;
 let currentQueue = [];

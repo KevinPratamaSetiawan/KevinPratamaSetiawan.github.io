@@ -115,13 +115,16 @@ permalink: /⌨️/
             <h4>Mp3 Player</h4>
             <div class="mp3-nav">
                 <div class="tab-item">
-                    <p><i class="fa-solid fa-record-vinyl" id="ide-btn"></i> Turntable</p>
+                    <i class="fa-solid fa-record-vinyl fa-lg" id="ide-btn" style="display: none;"></i>
+                    <p id="ide-label">Turntable</p>
                 </div>
                 <div class="tab-item">
-                    <p><i class="fa-solid fa-list" id="queue-btn"></i> Queue</p>
+                    <i class="fa-solid fa-list fa-lg" id="queue-btn"></i>
+                    <p id="queue-label" style="display: none;">Queue</p>
                 </div>
                 <div class="tab-item">
-                    <p><i class="fa-solid fa-sliders" id="settings-btn"></i> Settings</p>
+                    <i class="fa-solid fa-sliders fa-lg" id="settings-btn"></i>
+                    <p id="settings-label" style="display: none;">Settings</p>
                 </div>
             </div>
             <ul id="queue-tab" style="display: none;"></ul>

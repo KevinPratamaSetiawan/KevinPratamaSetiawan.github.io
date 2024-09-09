@@ -930,7 +930,7 @@ input[type=number] {
 }
 
 #settings-tab{
-  padding: 20px 0;
+  padding: 15px 0;
 
   .setting-item{
     padding: 0 10px;
@@ -941,7 +941,8 @@ input[type=number] {
     margin-bottom: 15px;
   }
 
-  p{
+  p:not(.start-slider-p, .end-slider-p){
+    width: 100%;
     text-align: left;
   }
 
