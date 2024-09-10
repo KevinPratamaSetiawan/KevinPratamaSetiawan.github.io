@@ -22,7 +22,7 @@ coverImageFull.addEventListener('click', function() {
 
 // Mp3 Player Cover Changer
 function changeCoverImage() {
-  const totalFiles = [38, 93, 7];
+  const totalFiles = [38, 116, 7];
   const coverFormat = ['jpeg', 'png', 'gif'];
 
   let selectedFormatIndex = Math.floor(Math.random() * coverFormat.length);
