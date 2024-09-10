@@ -483,6 +483,7 @@ function normalizeQueue () {
   repeatButton.style.display        = 'none';
 
   if (currentQueue.length > 0) {
+    currentAudio.loop = false;
     let trackAudioTitle = currentQueue[currentIndex].title;
     currentQueue = [];
     currentQueue = [...normalQueue];
