@@ -22,54 +22,28 @@ coverImageFull.addEventListener('click', function() {
 
 // Mp3 Player Cover Changer
 function changeCoverImage() {
-  let imageIndex
-  const totalImages = 46;
-  const jpgIndex = [44, 45, 46];
-  const gifIndex = [38, 39, 40, 41, 42, 43, 47];
-  let selectedFormat = 'jpeg';
+  const totalFiles = [38, 93, 7];
+  const coverFormat = ['jpeg', 'png', 'gif'];
 
-  if (coverDoctype === 'all'){
-    imageIndex = Math.floor(Math.random() * totalImages) + 1;
-    let currentImageIndex = imageIndex;
-    
-    if (currentImageIndex === imageIndex) {
-      if(imageIndex === totalImages){
-        imageIndex -= 8;
-    }else{
-        imageIndex++;
-      }
-    }
-    
-    if (gifIndex.includes(imageIndex)){
-      selectedFormat = 'gif';
-    }else if (jpgIndex.includes(imageIndex)){
-      selectedFormat = 'jpg';
-    }else {
-      selectedFormat = 'jpeg';
-    }
-
-  }else if(coverDoctype === 'jpeg'){
-    selectedFormat = 'jpeg';
-    imageIndex = Math.floor(Math.random() * (totalImages - jpgIndex.length - gifIndex.length));
-
-    if (gifIndex.includes(imageIndex) || jpgIndex.includes(imageIndex)){
-      imageIndex = 1;
-    }
-
+  let selectedFormatIndex = Math.floor(Math.random() * coverFormat.length);
+  
+  if(coverDoctype === 'jpeg'){
+    selectedFormatIndex = 0;
+  }else if(coverDoctype === 'png'){
+    selectedFormatIndex = 1;
   }else if(coverDoctype === 'gif'){
-    selectedFormat = coverDoctype;
-    imageIndex = gifIndex[Math.floor(Math.random() * gifIndex.length)];
-
-  }else if(coverDoctype === 'jpg'){
-    selectedFormat = coverDoctype;
-    imageIndex = jpgIndex[Math.floor(Math.random() * jpgIndex.length)];
+    selectedFormatIndex = 2;
   }
+
+  let selectedFormat = coverFormat[selectedFormatIndex];
+  let imageIndex = (Math.floor(Math.random() * totalFiles[selectedFormatIndex]) + 1).toString().padStart(3, '0');
+  selectedFormatIndex++;
 
   coverChangeCounter++;
 
-  coverImage.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.${selectedFormat}`;
-  coverImageMax.src = `../assets/images/mp3-cover/mp3-cover-${imageIndex}.${selectedFormat}`;
-  coverFileName.innerHTML = `../mp3-cover-${imageIndex}.${selectedFormat} 「${numberToRoman(coverChangeCounter)}」`;
+  coverImage.src = `../assets/images/mp3-cover/mp3-cover-${selectedFormatIndex}${imageIndex}.${selectedFormat}`;
+  coverImageMax.src = `../assets/images/mp3-cover/mp3-cover-${selectedFormatIndex}${imageIndex}.${selectedFormat}`;
+  coverFileName.innerHTML = `../mp3-cover-${selectedFormatIndex}${imageIndex}.${selectedFormat} 「${numberToRoman(coverChangeCounter)}」`;
 
   countdownValue = coverChangeInterval;
 }
@@ -606,11 +580,11 @@ function changeDoctype () {
     coverDoctype = 'jpeg';
     document.getElementById('doctype-value-display').innerHTML = '.jpeg';
   }else if (doctypeSlider.value == 3){
+    coverDoctype = 'png';
+    document.getElementById('doctype-value-display').innerHTML = 'Manga Cover';
+  }else if (doctypeSlider.value == 4){
     coverDoctype = 'gif';
     document.getElementById('doctype-value-display').innerHTML = '.gif';
-  }else if (doctypeSlider.value == 4){
-    coverDoctype = 'jpg';
-    document.getElementById('doctype-value-display').innerHTML = 'Manga Cover';
   }
 }
 
