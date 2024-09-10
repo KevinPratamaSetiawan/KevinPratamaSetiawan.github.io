@@ -95,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const colors = [
             '#60c17d', '#c16560', '#336699', '#e7ab2a',
             '#f25f4c', '#2cb67d', '#A8D672', '#339988',
-            '#ddd05b'
+            '#ddd05b', '#FF4500', '#00CED1', '#FFD700',
+            '#FF69B4', '#7FFF00'
         ];
     
         const randomIndex = Math.floor(Math.random() * colors.length);

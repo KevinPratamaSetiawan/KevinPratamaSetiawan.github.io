@@ -335,6 +335,8 @@ function playAudio(audioLink) {
 
   if (currentMode === 'repeat'){
     repeatAudio();
+  }else {
+    currentAudio.loop = false;
   }
 
   if (currentAudio.playbackRate != 1){
@@ -342,7 +344,7 @@ function playAudio(audioLink) {
   }
 
   currentAudio.addEventListener('ended', function() {
-    nextAudio(); // Play the next audio in the queue
+    nextAudio();
   });
 
   playButton.style.display = 'none';
