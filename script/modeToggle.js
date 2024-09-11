@@ -8,28 +8,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (savedMode){
             if (savedMode === 'light') {
-                toggleButtonLogo.classList.remove('fa-sun')
-                toggleButtonLogo.classList.add('fa-moon')
-                toggleButtonLogo.classList.add('fa-flip-horizontal')
+                if(toggleButtonLogo){
+                    toggleButtonLogo.classList.add('fa-sun')
+                    toggleButtonLogo.classList.remove('fa-cloud-moon')
+                }
                 logo.src = '/black-logo.png';
                 document.documentElement.style.setProperty('--background-color', '#fdfdfd');
                 document.documentElement.style.setProperty('--background-color-rgb', '253,253,253');
-                document.documentElement.style.setProperty('--text-color', '#333');
+                document.documentElement.style.setProperty('--text-color', '#23272d');
                 document.documentElement.style.setProperty('--copy-color', '#23272d');
                 document.documentElement.style.setProperty('--projectbox', '#c3e1c9');
                 document.documentElement.style.setProperty('--projectbox-text', '#1e2126');
             }else if (savedMode === 'dark') {
-                toggleButtonLogo.classList.add('fa-sun')
-                toggleButtonLogo.classList.remove('fa-moon')
-                toggleButtonLogo.classList.remove('fa-flip-horizontal')
+                if(toggleButtonLogo){
+                    toggleButtonLogo.classList.add('fa-moon')
+                    toggleButtonLogo.classList.remove('fa-sun')
+                }
                 logo.src = '/white-logo.png';
                 document.documentElement.style.setProperty('--background-color', '#23272d');
                 document.documentElement.style.setProperty('--background-color-rgb', '35,39,45');
-                document.documentElement.style.setProperty('--text-color', '#fff');
-                document.documentElement.style.setProperty('--copy-color', '#fff');
+                document.documentElement.style.setProperty('--text-color', '#fdfdfd');
+                document.documentElement.style.setProperty('--copy-color', '#fdfdfd');
                 document.documentElement.style.setProperty('--projectbox', '#1e2126');
                 document.documentElement.style.setProperty('--projectbox-text', '#c3e1c9');
             }
+
         }else {
             localStorage.setItem('currentMode', 'light');
         }
@@ -51,25 +54,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         if (savedMode === 'light') {
-            toggleButtonLogo.classList.remove('fa-sun')
-            toggleButtonLogo.classList.add('fa-moon')
-            toggleButtonLogo.classList.add('fa-flip-horizontal')
+            if(toggleButtonLogo){
+                toggleButtonLogo.classList.add('fa-sun')
+                toggleButtonLogo.classList.remove('fa-moon')
+            }
             logo.src = '/black-logo.png';
             document.documentElement.style.setProperty('--background-color', '#fdfdfd');
             document.documentElement.style.setProperty('--background-color-rgb', '253,253,253');
-            document.documentElement.style.setProperty('--text-color', '#333');
+            document.documentElement.style.setProperty('--text-color', '#23272d');
             document.documentElement.style.setProperty('--copy-color', '#23272d');
             document.documentElement.style.setProperty('--projectbox', '#c3e1c9');
             document.documentElement.style.setProperty('--projectbox-text', '#1e2126');
         }else if (savedMode === 'dark') {
-            toggleButtonLogo.classList.add('fa-sun')
-            toggleButtonLogo.classList.remove('fa-moon')
-            toggleButtonLogo.classList.remove('fa-flip-horizontal')
+            if(toggleButtonLogo){
+                toggleButtonLogo.classList.add('fa-moon')
+                toggleButtonLogo.classList.remove('fa-sun')
+            }
             logo.src = '/white-logo.png';
             document.documentElement.style.setProperty('--background-color', '#23272d');
             document.documentElement.style.setProperty('--background-color-rgb', '35,39,45');
-            document.documentElement.style.setProperty('--text-color', '#fff');
-            document.documentElement.style.setProperty('--copy-color', '#fff');
+            document.documentElement.style.setProperty('--text-color', '#fdfdfd');
+            document.documentElement.style.setProperty('--copy-color', '#fdfdfd');
             document.documentElement.style.setProperty('--projectbox', '#1e2126');
             document.documentElement.style.setProperty('--projectbox-text', '#c3e1c9');
         }
@@ -96,7 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
             '#60c17d', '#c16560', '#336699', '#e7ab2a',
             '#f25f4c', '#2cb67d', '#A8D672', '#339988',
             '#ddd05b', '#FF4500', '#00CED1', '#FFD700',
-            '#FF69B4', '#7FFF00'
+            '#FF69B4', '#7FFF00', '#C96868', '#FADFA1',
+            '#7EACB5', '#697565'
         ];
     
         const randomIndex = Math.floor(Math.random() * colors.length);

@@ -951,6 +951,30 @@ input[type=number] {
   }
 }
 
+#qrPopover{
+  padding: 10px;
+  border: 5px solid var(--brand-color);
+  border-radius: 10px;
+  margin: auto;
+
+  &::backdrop{
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    opacity: 0.7;
+  }
+}
+
+#secret-style{
+  margin: auto; 
+  padding: 0; 
+  height: 100%; 
+  background-image: url('/assets/images/loginArt.png'); 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+  background-position: left center;
+}
+
 @include media-query ( $on-palm ) {
   .terminal-nav{
     display: grid;
@@ -968,6 +992,39 @@ input[type=number] {
     display: flex;
     align-items: center;
   }
+  
+  .logo{
+    grid-area: 1 / 1 / 2 / 2;
+    justify-content: left;
+  }
+  
+  .timer{
+    grid-area: 2 / 1 / 3 / 3;
+    justify-content: center;
+  }
+  
+  .mode-toggle{
+    grid-area: 1 / 2 / 2 / 3;
+    justify-content: right;
+    gap: 10px;
+  }
+  
+  .main-content { 
+    height: 100dvh;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .main-content > div { 
+    width: 95%; 
+  }
+  
+  #max-cover-img{
+    img{
+      width: 80%;
+      height: fit-content;
+    }
+  }
 
   .duration-slider {
     .slider-container {
@@ -980,36 +1037,7 @@ input[type=number] {
     }
   }
 
-  .logo{
-    grid-area: 1 / 1 / 2 / 2;
-    justify-content: left;
-  }
-
-  .timer{
-    grid-area: 2 / 1 / 3 / 3;
-    justify-content: center;
-  }
-  
-  .mode-toggle{
-    grid-area: 1 / 2 / 2 / 3;
-    justify-content: right;
-    gap: 10px;
-  }
-
-  .main-content { 
-    height: 100dvh;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .main-content > div { 
-    width: 95%; 
-  }
-
-  #max-cover-img{
-    img{
-      width: 80%;
-      height: fit-content;
-    }
+  #secret-style{
+    background-position: 60% top;
   }
 }
