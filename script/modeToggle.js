@@ -59,17 +59,49 @@ const accentButton = document.getElementById('accent-btn');
 
 accentButton.addEventListener('click', () => {
     const savedMode = localStorage.getItem('currentMode');
-    const colors = [
-        '#60c17d', '#c16560', '#336699', '#e7ab2a',
-        '#f25f4c', '#2cb67d', '#A8D672', '#339988',
-        '#ddd05b', '#FF4500', '#00CED1', '#FFD700',
-        '#FF69B4', '#7FFF00', '#C96868', '#FADFA1',
-        '#7EACB5', '#697565'
+    let currentIndex, randomIndex, newColor;
+    let lightThemes = ['lightClassic', 'lightDarkYellow'];
+    let darkThemes = ['darkClassic', 'darkPurple', 'darkCoffee'];
+
+    if(savedMode === 'light'){
+        currentIndex = lightThemes.indexOf(localStorage.getItem('currentLightTheme'));
+    }else if(savedMode === 'dark'){
+        currentIndex = darkThemes.indexOf(localStorage.getItem('currentDarkTheme'));
+    }
+
+    const lightColors = [
+        [
+        '#60c17d', '#e7ab2a', '#A8D672', '#ddd05b',
+        '#00CED1', '#FFD700', '#7FFF00', '#FADFA1'
+        ],[
+        '#e0c12a', '#5ce653', '#91b3a3', '#6edbaa',
+        '#74d196', '#7af83e'
+        ]
     ];
 
-    const randomIndex = Math.floor(Math.random() * colors.length);
+    const darkColors = [
+        [
+        '#60c17d', '#336699', '#e7ab2a', '#2cb67d',
+        '#A8D672', '#339988', '#ddd05b', '#00CED1',
+        '#FFD700', '#7FFF00', '#FADFA1', '#7EACB5',
+        '#c16560'
+        ],[
+        '#3be879', '#28bed8', '#ac9e7d', '#d7dc3f',
+        '#f78233'
+        ],[
+        '#e2d689', '#dad09e', '#f6e275', '#d5cca5'
+        ]
+    ];
 
-    const newColor = colors[randomIndex];
+    if(savedMode === 'light'){
+        randomIndex = Math.floor(Math.random() * lightColors[currentIndex].length);
+        newColor = lightColors[currentIndex][randomIndex];
+        console.log(lightColors[currentIndex][randomIndex]);
+    }else if(savedMode === 'dark'){
+        randomIndex = Math.floor(Math.random() * darkColors[currentIndex].length);
+        newColor = darkColors[currentIndex][randomIndex];
+        console.log(darkColors[currentIndex][randomIndex]);
+    }
 
     document.documentElement.style.setProperty('--brand-color', newColor);
 
@@ -136,6 +168,7 @@ document.querySelectorAll('.fontItem').forEach(function(button) {
 document.querySelectorAll('.themeItem').forEach(function(button) {
     button.addEventListener('click', function() {
         let mode = button.getAttribute('data-mode');
+        let theme = button.getAttribute('data-theme');
         let bgColor = button.getAttribute('data-bgColor');
         let bgColorHsl = button.getAttribute('data-bgColorRgb');
         let textColor = button.getAttribute('data-textColor');
@@ -151,13 +184,27 @@ document.querySelectorAll('.themeItem').forEach(function(button) {
         document.documentElement.style.setProperty('--brand-color', accentColor);
 
         if (mode === 'light'){
+            if(toggleButtonLogo){
+                toggleButtonLogo.classList.add('fa-sun')
+                toggleButtonLogo.classList.remove('fa-moon')
+            }
+            logo.src = '/black-logo.png';
+
             localStorage.setItem('currentMode', mode);
+            localStorage.setItem('currentLightTheme', theme);
             localStorage.setItem('currentLightBgColor', bgColor);
             localStorage.setItem('currentLightBgColorHsl', bgColorHsl);
             localStorage.setItem('currentLightTextColor', textColor);
             localStorage.setItem('currentLightAccentColor', accentColor);
         }else if (mode === 'dark'){
+            if(toggleButtonLogo){
+                toggleButtonLogo.classList.add('fa-moon')
+                toggleButtonLogo.classList.remove('fa-sun')
+            }
+            logo.src = '/white-logo.png';
+
             localStorage.setItem('currentMode', mode);
+            localStorage.setItem('currentDarkTheme', theme);
             localStorage.setItem('currentDarkBgColor', bgColor);
             localStorage.setItem('currentDarkBgColorHsl', bgColorHsl);
             localStorage.setItem('currentDarkTextColor', textColor);

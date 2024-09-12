@@ -19,6 +19,12 @@ permalink: /⌨️/
     {% include mathjax.html %}
 
     <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@100;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;700&display=swap" rel="stylesheet">
     <script
         type="text/javascript"> (function () { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.11.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -76,7 +82,19 @@ permalink: /⌨️/
                         <h1>Fonts</h1>
                         <ul>
                             <li>
-                                <a href="#" class="fontItem" data-headerFontFamily="Helvetica, sans-serif" data-textFontFamily="JetBrains Mono, monospace">Helvetica, JetBrains</a>
+                                <a href="#" class="fontItem" data-headerFontFamily='"Lato", "Helvetica Neue", Helvetica, sans-serif' data-textFontFamily="JetBrains Mono, monospace">Lato; Helvetica, JetBrains</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fontItem" data-headerFontFamily='"Barlow", sans-serif' data-textFontFamily="JetBrains Mono, monospace">Barlow, JetBrains</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fontItem" data-headerFontFamily='"Archivo", sans-serif' data-textFontFamily="JetBrains Mono, monospace">Archivo, JetBrains</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fontItem" data-headerFontFamily='"IBM Plex Sans Condensed", sans-serif' data-textFontFamily="JetBrains Mono, monospace">IBM Plex Sans Condensed, JetBrains</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fontItem" data-headerFontFamily='"Roboto", sans-serif' data-textFontFamily="JetBrains Mono, monospace">Roboto, JetBrains</a>
                             </li>
                         </ul>
                     </div>
@@ -95,8 +113,12 @@ permalink: /⌨️/
                                 <h3>Light Mode</h3>
                                 <ul>
                                     <li>
-                                        <a href="#" class="themeItem" data-mode="light" data-bgColor="#fdfdfd" data-bgColorRgb="253,253,253"
+                                        <a href="#" class="themeItem" data-mode="light" data-theme="lightClassic" data-bgColor="#fdfdfd" data-bgColorRgb="253,253,253"
                                             data-textColor="#23272d" data-accentColor="#60c17d">Light Classic</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="themeItem" data-mode="light" data-theme="lightDarkYellow" data-bgColor="#fdfcf4" data-bgColorRgb="253, 252, 244"
+                                            data-textColor="#231f05" data-accentColor="#e0c12a">Light Dark Yellow</a>
                                     </li>
                                 </ul>
                             </div>
@@ -104,8 +126,16 @@ permalink: /⌨️/
                                 <h3>Dark Mode</h3>
                                 <ul>
                                     <li>
-                                        <a href="#" class="themeItem" data-mode="dark" data-bgColor="#23272d" data-bgColorRgb="253,253,253"
+                                        <a href="#" class="themeItem" data-mode="dark" data-theme="darkClassic" data-bgColor="#23272d" data-bgColorRgb="35, 39, 45"
                                             data-textColor="#fdfdfd" data-accentColor="#c16560">Dark Classic</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="themeItem" data-mode="dark" data-theme="darkPurple" data-bgColor="#16031d" data-bgColorRgb="22, 3, 29"
+                                            data-textColor="#f0d6fa" data-accentColor="#3be879">Dark Purple</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="themeItem" data-mode="dark" data-theme="darkCoffee" data-bgColor="#0d0c02" data-bgColorRgb="13, 12, 2"
+                                            data-textColor="#faf6db" data-accentColor="#e2d689">Dark Coffee</a>
                                     </li>
                                 </ul>
                             </div>

@@ -406,6 +406,17 @@ blockquote {
       ul{
         height: 140px;
         width: 100%;
+
+        li{
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+
+          a:hover{
+            color: var(--brand-color);
+          }
+        }
       }
 
       div{
@@ -429,6 +440,17 @@ blockquote {
             overflow-y: scroll;
             list-style: none;
             text-decoration: none;
+
+            li{
+              display: -webkit-box;
+              -webkit-line-clamp: 1;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+
+              a:hover{
+                color: var(--brand-color);
+              }
+            }
           }
         }
       }
@@ -603,9 +625,10 @@ input[type=number] {
     gap: 5px;
 
     background-color: var(--brand-color);
+    color: var(--background-color);
+    font-weight: 900;
     padding: 5px;
     border-radius: 5px;
-    font-weight: bolder;
     width: 40%;
     text-align: center;
     cursor: copy;
@@ -1227,6 +1250,17 @@ input[type=number] {
           display: flex;
           align-items: center;
           justify-content: space-evenly;
+
+          li{
+            width: min-content;
+            white-space: nowrap;
+            display: inline;
+            overflow: unset;
+
+            a:hover{
+              color: var(--brand-color);
+            }
+          }
         }
       }
   
@@ -1301,6 +1335,12 @@ input[type=number] {
               li{
                 width: min-content;
                 white-space: nowrap;
+                display: inline;
+                overflow: unset;
+
+                a:hover{
+                  color: var(--brand-color);
+                }
               }  
             }
           }
