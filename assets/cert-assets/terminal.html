@@ -60,14 +60,77 @@ permalink: /⌨️/
                 <i class="fa-solid fa-dice-d20"
                     style="display: flex; justify-content: center; align-items: center;"></i>
             </button>
+
             <button id="mode-btn" class="social-button mode">
                 <i class="fa-solid fa-sun mode-logo" id="mode-icon"
                     style="display: flex; justify-content: center; align-items: center;"></i>
             </button>
+
+            <button id="theme-popover-btn" popoverTarget="themePopover" class="social-button mode">
+                <i class="fa-solid fa-circle-half-stroke mode-logo" id="mode-icon"
+                    style="display: flex; justify-content: center; align-items: center;"></i>
+            </button>
+            <div id="themePopover" popover>
+                <div>
+                    <div class="option-list option-list1">
+                        <h1>Fonts</h1>
+                        <ul>
+                            <li>
+                                <a href="#" class="fontItem" data-headerFontFamily="Helvetica, sans-serif" data-textFontFamily="JetBrains Mono, monospace">Helvetica, JetBrains</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="option-showcase option-showcase1">
+                        <h4 id="heading-display">Heading</h4>
+                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, distinctio.</h3>
+                        <h4 id="text-display">Normal Text</h4>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat quod ipsam dolore ducimus perferendis quisquam cumque illo numquam est. Unde ipsam nisi optio sequi sed. Nemo praesentium iure quasi.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="option-list option-list2">
+                        <h1>Theme</h1>
+                        <div>
+                            <div>
+                                <h3>Light Mode</h3>
+                                <ul>
+                                    <li>
+                                        <a href="#" class="themeItem" data-mode="light" data-bgColor="#fdfdfd" data-bgColorRgb="253,253,253"
+                                            data-textColor="#23272d" data-accentColor="#60c17d">Light Classic</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>Dark Mode</h3>
+                                <ul>
+                                    <li>
+                                        <a href="#" class="themeItem" data-mode="dark" data-bgColor="#23272d" data-bgColorRgb="253,253,253"
+                                            data-textColor="#fdfdfd" data-accentColor="#c16560">Dark Classic</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option-showcase option-showcase2">
+                        <div class="color-display">
+                            <h4>Background Color</h4>
+                            <div id="bg-display-color" class="color-item-display"></div>
+                        </div>
+                        <div class="color-display">
+                            <h4>Text Color</h4>
+                            <div id="text-display-color" class="color-item-display"></div>
+                        </div>
+                        <div class="color-display">
+                            <h4>Accent Color</h4>
+                            <div id="accent-display-color" class="color-item-display"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <button id="popover-btn" popoverTarget="qrPopover" class="social-button mode">
                 <i class="fa-solid fa-qrcode mode-logo" id="mode-icon" style="display: flex; justify-content: center; align-items: center;"></i>
             </button>
-            
             <div id="qrPopover" popover>
                 <img src="/assets/images/qrBlack.png" alt="" width="300px">
             </div>            

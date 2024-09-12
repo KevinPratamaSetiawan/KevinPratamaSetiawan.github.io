@@ -1,12 +1,13 @@
 :root{
+    --head-font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
     --base-font-family: JetBrains Mono, monospace;
-    --light-gray:       gray;
     --brand-color:      #60c17d;
-
+    
     --background-color: #fdfdfd;
     --background-color-rgb: 253,253,253;
     --text-color:       #23272d;
-    --copy-color:       #23272d;
+    
+    --light-gray:       gray;
     --projectbox:       #c3e1c9;
     --projectbox-text:  #1e2126;
 }
