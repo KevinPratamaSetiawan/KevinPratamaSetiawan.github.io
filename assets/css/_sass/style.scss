@@ -1205,7 +1205,7 @@ input[type=number] {
       .option-list{
         width: 100%;
         padding: 5px;
-        grid-area: 1/1/3/2;
+        grid-area: 1/1/5/2;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -1234,7 +1234,7 @@ input[type=number] {
         width: 100%;
         height: 100%;
         padding: 10px;
-        grid-area: 3/1/11/2;
+        grid-area: 5/1/11/2;
         display: flex;
         flex-direction: column;
         justify-content: start;
@@ -1247,11 +1247,25 @@ input[type=number] {
       
       .option-showcase1{
         border-bottom: 3px dashed var(--text-color);
+
+        h3{
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        p{
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
       }
 
       .option-list2{
         justify-content: start;
-        grid-area: 1/1/4/2;
+        grid-area: 1/1/5/2;
         border-bottom: 3px solid var(--text-color);
 
         h1{
@@ -1294,7 +1308,7 @@ input[type=number] {
       }
   
       .option-showcase2{
-        grid-area: 4/1/11/2;
+        grid-area: 5/1/11/2;
 
         display: grid;
         grid-template-columns: repeat(2,1fr);
