@@ -18,6 +18,8 @@ permalink: /⌨️/
 
     {% include mathjax.html %}
 
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" data-purpose="Layout StyleSheet" title="Web Awesome" href="/css/app-wa-462758aa1e172f82d39e1ea35e919e0a.css?vsn=d">
     <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,7 +165,11 @@ permalink: /⌨️/
             </button>
             <div id="qrPopover" popover>
                 <img src="/assets/images/qrBlack.png" alt="" width="300px">
-            </div>            
+            </div>
+            
+            <button id="save-popover-btn" popoverTarget="savePopover" class="social-button mode">
+                <i class="fa-solid fa-brackets-curly mode-logo" id="mode-icon" style="display: flex; justify-content: center; align-items: center;"></i>
+            </button>
         </div>
     </div>
 
@@ -223,11 +229,37 @@ permalink: /⌨️/
                     <p id="queue-label" style="display: none;">Queue</p>
                 </div>
                 <div class="tab-item">
+                    <i class="fa-solid fa-clock-rotate-left fa-lg" id="history-btn"></i>
+                    <p id="history-label" style="display: none;">History</p>
+                </div>
+                <div class="tab-item">
                     <i class="fa-solid fa-sliders fa-lg" id="settings-btn"></i>
                     <p id="settings-label" style="display: none;">Settings</p>
                 </div>
             </div>
             <ul id="queue-tab" style="display: none;"></ul>
+            <div id="history-tab" style="display: none;">
+                <p>Yard Last Played</p>
+                <ul id="yard-history-list">
+                    <li>none</li>
+                </ul>
+                <p>Premium Last Played</p>
+                <ul id="premium-history-list">
+                    <li>none</li>
+                </ul>
+                <p>Advice Last Played</p>
+                <ul id="advice-history-list">
+                    <li>none</li>
+                </ul>
+                <p>style.css Last Played</p>
+                <ul id="style-history-list">
+                    <li>none</li>
+                </ul>
+                <p>thePopOut Last Played</p>
+                <ul id="popout-history-list">
+                    <li>none</li>
+                </ul>
+            </div>
             <div id="mp3-player">
                 <div class="mp3-cover">
                     <div class="hover-full-img" id="maximize-cover">
@@ -416,7 +448,7 @@ permalink: /⌨️/
                 {% for mp3 in mp3_metadata %}
                 {% assign file = site.static_files | where: "path", mp3.url | first %}
                 <li class="mp3-container">
-                    <a href="#" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="style-tab" class='none play'>
+                    <a href="" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="style-tab" class='none play'>
                     <i class="fa-solid fa-play"></i>
                 </a>
                 <div class="mp3-title-date">
@@ -444,7 +476,7 @@ permalink: /⌨️/
                 {% for mp3 in mp3_metadata %}
                 {% assign file = site.static_files | where: "path", mp3.url | first %}
                 <li class="mp3-container">
-                    <a href="#" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="pop-out-tab" class='none play'>
+                    <a href="" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="pop-out-tab" class='none play'>
                     <i class="fa-solid fa-play"></i>
                     </a>
                     <div class="mp3-title-date">

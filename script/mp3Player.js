@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.getElementById('ide-btn').addEventListener('click', function() { openMp3Tab('mp3-player'); });
 document.getElementById('queue-btn').addEventListener('click', function() { openMp3Tab('queue-tab'); });
+document.getElementById('history-btn').addEventListener('click', function() { openMp3Tab('history-tab'); });
 document.getElementById('settings-btn').addEventListener('click', function() { openMp3Tab('settings-tab'); });
 
 function openMp3Tab(tabClass) {
@@ -125,6 +126,9 @@ function openMp3Tab(tabClass) {
     document.getElementById('queue-btn').style.display = 'block';
     document.getElementById('queue-label').style.display = 'none';
     document.getElementById('queue-tab').style.display = 'none';
+    document.getElementById('history-btn').style.display = 'block';
+    document.getElementById('history-label').style.display = 'none';
+    document.getElementById('history-tab').style.display = 'none';
     document.getElementById('settings-btn').style.display = 'block';
     document.getElementById('settings-label').style.display = 'none';
     document.getElementById('settings-tab').style.display = 'none';
@@ -135,6 +139,22 @@ function openMp3Tab(tabClass) {
     document.getElementById('queue-btn').style.display = 'none';
     document.getElementById('queue-label').style.display = 'block';
     document.getElementById('queue-tab').style.display = 'flex';
+    document.getElementById('history-btn').style.display = 'block';
+    document.getElementById('history-label').style.display = 'none';
+    document.getElementById('history-tab').style.display = 'none';
+    document.getElementById('settings-btn').style.display = 'block';
+    document.getElementById('settings-label').style.display = 'none';
+    document.getElementById('settings-tab').style.display = 'none';
+  }else if(tabClass === 'history-tab'){
+    document.getElementById('ide-btn').style.display = 'block';
+    document.getElementById('ide-label').style.display = 'none';
+    document.getElementById('mp3-player').style.display = 'none';
+    document.getElementById('queue-btn').style.display = 'block';
+    document.getElementById('queue-label').style.display = 'none';
+    document.getElementById('queue-tab').style.display = 'none';
+    document.getElementById('history-btn').style.display = 'none';
+    document.getElementById('history-label').style.display = 'block';
+    document.getElementById('history-tab').style.display = 'flex';
     document.getElementById('settings-btn').style.display = 'block';
     document.getElementById('settings-label').style.display = 'none';
     document.getElementById('settings-tab').style.display = 'none';
@@ -145,6 +165,9 @@ function openMp3Tab(tabClass) {
     document.getElementById('queue-btn').style.display = 'block';
     document.getElementById('queue-label').style.display = 'none';
     document.getElementById('queue-tab').style.display = 'none';
+    document.getElementById('history-btn').style.display = 'block';
+    document.getElementById('history-label').style.display = 'none';
+    document.getElementById('history-tab').style.display = 'none';
     document.getElementById('settings-btn').style.display = 'none';
     document.getElementById('settings-label').style.display = 'block';
     document.getElementById('settings-tab').style.display = 'flex';
@@ -157,6 +180,7 @@ let currentQueue = [];
 let normalQueue;
 let currentMode = 'normal';
 let frRate = 15;
+let currentHistoryTabType;
 
 let playButton        = document.querySelector('.fa-circle-play');
 let pauseButton       = document.querySelector('.fa-circle-pause');
@@ -200,12 +224,169 @@ frRateSlider.addEventListener('input', changeFrRate);
 coverRateSlider.addEventListener('input', changeCoverRate);
 doctypeSlider.addEventListener('input', changeDoctype);
 
+document.addEventListener('DOMContentLoaded', () => {
+  // Load Saved Volume
+  let volumeSlider = document.getElementById('mp3-volume-control');
+  const currentVolume = localStorage.getItem('currentVolume');
+  if(currentVolume){
+    volumeSlider.value = currentVolume;
+  }else {
+    volumeSlider.value = 69;
+  }
+  changeAudioVolume();
+
+  // Load Saved Mp3 Mode
+  const currentAudioMode = localStorage.getItem('currentAudioMode');
+  if(currentAudioMode){
+    currentMode = currentAudioMode;
+    if(currentAudioMode === 'normal'){
+      normalizeQueue();
+    }else if(currentAudioMode === 'reverse'){
+      reverseQueue();
+    }else if(currentAudioMode === 'shuffle'){
+      shuffleQueue();
+    }else if(currentAudioMode === 'repeat'){
+      repeatAudio();
+    }
+  }else {
+    currentMode = 'normal';
+    normalizeQueue();
+  }
+
+  // Load Saved Audio Speed
+  const currentAudioSpeed = localStorage.getItem('currentAudioSpeed');
+  if (currentAudioSpeed){
+    audioSpeedSlider.value = currentAudioSpeed;
+  }else {
+    audioSpeedSlider.value = 10;
+  }
+  changeAudioSpeed();
+
+  // Load Saved Forward/Rewind Rate
+  const currentFrRate = localStorage.getItem('currentFrRate');
+  if (currentFrRate){
+    frRateSlider.value = currentFrRate;
+  }else {
+    frRateSlider.value = 3;
+  }
+  changeFrRate();
+
+  // Load Saved Cover Changes Rate
+  const currentCoverRate = localStorage.getItem('currentCoverRate');
+  if (currentCoverRate){
+    coverRateSlider.value = currentCoverRate;
+  }else {
+    coverRateSlider.value = 3;
+  }
+  changeCoverRate();
+
+  // Load Saved Cover Format
+  const currentCoverFormat = localStorage.getItem('currentCoverFormat');
+  if(currentCoverFormat){
+    doctypeSlider.value = currentCoverFormat;
+  }else {
+    doctypeSlider.value = 1;
+  }
+  changeDoctype();
+
+  // Load History
+  displayHistory();
+
+  // for(let i = 0;i<localStorage.length;i++){
+  //   console.log(localStorage.key(i) + ' = ' + localStorage.getItem(localStorage.key(i)))
+  // }
+});
+
+function saveLastPlayed(tabType, url = '', title = '', artist = '', duration = '', lastDuration = 0) {
+  // Define the storage key based on the tabType
+  let storageKey;
+  if (tabType === 'yard-tab') {
+    storageKey = 'yardTabLastPlayed';
+  } else if (tabType === 'premium-tab') {
+    storageKey = 'premiumTabLastPlayed';
+  } else if (tabType === 'advice-tab') {
+    storageKey = 'adviceTabLastPlayed';
+  } else if (tabType === 'style-tab') {
+    storageKey = 'styleTabLastPlayed';
+  } else if (tabType === 'pop-out-tab') {
+    storageKey = 'popoutTabLastPlayed';
+  }
+
+  if (!storageKey) return;
+
+  // Check if there is already data stored
+  let existingData = localStorage.getItem(storageKey);
+
+  // If there is existing data, use it as a base
+  if (existingData) {
+    existingData = JSON.parse(existingData);
+    tabType = tabType || existingData.tabType;
+    url = url || existingData.url;
+    title = title || existingData.title;
+    artist = artist || existingData.artist;
+    duration = duration || existingData.duration;
+    lastDuration = lastDuration || 0;
+  }
+
+  const trackData = {
+    tabType: tabType,
+    url: url,
+    title: title,
+    artist: artist,
+    duration: duration,
+    lastDuration: lastDuration
+  };
+
+  // Save the updated data back to localStorage
+  localStorage.setItem(storageKey, JSON.stringify(trackData));
+  displayHistory();
+}
+
+function displayHistory() {
+  const tabData = {
+    'yardTabLastPlayed': document.getElementById('yard-history-list'),
+    'premiumTabLastPlayed': document.getElementById('premium-history-list'),
+    'adviceTabLastPlayed': document.getElementById('advice-history-list'),
+    'styleTabLastPlayed': document.getElementById('style-history-list'),
+    'popoutTabLastPlayed': document.getElementById('popout-history-list')
+  };
+
+  // Helper function to create and append history items
+  function createHistoryItem(data, listElement) {
+    if (!data) return; // Return if no data
+
+    const { tabType, url, title, artist, duration, lastDuration } = JSON.parse(data);
+
+    const queueElement = document.createElement('li');
+    queueElement.classList.add('history-item');
+
+    queueElement.innerHTML = `
+      <h4>${title}</h4>
+      <div>
+        <p>${artist}</p>
+        <p>${formatTime(lastDuration)}/${duration}</p>
+      </div>
+    `;
+
+    listElement.innerHTML = '';
+    listElement.appendChild(queueElement);
+  }
+
+  // Iterate through each tab and display history
+  Object.keys(tabData).forEach(key => {
+    const data = localStorage.getItem(key);
+    if (data) {
+      createHistoryItem(data, tabData[key]); // Ensure we split the array
+    }
+  });
+}
+
 const playBtn = document.querySelectorAll('.play');
 
 playBtn.forEach(function(button) {
   button.addEventListener('click', function() {
-      currentQueue = []; // Reset queue on new play
-      normalQueue = []; // Reset queue on new play
+      currentQueue = [];
+      normalQueue = [];
       let ticketNum = button.getAttribute('data-ticketNum');
       let url = button.getAttribute('data-url');
       let tabType = button.getAttribute('data-tabType');
@@ -216,6 +397,17 @@ playBtn.forEach(function(button) {
 });
 
 function initiateQueue(ticketNum, url, tabType) {
+  // For History Record
+  if(currentAudio){
+    if(tabType === currentHistoryTabType){
+      saveLastPlayed(currentHistoryTabType,'','','','',0);
+    }else{
+      saveLastPlayed(currentHistoryTabType,'','','','',currentAudio.currentTime);
+    }
+  }
+  currentHistoryTabType = tabType;
+
+  // Main Functionality
   const savedResults = localStorage.getItem(tabType);
   if (!savedResults) return;
   const results = JSON.parse(savedResults);
@@ -257,13 +449,11 @@ function displayQueueTab(queueList, index) {
   queueList.forEach((queue, i) => {
     const queueElement = document.createElement('li');
     queueElement.classList.add('mp3-container');
-    
-    if (document.body.classList.contains('dark-mode')) {
-      queueElement.classList.add('dark-mode');
-    }
 
     if (i === index) {
       queueElement.classList.add('current-played-item');
+
+      saveLastPlayed(currentHistoryTabType, queue.url, queue.title, queue.artist, queue.duration);
     }
 
     let formattedNumber = (i + 1).toString().padStart(3, '0');
@@ -307,16 +497,19 @@ function playAudio(audioLink) {
   currentAudio = new Audio(audioLink);
   currentAudio.play();
 
+  // Set Repeat or Not
   if (currentMode === 'repeat'){
     repeatAudio();
   }else {
     currentAudio.loop = false;
   }
 
+  // Set Audio Speed
   if (currentAudio.playbackRate != 1){
     changeAudioSpeed();
   }
 
+  // Check If Audio Ended
   currentAudio.addEventListener('ended', function() {
     nextAudio();
   });
@@ -324,16 +517,22 @@ function playAudio(audioLink) {
   playButton.style.display = 'none';
   pauseButton.style.display = 'block';
 
+  // Change Audio Volume
   if(currentAudio){
     currentAudio.volume = (volumeSlider.value / 100);
   }
 
+  // Change Duration Slider Value and Get Duration Slider Value
   currentAudio.addEventListener('timeupdate', updateDurationSlider);
 
   const durationSlider = document.getElementById('mp3-duration');
   durationSlider.addEventListener('input', () => {
       currentAudio.currentTime = durationSlider.value;
   });
+
+  if(currentAudio){
+    localStorage
+  }
 }
 
 function pauseAudio() {
@@ -341,6 +540,7 @@ function pauseAudio() {
     currentAudio.pause();
     playButton.style.display = 'block';
     pauseButton.style.display = 'none';
+    saveLastPlayed(currentHistoryTabType,'','','','',currentAudio.currentTime);
   }
 }
 
@@ -430,6 +630,8 @@ function changeAudioVolume () {
     volumeButton4.style.display = 'none';
     volumeButton5.style.display = 'block';
   }
+
+  localStorage.setItem('currentVolume', volumeSlider.value);
 }
 
 function updateDurationSlider () {
@@ -450,6 +652,7 @@ function formatTime(seconds) {
 
 function normalizeQueue () {
   currentMode = 'normal';
+  localStorage.setItem('currentAudioMode', currentMode);
 
   normalQueueButton.style.display   = 'block';
   reverseQueueButton.style.display  = 'none';
@@ -474,6 +677,7 @@ function normalizeQueue () {
 
 function reverseQueue () {
   currentMode = 'reverse';
+  localStorage.setItem('currentAudioMode', currentMode);
 
   normalQueueButton.style.display   = 'none';
   reverseQueueButton.style.display  = 'block';
@@ -510,6 +714,7 @@ function shuffleArray(array) {
 
 function shuffleQueue () {
   currentMode = 'shuffle';
+  localStorage.setItem('currentAudioMode', currentMode);
 
   normalQueueButton.style.display   = 'none';
   reverseQueueButton.style.display  = 'none';
@@ -526,6 +731,7 @@ function shuffleQueue () {
 
 function repeatAudio () {
   currentMode = 'repeat';
+  localStorage.setItem('currentAudioMode', currentMode);
 
   normalQueueButton.style.display   = 'none';
   reverseQueueButton.style.display  = 'none';
@@ -544,6 +750,7 @@ function changeAudioSpeed () {
   }
 
   document.getElementById('audio-speed-value-display').innerHTML = 'x' + audioSpeedSlider.value/10;
+  localStorage.setItem('currentAudioSpeed', audioSpeedSlider.value);
 
   if (audioSpeedSlider.value < 8){
     document.getElementById('fa-gauge-low').style.display = 'block';
@@ -562,12 +769,14 @@ function changeAudioSpeed () {
 
 function changeFrRate () {
   document.getElementById('fr-rate-value-display').innerHTML = (frRateSlider.value*5) + 's';
+  localStorage.setItem('currentFrRate', frRateSlider.value);
 
   frRate = frRateSlider.value * 5;
 }
 
 function changeCoverRate () {
   document.getElementById('cover-rate-value-display').innerHTML = (coverRateSlider.value*10) + 's';
+  localStorage.setItem('currentCoverRate', coverRateSlider.value);
 
   coverChangeInterval = coverRateSlider.value*10000;
 }
@@ -586,6 +795,7 @@ function changeDoctype () {
     coverDoctype = 'gif';
     document.getElementById('doctype-value-display').innerHTML = '.gif';
   }
+  localStorage.setItem('currentCoverFormat', doctypeSlider.value);
 }
 
 window.initiateQueue = initiateQueue;
@@ -600,6 +810,7 @@ window.previousAudio = previousAudio;
 window.showVolumeSlider = showVolumeSlider;
 window.changeAudioVolume = changeAudioVolume;
 window.updateDurationSlider = updateDurationSlider;
+window.saveLastPlayed = saveLastPlayed;
 
 // KEEP! : Function to extract the audio duration
 // document.addEventListener('DOMContentLoaded', function() {

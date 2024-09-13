@@ -144,7 +144,7 @@ function displayResults(results, tabId) {
       let formattedNumber = i.toString().padStart(3, '0');
 
       resultElement.innerHTML = `
-          <a href="#" data-url="${result.url}" data-ticketNum="${i-1}" data-tabType="${tabId}" class='none play'><i class="fa-solid fa-play"></i></a>
+          <a href="" data-url="${result.url}" data-ticketNum="${i-1}" data-tabType="${tabId}" class='none play'><i class="fa-solid fa-play"></i></a>
           <div class='mp3-title-date'>
             <h3>${result.title}</h3>
             <p>${result.pubDateFormatted}</p>
