@@ -1124,7 +1124,7 @@ input[type=number] {
     align-items: center;
 
     li{
-      width: 95%;
+      width: 100%;
       text-align: center;
     }
 
@@ -1133,28 +1133,46 @@ input[type=number] {
       flex-direction: column;
       align-items: center;
 
-      padding: 10px;
-      gap: 5px;
-      border: 3px solid var(--text-color);
-      border-radius: 5px;
-      margin: 10px 0;
+      padding: 0 15px;
+      gap: 3px;
+      // border: 3px solid var(--text-color);
+      // border-radius: 5px;
+      // margin: 10px 0;
 
-      h4{
-        width: 100%;
-        text-align: left;
-      }
-
+      
       div{
         width: 100%;
         display: flex;
-        align-items: center;
+        align-items: end;
         justify-content: space-between;
+
+        .history-title{
+          text-align: left;
+          font-size: large;
+          color: var(--brand-color);
+        }
+
+        span{
+          flex-grow: 1;
+          height: 1px;
+          margin: 0 3px 4px 3px;
+          border-bottom: 2px dotted var(--text-color);
+        }
+      }
+
+      div{
+        p:nth-child(1){
+          text-align: left;
+          overflow: scroll;
+          white-space: nowrap;
+          max-width: 75%;
+        }
       }
     }
   }
 
   ul:not(:last-child){
-    margin: 10px 0 20px 0;
+    margin: 0 0 20px 0;
   }
 }
 

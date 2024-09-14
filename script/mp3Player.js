@@ -292,9 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load History
   displayHistory();
 
-  // for(let i = 0;i<localStorage.length;i++){
-  //   console.log(localStorage.key(i) + ' = ' + localStorage.getItem(localStorage.key(i)))
-  // }
+  for(let i = 0;i<localStorage.length;i++){
+    console.log(localStorage.key(i) + ' = ' + localStorage.getItem(localStorage.key(i)))
+  }
 });
 
 function saveLastPlayed(tabType, url = '', title = '', artist = '', duration = '', lastDuration = 0) {
@@ -315,30 +315,35 @@ function saveLastPlayed(tabType, url = '', title = '', artist = '', duration = '
   if (!storageKey) return;
 
   // Check if there is already data stored
-  let existingData = localStorage.getItem(storageKey);
+  let existingData = JSON.parse(localStorage.getItem(storageKey));
 
-  // If there is existing data, use it as a base
-  if (existingData) {
-    existingData = JSON.parse(existingData);
-    tabType = tabType || existingData.tabType;
-    url = url || existingData.url;
-    title = title || existingData.title;
-    artist = artist || existingData.artist;
-    duration = duration || existingData.duration;
-    lastDuration = lastDuration || 0;
+  if(lastDuration === 0){
+    if(existingData){
+      if(existingData.length > 1){
+        let copyExistingData = [...existingData];
+        existingData = [];
+
+        for(let i=0; i<copyExistingData.length;i++){
+          if(copyExistingData[i].title !== title){
+            existingData.push(copyExistingData[i]);
+          }
+        }
+      }
+
+      if(existingData.length >= 5){
+        existingData.pop();
+      }
+
+      existingData.unshift({tabType: tabType, url: url, title: title, artist: artist, duration: duration, lastDuration: lastDuration});
+    }else{
+      existingData = [{tabType: tabType, url: url, title: title, artist: artist, duration: duration, lastDuration: lastDuration}];
+    }
+  }else{
+    existingData[0].lastDuration = lastDuration;
   }
 
-  const trackData = {
-    tabType: tabType,
-    url: url,
-    title: title,
-    artist: artist,
-    duration: duration,
-    lastDuration: lastDuration
-  };
-
   // Save the updated data back to localStorage
-  localStorage.setItem(storageKey, JSON.stringify(trackData));
+  localStorage.setItem(storageKey, JSON.stringify(existingData));
   displayHistory();
 }
 
@@ -352,31 +357,46 @@ function displayHistory() {
   };
 
   // Helper function to create and append history items
-  function createHistoryItem(data, listElement) {
-    if (!data) return; // Return if no data
-
-    const { tabType, url, title, artist, duration, lastDuration } = JSON.parse(data);
+  function createHistoryItem(item, listElement, index) {
+    const { url, title, artist, duration, lastDuration } = item;
 
     const queueElement = document.createElement('li');
     queueElement.classList.add('history-item');
 
     queueElement.innerHTML = `
-      <h4>${title}</h4>
+      <div>
+        <p class="history-title">${title}</p>
+        <span></span>
+        <p>N°${index.toString().padStart(3, '0')}</p>
+      </div>
       <div>
         <p>${artist}</p>
+        <span></span>
         <p>${formatTime(lastDuration)}/${duration}</p>
       </div>
     `;
 
-    listElement.innerHTML = '';
     listElement.appendChild(queueElement);
   }
 
   // Iterate through each tab and display history
   Object.keys(tabData).forEach(key => {
     const data = localStorage.getItem(key);
+
     if (data) {
-      createHistoryItem(data, tabData[key]); // Ensure we split the array
+      // Parse the data into an array of objects
+      const historyItems = JSON.parse(data);
+
+      // Clear the current history list
+      const listElement = tabData[key];
+      listElement.innerHTML = '';
+      let index = 1;
+
+      // Iterate through each history item and create a corresponding list item
+      historyItems.forEach(item => {
+        createHistoryItem(item, listElement, index);
+        index++
+      });
     }
   });
 }
@@ -399,11 +419,7 @@ playBtn.forEach(function(button) {
 function initiateQueue(ticketNum, url, tabType) {
   // For History Record
   if(currentAudio){
-    if(tabType === currentHistoryTabType){
-      saveLastPlayed(currentHistoryTabType,'','','','',0);
-    }else{
       saveLastPlayed(currentHistoryTabType,'','','','',currentAudio.currentTime);
-    }
   }
   currentHistoryTabType = tabType;
 
@@ -459,7 +475,7 @@ function displayQueueTab(queueList, index) {
     let formattedNumber = (i + 1).toString().padStart(3, '0');
 
     queueElement.innerHTML = `
-        <a href="" data-url="${queue.url}" data-ticketNum="${i}" class='none queue-item'><i class="fa-solid fa-play"></i></a>
+        <a href="#" data-url="${queue.url}" data-ticketNum="${i}" class='none queue-item'><i class="fa-solid fa-play"></i></a>
         <div class='mp3-title-date'>
           <h3>${queue.title}</h3>
           <p>${queue.artist}</p>

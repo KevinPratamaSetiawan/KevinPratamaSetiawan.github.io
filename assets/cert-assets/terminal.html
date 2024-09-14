@@ -168,7 +168,7 @@ permalink: /⌨️/
             </div>
             
             <button id="save-popover-btn" popoverTarget="savePopover" class="social-button mode">
-                <i class="fa-solid fa-brackets-curly mode-logo" id="mode-icon" style="display: flex; justify-content: center; align-items: center;"></i>
+                <i class="fa-solid fa-code fa-xs mode-logo" id="mode-icon" style="display: flex; justify-content: center; align-items: center;"></i>
             </button>
         </div>
     </div>
@@ -448,7 +448,7 @@ permalink: /⌨️/
                 {% for mp3 in mp3_metadata %}
                 {% assign file = site.static_files | where: "path", mp3.url | first %}
                 <li class="mp3-container">
-                    <a href="" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="style-tab" class='none play'>
+                    <a href="#" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="style-tab" class='none play'>
                     <i class="fa-solid fa-play"></i>
                 </a>
                 <div class="mp3-title-date">
@@ -476,7 +476,7 @@ permalink: /⌨️/
                 {% for mp3 in mp3_metadata %}
                 {% assign file = site.static_files | where: "path", mp3.url | first %}
                 <li class="mp3-container">
-                    <a href="" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="pop-out-tab" class='none play'>
+                    <a href="#" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="pop-out-tab" class='none play'>
                     <i class="fa-solid fa-play"></i>
                     </a>
                     <div class="mp3-title-date">
