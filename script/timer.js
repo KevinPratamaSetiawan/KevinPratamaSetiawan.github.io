@@ -137,7 +137,8 @@ function playSound() {
         audio = new Audio('/assets/images/XXX.mp3');
     }
 
-    document.getElementById('stop-alarm-btn').style.display = 'none';
+    document.getElementById('hourglass').style.display = 'none';
+    // document.getElementById('stop-alarm-btn').style.display = 'none';
     document.getElementById('start-alarm-btn').style.display = 'inline';
     audio.play();
 }
@@ -147,7 +148,8 @@ function stopSound() {
         audio.pause();
         audio.currentTime = 0;
 
-        document.getElementById('stop-alarm-btn').style.display = 'inline';
+        document.getElementById('hourglass').style.display = 'inline';
+        // document.getElementById('stop-alarm-btn').style.display = 'inline';
         document.getElementById('start-alarm-btn').style.display = 'none';
     }
 }

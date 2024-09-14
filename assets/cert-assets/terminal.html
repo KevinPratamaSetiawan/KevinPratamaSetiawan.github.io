@@ -41,6 +41,8 @@ permalink: /⌨️/
     <div class="terminal-nav">
         <div class="timer">
             <i class="fa-solid fa-hourglass-end fa-lg" id="hourglass"></i>
+            <i class="fa-solid fa-bell fa-shake fa-lg" id="start-alarm-btn" style="display:none;"></i>
+            <!-- <i class="fa-solid fa-bell-slash" id="stop-alarm-btn"></i> -->
             <div class="time-digit">
                 <input type="number" id="hours" placeholder="00" min="0" max="99">
                 <span>:</span>
@@ -62,8 +64,6 @@ permalink: /⌨️/
             </a>
         </div>
         <div class="mode-toggle rounded-social-buttons">
-            <i class="fa-solid fa-bell-slash fa-xl" id="stop-alarm-btn"></i>
-            <i class="fa-solid fa-bell fa-shake fa-xl" id="start-alarm-btn" style="display:none;"></i>
             <button id="accent-btn" class="social-button mode">
                 <i class="fa-solid fa-dice-d20"
                     style="display: flex; justify-content: center; align-items: center;"></i>

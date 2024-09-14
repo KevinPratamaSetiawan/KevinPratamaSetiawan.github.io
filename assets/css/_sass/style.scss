@@ -527,7 +527,7 @@ blockquote {
 .timer {
   display: flex;
   align-items: center;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .time-digit {
@@ -541,6 +541,7 @@ blockquote {
   border: none;
   box-shadow: none;
   text-align: center;
+  width: 40px;
   font-size: $base-font-size;
   color: var(--text-color);
   border-bottom: 3px solid var(--brand-color);
