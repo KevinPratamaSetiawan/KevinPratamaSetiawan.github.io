@@ -545,10 +545,6 @@ function playAudio(audioLink) {
   durationSlider.addEventListener('input', () => {
       currentAudio.currentTime = durationSlider.value;
   });
-
-  if(currentAudio){
-    localStorage
-  }
 }
 
 function pauseAudio() {
@@ -582,6 +578,7 @@ function rewindAudio() {
 function nextAudio() {
   if (currentQueue.length > 0) {
     currentIndex = (currentIndex + 1) % currentQueue.length;
+    saveLastPlayed(currentHistoryTabType,'','','','',currentAudio.currentTime);
     playAudio(currentQueue[currentIndex].url);
     displayQueueTab(currentQueue, currentIndex);
   }
@@ -590,6 +587,7 @@ function nextAudio() {
 function previousAudio() {
   if (currentQueue.length > 0) {
     currentIndex = (currentIndex - 1 + currentQueue.length) % currentQueue.length;
+    saveLastPlayed(currentHistoryTabType,'','','','',currentAudio.currentTime);
     playAudio(currentQueue[currentIndex].url);
     displayQueueTab(currentQueue, currentIndex);
   }
