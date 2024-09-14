@@ -8,13 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const headerFontFamily = localStorage.getItem('currentHeaderFont');
         const textFontFamily = localStorage.getItem('currentTextFont');
 
-        if(document.getElementById('themePopover')){
-            document.getElementById('heading-display').innerHTML = 'Heading: ' + headerFontFamily;
-            document.getElementById('text-display').innerHTML = 'Normal Text: ' + textFontFamily;
+        if(headerFontFamily){
+            if(document.getElementById('themePopover')){
+                document.getElementById('heading-display').innerHTML = 'Heading: ' + headerFontFamily;
+                document.getElementById('text-display').innerHTML = 'Normal Text: ' + textFontFamily;
+            }
+            
+            localStorage.setItem('currentHeaderFont', headerFontFamily);
+            localStorage.setItem('currentTextFont', textFontFamily);
+        }else{
+            localStorage.setItem('currentHeaderFont', '"Lato", "Helvetica Neue", Helvetica, sans-serif');
+            localStorage.setItem('currentTextFont', "JetBrains Mono, monospace");
         }
-
-        localStorage.setItem('currentHeaderFont', headerFontFamily);
-        localStorage.setItem('currentTextFont', textFontFamily);
 
         if (savedMode){
             changeMode(savedMode);

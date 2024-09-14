@@ -292,9 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load History
   displayHistory();
 
-  for(let i = 0;i<localStorage.length;i++){
-    console.log(localStorage.key(i) + ' = ' + localStorage.getItem(localStorage.key(i)))
-  }
+  // for(let i = 0;i<localStorage.length;i++){
+  //   console.log(localStorage.key(i) + ' = ' + localStorage.getItem(localStorage.key(i)))
+  // }
 });
 
 function saveLastPlayed(tabType, url = '', title = '', artist = '', duration = '', lastDuration = 0) {
@@ -475,7 +475,7 @@ function displayQueueTab(queueList, index) {
     let formattedNumber = (i + 1).toString().padStart(3, '0');
 
     queueElement.innerHTML = `
-        <a href="#" data-url="${queue.url}" data-ticketNum="${i}" class='none queue-item'><i class="fa-solid fa-play"></i></a>
+        <a href="#mp3-section" data-url="${queue.url}" data-ticketNum="${i}" class='none queue-item'><i class="fa-solid fa-play"></i></a>
         <div class='mp3-title-date'>
           <h3>${queue.title}</h3>
           <p>${queue.artist}</p>

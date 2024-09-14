@@ -167,9 +167,66 @@ permalink: /⌨️/
                 <img src="/assets/images/qrBlack.png" alt="" width="300px">
             </div>
             
-            <button id="save-popover-btn" popoverTarget="savePopover" class="social-button mode">
+            <button id="save-popover-btn" popoverTarget="saves-popover" class="social-button mode">
                 <i class="fa-solid fa-code fa-xs mode-logo" id="mode-icon" style="display: flex; justify-content: center; align-items: center;"></i>
             </button>
+
+            <div id="saves-popover" popover>
+                <h2>Local Storage Data</h2>
+                <div class="save-nav">
+                    <a href="#">GET</a>
+                    <a href="#">PUT</a>
+                </div>
+                <div id="get-setting">
+                    <div class="save-option-nav">
+                        <div class="save-options">
+                            <input type="checkbox" id="saveData0" name="saveData0" value="0" checked>
+                            <label for="saveData0">All</label>
+                        </div>
+                        <div class="save-options">
+                            <input type="checkbox" id="saveData1" name="saveData1" value="1">
+                            <label for="saveData1">Theme and Fonts</label>
+                        </div>
+                        <div class="save-options">
+                            <input type="checkbox" id="saveData2" name="saveData2" value="2">
+                            <label for="saveData2">ToDo List Items</label>
+                        </div>
+                        <div class="save-options">
+                            <input type="checkbox" id="saveData3" name="saveData3" value="3">
+                            <label for="saveData3">The Yard RSS</label>
+                        </div>
+                        <div class="save-options">
+                            <input type="checkbox" id="saveData4" name="saveData4" value="4">
+                            <label for="saveData4">Premium RSS</label>
+                        </div>
+                        <div class="save-options">
+                            <input type="checkbox" id="saveData5" name="saveData5" value="5">
+                            <label for="saveData5">Advice Show RSS</label>
+                        </div>
+                        <div class="save-options">
+                            <input type="checkbox" id="saveData6" name="saveData6" value="6">
+                            <label for="saveData6">MP3 Play History</label>
+                        </div>
+                        <div class="save-options">
+                            <input type="checkbox" id="saveData7" name="saveData7" value="7">
+                            <label for="saveData7">MP3 Settings</label>
+                        </div>
+
+                    </div>
+                    <div class="save-display-area">
+                        <div>
+                            <h3>Output</h3>
+                            <a href="#" id="save-copy"><i class="fa-solid fa-copy"></i>Copy</a>
+                        </div>
+                        <p id="save-display"></p>
+                        <a href="#get-setting" class="up-btn"><i class="fa-solid fa-angles-up"></i></a>
+                    </div>
+                </div>
+                <div id="put-tab" style="display: none;">
+                    <h3>Input</h3>
+                    <input type="text">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -217,7 +274,7 @@ permalink: /⌨️/
                 <ul id="todo-finish"></ul>
             </div>
         </div>
-        <div class="music-list">
+        <div class="music-list" id="mp3-section">
             <h4>Mp3 Player</h4>
             <div class="mp3-nav">
                 <div class="tab-item">
@@ -448,7 +505,7 @@ permalink: /⌨️/
                 {% for mp3 in mp3_metadata %}
                 {% assign file = site.static_files | where: "path", mp3.url | first %}
                 <li class="mp3-container">
-                    <a href="#" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="style-tab" class='none play'>
+                    <a href="#mp3-section" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="style-tab" class='none play'>
                     <i class="fa-solid fa-play"></i>
                 </a>
                 <div class="mp3-title-date">
@@ -476,7 +533,7 @@ permalink: /⌨️/
                 {% for mp3 in mp3_metadata %}
                 {% assign file = site.static_files | where: "path", mp3.url | first %}
                 <li class="mp3-container">
-                    <a href="#" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="pop-out-tab" class='none play'>
+                    <a href="#mp3-section" data-url="{{ file.path }}" data-ticketNum="{{ ticketNum }}" data-tabType="pop-out-tab" class='none play'>
                     <i class="fa-solid fa-play"></i>
                     </a>
                     <div class="mp3-title-date">
@@ -517,6 +574,7 @@ permalink: /⌨️/
     <script type="module" src="/script/modeToggle.js"></script>
     <script type="module" src="/script/todo.js"></script>
     <script type="module" src="/script/rssFeeds.js"></script>
+    <script type="module" src="/script/localStorageSave.js"></script>
     
     <script>
         if ('serviceWorker' in navigator) {
