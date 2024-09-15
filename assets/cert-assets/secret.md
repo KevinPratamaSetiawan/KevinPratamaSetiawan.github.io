@@ -22,7 +22,7 @@ title: 🔑
         var button = document.getElementById('submit-button');
 
         if (button.getAttribute('data-redirect') === 'true') {
-            window.location.href = '{{site.baseurl}}/⌨️/';
+            window.location.href = '{{site.baseurl}}/💻/';
             return;
         }
 
