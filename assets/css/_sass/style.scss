@@ -1228,6 +1228,7 @@ input[type=number] {
   background-color: var(--background-color);
   color: var(--text-color);
   border: 3px solid var(--brand-color);
+  scroll-behavior: smooth;
 
   width: 75%;
   height: 80%;
@@ -1269,22 +1270,31 @@ input[type=number] {
     scroll-behavior: smooth;
 
     .save-option-nav{
-      width: 100%;
+      width: 80%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      // justify-content: space-between;
+      justify-content: left;
 
       flex-wrap: wrap;
       align-content: center;
       gap: 5px;
       
+      .save-options:nth-child(1){
+        background-color: var(--brand-color);
+      }
+
       .save-options{
-        width: clamp(100px, 12vw, 200px);
+        min-width: fit-content;
         accent-color: var(--brand-color);
         font-size: large;
-        padding: 5px;
-        margin: 0 auto;
+        padding: 5px 10px;
+        // margin: 0 auto;
         text-align: center;
+        border-radius: 5px;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        border: 3px solid var(--text-color);
       }
     }
 
@@ -1300,6 +1310,7 @@ input[type=number] {
 
       #save-display{
         width: 100%;
+        // height: 500px;
         font-family: monospace;
         white-space: pre-wrap;
         background-color: var(--text-color);
@@ -1315,6 +1326,8 @@ input[type=number] {
     }
   }
 }
+
+// opacity 0 - 1 and translate x 200 - 0 for fba
 
 .up-btn{
   text-align: right;
@@ -1577,12 +1590,7 @@ input[type=number] {
   }
 
   .save-option-nav{
-    justify-content: start;
-    align-items: start;
-
-    .save-options{
-      width: 50%;
-      text-align: left;
-    }
+    justify-content: space-between;
+    align-items: center;
   }
 }

@@ -7,43 +7,118 @@ const checkPremium  = document.getElementById('saveData4');
 const checkAdvice   = document.getElementById('saveData5');
 const checkHistory  = document.getElementById('saveData6');
 const checkSetting  = document.getElementById('saveData7');
+let checkCounter = [];
 let localStorageData = {};
 
-checkAll.addEventListener('change', function() {
-    if(checkAll.checked){
-        checkTheme.checked = false;
-        checkTodo.checked = false;
-        checkYard.checked = false;
-        checkPremium.checked = false;
-        checkAdvice.checked = false;
-        checkHistory.checked = false;
-        checkSetting.checked = false;
-    }
-
-    displayGetLocalStorage();
-});
-
-const checkboxes = [checkTheme, checkTodo, checkYard, checkPremium, checkAdvice, checkHistory, checkSetting];
-
-function handleCheckboxChange(checkbox) {
-    checkbox.addEventListener('change', function() {
-        if (checkbox.checked) {
-            checkAll.checked = false;
-        }
-
-        displayGetLocalStorage();
-    });
-}
-
-checkboxes.forEach(handleCheckboxChange);
-
-document.getElementById('save-popover-btn').addEventListener('click', displayGetLocalStorage());
+document.getElementById('save-popover-btn').addEventListener('click', displayGetLocalStorage('all'));
 document.getElementById('save-copy').addEventListener('click', function() {
     navigator.clipboard.writeText(JSON.stringify(localStorageData, null, 2));
 });
 
-function displayGetLocalStorage (){
-    if(checkAll.checked){
+document.addEventListener('DOMContentLoaded', () => {
+   if (window.innerWidth < 500){
+    checkTheme.innerText    = 'Theme';
+    checkTodo.innerText     = 'To-do Item';
+    checkYard.innerText     = 'Yard';
+    checkPremium.innerText  = 'Premium';
+    checkAdvice.innerText   = 'Advice';
+    checkHistory.innerText  = 'Play History';
+    checkSetting.innerText  = 'mp3 Setting';
+   }
+});
+
+function displayGetLocalStorage (checked){
+    if(checked === 'all'){
+        if(checkCounter.includes('all')){
+            checkAll.style.backgroundColor = 'var(--background-color)';
+            checkCounter.splice(checkCounter.indexOf('all'),1);
+        }else{
+            checkAll.style.backgroundColor = 'var(--brand-color)';
+            checkTheme.style.backgroundColor = 'var(--background-color)';
+            checkTodo.style.backgroundColor = 'var(--background-color)';
+            checkYard.style.backgroundColor = 'var(--background-color)';
+            checkPremium.style.backgroundColor = 'var(--background-color)';
+            checkAdvice.style.backgroundColor = 'var(--background-color)';
+            checkHistory.style.backgroundColor = 'var(--background-color)';
+            checkSetting.style.backgroundColor = 'var(--background-color)';
+            checkCounter = ['all'];
+        }
+    }else {
+
+        if(checkCounter.includes('all')){
+            checkCounter.splice(checkCounter.indexOf('all'),1);
+        }
+        checkAll.style.backgroundColor = 'var(--background-color)';
+
+        if(checked === 'theme'){
+            if(checkCounter.includes('theme')){
+                checkTheme.style.backgroundColor = 'var(--background-color)';
+                checkCounter.splice(checkCounter.indexOf('theme'),1);
+            }else {
+                checkTheme.style.backgroundColor = 'var(--brand-color)';
+                checkCounter.push('theme')
+            }
+        }else if(checked === 'todo'){
+            if(checkCounter.includes('todo')){
+                checkTodo.style.backgroundColor = 'var(--background-color)';
+                checkCounter.splice(checkCounter.indexOf('todo'),1);
+            }else {
+                checkTodo.style.backgroundColor = 'var(--brand-color)';
+                checkCounter.push('todo')        
+            }
+        }else if(checked === 'yard'){
+            if(checkCounter.includes('yard')){
+                checkYard.style.backgroundColor = 'var(--background-color)';
+                checkCounter.splice(checkCounter.indexOf('yard'),1);
+            }else {
+                checkYard.style.backgroundColor = 'var(--brand-color)';
+                checkCounter.push('yard')
+            }
+        }else if(checked === 'premium'){
+            if(checkCounter.includes('premium')){
+                checkPremium.style.backgroundColor = 'var(--background-color)';
+                checkCounter.splice(checkCounter.indexOf('premium'),1);
+            }else {
+                checkPremium.style.backgroundColor = 'var(--brand-color)';
+                checkCounter.push('premium')
+            }
+        }else if(checked === 'advice'){
+            if(checkCounter.includes('advice')){
+                checkAdvice.style.backgroundColor = 'var(--background-color)';
+                checkCounter.splice(checkCounter.indexOf('advice'),1);
+            }else {
+                checkAdvice.style.backgroundColor = 'var(--brand-color)';
+                checkCounter.push('advice')
+            }
+        }else if(checked === 'history'){
+            if(checkCounter.includes('history')){
+                checkHistory.style.backgroundColor = 'var(--background-color)';
+                checkCounter.splice(checkCounter.indexOf('history'),1);
+            }else {
+                checkHistory.style.backgroundColor = 'var(--brand-color)';
+                checkCounter.push('history')
+            }
+        }else if(checked === 'setting'){
+            if(checkCounter.includes('setting')){
+                checkSetting.style.backgroundColor = 'var(--background-color)';
+                checkCounter.splice(checkCounter.indexOf('setting'),1);
+            }else {
+                checkSetting.style.backgroundColor = 'var(--brand-color)';
+                checkCounter.push('setting')
+            }
+        }
+    }
+
+    if(checkCounter.includes('all')){
+        checkAll.style.backgroundColor = 'var(--brand-color)';
+        checkTheme.style.backgroundColor = 'var(--background-color)';
+        checkTodo.style.backgroundColor = 'var(--background-color)';
+        checkYard.style.backgroundColor = 'var(--background-color)';
+        checkPremium.style.backgroundColor = 'var(--background-color)';
+        checkAdvice.style.backgroundColor = 'var(--background-color)';
+        checkHistory.style.backgroundColor = 'var(--background-color)';
+        checkSetting.style.backgroundColor = 'var(--background-color)';
+
         Object.assign(localStorageData, {
             // Save Theme Section
             "currentMode": localStorage.getItem('currentMode'),
@@ -87,8 +162,8 @@ function displayGetLocalStorage (){
             "currentCoverRate": localStorage.getItem('currentCoverRate'),
             "currentCoverFormat": localStorage.getItem('currentCoverFormat')
         });
-    }else{
-        if(checkTheme.checked){
+    }else {
+        if(checkCounter.includes('theme')){
             Object.assign(localStorageData, {
                 // Save Theme Section
                 "currentMode": localStorage.getItem('currentMode'),
@@ -121,7 +196,7 @@ function displayGetLocalStorage (){
             delete localStorageData.currentDarkAccentColor;
         }
 
-        if(checkTodo.checked){
+        if(checkCounter.includes('todo')){
             Object.assign(localStorageData, {
                 // Save Todo Section
                 'todoItems': JSON.parse(localStorage.getItem('todoItems'))
@@ -130,7 +205,7 @@ function displayGetLocalStorage (){
             delete localStorageData.todoItems;
         }
 
-        if(checkYard.checked){
+        if(checkCounter.includes('yard')){
             Object.assign(localStorageData, {
                 // Save The Yard Section
                 'yard-tab': JSON.parse(localStorage.getItem('yard-tab'))
@@ -139,7 +214,7 @@ function displayGetLocalStorage (){
             delete localStorageData['yard-tab'];
         }
 
-        if(checkPremium.checked){
+        if(checkCounter.includes('premium')){
             Object.assign(localStorageData, {
                 // Save The Yard Premium Section
                 'premium-tab': JSON.parse(localStorage.getItem('premium-tab'))
@@ -148,7 +223,7 @@ function displayGetLocalStorage (){
             delete localStorageData['premium-tab'];
         }
 
-        if(checkAdvice.checked){
+        if(checkCounter.includes('advice')){
             Object.assign(localStorageData, {
                 // Save The Yard Advice Show Section
                 'advice-tab': JSON.parse(localStorage.getItem('advice-tab'))
@@ -157,7 +232,7 @@ function displayGetLocalStorage (){
             delete localStorageData['advice-tab'];
         }
 
-        if(checkHistory.checked){
+        if(checkCounter.includes('history')){
             Object.assign(localStorageData, {
                 // Save Mp3 History Section
                 'yardTabLastPlayed': JSON.parse(localStorage.getItem('yardTabLastPlayed')),
@@ -174,7 +249,7 @@ function displayGetLocalStorage (){
             delete localStorageData.popoutTabLastPlayed;
         }
 
-        if(checkSetting.checked){
+        if(checkCounter.includes('setting')){
             Object.assign(localStorageData, {
                 // Save Mp3 Settings Section
                 "currentVolume": localStorage.getItem('currentVolume'),
@@ -194,5 +269,7 @@ function displayGetLocalStorage (){
         }
     }
 
-    displaySave.innerHTML = `<pre>${JSON.stringify(localStorageData, null, 2)}</pre>`;
+    displaySave.innerHTML = `${JSON.stringify(localStorageData, null, 2)}`;
 }
+
+window.displayGetLocalStorage = displayGetLocalStorage;

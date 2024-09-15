@@ -367,7 +367,7 @@ function displayHistory() {
       <div>
         <p class="history-title">${title}</p>
         <span></span>
-        <p>N°${index.toString().padStart(3, '0')}</p>
+        <p>№${index.toString().padStart(3, '0')}</p>
       </div>
       <div>
         <p>${artist}</p>
