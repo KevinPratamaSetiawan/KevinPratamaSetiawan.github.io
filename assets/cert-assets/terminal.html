@@ -257,27 +257,42 @@ permalink: /💻/
                 <i class="fa-solid fa-plus fa-lg" id="add-item-btn"></i>
             </div>
             <div class="todo-listing">
-                <h5>
-                    <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
-                    <i class="fa-regular fa-folder-open"></i>
-                    Priority
-                    <span id="priority-display-num">0</span>
-                </h5>
-                <ul id="todo-priority"></ul>
-                <h5>
-                    <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
-                    <i class="fa-regular fa-folder-open"></i>
-                    Task
-                    <span id="items-display-num">0</span>
-                </h5>
-                <ul id="todo-items"></ul>
-                <h5>
-                    <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
-                    <i class="fa-regular fa-folder-open"></i>
-                    Completed
-                    <span id="finish-display-num">0</span>
-                </h5>
-                <ul id="todo-finish"></ul>
+                <details open>
+                    <summary>    
+                        <h5>
+                            <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                            <i class="fa-regular fa-folder-open"></i>
+                            <i class="fa-solid fa-folder"></i>
+                            Priority
+                            <span id="priority-display-num">0</span>
+                        </h5>
+                    </summary>
+                    <ul id="todo-priority"></ul>
+                </details>
+                <details open>
+                    <summary>    
+                        <h5>
+                            <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                            <i class="fa-regular fa-folder-open"></i>
+                            <i class="fa-solid fa-folder"></i>
+                            Task
+                            <span id="items-display-num">0</span>
+                        </h5>
+                    </summary>    
+                    <ul id="todo-items"></ul>
+                </details>
+                <details>
+                    <summary>    
+                        <h5>
+                            <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                            <i class="fa-regular fa-folder-open"></i>
+                            <i class="fa-solid fa-folder"></i>
+                            Completed
+                            <span id="finish-display-num">0</span>
+                        </h5>
+                    </summary>    
+                    <ul id="todo-finish"></ul>
+                </details>
             </div>
         </div>
         <div class="music-list" id="mp3-section">
@@ -302,26 +317,46 @@ permalink: /💻/
             </div>
             <ul id="queue-tab" style="display: none;"></ul>
             <div id="history-tab" style="display: none;">
-                <p>Yard Last Played</p>
-                <ul id="yard-history-list">
-                    <li>none</li>
-                </ul>
-                <p>Premium Last Played</p>
-                <ul id="premium-history-list">
-                    <li>none</li>
-                </ul>
-                <p>Advice Last Played</p>
-                <ul id="advice-history-list">
-                    <li>none</li>
-                </ul>
-                <p>style.css Last Played</p>
-                <ul id="style-history-list">
-                    <li>none</li>
-                </ul>
-                <p>thePopOut Last Played</p>
-                <ul id="popout-history-list">
-                    <li>none</li>
-                </ul>
+                <details open>
+                    <summary>
+                        <p class="history-list-title">The Yard Last Played <span></span> <span id="yard-display-num">0</span></p>
+                    </summary>
+                    <ul id="yard-history-list">
+                        <li>none</li>
+                    </ul>
+                </details>
+                <details open>
+                    <summary>
+                        <p class="history-list-title">The Yard Premium Last Played <span></span> <span id="premium-display-num">0</span></p>
+                    </summary>
+                    <ul id="premium-history-list">
+                        <li>none</li>
+                    </ul>
+                </details>
+                <details open>
+                    <summary>
+                        <p class="history-list-title">Advice Show Last Played <span></span> <span id="advice-display-num">0</span></p>
+                    </summary>
+                    <ul id="advice-history-list">
+                        <li>none</li>
+                    </ul>
+                </details>
+                <details open>
+                    <summary>
+                        <p class="history-list-title">style.css Last Played <span></span> <span id="style-display-num">0</span></p>
+                    </summary>
+                    <ul id="style-history-list">
+                        <li>none</li>
+                    </ul>
+                </details>
+                <details open>
+                    <summary>
+                        <p class="history-list-title">thePopOut Last Played <span></span> <span id="popout-display-num">0</span></p>
+                    </summary>
+                    <ul id="popout-history-list">
+                        <li>none</li>
+                    </ul>
+                </details>
             </div>
             <div id="mp3-player">
                 <div class="mp3-cover">

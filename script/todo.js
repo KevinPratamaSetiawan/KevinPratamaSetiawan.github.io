@@ -339,3 +339,5 @@ function copyClock(type) {
         document.getElementById(type).innerHTML = originalContent;
     }, 1000);
 }
+
+window.numberToRoman = numberToRoman;

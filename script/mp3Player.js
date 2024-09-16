@@ -379,6 +379,35 @@ function displayHistory() {
     listElement.appendChild(queueElement);
   }
 
+  function updateHistoryCounter (){
+    // document.getElementById('yard-display-num').textContent = numberToRoman(document.querySelector("#yard-history-list").querySelectorAll(".history-item").length);
+    // document.getElementById('premium-display-num').textContent = numberToRoman(document.querySelector("#premium-history-list").querySelectorAll(".history-item").length);
+    // document.getElementById('advice-display-num').textContent = numberToRoman(document.querySelector("#advice-history-list").querySelectorAll(".history-item").length);
+    // document.getElementById('style-display-num').textContent = numberToRoman(document.querySelector("#style-history-list").querySelectorAll(".history-item").length);
+    // document.getElementById('popout-display-num').textContent = numberToRoman(document.querySelector("#popout-history-list").querySelectorAll(".history-item").length);
+
+    const yardUl = document.querySelector("#yard-history-list");
+const yardNum = numberToRoman(yardUl.querySelectorAll(".history-item").length);
+document.getElementById('yard-display-num').textContent = yardNum;
+
+const premiumUl = document.querySelector("#premium-history-list");
+const premiumNum = numberToRoman(premiumUl.querySelectorAll(".history-item").length);
+document.getElementById('premium-display-num').textContent = premiumNum;
+
+const adviceUl = document.querySelector("#advice-history-list");
+const adviceNum = numberToRoman(adviceUl.querySelectorAll(".history-item").length);
+document.getElementById('advice-display-num').textContent = adviceNum;
+
+const styleUl = document.querySelector("#style-history-list");
+const styleNum = numberToRoman(styleUl.querySelectorAll(".history-item").length);
+document.getElementById('style-display-num').textContent = styleNum;
+
+const popoutUl = document.querySelector("#popout-history-list");
+const popoutNum = numberToRoman(popoutUl.querySelectorAll(".history-item").length);
+document.getElementById('popout-display-num').textContent = popoutNum;
+
+  }
+
   // Iterate through each tab and display history
   Object.keys(tabData).forEach(key => {
     const data = localStorage.getItem(key);
@@ -400,6 +429,8 @@ function displayHistory() {
       });
     }
   });
+
+  updateHistoryCounter();
 }
 
 const playBtn = document.querySelectorAll('.play');
