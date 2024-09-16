@@ -382,11 +382,12 @@ function displayHistory() {
   // Iterate through each tab and display history
   Object.keys(tabData).forEach(key => {
     const data = localStorage.getItem(key);
+    if(data === null) return;
 
-    if (data) {
-      // Parse the data into an array of objects
-      const historyItems = JSON.parse(data);
+    // Parse the data into an array of objects
+    const historyItems = JSON.parse(data);
 
+    if (Array.isArray(historyItems)) {
       // Clear the current history list
       const listElement = tabData[key];
       listElement.innerHTML = '';

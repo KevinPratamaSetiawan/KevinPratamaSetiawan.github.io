@@ -27,12 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('currentMode', 'light');
 
             // Save Default Light Mode
+            localStorage.setItem('currentLightTheme', 'lightClassic');
             localStorage.setItem('currentLightBgColor', '#fdfdfd');
             localStorage.setItem('currentLightBgColorHsl', '253,253,253');
             localStorage.setItem('currentLightTextColor', '#23272d');
             localStorage.setItem('currentLightAccentColor', '#60c17d');
 
             // Save Default Dark Mode
+            localStorage.setItem('currentDarkTheme', 'darkClassic');
             localStorage.setItem('currentDarkBgColor', '#23272d');
             localStorage.setItem('currentDarkBgColorHsl', '253,253,253');
             localStorage.setItem('currentDarkTextColor', '#fdfdfd');
@@ -69,9 +71,17 @@ accentButton.addEventListener('click', () => {
     let darkThemes = ['darkClassic', 'darkPurple', 'darkCoffee'];
 
     if(savedMode === 'light'){
-        currentIndex = lightThemes.indexOf(localStorage.getItem('currentLightTheme'));
+        if(lightThemes.indexOf(localStorage.getItem('currentLightTheme')) === -1){
+            currentIndex = 0;
+        }else{
+            currentIndex = lightThemes.indexOf(localStorage.getItem('currentLightTheme')) || 0;
+        }
     }else if(savedMode === 'dark'){
-        currentIndex = darkThemes.indexOf(localStorage.getItem('currentDarkTheme'));
+        if(darkThemes.indexOf(localStorage.getItem('currentDarkTheme')) === -1){
+            currentIndex = 0;
+        }else{
+            currentIndex = darkThemes.indexOf(localStorage.getItem('currentDarkTheme')) || 0;
+        }
     }
 
     const lightColors = [
@@ -101,11 +111,11 @@ accentButton.addEventListener('click', () => {
     if(savedMode === 'light'){
         randomIndex = Math.floor(Math.random() * lightColors[currentIndex].length);
         newColor = lightColors[currentIndex][randomIndex];
-        console.log(lightColors[currentIndex][randomIndex]);
+        // console.log(lightColors[currentIndex][randomIndex]);
     }else if(savedMode === 'dark'){
         randomIndex = Math.floor(Math.random() * darkColors[currentIndex].length);
         newColor = darkColors[currentIndex][randomIndex];
-        console.log(darkColors[currentIndex][randomIndex]);
+        // console.log(darkColors[currentIndex][randomIndex]);
     }
 
     document.documentElement.style.setProperty('--brand-color', newColor);

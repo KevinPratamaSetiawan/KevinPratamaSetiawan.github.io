@@ -175,32 +175,60 @@ permalink: /💻/
             <div id="saves-popover" popover>
                 <h2 id="saves-popover-title">Local Storage Data</h2>
                 <div class="save-nav">
-                    <a href="#">GET</a>
-                    <a href="#">PUT</a>
+                    <a href="#" id="get-btn"><span style="color: #6bdd9a;">GET</span></a>
+                    <a href="#" id="put-btn">PUT</a>
+                    <a href="#" id="del-btn">DEL</a>
+                    <div>
+                        <p id="method-link">https://kevinpratamasetiawan.github.io/💻/getSaveData</p>
+                    </div>
                 </div>
                 <div id="get-setting">
                     <div class="save-option-nav">
-                        <button id="saveData0" class="save-options" onclick="displayGetLocalStorage('all')">All</button>
-                        <button id="saveData1" class="save-options" onclick="displayGetLocalStorage('theme')">Theme and Fonts</button>
-                        <button id="saveData2" class="save-options" onclick="displayGetLocalStorage('todo')">To-do List Items</button>
-                        <button id="saveData3" class="save-options" onclick="displayGetLocalStorage('yard')">The Yard RSS</button>
-                        <button id="saveData4" class="save-options" onclick="displayGetLocalStorage('premium')">Premium RSS</button>
-                        <button id="saveData5" class="save-options" onclick="displayGetLocalStorage('advice')">Advice Show RSS</button>
-                        <button id="saveData6" class="save-options" onclick="displayGetLocalStorage('history')">MP3 Play History</button>
-                        <button id="saveData7" class="save-options" onclick="displayGetLocalStorage('setting')">MP3 Setting</button>
+                        <button id="saveData0" class="save-options" onclick="displayGetLocalStorage('all', 'setOne')">All</button>
+                        <button id="saveData1" class="save-options" onclick="displayGetLocalStorage('theme', 'setOne')">Theme and Fonts</button>
+                        <button id="saveData2" class="save-options" onclick="displayGetLocalStorage('todo', 'setOne')">To-do List Items</button>
+                        <button id="saveData3" class="save-options" onclick="displayGetLocalStorage('yard', 'setOne')">The Yard RSS</button>
+                        <button id="saveData4" class="save-options" onclick="displayGetLocalStorage('premium', 'setOne')">Premium RSS</button>
+                        <button id="saveData5" class="save-options" onclick="displayGetLocalStorage('advice', 'setOne')">Advice Show RSS</button>
+                        <button id="saveData6" class="save-options" onclick="displayGetLocalStorage('history', 'setOne')">MP3 Play History</button>
+                        <button id="saveData7" class="save-options" onclick="displayGetLocalStorage('setting', 'setOne')">MP3 Setting</button>
                     </div>
                     <div class="save-display-area">
                         <div>
                             <h3>Output</h3>
-                            <a href="#" id="save-copy"><i class="fa-solid fa-copy"></i>Copy</a>
+                            <a href="#" id="save-copy"><i class="fa-solid fa-copy"></i> Copy</a>
                         </div>
-                        <pre id="save-display"></pre>
+                        <pre id="save-display" class="save-display"></pre>
                         <a href="#saves-popover-title" class="up-btn"><i class="fa-solid fa-angles-up"></i></a>
                     </div>
                 </div>
-                <div id="put-tab" style="display: none;">
-                    <h3>Input</h3>
-                    <input type="text">
+                <div id="put-setting" style="display: none;">
+                    <div>
+                        <h3>Input</h3>
+                        <a href="#" id="apply-save"><i class="fa-solid fa-floppy-disk"></i> Save Data</a>
+                    </div>
+                    <input type="text" id="input-box" contenteditable="true" placeholder="Paste Your Save Data Here...">
+                    <pre id="input-display-box"></pre>
+                </div>
+                <div id="del-setting" style="display: none;">
+                    <div class="save-option-nav">
+                        <button id="saveData100" class="save-options" onclick="displayGetLocalStorage('all', 'setTwo')">All</button>
+                        <button id="saveData101" class="save-options" onclick="displayGetLocalStorage('theme', 'setTwo')">Theme and Fonts</button>
+                        <button id="saveData102" class="save-options" onclick="displayGetLocalStorage('todo', 'setTwo')">To-do List Items</button>
+                        <button id="saveData103" class="save-options" onclick="displayGetLocalStorage('yard', 'setTwo')">The Yard RSS</button>
+                        <button id="saveData104" class="save-options" onclick="displayGetLocalStorage('premium', 'setTwo')">Premium RSS</button>
+                        <button id="saveData105" class="save-options" onclick="displayGetLocalStorage('advice', 'setTwo')">Advice Show RSS</button>
+                        <button id="saveData106" class="save-options" onclick="displayGetLocalStorage('history', 'setTwo')">MP3 Play History</button>
+                        <button id="saveData107" class="save-options" onclick="displayGetLocalStorage('setting', 'setTwo')">MP3 Setting</button>
+                    </div>
+                    <div class="save-display-area">
+                        <div>
+                            <h3>Output</h3>
+                            <a href="#" id="del-save"><i class="fa-regular fa-trash-can"></i> Delete</a>
+                        </div>
+                        <pre id="del-display" class="save-display"></pre>
+                        <a href="#saves-popover-title" class="up-btn"><i class="fa-solid fa-angles-up"></i></a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -130,6 +130,7 @@ function handleFileInput(event, tabId) {
 function displayResults(results, tabId) {
   const tabContent = document.getElementById(tabId);
   if (!tabContent) return;
+  if (!results || results === null ) return;
 
   let i = 1;
 
