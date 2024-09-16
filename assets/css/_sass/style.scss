@@ -1222,6 +1222,7 @@ input[type=number] {
   }
   
   p{
+    font-size: 12px;
     width: 300px;
     border-radius: 4px;
     padding: 10px;
@@ -1229,6 +1230,7 @@ input[type=number] {
     background-color: #23272d;
     color: #fdfdfd;
     border: 1px solid #ccc;
+    text-align: center;
 
     overflow-x: scroll;
     font-family: monospace;
