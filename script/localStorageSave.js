@@ -502,6 +502,8 @@ document.getElementById('apply-save').addEventListener('click', function() {
         localStorage.setItem('currentCoverRate', saveData.currentCoverRate);
         localStorage.setItem('currentCoverFormat', saveData.currentCoverFormat);
     }
+
+    location.reload();
 });
 
 function deleteSaveData (){
@@ -604,6 +606,7 @@ function deleteSaveData (){
             localStorage.removeItem('currentCoverFormat');
         }
     }
+    location.reload();
 }
 
 window.displayGetLocalStorage = displayGetLocalStorage;
