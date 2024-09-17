@@ -304,6 +304,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load History
   displayHistory();
 
+  // Control History List Toggle
+  const historyToggles = document.querySelectorAll('.history-list-toggles');
+  const historyLists = document.querySelectorAll('.history-list');
+
+  historyToggles.forEach((toggle, index) => {
+    const correspondingList = historyLists[index];
+  
+    function checkHistoryItems() {
+      const historyItems = correspondingList.querySelectorAll('.history-item');
+      
+      if (historyItems.length > 0) {
+        toggle.setAttribute('open', 'true');
+      } else {
+        toggle.removeAttribute('open');
+      }
+    }  
+    checkHistoryItems();
+  });
+
   // for(let i = 0;i<localStorage.length;i++){
   //   console.log(localStorage.key(i) + ' = ' + localStorage.getItem(localStorage.key(i)))
   // }
