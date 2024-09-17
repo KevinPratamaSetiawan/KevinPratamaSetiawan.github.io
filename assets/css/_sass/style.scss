@@ -134,6 +134,11 @@ blockquote {
   }
 }
 
+.post-description{
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
 /* Pagination style in index/home page */
 .pagination {
   margin: 2em 0;

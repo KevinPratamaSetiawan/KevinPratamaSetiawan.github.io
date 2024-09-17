@@ -1,7 +1,7 @@
 ### your site title here
 #Start The Localhost : bundle exec jekyll serve --incremental --trace
 
-title: Kevin Pratama Setiawan
+title: KPS
 description: Fullstack and Cloud Developer | Informatics Engineering Student | Based in Indonesia
 
 baseurl: "" #name of GitHub repository
