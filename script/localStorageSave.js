@@ -325,7 +325,8 @@ function displayGetLocalStorage (checked, whichSet){
             "currentAudioSpeed": localStorage.getItem('currentAudioSpeed'),
             "currentFrRate": localStorage.getItem('currentFrRate'),
             "currentCoverRate": localStorage.getItem('currentCoverRate'),
-            "currentCoverFormat": localStorage.getItem('currentCoverFormat')
+            "currentCoverFormat": localStorage.getItem('currentCoverFormat'),
+            "currentHistoryCount": localStorage.getItem('currentHistoryCount')
         });
     }else {
         if(checkCounter.includes('theme')){
@@ -422,7 +423,8 @@ function displayGetLocalStorage (checked, whichSet){
                 "currentAudioSpeed": localStorage.getItem('currentAudioSpeed'),
                 "currentFrRate": localStorage.getItem('currentFrRate'),
                 "currentCoverRate": localStorage.getItem('currentCoverRate'),
-                "currentCoverFormat": localStorage.getItem('currentCoverFormat')
+                "currentCoverFormat": localStorage.getItem('currentCoverFormat'),
+                "currentHistoryCount": localStorage.getItem('currentHistoryCount')
             });
         }else {
             delete localStorageData.currentVolume;
@@ -431,6 +433,7 @@ function displayGetLocalStorage (checked, whichSet){
             delete localStorageData.currentFrRate;
             delete localStorageData.currentCoverRate;
             delete localStorageData.currentCoverFormat;
+            delete localStorageData.currentHistoryCount;
         }
     }
 
@@ -501,6 +504,7 @@ document.getElementById('apply-save').addEventListener('click', function() {
         localStorage.setItem('currentFrRate', saveData.currentFrRate);
         localStorage.setItem('currentCoverRate', saveData.currentCoverRate);
         localStorage.setItem('currentCoverFormat', saveData.currentCoverFormat);
+        localStorage.setItem('currentHistoryCount', saveData.currentHistoryCount);
     }
 
     location.reload();
@@ -549,6 +553,7 @@ function deleteSaveData (){
             localStorage.removeItem('currentFrRate');
             localStorage.removeItem('currentCoverRate');
             localStorage.removeItem('currentCoverFormat');
+            localStorage.removeItem('currentHistoryCount');
     }else {
         if(checkCounter.includes('theme')){
             // Delete Theme Section
@@ -604,6 +609,7 @@ function deleteSaveData (){
             localStorage.removeItem('currentFrRate');
             localStorage.removeItem('currentCoverRate');
             localStorage.removeItem('currentCoverFormat');
+            localStorage.removeItem('currentHistoryCount');
         }
     }
     location.reload();

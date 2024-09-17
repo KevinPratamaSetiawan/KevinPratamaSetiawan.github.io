@@ -181,6 +181,7 @@ let normalQueue;
 let currentMode = 'normal';
 let frRate = 15;
 let currentHistoryTabType;
+let historyCount = 5;
 
 let playButton        = document.querySelector('.fa-circle-play');
 let pauseButton       = document.querySelector('.fa-circle-pause');
@@ -202,6 +203,7 @@ let audioSpeedSlider  = document.getElementById('audio-speed-control')
 let frRateSlider      = document.getElementById('fr-rate-control')
 let coverRateSlider   = document.getElementById('cover-rate-control')
 let doctypeSlider     = document.getElementById('doctype-control')
+let historySlider     = document.getElementById('history-item-control')
 
 playButton.addEventListener('click', replayAudio);
 pauseButton.addEventListener('click', pauseAudio);
@@ -223,6 +225,7 @@ audioSpeedSlider.addEventListener('input', changeAudioSpeed);
 frRateSlider.addEventListener('input', changeFrRate);
 coverRateSlider.addEventListener('input', changeCoverRate);
 doctypeSlider.addEventListener('input', changeDoctype);
+historySlider.addEventListener('input', changeHistoryItem);
 
 document.addEventListener('DOMContentLoaded', () => {
   // Load Saved Volume
@@ -289,6 +292,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   changeDoctype();
 
+  // Load Saved History Item per Playlist
+  const currentHistoryCount = localStorage.getItem('currentHistoryCount');
+  if(currentHistoryCount){
+    historySlider.value = currentHistoryCount;
+  }else {
+    historySlider.value = 5;
+  }
+  changeHistoryItem();
+
   // Load History
   displayHistory();
 
@@ -330,7 +342,7 @@ function saveLastPlayed(tabType, url = '', title = '', artist = '', duration = '
         }
       }
 
-      if(existingData.length >= 5){
+      while(existingData.length >= historyCount){
         existingData.pop();
       }
 
@@ -821,6 +833,12 @@ function changeDoctype () {
     document.getElementById('doctype-value-display').innerHTML = '.gif';
   }
   localStorage.setItem('currentCoverFormat', doctypeSlider.value);
+}
+
+function changeHistoryItem (){
+  document.getElementById('history-value-display').innerHTML = historySlider.value;
+  localStorage.setItem('currentHistoryCount', historySlider.value);
+  historyCount = historySlider.value;
 }
 
 window.initiateQueue = initiateQueue;
