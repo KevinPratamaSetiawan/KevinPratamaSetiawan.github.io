@@ -79,6 +79,8 @@ function numberToRoman(num) {
   ];
   
   let result = '';
+
+  if (num === 0) return "零";
   
   for (const { value, numeral } of romanNumerals) {
       while (num >= value) {
@@ -88,6 +90,39 @@ function numberToRoman(num) {
   }
   
   return result;
+}
+
+function numberToKanji(num) {
+  const kanjiDigits = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+  const kanjiUnits = ["", "十", "百", "千"];
+  const kanjiBigUnits = ["", "万", "億", "兆"];
+
+  if (num === 0) return "零";
+
+  let kanji = "";
+  let unitIndex = 0;
+
+  while (num > 0) {
+      let chunk = num % 10000;
+      let chunkKanji = "";
+
+      for (let i = 0; chunk > 0; i++) {
+          let digit = chunk % 10;
+          if (digit !== 0) {
+              chunkKanji = (digit > 1 || i === 0 ? kanjiDigits[digit] : "") + kanjiUnits[i] + chunkKanji;
+          }
+          chunk = Math.floor(chunk / 10);
+      }
+
+      if (chunkKanji) {
+          kanji = chunkKanji + kanjiBigUnits[unitIndex] + kanji;
+      }
+
+      unitIndex++;
+      num = Math.floor(num / 10000);
+  }
+
+  return kanji;
 }
 
 setInterval(changeCoverImage, coverChangeInterval);
@@ -411,11 +446,23 @@ function displayHistory() {
   }
 
   function updateHistoryCounter (){
-    document.getElementById('yard-display-num').textContent = document.querySelector("#yard-history-list").querySelectorAll(".history-item").length;
-    document.getElementById('premium-display-num').textContent = document.querySelector("#premium-history-list").querySelectorAll(".history-item").length;
-    document.getElementById('advice-display-num').textContent = document.querySelector("#advice-history-list").querySelectorAll(".history-item").length;
-    document.getElementById('style-display-num').textContent = document.querySelector("#style-history-list").querySelectorAll(".history-item").length;
-    document.getElementById('popout-display-num').textContent = document.querySelector("#popout-history-list").querySelectorAll(".history-item").length;
+    document.getElementById('yard-display-num').textContent = document.querySelector("#yard-history-list").querySelectorAll(".history-item").length.toString().padStart(2, '0');
+    document.getElementById('premium-display-num').textContent = document.querySelector("#premium-history-list").querySelectorAll(".history-item").length.toString().padStart(2, '0');
+    document.getElementById('advice-display-num').textContent = document.querySelector("#advice-history-list").querySelectorAll(".history-item").length.toString().padStart(2, '0');
+    document.getElementById('style-display-num').textContent = document.querySelector("#style-history-list").querySelectorAll(".history-item").length.toString().padStart(2, '0');
+    document.getElementById('popout-display-num').textContent = document.querySelector("#popout-history-list").querySelectorAll(".history-item").length.toString().padStart(2, '0');
+
+    // document.getElementById('yard-display-num').textContent     = numberToRoman(document.querySelector("#yard-history-list").querySelectorAll(".history-item").length.toString());
+    // document.getElementById('premium-display-num').textContent  = numberToRoman(document.querySelector("#premium-history-list").querySelectorAll(".history-item").length.toString());
+    // document.getElementById('advice-display-num').textContent   = numberToRoman(document.querySelector("#advice-history-list").querySelectorAll(".history-item").length.toString());
+    // document.getElementById('style-display-num').textContent    = numberToRoman(document.querySelector("#style-history-list").querySelectorAll(".history-item").length.toString());
+    // document.getElementById('popout-display-num').textContent   = numberToRoman(document.querySelector("#popout-history-list").querySelectorAll(".history-item").length.toString());
+
+    //document.getElementById('yard-display-num').textContent     = numberToKanji(document.querySelector("#yard-history-list").querySelectorAll(".history-item").length.toString());
+    //document.getElementById('premium-display-num').textContent  = numberToKanji(document.querySelector("#premium-history-list").querySelectorAll(".history-item").length.toString());
+    //document.getElementById('advice-display-num').textContent   = numberToKanji(document.querySelector("#advice-history-list").querySelectorAll(".history-item").length.toString());
+    //document.getElementById('style-display-num').textContent    = numberToKanji(document.querySelector("#style-history-list").querySelectorAll(".history-item").length.toString());
+    //document.getElementById('popout-display-num').textContent   = numberToKanji(document.querySelector("#popout-history-list").querySelectorAll(".history-item").length.toString());
   }
 
   // Iterate through each tab and display history
