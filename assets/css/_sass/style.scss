@@ -1161,6 +1161,13 @@ input[type=number] {
             margin: 0 3px 4px 3px;
             border-bottom: 2px dotted var(--text-color);
         }
+
+        span:nth-child(3){
+          span{
+            border-bottom: unset;
+            color: var(--text-color);
+          }
+        }
       }
     }
 

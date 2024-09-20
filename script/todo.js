@@ -187,49 +187,29 @@ function appendOrInsertAfterNumbered(ul, li) {
 
 function updateCounter(){
     const priorityUl = document.querySelector("#todo-priority");
-    const priorityNum = numberToRoman(priorityUl.querySelectorAll("li").length);
-    document.getElementById('priority-display-num').textContent = priorityNum;
-
     const itemsUl = document.querySelector("#todo-items");
-    const itemsNum = numberToRoman(itemsUl.querySelectorAll("li").length);
-    document.getElementById('items-display-num').textContent = itemsNum;
-
     const finishUl = document.querySelector("#todo-finish");
-    const finishNum = numberToRoman(finishUl.querySelectorAll("li").length);
-    document.getElementById('finish-display-num').textContent = finishNum;
-}
 
-function numberToRoman(num) {
-    const romanNumerals = [
-        { value: 1000, numeral: 'M' },
-        { value: 900, numeral: 'CM' },
-        { value: 500, numeral: 'D' },
-        { value: 400, numeral: 'CD' },
-        { value: 100, numeral: 'C' },
-        { value: 90, numeral: 'XC' },
-        { value: 50, numeral: 'L' },
-        { value: 40, numeral: 'XL' },
-        { value: 10, numeral: 'X' },
-        { value: 9, numeral: 'IX' },
-        { value: 5, numeral: 'V' },
-        { value: 4, numeral: 'IV' },
-        { value: 1, numeral: 'I' }
-    ];
-    
-    let result = '';
+    let priorityNum, itemsNum, finishNum;
+    const currentHistoryFormat = localStorage.getItem('currentHistoryCountFormat');
 
-    if(num === 0){
-        result = '零';
+    if(currentHistoryFormat == 1){
+        priorityNum = priorityUl.querySelectorAll("li").length.toString();
+        itemsNum = itemsUl.querySelectorAll("li").length.toString();
+        finishNum = finishUl.querySelectorAll("li").length.toString();
+    }else if(currentHistoryFormat == 2){
+        priorityNum = numberToRoman(priorityUl.querySelectorAll("li").length);
+        itemsNum = numberToRoman(itemsUl.querySelectorAll("li").length);
+        finishNum = numberToRoman(finishUl.querySelectorAll("li").length);
+    }else if(currentHistoryFormat == 3){
+        priorityNum = numberToKanji(priorityUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
+        itemsNum = numberToKanji(itemsUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
+        finishNum = numberToKanji(finishUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
     }
-    
-    for (const { value, numeral } of romanNumerals) {
-        while (num >= value) {
-            result += numeral;
-            num -= value;
-        }
-    }
-    
-    return result;
+
+    document.getElementById('priority-display-num').innerHTML = priorityNum;
+    document.getElementById('items-display-num').innerHTML = itemsNum;
+    document.getElementById('finish-display-num').innerHTML = finishNum;
 }
 
 // Todo Clock
@@ -340,4 +320,5 @@ function copyClock(type) {
     }, 1000);
 }
 
-window.numberToRoman = numberToRoman;
+// window.numberToRoman = numberToRoman;
+window.updateCounter = updateCounter;

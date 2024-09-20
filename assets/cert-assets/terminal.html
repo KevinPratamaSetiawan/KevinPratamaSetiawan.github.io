@@ -319,7 +319,7 @@ permalink: /💻/
             <div id="history-tab" style="display: none;">
                 <details class="history-list-toggles">
                     <summary>
-                        <p class="history-list-title"><span>The Yard</span> &nbsp;last played <span></span> <span id="yard-display-num">0</span>個</p>
+                        <p class="history-list-title"><span>The Yard</span> &nbsp;last played <span></span> <span id="yard-display-num">0 <span></span> </span></p>
                     </summary>
                     <ul id="yard-history-list" class="history-list">
                         <li>none</li>
@@ -327,7 +327,7 @@ permalink: /💻/
                 </details>
                 <details class="history-list-toggles">
                     <summary>
-                        <p class="history-list-title"><span>The Yard Premium</span> &nbsp;last played <span></span> <span id="premium-display-num">0</span>個</p>
+                        <p class="history-list-title"><span>The Yard Premium</span> &nbsp;last played <span></span> <span id="premium-display-num">0 <span></span> </span></p>
                     </summary>
                     <ul id="premium-history-list" class="history-list">
                         <li>none</li>
@@ -335,7 +335,7 @@ permalink: /💻/
                 </details>
                 <details class="history-list-toggles">
                     <summary>
-                        <p class="history-list-title"><span>The Advice Show</span> &nbsp;last played <span></span> <span id="advice-display-num">0</span>個</p>
+                        <p class="history-list-title"><span>The Advice Show</span> &nbsp;last played <span></span> <span id="advice-display-num">0 <span></span> </span></p>
                     </summary>
                     <ul id="advice-history-list" class="history-list">
                         <li>none</li>
@@ -343,7 +343,7 @@ permalink: /💻/
                 </details>
                 <details class="history-list-toggles">
                     <summary>
-                        <p class="history-list-title"><span>style.css</span> &nbsp;last played <span></span> <span id="style-display-num">0</span>個</p>
+                        <p class="history-list-title"><span>style.css</span> &nbsp;last played <span></span> <span id="style-display-num">0 <span></span> </span></p>
                     </summary>
                     <ul id="style-history-list" class="history-list">
                         <li>none</li>
@@ -351,7 +351,7 @@ permalink: /💻/
                 </details>
                 <details class="history-list-toggles">
                     <summary>
-                        <p class="history-list-title"><span>thePopOut</span> &nbsp;last played <span></span> <span id="popout-display-num">0</span>個</p>
+                        <p class="history-list-title"><span>thePopOut</span> &nbsp;last played <span></span> <span id="popout-display-num">0 <span></span> </span></p>
                     </summary>
                     <ul id="popout-history-list" class="history-list">
                         <li>none</li>
@@ -404,9 +404,9 @@ permalink: /💻/
                 <p class="setting-item">Audio Speed</p>
                 <div class="duration-slider">
                     <p class="start-slider-p">
-                        <i class="fa-solid fa-gauge-high fa-flip-horizontal" id="fa-gauge-low" style="display: none;"></i>
-                        <i class="fa-solid fa-gauge" id="fa-gauge-mid"></i>
-                        <i class="fa-solid fa-gauge-high" id="fa-gauge-high" style="display: none;"></i>
+                        <i class="fa-solid fa-gauge-high fa-flip-horizontal fa-lg" id="fa-gauge-low" style="display: none;"></i>
+                        <i class="fa-solid fa-gauge fa-lg" id="fa-gauge-mid"></i>
+                        <i class="fa-solid fa-gauge-high fa-lg" id="fa-gauge-high" style="display: none;"></i>
                     </p>
                     <div class="slider-container">
                         <input type="range" class="mp3-slider" id="audio-speed-control" min="1" max="20" value="10" step="1">
@@ -416,8 +416,8 @@ permalink: /💻/
                 <p class="setting-item">Forward/Rewind Rate</p>
                 <div class="duration-slider">
                     <p class="start-slider-p">
-                        <i class="fa-solid fa-backward"></i>
-                        <i class="fa-solid fa-forward"></i>
+                        <i class="fa-solid fa-backward fa-lg"></i>
+                        <i class="fa-solid fa-forward fa-lg"></i>
                     </p>
                     <div class="slider-container">
                         <input type="range" class="mp3-slider" id="fr-rate-control" min="1" max="12" value="3" step="1">
@@ -427,8 +427,8 @@ permalink: /💻/
                 <p class="setting-item">Cover Change Rate</p>
                 <div class="duration-slider">
                     <p class="start-slider-p">
-                        <i class="fa-solid fa-images"></i>
-                        <i class="fa-solid fa-stopwatch"></i>
+                        <i class="fa-solid fa-images fa-lg"></i>
+                        <i class="fa-solid fa-stopwatch fa-lg"></i>
                     </p>
                     <div class="slider-container">
                         <input type="range" class="mp3-slider" id="cover-rate-control" min="1" max="10" value="3" step="1">
@@ -438,7 +438,7 @@ permalink: /💻/
                 <p class="setting-item">Cover Doctype</p>
                 <div class="duration-slider">
                     <p class="start-slider-p">
-                        <i class="fa-solid fa-file-image"></i>
+                        <i class="fa-solid fa-file-image fa-lg"></i>
                     </p>
                     <div class="slider-container">
                         <input type="range" class="mp3-slider" id="doctype-control" min="1" max="4" value="1" step="1">
@@ -448,12 +448,22 @@ permalink: /💻/
                 <p class="setting-item">History Item per Playlist</p>
                 <div class="duration-slider">
                     <p class="start-slider-p">
-                        <i class="fa-solid fa-timeline"></i>
+                        <i class="fa-solid fa-timeline fa-lg"></i>
                     </p>
                     <div class="slider-container">
                         <input type="range" class="mp3-slider" id="history-item-control" min="5" max="30" value="5" step="5">
                     </div>
                     <p class="end-slider-p" id="history-value-display">5</p>
+                </div>
+                <p class="setting-item">History Count Format</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-language fa-lg"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="history-format-control" min="1" max="3" value="1" step="1">
+                    </div>
+                    <p class="end-slider-p" id="history-count-value-display">EN</p>
                 </div>
             </div>
         </div>

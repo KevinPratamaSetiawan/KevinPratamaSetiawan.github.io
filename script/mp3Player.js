@@ -78,48 +78,66 @@ function numberToRoman(num) {
       { value: 1, numeral: 'I' }
   ];
   
-  let result = '';
+  let result = '∅';
 
-  if (num === 0) return "零";
+  if (num !== 0){
+    result = '';
   
-  for (const { value, numeral } of romanNumerals) {
+    for (const { value, numeral } of romanNumerals) {
       while (num >= value) {
-          result += numeral;
-          num -= value;
+        result += numeral;
+        num -= value;
       }
+    } 
   }
-  
-  return result;
+    return result;
 }
 
 function numberToKanji(num) {
   const kanjiDigits = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
   const kanjiUnits = ["", "十", "百", "千"];
   const kanjiBigUnits = ["", "万", "億", "兆"];
-
-  if (num === 0) return "零";
+  const hiraganaDigits = ["", "いち", "に", "さん", "し", "ご", "ろく", "なな", "はち", "きゅう"];
+  const hiraganaUnits = ["", "じゅう", "ひゃく", "せん"];
+  const hiraganaBigUnits = ["", "まん", "おく", "ちょう"]; 
 
   let kanji = "";
   let unitIndex = 0;
 
+  if (num === 0) {
+    // Special case for zero
+    return `<ruby>零<rt>れい</rt></ruby>`;
+  }
+
   while (num > 0) {
-      let chunk = num % 10000;
-      let chunkKanji = "";
+    let chunk = num % 10000;
+    let chunkKanji = "";
 
-      for (let i = 0; chunk > 0; i++) {
-          let digit = chunk % 10;
-          if (digit !== 0) {
-              chunkKanji = (digit > 1 || i === 0 ? kanjiDigits[digit] : "") + kanjiUnits[i] + chunkKanji;
-          }
-          chunk = Math.floor(chunk / 10);
+    for (let i = 0; chunk > 0; i++) {
+      let digit = chunk % 10;
+      if (digit !== 0) {
+        chunkKanji = (digit > 1 || i === 0
+          ? `<ruby>${kanjiDigits[digit]}<rt>${hiraganaDigits[digit]}</rt></ruby>`
+          : ""
+        ) + 
+        (kanjiUnits[i]
+          ? `<ruby>${kanjiUnits[i]}<rt>${hiraganaUnits[i]}</rt></ruby>`
+          : ""
+        ) + chunkKanji;
       }
+      chunk = Math.floor(chunk / 10);
+    }
 
-      if (chunkKanji) {
-          kanji = chunkKanji + kanjiBigUnits[unitIndex] + kanji;
-      }
+    if (chunkKanji) {
+      kanji = chunkKanji +
+        (kanjiBigUnits[unitIndex]
+          ? `<ruby>${kanjiBigUnits[unitIndex]}<rt>${hiraganaBigUnits[unitIndex]}</rt></ruby>`
+          : ""
+        ) + kanji;
+    }
 
-      unitIndex++;
-      num = Math.floor(num / 10000);
+    unitIndex++;
+    num = Math.floor(num / 10000);
   }
 
   return kanji;
@@ -217,6 +235,7 @@ let currentMode = 'normal';
 let frRate = 15;
 let currentHistoryTabType;
 let historyCount = 5;
+let currentHistoryCountFormat = 'EN';
 
 let playButton        = document.querySelector('.fa-circle-play');
 let pauseButton       = document.querySelector('.fa-circle-pause');
@@ -233,12 +252,13 @@ let volumeButton2     = document.querySelector('.fa-volume-high');
 let volumeButton3     = document.querySelector('.fa-volume-low');
 let volumeButton4     = document.querySelector('.fa-volume-off');
 let volumeButton5     = document.querySelector('.fa-volume-xmark');
-let volumeSlider      = document.getElementById('mp3-volume-control')
-let audioSpeedSlider  = document.getElementById('audio-speed-control')
-let frRateSlider      = document.getElementById('fr-rate-control')
-let coverRateSlider   = document.getElementById('cover-rate-control')
-let doctypeSlider     = document.getElementById('doctype-control')
-let historySlider     = document.getElementById('history-item-control')
+let volumeSlider      = document.getElementById('mp3-volume-control');
+let audioSpeedSlider  = document.getElementById('audio-speed-control');
+let frRateSlider      = document.getElementById('fr-rate-control');
+let coverRateSlider   = document.getElementById('cover-rate-control');
+let doctypeSlider     = document.getElementById('doctype-control');
+let historySlider     = document.getElementById('history-item-control');
+let historyCountFormatSlider     = document.getElementById('history-format-control');
 
 playButton.addEventListener('click', replayAudio);
 pauseButton.addEventListener('click', pauseAudio);
@@ -261,6 +281,7 @@ frRateSlider.addEventListener('input', changeFrRate);
 coverRateSlider.addEventListener('input', changeCoverRate);
 doctypeSlider.addEventListener('input', changeDoctype);
 historySlider.addEventListener('input', changeHistoryItem);
+historyCountFormatSlider.addEventListener('input', changeHistoryCountFormat);
 
 document.addEventListener('DOMContentLoaded', () => {
   // Load Saved Volume
@@ -358,6 +379,16 @@ document.addEventListener('DOMContentLoaded', () => {
     checkHistoryItems();
   });
 
+  // Load Saved History Count Format
+  const currentHistoryFormat = localStorage.getItem('currentHistoryCountFormat');
+  if(currentHistoryFormat){
+    historyCountFormatSlider.value = currentHistoryFormat;
+  }else {
+    historyCountFormatSlider.value = 1;
+  }
+  changeHistoryCountFormat();
+  updateCounter();
+
   // for(let i = 0;i<localStorage.length;i++){
   //   console.log(localStorage.key(i) + ' = ' + localStorage.getItem(localStorage.key(i)))
   // }
@@ -413,6 +444,28 @@ function saveLastPlayed(tabType, url = '', title = '', artist = '', duration = '
   displayHistory();
 }
 
+function updateHistoryCounter (){
+  if(currentHistoryCountFormat == 'EN'){
+    document.getElementById('yard-display-num').innerHTML = document.querySelector("#yard-history-list").querySelectorAll(".history-item").length.toString().padStart(3, '0') + '<span></span>';
+    document.getElementById('premium-display-num').innerHTML = document.querySelector("#premium-history-list").querySelectorAll(".history-item").length.toString().padStart(3, '0') + '<span></span>';
+    document.getElementById('advice-display-num').innerHTML = document.querySelector("#advice-history-list").querySelectorAll(".history-item").length.toString().padStart(3, '0') + '<span></span>';
+    document.getElementById('style-display-num').innerHTML = document.querySelector("#style-history-list").querySelectorAll(".history-item").length.toString().padStart(3, '0') + '<span></span>';
+    document.getElementById('popout-display-num').innerHTML = document.querySelector("#popout-history-list").querySelectorAll(".history-item").length.toString().padStart(3, '0') + '<span></span>';
+  }else if(currentHistoryCountFormat == 'GR'){
+    document.getElementById('yard-display-num').innerHTML     = numberToRoman(document.querySelector("#yard-history-list").querySelectorAll(".history-item").length) + '<span></span>';
+    document.getElementById('premium-display-num').innerHTML  = numberToRoman(document.querySelector("#premium-history-list").querySelectorAll(".history-item").length) + '<span></span>';
+    document.getElementById('advice-display-num').innerHTML   = numberToRoman(document.querySelector("#advice-history-list").querySelectorAll(".history-item").length) + '<span></span>';
+    document.getElementById('style-display-num').innerHTML    = numberToRoman(document.querySelector("#style-history-list").querySelectorAll(".history-item").length) + '<span></span>';
+    document.getElementById('popout-display-num').innerHTML   = numberToRoman(document.querySelector("#popout-history-list").querySelectorAll(".history-item").length) + '<span></span>';
+  }else if(currentHistoryCountFormat == 'JP'){
+    document.getElementById('yard-display-num').innerHTML     = numberToKanji(document.querySelector("#yard-history-list").querySelectorAll(".history-item").length) + '<span><ruby>個<rt>こ</rt></ruby></span>';
+    document.getElementById('premium-display-num').innerHTML  = numberToKanji(document.querySelector("#premium-history-list").querySelectorAll(".history-item").length) + '<span><ruby>個<rt>こ</rt></ruby></span>';
+    document.getElementById('advice-display-num').innerHTML   = numberToKanji(document.querySelector("#advice-history-list").querySelectorAll(".history-item").length) + '<span><ruby>個<rt>こ</rt></ruby></span>';
+    document.getElementById('style-display-num').innerHTML    = numberToKanji(document.querySelector("#style-history-list").querySelectorAll(".history-item").length) + '<span><ruby>個<rt>こ</rt></ruby></span>';
+    document.getElementById('popout-display-num').innerHTML   = numberToKanji(document.querySelector("#popout-history-list").querySelectorAll(".history-item").length) + '<span><ruby>個<rt>こ</rt></ruby></span>';
+  }
+}
+
 function displayHistory() {
   const tabData = {
     'yardTabLastPlayed': document.getElementById('yard-history-list'),
@@ -443,26 +496,6 @@ function displayHistory() {
     `;
 
     listElement.appendChild(queueElement);
-  }
-
-  function updateHistoryCounter (){
-    document.getElementById('yard-display-num').textContent = document.querySelector("#yard-history-list").querySelectorAll(".history-item").length.toString().padStart(2, '0');
-    document.getElementById('premium-display-num').textContent = document.querySelector("#premium-history-list").querySelectorAll(".history-item").length.toString().padStart(2, '0');
-    document.getElementById('advice-display-num').textContent = document.querySelector("#advice-history-list").querySelectorAll(".history-item").length.toString().padStart(2, '0');
-    document.getElementById('style-display-num').textContent = document.querySelector("#style-history-list").querySelectorAll(".history-item").length.toString().padStart(2, '0');
-    document.getElementById('popout-display-num').textContent = document.querySelector("#popout-history-list").querySelectorAll(".history-item").length.toString().padStart(2, '0');
-
-    // document.getElementById('yard-display-num').textContent     = numberToRoman(document.querySelector("#yard-history-list").querySelectorAll(".history-item").length.toString());
-    // document.getElementById('premium-display-num').textContent  = numberToRoman(document.querySelector("#premium-history-list").querySelectorAll(".history-item").length.toString());
-    // document.getElementById('advice-display-num').textContent   = numberToRoman(document.querySelector("#advice-history-list").querySelectorAll(".history-item").length.toString());
-    // document.getElementById('style-display-num').textContent    = numberToRoman(document.querySelector("#style-history-list").querySelectorAll(".history-item").length.toString());
-    // document.getElementById('popout-display-num').textContent   = numberToRoman(document.querySelector("#popout-history-list").querySelectorAll(".history-item").length.toString());
-
-    //document.getElementById('yard-display-num').textContent     = numberToKanji(document.querySelector("#yard-history-list").querySelectorAll(".history-item").length.toString());
-    //document.getElementById('premium-display-num').textContent  = numberToKanji(document.querySelector("#premium-history-list").querySelectorAll(".history-item").length.toString());
-    //document.getElementById('advice-display-num').textContent   = numberToKanji(document.querySelector("#advice-history-list").querySelectorAll(".history-item").length.toString());
-    //document.getElementById('style-display-num').textContent    = numberToKanji(document.querySelector("#style-history-list").querySelectorAll(".history-item").length.toString());
-    //document.getElementById('popout-display-num').textContent   = numberToKanji(document.querySelector("#popout-history-list").querySelectorAll(".history-item").length.toString());
   }
 
   // Iterate through each tab and display history
@@ -907,6 +940,22 @@ function changeHistoryItem (){
   historyCount = historySlider.value;
 }
 
+function changeHistoryCountFormat (){
+  if(historyCountFormatSlider.value == 1){
+    currentHistoryCountFormat = 'EN';
+    document.getElementById('history-count-value-display').innerHTML = '<i class="fa-solid fa-earth-americas fa-lg"></i> EN';
+  }else if(historyCountFormatSlider.value == 2){
+    currentHistoryCountFormat = 'GR';
+    document.getElementById('history-count-value-display').innerHTML = '<i class="fa-solid fa-earth-europe fa-lg"></i> GR';
+  }else if(historyCountFormatSlider.value == 3){
+    currentHistoryCountFormat = 'JP';
+    document.getElementById('history-count-value-display').innerHTML = '<i class="fa-solid fa-earth-asia fa-lg"></i> JP';
+  }
+  localStorage.setItem('currentHistoryCountFormat', historyCountFormatSlider.value);
+  updateHistoryCounter();
+  updateCounter();
+}
+
 window.initiateQueue = initiateQueue;
 window.displayQueueTab = displayQueueTab;
 window.playAudio = playAudio;
@@ -920,6 +969,9 @@ window.showVolumeSlider = showVolumeSlider;
 window.changeAudioVolume = changeAudioVolume;
 window.updateDurationSlider = updateDurationSlider;
 window.saveLastPlayed = saveLastPlayed;
+window.changeHistoryCountFormat = changeHistoryCountFormat;
+window.numberToKanji = numberToKanji;
+window.numberToRoman = numberToRoman;
 
 // KEEP! : Function to extract the audio duration
 // document.addEventListener('DOMContentLoaded', function() {
