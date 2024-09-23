@@ -99,7 +99,8 @@ accentButton.addEventListener('click', () => {
         '#60c17d', '#336699', '#e7ab2a', '#2cb67d',
         '#A8D672', '#339988', '#ddd05b', '#00CED1',
         '#FFD700', '#7FFF00', '#FADFA1', '#7EACB5',
-        '#c16560'
+        '#c16560', '#7ee0b8', '#99b7cb', '#cadeeb',
+        '#eb99b0', '#fcc342', '#f9f59f', '#fdbb9f'
         ],[
         '#3be879', '#28bed8', '#ac9e7d', '#d7dc3f',
         '#f78233'
