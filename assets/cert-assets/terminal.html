@@ -245,7 +245,9 @@ permalink: /💻/
                     <p id="time-digit"></p>
                     <p id="time-ampm"></p>
                 </div>
+                <span>-</span>
                 <span id="clock-lang">EN</span>
+                <span>-</span>
                 <div id="todo-date">
                     <p id="date-day"></p>
                     <p id="date-digit"></p>
@@ -257,39 +259,50 @@ permalink: /💻/
                 <i class="fa-solid fa-plus fa-lg" id="add-item-btn"></i>
             </div>
             <div class="todo-listing">
+                <span class="todo-ratio-container">
+                    <span id="priority-ratio"></span>
+                    <span id="task-ratio"></span>
+                    <span id="complete-ratio"></span>
+                </span>
                 <details open>
                     <summary>    
-                        <h5>
-                            <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                        <h4>
+                            <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
+                            <i class="fa-solid fa-angles-right"></i>
                             <i class="fa-regular fa-folder-open"></i>
                             <i class="fa-solid fa-folder"></i>
                             Priority
-                            <span id="priority-display-num">0</span>
-                        </h5>
+                            <div class="color-code color-code-1"></div>
+                        </h4>
+                        <span id="priority-display-num">0</span>
                     </summary>
                     <ul id="todo-priority"></ul>
                 </details>
                 <details open>
                     <summary>    
-                        <h5>
-                            <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                        <h4>
+                            <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
+                            <i class="fa-solid fa-angles-right"></i>
                             <i class="fa-regular fa-folder-open"></i>
                             <i class="fa-solid fa-folder"></i>
                             Task
-                            <span id="items-display-num">0</span>
-                        </h5>
+                            <div class="color-code color-code-2"></div>
+                        </h4>
+                        <span id="items-display-num">0</span>
                     </summary>    
                     <ul id="todo-items"></ul>
                 </details>
                 <details>
                     <summary>    
-                        <h5>
-                            <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i>
+                        <h4>
+                            <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
+                            <i class="fa-solid fa-angles-right"></i>
                             <i class="fa-regular fa-folder-open"></i>
                             <i class="fa-solid fa-folder"></i>
                             Completed
-                            <span id="finish-display-num">0</span>
-                        </h5>
+                            <div class="color-code color-code-3"></div>
+                        </h4>
+                        <span id="finish-display-num">0</span>
                     </summary>    
                     <ul id="todo-finish"></ul>
                 </details>

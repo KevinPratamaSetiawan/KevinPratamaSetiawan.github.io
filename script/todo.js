@@ -19,6 +19,7 @@ function addItem() {
         document.getElementById('new-item').value = '';
 
         updateCounter();
+        displayTodoRatios();
     }
 }
 
@@ -75,6 +76,7 @@ function toggleComplete(event) {
         moveToList(li, false, isPriority(li));
     }
     updateCounter();
+    displayTodoRatios();
 }
 
 function togglePriority(event) {
@@ -95,6 +97,7 @@ function togglePriority(event) {
         moveToList(li, isCompleted(li), false);
     }
     updateCounter();
+    displayTodoRatios();
 }
 
 function moveToList(li, completed, priority) {
@@ -110,6 +113,7 @@ function moveToList(li, completed, priority) {
         ulItems.appendChild(li);
     }
     updateCounter();
+    displayTodoRatios();
 }
 
 function isCompleted(li) {
@@ -127,6 +131,7 @@ function removeItem(event) {
     deleteItem(itemText);
 
     updateCounter();
+    displayTodoRatios();
 }
 
 function saveItem(text, completed, priority) {
@@ -150,6 +155,7 @@ function updateItem(text, completed, priority) {
     }
     localStorage.setItem('todoItems', JSON.stringify(items));
     updateCounter();
+    displayTodoRatios();
 }
 
 function loadItems() {
@@ -213,7 +219,10 @@ function updateCounter(){
 }
 
 // Todo Clock
-document.addEventListener('DOMContentLoaded', function() {startTime();});
+document.addEventListener('DOMContentLoaded', function() {
+    startTime();
+    displayTodoRatios();
+});
 
 let langChoice = 1;
 let dayNameEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -318,6 +327,43 @@ function copyClock(type) {
     setTimeout(function() {
         document.getElementById(type).innerHTML = originalContent;
     }, 1000);
+}
+
+function displayTodoRatios (){
+    const priorityWidth = document.querySelector("#todo-priority").querySelectorAll("li").length;
+    const taskWidth = document.querySelector("#todo-items").querySelectorAll("li").length;
+    const completeWidth = document.querySelector("#todo-finish").querySelectorAll("li").length;
+    const totalWidth = priorityWidth + taskWidth + completeWidth;
+
+    console.log(priorityWidth, taskWidth, completeWidth);
+
+    document.getElementById('priority-ratio').style.width = (priorityWidth / totalWidth * 100) + '%';
+    document.getElementById('task-ratio').style.width = (taskWidth / totalWidth * 100) + '%';
+    document.getElementById('complete-ratio').style.width = (completeWidth / totalWidth * 100) + '%';
+
+
+
+    if(taskWidth === 0 && completeWidth === 0){
+        document.getElementById('priority-ratio').style.borderRadius = '5px';
+    }else if(taskWidth !== 0 || completeWidth !== 0){
+        document.getElementById('priority-ratio').style.borderRadius = '5px 0 0 5px';
+    }
+
+    if(priorityWidth === 0 && taskWidth === 0){
+        document.getElementById('complete-ratio').style.borderRadius = '5px';
+    }else if(priorityWidth !== 0 || taskWidth !== 0){
+        document.getElementById('complete-ratio').style.borderRadius = '0 5px 5px 0';
+    }
+
+    if(priorityWidth === 0 && completeWidth === 0){
+        document.getElementById('task-ratio').style.borderRadius = '5px';
+    }else if(priorityWidth !== 0 && completeWidth === 0){
+        document.getElementById('task-ratio').style.borderRadius = '0 5px 5px 0';
+    }else if(priorityWidth === 0 && completeWidth !== 0){
+        document.getElementById('task-ratio').style.borderRadius = '5px 0 0 5px';
+    }else if(priorityWidth !== 0 && completeWidth !== 0){
+        document.getElementById('task-ratio').style.borderRadius = '0';
+    }
 }
 
 // window.numberToRoman = numberToRoman;
