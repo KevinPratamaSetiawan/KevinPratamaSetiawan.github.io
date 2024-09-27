@@ -335,13 +335,13 @@ function displayTodoRatios (){
     const completeWidth = document.querySelector("#todo-finish").querySelectorAll("li").length;
     const totalWidth = priorityWidth + taskWidth + completeWidth;
 
-    console.log(priorityWidth, taskWidth, completeWidth);
-
     document.getElementById('priority-ratio').style.width = (priorityWidth / totalWidth * 100) + '%';
     document.getElementById('task-ratio').style.width = (taskWidth / totalWidth * 100) + '%';
     document.getElementById('complete-ratio').style.width = (completeWidth / totalWidth * 100) + '%';
 
-
+    document.querySelector('#priority-ratio p').innerText = (priorityWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
+    document.querySelector('#task-ratio p').innerText = (taskWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
+    document.querySelector('#complete-ratio p').innerText = (completeWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
 
     if(taskWidth === 0 && completeWidth === 0){
         document.getElementById('priority-ratio').style.borderRadius = '5px';

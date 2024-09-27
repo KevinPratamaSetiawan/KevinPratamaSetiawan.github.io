@@ -110,6 +110,8 @@
 
     <script src="/script/modeToggle.js"></script>
     <script>
+        sessionStorage.setItem('accessToken', false);
+
         if('serviceWorker' in navigator){
             navigator.serviceWorker.register('/../../../script/service-worker.js');
         }

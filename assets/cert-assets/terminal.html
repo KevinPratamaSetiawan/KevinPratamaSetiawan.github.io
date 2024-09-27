@@ -260,9 +260,9 @@ permalink: /💻/
             </div>
             <div class="todo-listing">
                 <span class="todo-ratio-container">
-                    <span id="priority-ratio"></span>
-                    <span id="task-ratio"></span>
-                    <span id="complete-ratio"></span>
+                    <span id="priority-ratio"><p>0%</p></span>
+                    <span id="task-ratio"><p>0%</p></span>
+                    <span id="complete-ratio"><p>0%</p></span>
                 </span>
                 <details open>
                     <summary>    
@@ -651,6 +651,14 @@ permalink: /💻/
     <script type="module" src="/script/localStorageSave.js"></script>
     
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accessToken = sessionStorage.getItem('accessToken');
+
+            if(accessToken === 'false' || accessToken === null){
+                window.location.href = 'https://kevinpratamasetiawan.github.io/';
+            }
+        });
+
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/../../../script/service-worker.js');
         }

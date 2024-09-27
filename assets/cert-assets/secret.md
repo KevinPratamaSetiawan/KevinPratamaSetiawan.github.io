@@ -36,6 +36,7 @@ title: 🔑
             button.textContent = "Access Granted!";
             button.style.fontFamily = 'JetBrains Mono, monospace';
             button.setAttribute('data-redirect', 'true');
+            sessionStorage.setItem('accessToken', true);
         } else {
             passwordInput.value = '';
             passwordInput.placeholder = 'Access Denied!';

@@ -649,18 +649,6 @@ input[type=number] {
   }
 }
 
-.todo-listing {
-  grid-area: 5 / 1 / 21 / 2;
-
-  details[open] .fa-folder{
-    display: none;
-  }
-
-  details:not([open]) .fa-folder-open{
-    display: none;
-  }
-}
-
 #xml-tab,
 #yard-tab, 
 #premium-tab, 
@@ -680,8 +668,8 @@ input[type=number] {
 .todo-ratio-container{
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: end;
   padding: 10px 5px;
 
   position: sticky;
@@ -693,6 +681,23 @@ input[type=number] {
     height: 7px;
     width: 0;
     transition: width 0.5s;
+    transition: height 0.2s;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-color);
+
+    p{
+      opacity: 0;
+      transition: opacity 0.75s;
+    }
+  }
+
+  span:hover{
+    height: 20px;
+    p{
+      opacity: 1;
+    }
   }
 
   #priority-ratio{
@@ -712,6 +717,25 @@ input[type=number] {
 
 .todo-listing{
   overflow: scroll;
+  grid-area: 5 / 1 / 21 / 2;
+
+  details[open] .fa-angles-right {
+    transform: rotate(450deg);
+    transition: transform 1s ease;
+  }
+
+  details:not([open]) .fa-angles-right {
+    transform: rotate(0);
+    transition: transform 1s ease;
+  }
+
+  details[open] .fa-folder{
+    display: none;
+  }
+
+  details:not([open]) .fa-folder-open{
+    display: none;
+  }
 
   summary{
     display: flex;
@@ -732,14 +756,15 @@ input[type=number] {
         margin-left: 3px;
       }
 
+      // .color-code-0{ background-color: #a97bff; }
       .color-code-1{ background-color: #f85149; }
       .color-code-2{ background-color: #f1e05a; }
       .color-code-3{ background-color: #6bdd9a; }
     }
 
-
     span{
       color: var(--brand-color);
+      padding: 0 10px 0 0;
     }
   }
 }
@@ -1297,6 +1322,27 @@ input[type=number] {
     margin: 0 0 20px 0;
   }
 
+  // details {
+  // position: relative;
+  // }
+
+  // details::before {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 1px;
+  //   height: 100%;
+  //   border-left: 3px dotted var(--text-color);
+  //   transform: scaleY(0);
+  //   transform-origin: top;
+  //   transition: transform 0.5s ease;
+  //   z-index: -1;
+  // }
+
+  // details[open]::before {
+  //   transform: scaleY(1);
+  // }
 }
 
 #settings-tab{
