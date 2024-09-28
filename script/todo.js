@@ -1,19 +1,22 @@
 document.addEventListener('DOMContentLoaded', loadItems);
 document.getElementById('add-item-btn').addEventListener('click', addItem);
+const scheduleFilter = '[S]';
 
 function addItem() {
     const itemText = document.getElementById('new-item').value.trim();
     if (itemText !== '') {
-        const ul = document.getElementById('todo-items');
+        let ul = document.getElementById('todo-items');
         const li = createListItem(itemText, false, false);
 
-        const match = itemText.match(/^(\d+)\.\s+(.*)$/);
-        if (match) {
-            const position = parseInt(match[1], 10) - 1;
-            insertItemAtPosition(ul, li, position);
-        } else {
-            appendOrInsertAfterNumbered(ul, li);
+        // if(itemText.startsWith(scheduleFilter)){
+        //     ul = document.getElementById('todo-schedule');
+        // }
+
+        if(itemText.endsWith(scheduleFilter)){
+            ul = document.getElementById('todo-schedule');
         }
+
+        appendOrInsertAfterNumbered(ul, li);
 
         saveItem(itemText, false, false);
         document.getElementById('new-item').value = '';
@@ -26,10 +29,6 @@ function addItem() {
 function createListItem(text, completed, priority) {
     const li = document.createElement('li');
     li.classList.add('todo-item');
-
-    if (document.body.classList.contains('dark-mode')) {
-        li.classList.add('dark-mode');
-    }
 
     const checkboxIcon = document.createElement('i');
     checkboxIcon.classList.add('fa-regular', completed ? 'fa-circle-check' : 'fa-circle');
@@ -44,6 +43,7 @@ function createListItem(text, completed, priority) {
     const priorityBtn = document.createElement('i');
     priorityBtn.classList.add(priority ? 'fa-circle-exclamation' : 'fa-circle');
     priorityBtn.classList.add(priority ? 'fa-solid' : 'fa-regular');
+    priorityBtn.classList.add('priority-indicator');
     priorityBtn.addEventListener('click', togglePriority);
 
     const deleteBtn = document.createElement('i');
@@ -101,13 +101,21 @@ function togglePriority(event) {
 }
 
 function moveToList(li, completed, priority) {
+    const ulSchedule = document.getElementById('todo-schedule');
     const ulItems = document.getElementById('todo-items');
     const ulFinish = document.getElementById('todo-finish');
     const ulPriority = document.getElementById('todo-priority');
 
     if (completed) {
         ulFinish.appendChild(li);
-    } else if (priority) {
+    } 
+    // else if(li.querySelector('span').textContent.startsWith(scheduleFilter)){
+    //     ulSchedule.appendChild(li);
+    // } 
+    else if(li.querySelector('span').textContent.endsWith(scheduleFilter)){
+        ulSchedule.appendChild(li);
+    } 
+    else if (priority) {
         ulPriority.appendChild(li);
     } else {
         ulItems.appendChild(li);
@@ -174,14 +182,6 @@ function loadItems() {
     updateCounter();
 }
 
-function insertItemAtPosition(ul, li, position) {
-    if (position >= ul.children.length) {
-        ul.appendChild(li);
-    } else {
-        ul.insertBefore(li, ul.children[position]);
-    }
-}
-
 function appendOrInsertAfterNumbered(ul, li) {
     const numberedItems = Array.from(ul.children).filter(item => /^\d+\.\s/.test(item.textContent));
     if (numberedItems.length > 0) {
@@ -192,27 +192,32 @@ function appendOrInsertAfterNumbered(ul, li) {
 }
 
 function updateCounter(){
+    const scheduleUl = document.getElementById('todo-schedule');
     const priorityUl = document.querySelector("#todo-priority");
     const itemsUl = document.querySelector("#todo-items");
     const finishUl = document.querySelector("#todo-finish");
 
-    let priorityNum, itemsNum, finishNum;
+    let scheduleNum, priorityNum, itemsNum, finishNum;
     const currentHistoryFormat = localStorage.getItem('currentHistoryCountFormat');
 
     if(currentHistoryFormat == 1){
+        scheduleNum = scheduleUl.querySelectorAll("li").length.toString();
         priorityNum = priorityUl.querySelectorAll("li").length.toString();
         itemsNum = itemsUl.querySelectorAll("li").length.toString();
         finishNum = finishUl.querySelectorAll("li").length.toString();
     }else if(currentHistoryFormat == 2){
+        scheduleNum = numberToRoman(scheduleUl.querySelectorAll("li").length);
         priorityNum = numberToRoman(priorityUl.querySelectorAll("li").length);
         itemsNum = numberToRoman(itemsUl.querySelectorAll("li").length);
         finishNum = numberToRoman(finishUl.querySelectorAll("li").length);
     }else if(currentHistoryFormat == 3){
+        scheduleNum = numberToKanji(scheduleUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
         priorityNum = numberToKanji(priorityUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
         itemsNum = numberToKanji(itemsUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
         finishNum = numberToKanji(finishUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
     }
 
+    document.getElementById('schedule-display-num').innerHTML = scheduleNum;
     document.getElementById('priority-display-num').innerHTML = priorityNum;
     document.getElementById('items-display-num').innerHTML = itemsNum;
     document.getElementById('finish-display-num').innerHTML = finishNum;
@@ -330,40 +335,75 @@ function copyClock(type) {
 }
 
 function displayTodoRatios (){
+    const scheduleWidth = document.querySelector("#todo-schedule").querySelectorAll("li").length;
     const priorityWidth = document.querySelector("#todo-priority").querySelectorAll("li").length;
     const taskWidth = document.querySelector("#todo-items").querySelectorAll("li").length;
     const completeWidth = document.querySelector("#todo-finish").querySelectorAll("li").length;
-    const totalWidth = priorityWidth + taskWidth + completeWidth;
+    const totalWidth = scheduleWidth + priorityWidth + taskWidth + completeWidth;
 
+    document.getElementById('schedule-ratio').style.width = (scheduleWidth / totalWidth * 100) + '%';
     document.getElementById('priority-ratio').style.width = (priorityWidth / totalWidth * 100) + '%';
     document.getElementById('task-ratio').style.width = (taskWidth / totalWidth * 100) + '%';
     document.getElementById('complete-ratio').style.width = (completeWidth / totalWidth * 100) + '%';
 
+    document.querySelector('#schedule-ratio p').innerText = (scheduleWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
     document.querySelector('#priority-ratio p').innerText = (priorityWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
     document.querySelector('#task-ratio p').innerText = (taskWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
     document.querySelector('#complete-ratio p').innerText = (completeWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
 
-    if(taskWidth === 0 && completeWidth === 0){
-        document.getElementById('priority-ratio').style.borderRadius = '5px';
-    }else if(taskWidth !== 0 || completeWidth !== 0){
-        document.getElementById('priority-ratio').style.borderRadius = '5px 0 0 5px';
+    if(priorityWidth === 0 && taskWidth === 0 && completeWidth === 0){
+        document.getElementById('schedule-ratio').style.borderRadius = '5px';
+    }else if(priorityWidth !== 0 || taskWidth !== 0 || completeWidth !== 0){
+        document.getElementById('schedule-ratio').style.borderRadius = '5px 0 0 5px';
     }
 
-    if(priorityWidth === 0 && taskWidth === 0){
+    if(scheduleWidth === 0 && taskWidth === 0 && completeWidth === 0){
+        document.getElementById('priority-ratio').style.borderRadius = '5px';
+    }else if(scheduleWidth === 0 && (taskWidth !== 0 || completeWidth !== 0)){
+        document.getElementById('priority-ratio').style.borderRadius = '5px 0 0 5px';
+    }else if(scheduleWidth !== 0 && taskWidth === 0 && completeWidth === 0){
+        document.getElementById('priority-ratio').style.borderRadius = ' 0 5px 5px 0';
+    }else if(scheduleWidth !== 0 && (taskWidth !== 0 || completeWidth !== 0)){
+        document.getElementById('priority-ratio').style.borderRadius = '0';
+    }
+
+    if(scheduleWidth === 0 && priorityWidth === 0 && completeWidth === 0){
+        document.getElementById('task-ratio').style.borderRadius = '5px';
+    }else if((scheduleWidth !== 0 || priorityWidth !== 0) && completeWidth === 0){
+        document.getElementById('task-ratio').style.borderRadius = '0 5px 5px 0';
+    }else if(scheduleWidth === 0 && priorityWidth === 0 && completeWidth !== 0){
+        document.getElementById('task-ratio').style.borderRadius = '5px 0 0 5px';
+    }else if((scheduleWidth !== 0 || priorityWidth !== 0) && completeWidth !== 0){
+        document.getElementById('task-ratio').style.borderRadius = '0';
+    }
+
+    if(scheduleWidth === 0 && priorityWidth === 0 && taskWidth === 0){
         document.getElementById('complete-ratio').style.borderRadius = '5px';
-    }else if(priorityWidth !== 0 || taskWidth !== 0){
+    }else if(scheduleWidth !== 0 || priorityWidth !== 0 || taskWidth !== 0){
         document.getElementById('complete-ratio').style.borderRadius = '0 5px 5px 0';
     }
 
-    if(priorityWidth === 0 && completeWidth === 0){
-        document.getElementById('task-ratio').style.borderRadius = '5px';
-    }else if(priorityWidth !== 0 && completeWidth === 0){
-        document.getElementById('task-ratio').style.borderRadius = '0 5px 5px 0';
-    }else if(priorityWidth === 0 && completeWidth !== 0){
-        document.getElementById('task-ratio').style.borderRadius = '5px 0 0 5px';
-    }else if(priorityWidth !== 0 && completeWidth !== 0){
-        document.getElementById('task-ratio').style.borderRadius = '0';
-    }
+    // Control Todo List Toggle
+    const todoToggles = document.querySelectorAll('.todo-list-toggles');
+    const todoLists = document.querySelectorAll('.todo-lists');
+
+    todoToggles.forEach((toggle, index) => {
+        const correspondingList = todoLists[index];
+        console.log(index);
+        console.log(todoToggles);
+        console.log(todoLists);
+    
+        function checkTodoItems() {
+        const todoItems = correspondingList.querySelectorAll('.todo-item');
+        
+        if (todoItems.length > 0) {
+            toggle.setAttribute('open', 'true');
+        } else {
+            toggle.removeAttribute('open');
+        }
+        }  
+        checkTodoItems();
+    });
 }
 
 // window.numberToRoman = numberToRoman;

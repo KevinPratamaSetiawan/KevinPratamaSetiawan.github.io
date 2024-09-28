@@ -670,7 +670,8 @@ input[type=number] {
   display: flex;
   justify-content: left;
   align-items: end;
-  padding: 10px 5px;
+  padding: 10px 5px 20px 5px;
+  z-index: 1;
 
   position: sticky;
   top: 0;
@@ -678,30 +679,35 @@ input[type=number] {
 
   span{
     display: inline-block;
-    height: 7px;
     width: 0;
+    height: 7px;
     transition: width 0.5s;
-    transition: height 0.2s;
+    // transition: height 0.2s;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--text-color);
 
     p{
+      margin-top: 7px;
       opacity: 0;
       transition: opacity 0.75s;
     }
   }
 
   span:hover{
-    height: 20px;
+    // height: 20px;
     p{
       opacity: 1;
     }
   }
 
-  #priority-ratio{
+  #schedule-ratio{
     border-radius: 5px 0 0 5px;
+    background-color: #a97bff;
+  }
+  #priority-ratio{
+    border-radius: 0;
     background-color: #f85149;
   }
   #task-ratio{
@@ -737,17 +743,18 @@ input[type=number] {
     display: none;
   }
 
-  summary{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    h4{
-      padding: 10px 5px 10px 5px;
+  details{
+    summary{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      h4{
+        padding: 10px 5px 10px 5px;
       color: var(--text-color);
       font-family: var(--base-font-family);
       font-weight: 200;
-
+      
       .color-code{
         width: 10px;
         height: 10px;
@@ -756,15 +763,33 @@ input[type=number] {
         margin-left: 3px;
       }
 
-      // .color-code-0{ background-color: #a97bff; }
+      .color-code-0{ background-color: #a97bff; }
       .color-code-1{ background-color: #f85149; }
       .color-code-2{ background-color: #f1e05a; }
       .color-code-3{ background-color: #6bdd9a; }
+      }
+
+      span{
+        color: var(--brand-color);
+        padding: 0 10px 0 0;
+      }
     }
 
-    span{
-      color: var(--brand-color);
-      padding: 0 10px 0 0;
+    #todo-schedule{
+      .todo-item{
+        .priority-indicator{
+          display: none;
+        }
+
+        span{
+          width: 100%;
+          text-align: left;
+        }
+
+        .fa-trash-can{
+          display: none;
+        }
+      }
     }
   }
 }
@@ -790,6 +815,7 @@ input[type=number] {
   }
 }
 
+#todo-schedule,
 #todo-priority,
 #todo-items,
 #todo-finish{
@@ -822,6 +848,7 @@ input[type=number] {
   overflow: scroll;
 }
 
+#todo-schedule,
 #todo-priority,
 #todo-items,
 #todo-finish,
@@ -1140,12 +1167,16 @@ input[type=number] {
 
   .slider-container {
     position: relative;
-    width: 70%;
+    width: 80%;
     margin: 0 10px;
+    padding: 0 10px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    border-left: 3px solid var(--text-color);
+    border-right: 3px solid var(--text-color);
   }
 
   p{
@@ -1154,12 +1185,12 @@ input[type=number] {
 
   .start-slider-p{
     text-align: left;
-    border-right: 3px solid var(--text-color);
+    // border-right: 3px solid var(--text-color);
   }
 
   .end-slider-p{
     text-align: end;
-    border-left: 3px solid var(--text-color);
+    // border-left: 3px solid var(--text-color);
   }
 
   .mp3-slider {
@@ -1374,6 +1405,14 @@ input[type=number] {
   margin: auto;
   flex-direction: column;
   align-items: center;
+
+  div{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
 
   &::backdrop{
     width: 100%;

@@ -926,7 +926,7 @@ function changeDoctype () {
     document.getElementById('doctype-value-display').innerHTML = '.jpeg';
   }else if (doctypeSlider.value == 3){
     coverDoctype = 'png';
-    document.getElementById('doctype-value-display').innerHTML = 'Manga Cover';
+    document.getElementById('doctype-value-display').innerHTML = 'Manga';
   }else if (doctypeSlider.value == 4){
     coverDoctype = 'gif';
     document.getElementById('doctype-value-display').innerHTML = '.gif';

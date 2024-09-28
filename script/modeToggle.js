@@ -67,8 +67,8 @@ const accentButton = document.getElementById('accent-btn');
 accentButton.addEventListener('click', () => {
     const savedMode = localStorage.getItem('currentMode');
     let currentIndex, randomIndex, newColor;
-    let lightThemes = ['lightClassic', 'lightDarkYellow'];
-    let darkThemes = ['darkClassic', 'darkPurple', 'darkCoffee'];
+    let lightThemes = ['lightClassic', 'lightDarkYellow', 'lightSummerX'];
+    let darkThemes = ['darkClassic', 'darkPurple', 'darkCoffee', 'darkSummerX'];
 
     if(savedMode === 'light'){
         if(lightThemes.indexOf(localStorage.getItem('currentLightTheme')) === -1){
@@ -87,10 +87,13 @@ accentButton.addEventListener('click', () => {
     const lightColors = [
         [
         '#60c17d', '#e7ab2a', '#A8D672', '#ddd05b',
-        '#00CED1', '#FFD700', '#7FFF00', '#FADFA1'
+        '#00CED1', '#FFD700', '#7FFF00', '#FADFA1',
+        '#fefb7d'
         ],[
         '#e0c12a', '#5ce653', '#91b3a3', '#6edbaa',
         '#74d196', '#7af83e'
+        ],[
+        '#090b1d'
         ]
     ];
 
@@ -100,12 +103,15 @@ accentButton.addEventListener('click', () => {
         '#A8D672', '#339988', '#ddd05b', '#00CED1',
         '#FFD700', '#7FFF00', '#FADFA1', '#7EACB5',
         '#c16560', '#7ee0b8', '#99b7cb', '#cadeeb',
-        '#eb99b0', '#fcc342', '#f9f59f', '#fdbb9f'
+        '#eb99b0', '#fcc342', '#f9f59f', '#fdbb9f',
+        '#fefb7d'
         ],[
         '#3be879', '#28bed8', '#ac9e7d', '#d7dc3f',
         '#f78233'
         ],[
         '#e2d689', '#dad09e', '#f6e275', '#d5cca5'
+        ],[
+        '#fefb7d'
         ]
     ];
 

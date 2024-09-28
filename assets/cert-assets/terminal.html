@@ -120,8 +120,12 @@ permalink: /💻/
                                             data-textColor="#23272d" data-accentColor="#60c17d">Light Classic</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="themeItem" data-mode="light" data-theme="lightDarkYellow" data-bgColor="#fdfcf4" data-bgColorRgb="253, 252, 244"
+                                        <a href="#" class="themeItem" data-mode="light" data-theme="lightDarkYellow" data-bgColor="#fdfcf4" data-bgColorRgb="254, 251, 125"
                                             data-textColor="#231f05" data-accentColor="#e0c12a">Light Dark Yellow</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="themeItem" data-mode="light" data-theme="lightSummerX" data-bgColor="#fefb7d" data-bgColorRgb="253, 252, 244"
+                                            data-textColor="#000000" data-accentColor="#090b1d">Light SummerX</a>
                                     </li>
                                 </ul>
                             </div>
@@ -139,6 +143,10 @@ permalink: /💻/
                                     <li>
                                         <a href="#" class="themeItem" data-mode="dark" data-theme="darkCoffee" data-bgColor="#0d0c02" data-bgColorRgb="13, 12, 2"
                                             data-textColor="#faf6db" data-accentColor="#e2d689">Dark Coffee</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="themeItem" data-mode="dark" data-theme="darkSummerX" data-bgColor="#000000" data-bgColorRgb="0, 0, 0"
+                                            data-textColor="#fefb7d" data-accentColor="#fefb7d">Dark SummerX</a>
                                     </li>
                                 </ul>
                             </div>
@@ -165,9 +173,12 @@ permalink: /💻/
                 <i class="fa-solid fa-qrcode mode-logo" id="mode-icon" style="display: flex; justify-content: center; align-items: center;"></i>
             </button>
             <div id="qrPopover" popover>
-                <img src="/assets/images/qrBlack2.png" alt="" width="300px">
-                <p>https://kevinpratamasetiawan.github.io/</p>
-                <img src="/assets/images/barcode.png" alt="" width="300px">
+                <div>
+                    <img src="https://visitcount.itsvg.in/api?id=KevinPratamaSetiawan&label=Web%20Visits&color=12&icon=2&pretty=true" />
+                    <img src="/assets/images/qrBlack2.png" alt="" width="300px">
+                    <p>https://kevinpratamasetiawan.github.io/</p>
+                    <img src="/assets/images/barcode.png" alt="" width="300px">
+                </div>
             </div>
             
             <button id="save-popover-btn" popoverTarget="saves-popover" class="social-button mode">
@@ -260,11 +271,26 @@ permalink: /💻/
             </div>
             <div class="todo-listing">
                 <span class="todo-ratio-container">
+                    <span id="schedule-ratio"><p>0%</p></span>
                     <span id="priority-ratio"><p>0%</p></span>
                     <span id="task-ratio"><p>0%</p></span>
                     <span id="complete-ratio"><p>0%</p></span>
                 </span>
-                <details open>
+                <details class="todo-list-toggles">
+                    <summary>    
+                        <h4>
+                            <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
+                            <i class="fa-solid fa-angles-right"></i>
+                            <i class="fa-regular fa-folder-open"></i>
+                            <i class="fa-solid fa-folder"></i>
+                            Schedule
+                            <div class="color-code color-code-0"></div>
+                        </h4>
+                        <span id="schedule-display-num">0</span>
+                    </summary>
+                    <ul id="todo-schedule" class="todo-lists"></ul>
+                </details>
+                <details class="todo-list-toggles">
                     <summary>    
                         <h4>
                             <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
@@ -276,9 +302,9 @@ permalink: /💻/
                         </h4>
                         <span id="priority-display-num">0</span>
                     </summary>
-                    <ul id="todo-priority"></ul>
+                    <ul id="todo-priority" class="todo-lists"></ul>
                 </details>
-                <details open>
+                <details class="todo-list-toggles">
                     <summary>    
                         <h4>
                             <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
@@ -290,9 +316,9 @@ permalink: /💻/
                         </h4>
                         <span id="items-display-num">0</span>
                     </summary>    
-                    <ul id="todo-items"></ul>
+                    <ul id="todo-items" class="todo-lists"></ul>
                 </details>
-                <details>
+                <details class="todo-list-toggles">
                     <summary>    
                         <h4>
                             <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
@@ -304,7 +330,7 @@ permalink: /💻/
                         </h4>
                         <span id="finish-display-num">0</span>
                     </summary>    
-                    <ul id="todo-finish"></ul>
+                    <ul id="todo-finish" class="todo-lists"></ul>
                 </details>
             </div>
         </div>
