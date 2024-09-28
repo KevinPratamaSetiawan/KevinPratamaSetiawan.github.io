@@ -8,9 +8,9 @@ function addItem() {
         let ul = document.getElementById('todo-items');
         const li = createListItem(itemText, false, false);
 
-        // if(itemText.startsWith(scheduleFilter)){
-        //     ul = document.getElementById('todo-schedule');
-        // }
+        if(itemText.startsWith(scheduleFilter)){
+            ul = document.getElementById('todo-schedule');
+        }
 
         if(itemText.endsWith(scheduleFilter)){
             ul = document.getElementById('todo-schedule');
@@ -108,14 +108,11 @@ function moveToList(li, completed, priority) {
 
     if (completed) {
         ulFinish.appendChild(li);
-    } 
-    // else if(li.querySelector('span').textContent.startsWith(scheduleFilter)){
-    //     ulSchedule.appendChild(li);
-    // } 
-    else if(li.querySelector('span').textContent.endsWith(scheduleFilter)){
+    }else if(li.querySelector('span').textContent.startsWith(scheduleFilter)){
         ulSchedule.appendChild(li);
-    } 
-    else if (priority) {
+    }else if(li.querySelector('span').textContent.endsWith(scheduleFilter)){
+        ulSchedule.appendChild(li);
+    }else if (priority) {
         ulPriority.appendChild(li);
     } else {
         ulItems.appendChild(li);
