@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', loadItems);
 document.getElementById('add-item-btn').addEventListener('click', addItem);
 const scheduleFilter = '[S]';
+const weeklyScheduleFilter = '[W]';
+const dailyScheduleFilter = '[D]';
 
 function addItem() {
     const itemText = document.getElementById('new-item').value.trim();
@@ -8,11 +10,11 @@ function addItem() {
         let ul = document.getElementById('todo-items');
         const li = createListItem(itemText, false, false);
 
-        if(itemText.startsWith(scheduleFilter)){
+        if(itemText.startsWith(scheduleFilter) || itemText.startsWith(dailyScheduleFilter) || itemText.startsWith(weeklyScheduleFilter)){
             ul = document.getElementById('todo-schedule');
         }
 
-        if(itemText.endsWith(scheduleFilter)){
+        if(itemText.endsWith(scheduleFilter) || itemText.endsWith(dailyScheduleFilter) || itemText.endsWith(weeklyScheduleFilter)){
             ul = document.getElementById('todo-schedule');
         }
 
@@ -35,7 +37,29 @@ function createListItem(text, completed, priority) {
     checkboxIcon.addEventListener('click', toggleComplete);
 
     const span = document.createElement('span');
-    span.textContent = text;
+
+    if(text.startsWith(scheduleFilter)){
+        text = text.slice(3);
+        span.innerHTML = '<p>[S]</p>' + ' ' + text.trim();
+    }else if(text.endsWith(scheduleFilter)){
+        text = text.slice(0, -3);
+        span.innerHTML = '<p>[S]</p>' + ' ' + text.trim();
+    }else if(text.startsWith(dailyScheduleFilter)){
+        text = text.slice(3);
+        span.innerHTML = '<p>[D]</p>' + ' ' + text.trim();
+    }else if(text.endsWith(dailyScheduleFilter)){
+        text = text.slice(0, -3);
+        span.innerHTML = '<p>[D]</p>' + ' ' + text.trim();
+    }else if(text.startsWith(weeklyScheduleFilter)){
+        text = text.slice(3);
+        span.innerHTML = '<p>[W]</p>' + ' ' + text.trim();
+    }else if(text.endsWith(weeklyScheduleFilter)){
+        text = text.slice(0, -3);
+        span.innerHTML = '<p>[W]</p>' + ' ' + text.trim();
+    }else{
+        span.textContent = text;
+    }
+
     if (completed) {
         span.classList.add('completed');
     }
@@ -108,9 +132,9 @@ function moveToList(li, completed, priority) {
 
     if (completed) {
         ulFinish.appendChild(li);
-    }else if(li.querySelector('span').textContent.startsWith(scheduleFilter)){
+    }else if(li.querySelector('span').textContent.startsWith(scheduleFilter) || li.querySelector('span').textContent.startsWith(dailyScheduleFilter) || li.querySelector('span').textContent.startsWith(weeklyScheduleFilter)){
         ulSchedule.appendChild(li);
-    }else if(li.querySelector('span').textContent.endsWith(scheduleFilter)){
+    }else if(li.querySelector('span').textContent.endsWith(scheduleFilter) || li.querySelector('span').textContent.endsWith(dailyScheduleFilter) || li.querySelector('span').textContent.endsWith(weeklyScheduleFilter)){
         ulSchedule.appendChild(li);
     }else if (priority) {
         ulPriority.appendChild(li);

@@ -785,6 +785,13 @@ input[type=number] {
           width: 100%;
           text-align: left;
           display: flex;
+          align-items: center;
+
+          p{
+            color: var(--brand-color);
+            font-weight: bold;
+            margin-right: 10px;
+          }
         }
 
         .fa-trash-can{
@@ -865,6 +872,17 @@ input[type=number] {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    span{
+      display: flex;
+      align-items: center;
+
+      p{
+        color: var(--brand-color);
+        font-weight: bold;
+        margin-right: 10px;
+      }
+    }
     
     i {
       cursor: pointer;
