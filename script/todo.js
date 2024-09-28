@@ -388,21 +388,23 @@ function displayTodoRatios (){
     const todoLists = document.querySelectorAll('.todo-lists');
 
     todoToggles.forEach((toggle, index) => {
-        const correspondingList = todoLists[index];
-        console.log(index);
-        console.log(todoToggles);
-        console.log(todoLists);
-    
-        function checkTodoItems() {
-        const todoItems = correspondingList.querySelectorAll('.todo-item');
-        
-        if (todoItems.length > 0) {
-            toggle.setAttribute('open', 'true');
-        } else {
-            toggle.removeAttribute('open');
+        if(index < 3){   
+            const correspondingList = todoLists[index];
+            console.log(index);
+            console.log(todoToggles);
+            console.log(todoLists);
+            
+            function checkTodoItems() {
+                const todoItems = correspondingList.querySelectorAll('.todo-item');
+                
+                if (todoItems.length > 0) {
+                    toggle.setAttribute('open', 'true');
+                } else {
+                    toggle.removeAttribute('open');
+                }
+            }  
+            checkTodoItems();
         }
-        }  
-        checkTodoItems();
     });
 }
 
