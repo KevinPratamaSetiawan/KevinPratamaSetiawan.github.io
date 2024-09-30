@@ -40,22 +40,22 @@ function createListItem(text, completed, priority) {
 
     if(text.startsWith(scheduleFilter)){
         text = text.slice(3);
-        span.innerHTML = '<p>[S]</p>' + ' ' + text.trim();
+        span.innerHTML = '<p>[S]</p>' + text.trim();
     }else if(text.endsWith(scheduleFilter)){
         text = text.slice(0, -3);
-        span.innerHTML = '<p>[S]</p>' + ' ' + text.trim();
+        span.innerHTML = '<p>[S]</p>' + text.trim();
     }else if(text.startsWith(dailyScheduleFilter)){
         text = text.slice(3);
-        span.innerHTML = '<p>[D]</p>' + ' ' + text.trim();
+        span.innerHTML = '<p>[D]</p>' + text.trim();
     }else if(text.endsWith(dailyScheduleFilter)){
         text = text.slice(0, -3);
-        span.innerHTML = '<p>[D]</p>' + ' ' + text.trim();
+        span.innerHTML = '<p>[D]</p>' + text.trim();
     }else if(text.startsWith(weeklyScheduleFilter)){
         text = text.slice(3);
-        span.innerHTML = '<p>[W]</p>' + ' ' + text.trim();
+        span.innerHTML = '<p>[W]</p>' + text.trim();
     }else if(text.endsWith(weeklyScheduleFilter)){
         text = text.slice(0, -3);
-        span.innerHTML = '<p>[W]</p>' + ' ' + text.trim();
+        span.innerHTML = '<p>[W]</p>' + text.trim();
     }else{
         span.textContent = text;
     }
@@ -85,18 +85,19 @@ function createListItem(text, completed, priority) {
 function toggleComplete(event) {
     const icon = event.target;
     const li = icon.parentElement;
-    const span = icon.nextElementSibling.nextElementSibling;
+    const span = li.querySelector('span');
+    const text = onlyText(span.textContent);
     const isChecked = icon.classList.contains('fa-circle');
 
     if (isChecked) {
         icon.classList.replace('fa-circle', 'fa-circle-check');
         span.classList.add('completed');
-        updateItem(span.textContent, true, isPriority(li));
+        updateItem(text, true, isPriority(li));
         moveToList(li, true, isPriority(li));
     } else {
         icon.classList.replace('fa-circle-check', 'fa-circle');
         span.classList.remove('completed');
-        updateItem(span.textContent, false, isPriority(li));
+        updateItem(text, false, isPriority(li));
         moveToList(li, false, isPriority(li));
     }
     updateCounter();
@@ -112,12 +113,12 @@ function togglePriority(event) {
     if (!isPriority) {
         icon.classList.replace('fa-circle', 'fa-circle-exclamation');
         icon.classList.replace('fa-regular', 'fa-solid');
-        updateItem(span.textContent, isCompleted(li), true);
+        updateItem(onlyText(span.textContent), isCompleted(li), true);
         moveToList(li, isCompleted(li), true);
     } else {
         icon.classList.replace('fa-circle-exclamation', 'fa-circle');
         icon.classList.replace('fa-solid', 'fa-regular');
-        updateItem(span.textContent, isCompleted(li), false);
+        updateItem(onlyText(span.textContent), isCompleted(li), false);
         moveToList(li, isCompleted(li), false);
     }
     updateCounter();
@@ -132,11 +133,14 @@ function moveToList(li, completed, priority) {
 
     if (completed) {
         ulFinish.appendChild(li);
-    }else if(li.querySelector('span').textContent.startsWith(scheduleFilter) || li.querySelector('span').textContent.startsWith(dailyScheduleFilter) || li.querySelector('span').textContent.startsWith(weeklyScheduleFilter)){
+    } else if (li.querySelector('span').textContent.startsWith(scheduleFilter) || 
+               li.querySelector('span').textContent.startsWith(dailyScheduleFilter) || 
+               li.querySelector('span').textContent.startsWith(weeklyScheduleFilter) ||
+               li.querySelector('span').textContent.endsWith(scheduleFilter) || 
+               li.querySelector('span').textContent.endsWith(dailyScheduleFilter) || 
+               li.querySelector('span').textContent.endsWith(weeklyScheduleFilter)) {
         ulSchedule.appendChild(li);
-    }else if(li.querySelector('span').textContent.endsWith(scheduleFilter) || li.querySelector('span').textContent.endsWith(dailyScheduleFilter) || li.querySelector('span').textContent.endsWith(weeklyScheduleFilter)){
-        ulSchedule.appendChild(li);
-    }else if (priority) {
+    } else if (priority) {
         ulPriority.appendChild(li);
     } else {
         ulItems.appendChild(li);
@@ -155,7 +159,7 @@ function isPriority(li) {
 
 function removeItem(event) {
     const li = event.target.parentElement;
-    const itemText = li.querySelector('span').textContent;
+    const itemText = onlyText(li.querySelector('span').textContent);
     li.remove();
     deleteItem(itemText);
 
@@ -171,20 +175,18 @@ function saveItem(text, completed, priority) {
 
 function deleteItem(text) {
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
-    items = items.filter(item => item.text !== text);
+    items = items.filter(item => onlyText(item.text) !== text);
     localStorage.setItem('todoItems', JSON.stringify(items));
 }
 
 function updateItem(text, completed, priority) {
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
-    const item = items.find(item => item.text === text);
+    const item = items.find(item => onlyText(item.text) === text);
     if (item) {
         item.completed = completed;
         item.priority = priority;
     }
     localStorage.setItem('todoItems', JSON.stringify(items));
-    updateCounter();
-    displayTodoRatios();
 }
 
 function loadItems() {
@@ -242,6 +244,20 @@ function updateCounter(){
     document.getElementById('priority-display-num').innerHTML = priorityNum;
     document.getElementById('items-display-num').innerHTML = itemsNum;
     document.getElementById('finish-display-num').innerHTML = finishNum;
+
+    displayTodoRatios();
+}
+
+function onlyText(text) {
+    let strippedText = text;
+
+    if(text.startsWith(scheduleFilter) || text.startsWith(dailyScheduleFilter) || text.startsWith(weeklyScheduleFilter)){
+        strippedText = text.slice(3);
+    }else if(text.endsWith(scheduleFilter) || text.endsWith(dailyScheduleFilter) || text.endsWith(weeklyScheduleFilter)){
+        strippedText = text.slice(0, -3);
+    }
+
+    return strippedText.trim().normalize();
 }
 
 // Todo Clock
@@ -426,6 +442,17 @@ function displayTodoRatios (){
         }
     });
 }
+
+document.querySelectorAll('.ratio-item').forEach(item => {
+    // item.addEventListener('mouseenter', () => {
+    //     item.style.width = '97%'; // Apply hover width
+    // });
+
+    item.addEventListener('mouseleave', () => {
+        displayTodoRatios();
+    });
+});
+
 
 // window.numberToRoman = numberToRoman;
 window.updateCounter = updateCounter;

@@ -665,6 +665,14 @@ input[type=number] {
   grid-area: 3 / 1 / 21 / 2;
 }
 
+.todo-ratio-container:hover .ratio-item:hover{
+  width: 97% !important;
+}
+
+.todo-ratio-container:hover .ratio-item:not(:hover){
+  width: 1% !important;
+}
+
 .todo-ratio-container{
   width: 100%;
   display: flex;
@@ -679,9 +687,9 @@ input[type=number] {
 
   span{
     display: inline-block;
-    width: 0;
+    width: 1%;
     height: 7px;
-    transition: width 0.5s;
+    transition: width 0.5s ease;
     // transition: height 0.2s;
     align-items: center;
     justify-content: center;
@@ -696,7 +704,6 @@ input[type=number] {
   }
 
   span:hover{
-    // height: 20px;
     p{
       opacity: 1;
     }
@@ -722,7 +729,8 @@ input[type=number] {
 }
 
 .todo-listing{
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   grid-area: 5 / 1 / 21 / 2;
 
   details[open] .fa-angles-right {
@@ -751,22 +759,27 @@ input[type=number] {
       
       h4{
         padding: 10px 5px 10px 5px;
-      color: var(--text-color);
-      font-family: var(--base-font-family);
-      font-weight: 200;
+        color: var(--text-color);
+        font-family: var(--base-font-family);
+        font-weight: 200;
       
-      .color-code{
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        display: inline-block;
-        margin-left: 3px;
-      }
+        .color-code{
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          display: inline-block;
+          margin-left: 3px;
+        }
 
-      .color-code-0{ background-color: #a97bff; }
-      .color-code-1{ background-color: #f85149; }
-      .color-code-2{ background-color: #f1e05a; }
-      .color-code-3{ background-color: #6bdd9a; }
+        // .folder-color-code-0{ color: #a97bff; }
+        // .folder-color-code-1{ color: #f85149; }
+        // .folder-color-code-2{ color: #f1e05a; }
+        // .folder-color-code-3{ color: #6bdd9a; }
+
+        .color-code-0{ background-color: #a97bff; }
+        .color-code-1{ background-color: #f85149; }
+        .color-code-2{ background-color: #f1e05a; }
+        .color-code-3{ background-color: #6bdd9a; }
       }
 
       span{
@@ -786,11 +799,11 @@ input[type=number] {
           text-align: left;
           display: flex;
           align-items: center;
-
+          overflow-x: scroll;
           p{
-            color: var(--brand-color);
+            color: #a97bff;
             font-weight: bold;
-            margin-right: 10px;
+            margin: 0 10px 0 0;
           }
         }
 
