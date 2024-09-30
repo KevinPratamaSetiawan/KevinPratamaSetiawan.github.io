@@ -92,8 +92,6 @@ accentButton.addEventListener('click', () => {
         ],[
         '#e0c12a', '#5ce653', '#91b3a3', '#6edbaa',
         '#74d196', '#7af83e'
-        ],[
-        '#090b1d'
         ]
     ];
 
@@ -110,19 +108,25 @@ accentButton.addEventListener('click', () => {
         '#f78233'
         ],[
         '#e2d689', '#dad09e', '#f6e275', '#d5cca5'
-        ],[
-        '#fefb7d'
         ]
     ];
 
     if(savedMode === 'light'){
-        randomIndex = Math.floor(Math.random() * lightColors[currentIndex].length);
-        newColor = lightColors[currentIndex][randomIndex];
-        // console.log(lightColors[currentIndex][randomIndex]);
+        if(lightColors.length >= currentIndex + 1){
+            randomIndex = Math.floor(Math.random() * lightColors[currentIndex].length);
+            newColor = lightColors[currentIndex][randomIndex];
+            // console.log(lightColors[currentIndex][randomIndex]);
+        }else{
+            newColor = localStorage.getItem('currentLightAccentColor');
+        }
     }else if(savedMode === 'dark'){
-        randomIndex = Math.floor(Math.random() * darkColors[currentIndex].length);
-        newColor = darkColors[currentIndex][randomIndex];
-        // console.log(darkColors[currentIndex][randomIndex]);
+        if(darkColors.length >= currentIndex + 1){
+            randomIndex = Math.floor(Math.random() * darkColors[currentIndex].length);
+            newColor = darkColors[currentIndex][randomIndex];
+            // console.log(darkColors[currentIndex][randomIndex]);
+        }else{
+            newColor = localStorage.getItem('currentDarkAccentColor');
+        }
     }
 
     document.documentElement.style.setProperty('--brand-color', newColor);

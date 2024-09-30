@@ -794,16 +794,17 @@ input[type=number] {
           display: none;
         }
 
-        span{
+        > span{
           width: 100%;
           text-align: left;
-          display: flex;
-          align-items: center;
           overflow-x: scroll;
-          p{
+          // display: flex;
+          // align-items: center;
+
+          span{
             color: #a97bff;
             font-weight: bold;
-            margin: 0 10px 0 0;
+            // margin: 0 10px 0 0;
           }
         }
 
@@ -878,6 +879,7 @@ input[type=number] {
     font-family: var(--base-font-family);
     width: 100%;
     padding: 10px;
+    gap: 10px;
     border: 3px solid var(--text-color);
     border-radius: 5px;
     margin-bottom: 10px;
@@ -885,21 +887,9 @@ input[type=number] {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    span{
-      display: flex;
-      align-items: center;
-
-      p{
-        color: var(--brand-color);
-        font-weight: bold;
-        margin-right: 10px;
-      }
-    }
     
     i {
       cursor: pointer;
-      margin-right: 10px;
     }
     
     .fa-trash-can {

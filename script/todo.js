@@ -40,22 +40,22 @@ function createListItem(text, completed, priority) {
 
     if(text.startsWith(scheduleFilter)){
         text = text.slice(3);
-        span.innerHTML = '<p>[S]</p>' + text.trim();
+        span.innerHTML = '<span>[S]</span>' + text.trim();
     }else if(text.endsWith(scheduleFilter)){
         text = text.slice(0, -3);
-        span.innerHTML = '<p>[S]</p>' + text.trim();
+        span.innerHTML = '<span>[S]</span>' + text.trim();
     }else if(text.startsWith(dailyScheduleFilter)){
         text = text.slice(3);
-        span.innerHTML = '<p>[D]</p>' + text.trim();
+        span.innerHTML = '<span>[D]</span>' + text.trim();
     }else if(text.endsWith(dailyScheduleFilter)){
         text = text.slice(0, -3);
-        span.innerHTML = '<p>[D]</p>' + text.trim();
+        span.innerHTML = '<span>[D]</span>' + text.trim();
     }else if(text.startsWith(weeklyScheduleFilter)){
         text = text.slice(3);
-        span.innerHTML = '<p>[W]</p>' + text.trim();
+        span.innerHTML = '<span>[W]</span>' + text.trim();
     }else if(text.endsWith(weeklyScheduleFilter)){
         text = text.slice(0, -3);
-        span.innerHTML = '<p>[W]</p>' + text.trim();
+        span.innerHTML = '<span>[W]</span>' + text.trim();
     }else{
         span.textContent = text;
     }
