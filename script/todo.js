@@ -111,7 +111,24 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
     const pDescription = document.createElement('p');
     pDescription.classList.add('todo-description');
     pDescription.innerHTML = descriptionText;
-    
+
+    if(descriptionText === 'no description'){
+        pDescription.style.color = 'var(--light-gray)'
+    }else{
+        const arrowSpan = document.createElement('span');
+        const arrowI = document.createElement('i');
+        arrowI.classList.add('fa-solid', 'fa-angle-right', 'fa-smQ');
+
+        // arrowSpan.appendChild(arrowI);
+
+        for (let i = 0; i < 3; i++) {
+            const clonedArrowI = arrowI.cloneNode(true);
+            arrowSpan.appendChild(clonedArrowI);
+        }
+
+        pDescription.prepend(arrowSpan);
+    }
+
     const spanId = document.createElement('span');
     spanId.classList.add('todo-id');
     spanId.innerText = 'ID:' + todoId;
@@ -227,16 +244,16 @@ function toggleDetail(event){
 
         if (item !== li && itemDetail.style.display === 'flex') {
             itemDetail.style.display = 'none';
-            itemSummary.style.color = 'var(--text-color)';
+            itemSummary.classList.remove('open');
         }
     });
 
     if(detail.style.display === 'none' || detail.style.display === ''){
         detail.style.display = 'flex';
-        summary.style.color = 'var(--brand-color)';
+        summary.classList.add('open');
     }else{
         detail.style.display = 'none';
-        summary.style.color = 'var(--text-color)';
+        summary.classList.remove('open');
     }
 }
 

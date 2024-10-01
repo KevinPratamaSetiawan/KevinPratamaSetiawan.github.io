@@ -711,19 +711,19 @@ input[type=number] {
 
   #schedule-ratio{
     border-radius: 5px 0 0 5px;
-    background-color: #a97bff;
+    background-color: var(--schedule-color);
   }
   #priority-ratio{
     border-radius: 0;
-    background-color: #f85149;
+    background-color: var(--priority-color);
   }
   #task-ratio{
     border-radius: 0;
-    background-color: #f1e05a;
+    background-color: var(--task-color);
   }
   #complete-ratio{
     border-radius: 0 5px 5px 0;
-    background-color: #6bdd9a;
+    background-color: var(--complete-color);
   }
 
 }
@@ -771,15 +771,15 @@ input[type=number] {
           margin-left: 3px;
         }
 
-        // .folder-color-code-0{ color: #a97bff; }
-        // .folder-color-code-1{ color: #f85149; }
-        // .folder-color-code-2{ color: #f1e05a; }
-        // .folder-color-code-3{ color: #6bdd9a; }
+        // .folder-color-code-0{ color: var(--schedule-color); }
+        // .folder-color-code-1{ color: var(--priority-color); }
+        // .folder-color-code-2{ color: var(--task-color); }
+        // .folder-color-code-3{ color: var(--complete-color); }
 
-        .color-code-0{ background-color: #a97bff; }
-        .color-code-1{ background-color: #f85149; }
-        .color-code-2{ background-color: #f1e05a; }
-        .color-code-3{ background-color: #6bdd9a; }
+        .color-code-0{ background-color: var(--schedule-color); }
+        .color-code-1{ background-color: var(--priority-color); }
+        .color-code-2{ background-color: var(--task-color); }
+        .color-code-3{ background-color: var(--complete-color); }
       }
 
       span{
@@ -894,16 +894,23 @@ input[type=number] {
       .todo-description{
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        align-items: start;
         overflow-wrap: break-word;
         text-wrap: wrap;
         white-space: normal;
+
+        span{
+          margin-right: 5px;
+          i{
+            gap: -5px;
+            transform: rotate(0);
+          }
+        }
       }
 
       .todo-id{
         width: 100%;
         text-align: right;
-        color: var(--brand-color);
       }
     }
   }
@@ -923,13 +930,42 @@ input[type=number] {
         // align-items: center;
 
         span{
-          color: #a97bff;
+          color: var(--schedule-color);
           font-weight: bold;
           margin: 0 5px 0 0;
         }
       }
     }
   }
+}
+
+#todo-schedule{
+  .todo-id{ color: var(--schedule-color); } 
+  .open{ color: var(--schedule-color); }
+  .fa-angle-right:nth-child(1){ color: var(--schedule-color); }
+  .fa-angle-right:nth-child(2){ color: #d3bcfe; }
+  .fa-angle-right:nth-child(3){ color: var(--text-color); }
+}
+#todo-priority{
+  .todo-id{ color: var(--priority-color); } 
+  .open{ color: var(--priority-color); }
+  .fa-angle-right:nth-child(1){ color: var(--priority-color); }
+  .fa-angle-right:nth-child(2){ color: #faa7a3; }
+  .fa-angle-right:nth-child(3){ color: var(--text-color); }
+}
+#todo-items{
+  .todo-id{ color: var(--task-color); } 
+  .open{ color: var(--task-color); }
+  .fa-angle-right:nth-child(1){ color: var(--task-color); }
+  .fa-angle-right:nth-child(2){ color: #f7eeab; }
+  .fa-angle-right:nth-child(3){ color: var(--text-color); }
+}
+#todo-finish{
+  .todo-id{ color: var(--complete-color); } 
+  .open{ color: var(--complete-color); }
+  .fa-angle-right:nth-child(1){ color: var(--complete-color); }
+  .fa-angle-right:nth-child(2){ color: #b4edcb; }
+  .fa-angle-right:nth-child(3){ color: var(--text-color); }
 }
 
 #xml-tab {
