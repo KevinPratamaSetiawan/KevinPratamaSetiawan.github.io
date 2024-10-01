@@ -787,32 +787,6 @@ input[type=number] {
         padding: 0 10px 0 0;
       }
     }
-
-    #todo-schedule{
-      .todo-item{
-        .priority-indicator{
-          display: none;
-        }
-
-        > span{
-          width: 100%;
-          text-align: left;
-          overflow-x: scroll;
-          // display: flex;
-          // align-items: center;
-
-          span{
-            color: #a97bff;
-            font-weight: bold;
-            // margin: 0 10px 0 0;
-          }
-        }
-
-        .fa-trash-can{
-          display: none;
-        }
-      }
-    }
   }
 }
 
@@ -873,7 +847,91 @@ input[type=number] {
 #todo-schedule,
 #todo-priority,
 #todo-items,
-#todo-finish,
+#todo-finish{
+  .todo-item{
+    font-family: var(--base-font-family);
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+    border: 3px solid var(--text-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .todo-summary{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      
+      i {
+        cursor: pointer;
+      }
+    
+      .fa-trash-can {
+        margin-left: auto;
+      }
+      
+      .fa-circle-exclamation{
+        color: var(--brand-color);
+      }
+    }
+
+    .todo-detail{
+      width: 100%;
+      padding: 10px 0 0 0;
+      gap: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      border-top: 1px dashed var(--text-color);
+      text-align: left;
+
+      .todo-description{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        overflow-wrap: break-word;
+        text-wrap: wrap;
+        white-space: normal;
+      }
+
+      .todo-id{
+        width: 100%;
+        text-align: right;
+        color: var(--brand-color);
+      }
+    }
+  }
+}
+
+#todo-schedule{
+  .todo-item{
+    .todo-summary{
+      .priority-indicator{
+        display: none;
+      }
+
+      > p{
+        width: 100%;
+        text-align: left;
+        // display: flex;
+        // align-items: center;
+
+        span{
+          color: #a97bff;
+          font-weight: bold;
+          margin: 0 5px 0 0;
+        }
+      }
+    }
+  }
+}
+
 #xml-tab {
   li{
     font-family: var(--base-font-family);
@@ -890,14 +948,6 @@ input[type=number] {
     
     i {
       cursor: pointer;
-    }
-    
-    .fa-trash-can {
-      margin-left: auto;
-    }
-
-    .fa-circle-exclamation{
-      color: var(--brand-color);
     }
   }
 }

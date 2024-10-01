@@ -5,22 +5,41 @@ const weeklyScheduleFilter = '[W]';
 const dailyScheduleFilter = '[D]';
 
 function addItem() {
-    const itemText = document.getElementById('new-item').value.trim();
-    if (itemText !== '') {
-        let ul = document.getElementById('todo-items');
-        const li = createListItem(itemText, false, false);
+    const filterPattern = /\[S\]|\[W\]|\[D\]/g;
+    let text = document.getElementById('new-item').value.trim();
 
-        if(itemText.startsWith(scheduleFilter) || itemText.startsWith(dailyScheduleFilter) || itemText.startsWith(weeklyScheduleFilter)){
-            ul = document.getElementById('todo-schedule');
+    if (text !== '') {
+        const todoId = (Math.floor(Math.random() * 10000) + 1).toString().padStart(5, '0');
+        let scheduleType = '';
+        let scheduleIndicator = false;
+
+        if(text.includes(scheduleFilter) || text.includes(weeklyScheduleFilter) || text.includes(dailyScheduleFilter)){
+            scheduleIndicator = true;
         }
 
-        if(itemText.endsWith(scheduleFilter) || itemText.endsWith(dailyScheduleFilter) || itemText.endsWith(weeklyScheduleFilter)){
-            ul = document.getElementById('todo-schedule');
+        // Handle Schedule Filtering
+        if(scheduleIndicator === true){
+            if (text.includes(scheduleFilter)) {
+                scheduleType = '[S]';
+            }else if (text.includes(dailyScheduleFilter)) {
+                scheduleType = '[D]';
+            }else if (text.includes(weeklyScheduleFilter)) {
+                scheduleType = '[W]';
+            }else{
+                scheduleType = '';
+            }
+
+            text = text.replace(filterPattern, '').replace(/\s+/g, ' ').trim();
         }
+        
+        // Handle Title and Description Filtering
+        let [titleText, descriptionText] = text.includes('=>') ? text.split('=>').map(str => str.trim()) : [text, 'no description'];
 
-        appendOrInsertAfterNumbered(ul, li);
+        const li = createListItem(todoId, titleText, descriptionText, false, false, scheduleIndicator, scheduleType);
 
-        saveItem(itemText, false, false);
+        moveToList(li, false, false, scheduleIndicator);
+
+        saveItem(todoId, titleText, descriptionText, false, false, scheduleIndicator, scheduleType);
         document.getElementById('new-item').value = '';
 
         updateCounter();
@@ -28,104 +47,93 @@ function addItem() {
     }
 }
 
-function createListItem(text, completed, priority) {
+function createListItem(todoId, titleText, descriptionText, completed, priority, schedule, scheduleType) {
+    // Create li element
     const li = document.createElement('li');
     li.classList.add('todo-item');
 
+    const divTop = document.createElement('div');
+    divTop.classList.add('todo-summary');
+
+    const divBot = document.createElement('div');
+    divBot.classList.add('todo-detail');
+    divBot.style.display = 'none';
+
+    // Handle Checkbox Element
     const checkboxIcon = document.createElement('i');
     checkboxIcon.classList.add('fa-regular', completed ? 'fa-circle-check' : 'fa-circle');
     checkboxIcon.addEventListener('click', toggleComplete);
 
-    const span = document.createElement('span');
-
-    if(text.startsWith(scheduleFilter)){
-        text = text.slice(3);
-        span.innerHTML = '<span>[S]</span>' + text.trim();
-    }else if(text.endsWith(scheduleFilter)){
-        text = text.slice(0, -3);
-        span.innerHTML = '<span>[S]</span>' + text.trim();
-    }else if(text.startsWith(dailyScheduleFilter)){
-        text = text.slice(3);
-        span.innerHTML = '<span>[D]</span>' + text.trim();
-    }else if(text.endsWith(dailyScheduleFilter)){
-        text = text.slice(0, -3);
-        span.innerHTML = '<span>[D]</span>' + text.trim();
-    }else if(text.startsWith(weeklyScheduleFilter)){
-        text = text.slice(3);
-        span.innerHTML = '<span>[W]</span>' + text.trim();
-    }else if(text.endsWith(weeklyScheduleFilter)){
-        text = text.slice(0, -3);
-        span.innerHTML = '<span>[W]</span>' + text.trim();
-    }else{
-        span.textContent = text;
-    }
-
-    if (completed) {
-        span.classList.add('completed');
-    }
-
+    // Handle Priority Toggle Element
     const priorityBtn = document.createElement('i');
     priorityBtn.classList.add(priority ? 'fa-circle-exclamation' : 'fa-circle');
     priorityBtn.classList.add(priority ? 'fa-solid' : 'fa-regular');
     priorityBtn.classList.add('priority-indicator');
     priorityBtn.addEventListener('click', togglePriority);
 
+    // Handle Delete Button Element
     const deleteBtn = document.createElement('i');
     deleteBtn.classList.add('fa-solid', 'fa-trash-can');
     deleteBtn.addEventListener('click', removeItem);
 
-    li.appendChild(checkboxIcon);
-    li.appendChild(priorityBtn);
-    li.appendChild(span);
-    li.appendChild(deleteBtn);
+    // Handle Title and Schedule Type Text Element
+    const pTitle = document.createElement('p');
+    pTitle.classList.add('todo-title');
+    pTitle.innerHTML = titleText;
+
+    if(schedule){
+        let todayAlert = ']';
+        scheduleType = scheduleType.slice(0, -1);
+        const days = [ 
+                        'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 
+                        'Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'
+                    ];
+        
+        let day = days.findIndex(day => titleText.includes(day));
+        let today = new Date().getDay();
+
+        if(day !== -1 && day%7 === today){
+            todayAlert = '-T]';
+        }
+
+        const spanScheduleType = document.createElement('span');
+        spanScheduleType.innerText = scheduleType + todayAlert;
+        pTitle.prepend(spanScheduleType);
+    }
+
+    if (completed) {
+        pTitle.classList.add('completed');
+    }
+
+    pTitle.addEventListener('click', toggleDetail);
+
+    // Handle Description and todoId Text Element
+    const pDescription = document.createElement('p');
+    pDescription.classList.add('todo-description');
+    pDescription.innerHTML = descriptionText;
+    
+    const spanId = document.createElement('span');
+    spanId.classList.add('todo-id');
+    spanId.innerText = 'ID:' + todoId;
+
+    // pDescription.appendChild(spanId);
+
+    // Composing The li Element
+    divTop.appendChild(checkboxIcon);
+    divTop.appendChild(priorityBtn);
+    divTop.appendChild(pTitle);
+    divTop.appendChild(deleteBtn);
+    
+    divBot.appendChild(pDescription);
+    divBot.appendChild(spanId);
+
+    li.appendChild(divTop);
+    li.appendChild(divBot);
 
     return li;
 }
 
-function toggleComplete(event) {
-    const icon = event.target;
-    const li = icon.parentElement;
-    const span = li.querySelector('span');
-    const text = onlyText(span.textContent);
-    const isChecked = icon.classList.contains('fa-circle');
-
-    if (isChecked) {
-        icon.classList.replace('fa-circle', 'fa-circle-check');
-        span.classList.add('completed');
-        updateItem(text, true, isPriority(li));
-        moveToList(li, true, isPriority(li));
-    } else {
-        icon.classList.replace('fa-circle-check', 'fa-circle');
-        span.classList.remove('completed');
-        updateItem(text, false, isPriority(li));
-        moveToList(li, false, isPriority(li));
-    }
-    updateCounter();
-    displayTodoRatios();
-}
-
-function togglePriority(event) {
-    const icon = event.target;
-    const li = icon.parentElement;
-    const span = li.querySelector('span');
-    const isPriority = icon.classList.contains('fa-circle-exclamation');
-
-    if (!isPriority) {
-        icon.classList.replace('fa-circle', 'fa-circle-exclamation');
-        icon.classList.replace('fa-regular', 'fa-solid');
-        updateItem(onlyText(span.textContent), isCompleted(li), true);
-        moveToList(li, isCompleted(li), true);
-    } else {
-        icon.classList.replace('fa-circle-exclamation', 'fa-circle');
-        icon.classList.replace('fa-solid', 'fa-regular');
-        updateItem(onlyText(span.textContent), isCompleted(li), false);
-        moveToList(li, isCompleted(li), false);
-    }
-    updateCounter();
-    displayTodoRatios();
-}
-
-function moveToList(li, completed, priority) {
+function moveToList(li, completed, priority, schedule) {
     const ulSchedule = document.getElementById('todo-schedule');
     const ulItems = document.getElementById('todo-items');
     const ulFinish = document.getElementById('todo-finish');
@@ -133,55 +141,136 @@ function moveToList(li, completed, priority) {
 
     if (completed) {
         ulFinish.appendChild(li);
-    } else if (li.querySelector('span').textContent.startsWith(scheduleFilter) || 
-               li.querySelector('span').textContent.startsWith(dailyScheduleFilter) || 
-               li.querySelector('span').textContent.startsWith(weeklyScheduleFilter) ||
-               li.querySelector('span').textContent.endsWith(scheduleFilter) || 
-               li.querySelector('span').textContent.endsWith(dailyScheduleFilter) || 
-               li.querySelector('span').textContent.endsWith(weeklyScheduleFilter)) {
+    } else if (schedule) {
         ulSchedule.appendChild(li);
     } else if (priority) {
         ulPriority.appendChild(li);
     } else {
         ulItems.appendChild(li);
     }
+
     updateCounter();
     displayTodoRatios();
 }
 
-function isCompleted(li) {
-    return li.querySelector('span').classList.contains('completed');
+function toggleComplete(event) {
+    const icon = event.target;
+    const li = icon.parentElement.parentElement;
+    const id = li.querySelector('.todo-id').textContent.slice(3);
+    const title = li.querySelector('.todo-title');
+    const isChecked = icon.classList.contains('fa-circle-check');
+
+    let items = JSON.parse(localStorage.getItem('todoItems')) || [];
+    const item = items.find(item => item.id === id);
+
+    if (isChecked) {
+        icon.classList.replace('fa-circle-check', 'fa-circle');
+        title.classList.remove('completed');
+        updateItem(id, false, item.priority);
+        moveToList(li, false, item.priority, item.schedule);
+    } else {
+        icon.classList.replace('fa-circle', 'fa-circle-check');
+        title.classList.add('completed');
+        updateItem(id, true, item.priority);
+        moveToList(li, true, item.priority, item.schedule);
+    }
+
+    updateCounter();
+    displayTodoRatios();
 }
 
-function isPriority(li) {
-    return li.querySelector('.fa-circle-exclamation') !== null;
+function togglePriority(event) {
+    const icon = event.target;
+    const li = icon.parentElement.parentElement;
+    const id = li.querySelector('.todo-id').textContent.slice(3);
+    const isPriority = icon.classList.contains('fa-circle-exclamation');
+
+    let items = JSON.parse(localStorage.getItem('todoItems')) || [];
+    const item = items.find(item => item.id === id);
+
+    if (isPriority) {
+        icon.classList.replace('fa-circle-exclamation', 'fa-circle');
+        icon.classList.replace('fa-solid', 'fa-regular');
+        updateItem(id, item.completed, false);
+        moveToList(li, item.completed, false, item.schedule);
+    } else {
+        icon.classList.replace('fa-circle', 'fa-circle-exclamation');
+        icon.classList.replace('fa-regular', 'fa-solid');
+        updateItem(id, item.completed, true);
+        moveToList(li, item.completed, true, item.schedule);
+    }
+
+    updateCounter();
+    displayTodoRatios();
 }
 
 function removeItem(event) {
-    const li = event.target.parentElement;
-    const itemText = onlyText(li.querySelector('span').textContent);
+    const li = event.target.parentElement.parentElement;
+    const id = li.querySelector('.todo-id').textContent.slice(3);
     li.remove();
-    deleteItem(itemText);
+    deleteItem(id);
 
     updateCounter();
     displayTodoRatios();
 }
 
-function saveItem(text, completed, priority) {
+function toggleDetail(event){
+    const li = event.target.parentElement.parentElement;
+    const summary = li.querySelector('.todo-title');
+    const detail = li.querySelector('.todo-detail');
+
+    const allTodoItems = document.querySelectorAll('.todo-item');
+
+    allTodoItems.forEach(item => {
+        const itemDetail = item.querySelector('.todo-detail');
+        const itemSummary = item.querySelector('.todo-title');
+
+        if (item !== li && itemDetail.style.display === 'flex') {
+            itemDetail.style.display = 'none';
+            itemSummary.style.color = 'var(--text-color)';
+        }
+    });
+
+    if(detail.style.display === 'none' || detail.style.display === ''){
+        detail.style.display = 'flex';
+        summary.style.color = 'var(--brand-color)';
+    }else{
+        detail.style.display = 'none';
+        summary.style.color = 'var(--text-color)';
+    }
+}
+
+// Local Storage Handler
+function loadItems() {
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
-    items.push({ text: text, completed: completed, priority: priority });
+
+    items.sort((a, b) => a.completed - b.completed);
+
+    items.forEach(item => {
+        const li = createListItem(item.id, item.title, item.description, item.completed, item.priority, item.schedule, item.scheduleType);
+        moveToList(li, item.completed, item.priority, item.schedule);
+    });
+
+    updateCounter();
+}
+
+function saveItem(todoId, titleText, descriptionText, completed, priority, schedule, scheduleType) {
+    let items = JSON.parse(localStorage.getItem('todoItems')) || [];
+    items.push({ 
+        id: todoId,
+        title: titleText, 
+        description: descriptionText, 
+        completed: completed, 
+        priority: priority,
+        schedule: schedule,
+        scheduleType: scheduleType
+    });
     localStorage.setItem('todoItems', JSON.stringify(items));
 }
 
-function deleteItem(text) {
+function updateItem(todoId, completed, priority) {
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
-    items = items.filter(item => onlyText(item.text) !== text);
-    localStorage.setItem('todoItems', JSON.stringify(items));
-}
-
-function updateItem(text, completed, priority) {
-    let items = JSON.parse(localStorage.getItem('todoItems')) || [];
-    const item = items.find(item => onlyText(item.text) === text);
+    const item = items.find(item => item.id === todoId);
     if (item) {
         item.completed = completed;
         item.priority = priority;
@@ -189,29 +278,83 @@ function updateItem(text, completed, priority) {
     localStorage.setItem('todoItems', JSON.stringify(items));
 }
 
-function loadItems() {
+function deleteItem(todoId) {
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
-    const ulItems = document.getElementById('todo-items');
-    const ulFinish = document.getElementById('todo-finish');
-    const ulPriority = document.getElementById('todo-priority');
-
-    items.sort((a, b) => a.completed - b.completed);
-
-    items.forEach(item => {
-        const li = createListItem(item.text, item.completed, item.priority);
-        moveToList(li, item.completed, item.priority);
-    });
-
-    updateCounter();
+    items = items.filter(item => item.id !== todoId);
+    localStorage.setItem('todoItems', JSON.stringify(items));
 }
 
-function appendOrInsertAfterNumbered(ul, li) {
-    const numberedItems = Array.from(ul.children).filter(item => /^\d+\.\s/.test(item.textContent));
-    if (numberedItems.length > 0) {
-        ul.insertBefore(li, numberedItems[numberedItems.length - 1].nextSibling);
-    } else {
-        ul.appendChild(li);
+// List Visual Handler
+function displayTodoRatios (){
+    const scheduleWidth = document.querySelector("#todo-schedule").querySelectorAll("li").length;
+    const priorityWidth = document.querySelector("#todo-priority").querySelectorAll("li").length;
+    const taskWidth = document.querySelector("#todo-items").querySelectorAll("li").length;
+    const completeWidth = document.querySelector("#todo-finish").querySelectorAll("li").length;
+    const totalWidth = scheduleWidth + priorityWidth + taskWidth + completeWidth;
+
+    document.getElementById('schedule-ratio').style.width = (scheduleWidth / totalWidth * 100) + '%';
+    document.getElementById('priority-ratio').style.width = (priorityWidth / totalWidth * 100) + '%';
+    document.getElementById('task-ratio').style.width = (taskWidth / totalWidth * 100) + '%';
+    document.getElementById('complete-ratio').style.width = (completeWidth / totalWidth * 100) + '%';
+
+    document.querySelector('#schedule-ratio p').innerText = (scheduleWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
+    document.querySelector('#priority-ratio p').innerText = (priorityWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
+    document.querySelector('#task-ratio p').innerText = (taskWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
+    document.querySelector('#complete-ratio p').innerText = (completeWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
+
+    if(priorityWidth === 0 && taskWidth === 0 && completeWidth === 0){
+        document.getElementById('schedule-ratio').style.borderRadius = '5px';
+    }else if(priorityWidth !== 0 || taskWidth !== 0 || completeWidth !== 0){
+        document.getElementById('schedule-ratio').style.borderRadius = '5px 0 0 5px';
     }
+
+    if(scheduleWidth === 0 && taskWidth === 0 && completeWidth === 0){
+        document.getElementById('priority-ratio').style.borderRadius = '5px';
+    }else if(scheduleWidth === 0 && (taskWidth !== 0 || completeWidth !== 0)){
+        document.getElementById('priority-ratio').style.borderRadius = '5px 0 0 5px';
+    }else if(scheduleWidth !== 0 && taskWidth === 0 && completeWidth === 0){
+        document.getElementById('priority-ratio').style.borderRadius = ' 0 5px 5px 0';
+    }else if(scheduleWidth !== 0 && (taskWidth !== 0 || completeWidth !== 0)){
+        document.getElementById('priority-ratio').style.borderRadius = '0';
+    }
+
+    if(scheduleWidth === 0 && priorityWidth === 0 && completeWidth === 0){
+        document.getElementById('task-ratio').style.borderRadius = '5px';
+    }else if((scheduleWidth !== 0 || priorityWidth !== 0) && completeWidth === 0){
+        document.getElementById('task-ratio').style.borderRadius = '0 5px 5px 0';
+    }else if(scheduleWidth === 0 && priorityWidth === 0 && completeWidth !== 0){
+        document.getElementById('task-ratio').style.borderRadius = '5px 0 0 5px';
+    }else if((scheduleWidth !== 0 || priorityWidth !== 0) && completeWidth !== 0){
+        document.getElementById('task-ratio').style.borderRadius = '0';
+    }
+
+    if(scheduleWidth === 0 && priorityWidth === 0 && taskWidth === 0){
+        document.getElementById('complete-ratio').style.borderRadius = '5px';
+    }else if(scheduleWidth !== 0 || priorityWidth !== 0 || taskWidth !== 0){
+        document.getElementById('complete-ratio').style.borderRadius = '0 5px 5px 0';
+    }
+
+    // Control Todo List Toggle
+    const todoToggles = document.querySelectorAll('.todo-list-toggles');
+    const todoLists = document.querySelectorAll('.todo-lists');
+
+    todoToggles.forEach((toggle, index) => {
+        const correspondingList = todoLists[index];
+
+        function checkTodoItems() {
+            const todoItems = correspondingList.querySelectorAll('.todo-item');
+            
+            if (todoItems.length > 0) {
+                toggle.setAttribute('open', 'true');
+            } else {
+                toggle.removeAttribute('open');
+            }
+        }
+
+        if(index < 3){
+            checkTodoItems();
+        }
+    });
 }
 
 function updateCounter(){
@@ -246,18 +389,6 @@ function updateCounter(){
     document.getElementById('finish-display-num').innerHTML = finishNum;
 
     displayTodoRatios();
-}
-
-function onlyText(text) {
-    let strippedText = text;
-
-    if(text.startsWith(scheduleFilter) || text.startsWith(dailyScheduleFilter) || text.startsWith(weeklyScheduleFilter)){
-        strippedText = text.slice(3);
-    }else if(text.endsWith(scheduleFilter) || text.endsWith(dailyScheduleFilter) || text.endsWith(weeklyScheduleFilter)){
-        strippedText = text.slice(0, -3);
-    }
-
-    return strippedText.trim().normalize();
 }
 
 // Todo Clock
@@ -369,78 +500,6 @@ function copyClock(type) {
     setTimeout(function() {
         document.getElementById(type).innerHTML = originalContent;
     }, 1000);
-}
-
-function displayTodoRatios (){
-    const scheduleWidth = document.querySelector("#todo-schedule").querySelectorAll("li").length;
-    const priorityWidth = document.querySelector("#todo-priority").querySelectorAll("li").length;
-    const taskWidth = document.querySelector("#todo-items").querySelectorAll("li").length;
-    const completeWidth = document.querySelector("#todo-finish").querySelectorAll("li").length;
-    const totalWidth = scheduleWidth + priorityWidth + taskWidth + completeWidth;
-
-    document.getElementById('schedule-ratio').style.width = (scheduleWidth / totalWidth * 100) + '%';
-    document.getElementById('priority-ratio').style.width = (priorityWidth / totalWidth * 100) + '%';
-    document.getElementById('task-ratio').style.width = (taskWidth / totalWidth * 100) + '%';
-    document.getElementById('complete-ratio').style.width = (completeWidth / totalWidth * 100) + '%';
-
-    document.querySelector('#schedule-ratio p').innerText = (scheduleWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
-    document.querySelector('#priority-ratio p').innerText = (priorityWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
-    document.querySelector('#task-ratio p').innerText = (taskWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
-    document.querySelector('#complete-ratio p').innerText = (completeWidth / totalWidth * 100).toFixed(2).toString().padStart(2, '0') + '%';
-
-    if(priorityWidth === 0 && taskWidth === 0 && completeWidth === 0){
-        document.getElementById('schedule-ratio').style.borderRadius = '5px';
-    }else if(priorityWidth !== 0 || taskWidth !== 0 || completeWidth !== 0){
-        document.getElementById('schedule-ratio').style.borderRadius = '5px 0 0 5px';
-    }
-
-    if(scheduleWidth === 0 && taskWidth === 0 && completeWidth === 0){
-        document.getElementById('priority-ratio').style.borderRadius = '5px';
-    }else if(scheduleWidth === 0 && (taskWidth !== 0 || completeWidth !== 0)){
-        document.getElementById('priority-ratio').style.borderRadius = '5px 0 0 5px';
-    }else if(scheduleWidth !== 0 && taskWidth === 0 && completeWidth === 0){
-        document.getElementById('priority-ratio').style.borderRadius = ' 0 5px 5px 0';
-    }else if(scheduleWidth !== 0 && (taskWidth !== 0 || completeWidth !== 0)){
-        document.getElementById('priority-ratio').style.borderRadius = '0';
-    }
-
-    if(scheduleWidth === 0 && priorityWidth === 0 && completeWidth === 0){
-        document.getElementById('task-ratio').style.borderRadius = '5px';
-    }else if((scheduleWidth !== 0 || priorityWidth !== 0) && completeWidth === 0){
-        document.getElementById('task-ratio').style.borderRadius = '0 5px 5px 0';
-    }else if(scheduleWidth === 0 && priorityWidth === 0 && completeWidth !== 0){
-        document.getElementById('task-ratio').style.borderRadius = '5px 0 0 5px';
-    }else if((scheduleWidth !== 0 || priorityWidth !== 0) && completeWidth !== 0){
-        document.getElementById('task-ratio').style.borderRadius = '0';
-    }
-
-    if(scheduleWidth === 0 && priorityWidth === 0 && taskWidth === 0){
-        document.getElementById('complete-ratio').style.borderRadius = '5px';
-    }else if(scheduleWidth !== 0 || priorityWidth !== 0 || taskWidth !== 0){
-        document.getElementById('complete-ratio').style.borderRadius = '0 5px 5px 0';
-    }
-
-    // Control Todo List Toggle
-    const todoToggles = document.querySelectorAll('.todo-list-toggles');
-    const todoLists = document.querySelectorAll('.todo-lists');
-
-    todoToggles.forEach((toggle, index) => {
-        const correspondingList = todoLists[index];
-
-        function checkTodoItems() {
-            const todoItems = correspondingList.querySelectorAll('.todo-item');
-            
-            if (todoItems.length > 0) {
-                toggle.setAttribute('open', 'true');
-            } else {
-                toggle.removeAttribute('open');
-            }
-        }
-
-        if(index < 3){
-            checkTodoItems();
-        }
-    });
 }
 
 document.querySelectorAll('.ratio-item').forEach(item => {
