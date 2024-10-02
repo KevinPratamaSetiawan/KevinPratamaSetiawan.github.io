@@ -867,7 +867,7 @@ input[type=number] {
       align-items: center;
       gap: 10px;
       
-      i {
+      i, p {
         cursor: pointer;
       }
     
@@ -886,30 +886,50 @@ input[type=number] {
       gap: 5px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: end;
 
       border-top: 1px dashed var(--text-color);
       text-align: left;
 
-      .todo-description{
+      .todo-description-container{
         width: 100%;
         display: flex;
+        flex-direction: row;
         align-items: start;
-        overflow-wrap: break-word;
-        text-wrap: wrap;
-        white-space: normal;
 
         span{
+          text-wrap: nowrap;
           margin-right: 5px;
+          gap: -5px;
+
           i{
-            gap: -5px;
             transform: rotate(0);
+          }
+        }
+
+        .todo-description{
+          width: 100%;
+          // display: flex;
+          // flex-direction: column;
+          // align-items: start;
+          overflow-wrap: break-word;
+          text-wrap: wrap;
+          white-space: normal;
+
+          i{
+            cursor: pointer;
+            // color: var(--brand-color);
+          }
+          
+          i:not(:nth-child(1)){
+            margin-top: 15px;
           }
         }
       }
 
       .todo-id{
-        width: 100%;
+        // width: 100%;
+        cursor: pointer;
         text-align: right;
       }
     }
@@ -945,6 +965,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--schedule-color); }
   .fa-angle-right:nth-child(2){ color: #d3bcfe; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
+  .todo-description{ i{ color: #d3bcfe; } }
+  // .todo-description{ i{ color: var(--schedule-color); } }
 }
 #todo-priority{
   .todo-id{ color: var(--priority-color); } 
@@ -952,6 +974,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--priority-color); }
   .fa-angle-right:nth-child(2){ color: #faa7a3; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
+  .todo-description{ i{ color: #faa7a3; } }
+  // .todo-description{ i{ color: var(--priority-color); } }
 }
 #todo-items{
   .todo-id{ color: var(--task-color); } 
@@ -959,6 +983,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--task-color); }
   .fa-angle-right:nth-child(2){ color: #f7eeab; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
+  .todo-description{ i{ color: #f7eeab; } }
+  // .todo-description{ i{ color: var(--task-color); } }
 }
 #todo-finish{
   .todo-id{ color: var(--complete-color); } 
@@ -966,6 +992,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--complete-color); }
   .fa-angle-right:nth-child(2){ color: #b4edcb; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
+  .todo-description{ i{ color: #b4edcb; } }
+  // .todo-description{ i{ color: var(--complete-color); } }
 }
 
 #xml-tab {

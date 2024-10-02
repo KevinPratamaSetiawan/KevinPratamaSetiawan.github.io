@@ -3,6 +3,9 @@ document.getElementById('add-item-btn').addEventListener('click', addItem);
 const scheduleFilter = '[S]';
 const weeklyScheduleFilter = '[W]';
 const dailyScheduleFilter = '[D]';
+const listReplaceChar = '<i class="fa-solid fa-minus todo-list-dash"></i> ';
+const dotReplaceChar = '<i class="fa-regular fa-circle todo-list-circle"></i> ';
+const chekcboxReplaceChar = '<i class="fa-regular fa-square todo-list-checkbox"></i> ';
 
 function addItem() {
     const filterPattern = /\[S\]|\[W\]|\[D\]/g;
@@ -35,6 +38,11 @@ function addItem() {
         // Handle Title and Description Filtering
         let [titleText, descriptionText] = text.includes('=>') ? text.split('=>').map(str => str.trim()) : [text, 'no description'];
 
+        // Replace "-." with the listReplaceChar in descriptionText
+        descriptionText = descriptionText.replace(/-\./g, listReplaceChar);
+        descriptionText = descriptionText.replace(/\.\./g, dotReplaceChar);
+        descriptionText = descriptionText.replace(/=\./g, chekcboxReplaceChar);
+
         const li = createListItem(todoId, titleText, descriptionText, false, false, scheduleIndicator, scheduleType);
 
         moveToList(li, false, false, scheduleIndicator);
@@ -59,9 +67,13 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
     divBot.classList.add('todo-detail');
     divBot.style.display = 'none';
 
+    const divDescription = document.createElement('div');
+    divDescription.classList.add('todo-description-container');
+
     // Handle Checkbox Element
     const checkboxIcon = document.createElement('i');
-    checkboxIcon.classList.add('fa-regular', completed ? 'fa-circle-check' : 'fa-circle');
+    checkboxIcon.classList.add(completed ? 'fa-circle-check' : 'fa-circle');
+    checkboxIcon.classList.add(completed ? 'fa-solid' : 'fa-regular');
     checkboxIcon.addEventListener('click', toggleComplete);
 
     // Handle Priority Toggle Element
@@ -112,6 +124,15 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
     pDescription.classList.add('todo-description');
     pDescription.innerHTML = descriptionText;
 
+    const dashIcons = pDescription.querySelectorAll('.todo-list-dash');
+    dashIcons.forEach((dashIcon) => { dashIcon.addEventListener('click', toggleListDash); });
+
+    const circleIcons = pDescription.querySelectorAll('.todo-list-circle');
+    circleIcons.forEach((circleIcon) => { circleIcon.addEventListener('click', toggleListCircle); });
+
+    const checkboxIcons = pDescription.querySelectorAll('.todo-list-checkbox');
+    checkboxIcons.forEach((checkboxIcon) => { checkboxIcon.addEventListener('click', toggleListCheckbox); });
+
     if(descriptionText === 'no description'){
         pDescription.style.color = 'var(--light-gray)'
     }else{
@@ -126,22 +147,22 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
             arrowSpan.appendChild(clonedArrowI);
         }
 
-        pDescription.prepend(arrowSpan);
+        divDescription.prepend(arrowSpan);
     }
 
     const spanId = document.createElement('span');
     spanId.classList.add('todo-id');
     spanId.innerText = 'ID:' + todoId;
-
-    // pDescription.appendChild(spanId);
+    spanId.addEventListener('click', copyFormattedContent);
 
     // Composing The li Element
     divTop.appendChild(checkboxIcon);
     divTop.appendChild(priorityBtn);
     divTop.appendChild(pTitle);
     divTop.appendChild(deleteBtn);
-    
-    divBot.appendChild(pDescription);
+
+    divDescription.appendChild(pDescription);
+    divBot.appendChild(divDescription);
     divBot.appendChild(spanId);
 
     li.appendChild(divTop);
@@ -182,11 +203,13 @@ function toggleComplete(event) {
 
     if (isChecked) {
         icon.classList.replace('fa-circle-check', 'fa-circle');
+        icon.classList.replace('fa-solid', 'fa-regular');
         title.classList.remove('completed');
         updateItem(id, false, item.priority);
         moveToList(li, false, item.priority, item.schedule);
     } else {
         icon.classList.replace('fa-circle', 'fa-circle-check');
+        icon.classList.replace('fa-regular', 'fa-solid');
         title.classList.add('completed');
         updateItem(id, true, item.priority);
         moveToList(li, true, item.priority, item.schedule);
@@ -285,12 +308,15 @@ function saveItem(todoId, titleText, descriptionText, completed, priority, sched
     localStorage.setItem('todoItems', JSON.stringify(items));
 }
 
-function updateItem(todoId, completed, priority) {
+function updateItem(todoId, completed, priority, checkbox='none') {
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
     const item = items.find(item => item.id === todoId);
     if (item) {
         item.completed = completed;
         item.priority = priority;
+    }
+    if (checkbox !== 'none'){
+        item.description = checkbox;
     }
     localStorage.setItem('todoItems', JSON.stringify(items));
 }
@@ -406,6 +432,91 @@ function updateCounter(){
     document.getElementById('finish-display-num').innerHTML = finishNum;
 
     displayTodoRatios();
+}
+
+function toggleListDash(event){
+    const icon = event.target;
+    const divBot = icon.parentElement.parentElement.parentElement;
+    const id = divBot.querySelector('.todo-id').textContent.slice(3);
+    const isChecked = icon.classList.contains('fa-plus');
+
+    let items = JSON.parse(localStorage.getItem('todoItems')) || [];
+    const item = items.find(item => item.id === id);
+
+    if (isChecked) {
+        icon.classList.replace('fa-plus', 'fa-minus');
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        updateItem(id, item.completed, item.priority, pDescription);
+    } else {
+        icon.classList.replace('fa-minus', 'fa-plus');
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        updateItem(id, item.completed, item.priority, pDescription);
+    }
+}
+
+function toggleListCircle(event){
+    const icon = event.target;
+    const divBot = icon.parentElement.parentElement.parentElement;
+    const id = divBot.querySelector('.todo-id').textContent.slice(3);
+    const isChecked = icon.classList.contains('fa-solid');
+
+    let items = JSON.parse(localStorage.getItem('todoItems')) || [];
+    const item = items.find(item => item.id === id);
+
+    if (isChecked) {
+        icon.classList.replace('fa-solid', 'fa-regular');
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        updateItem(id, item.completed, item.priority, pDescription);
+    } else {
+        icon.classList.replace('fa-regular', 'fa-solid');
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        updateItem(id, item.completed, item.priority, pDescription);
+    }
+}
+
+function toggleListCheckbox(event){
+    const icon = event.target;
+    const divBot = icon.parentElement.parentElement.parentElement;
+    const id = divBot.querySelector('.todo-id').textContent.slice(3);
+    const isChecked = icon.classList.contains('fa-square-check');
+
+    let items = JSON.parse(localStorage.getItem('todoItems')) || [];
+    const item = items.find(item => item.id === id);
+
+    if (isChecked) {
+        icon.classList.replace('fa-square-check', 'fa-square');
+        icon.classList.replace('fa-solid', 'fa-regular');
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        updateItem(id, item.completed, item.priority, pDescription);
+    } else {
+        icon.classList.replace('fa-square', 'fa-square-check');
+        icon.classList.replace('fa-regular', 'fa-solid');
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        updateItem(id, item.completed, item.priority, pDescription);
+    }
+}
+
+function copyFormattedContent(event){
+    const icon = event.target;
+    const divBot = icon.parentElement.parentElement;
+    const id = divBot.querySelector('.todo-id').textContent.slice(3);
+
+    let items = JSON.parse(localStorage.getItem('todoItems')) || [];
+    const item = items.find(item => item.id === id);
+
+    let copyText = item.scheduleType + item.title;
+
+    if(item.description !== 'no description'){
+        copyText = item.scheduleType + item.title + ' => ' + item.description;
+    }
+
+    navigator.clipboard.writeText(copyText);
+    const originalContent = divBot.querySelector('.todo-id').textContent;
+    divBot.querySelector('.todo-id').innerHTML = '<i class="fa-solid fa-copy"></i> Copied!';
+    
+    setTimeout(function() {
+        divBot.querySelector('.todo-id').innerHTML = originalContent;
+    }, 1000);
 }
 
 // Todo Clock
