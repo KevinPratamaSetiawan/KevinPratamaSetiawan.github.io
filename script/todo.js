@@ -6,6 +6,7 @@ const dailyScheduleFilter = '[D]';
 const listReplaceChar = '<i class="fa-solid fa-minus todo-list-dash"></i> ';
 const dotReplaceChar = '<i class="fa-regular fa-circle todo-list-circle"></i> ';
 const chekcboxReplaceChar = '<i class="fa-regular fa-square todo-list-checkbox"></i> ';
+const breakReplaceChar = '.<br>';
 
 function addItem() {
     const filterPattern = /\[S\]|\[W\]|\[D\]/g;
@@ -40,8 +41,9 @@ function addItem() {
 
         // Replace "-." with the listReplaceChar in descriptionText
         descriptionText = descriptionText.replace(/-\./g, listReplaceChar);
-        descriptionText = descriptionText.replace(/\.\./g, dotReplaceChar);
+        descriptionText = descriptionText.replace(/\*\./g, dotReplaceChar);
         descriptionText = descriptionText.replace(/=\./g, chekcboxReplaceChar);
+        descriptionText = descriptionText.replace(/\.\./g, breakReplaceChar);
 
         const li = createListItem(todoId, titleText, descriptionText, false, false, scheduleIndicator, scheduleType);
 
@@ -458,16 +460,18 @@ function toggleListCircle(event){
     const icon = event.target;
     const divBot = icon.parentElement.parentElement.parentElement;
     const id = divBot.querySelector('.todo-id').textContent.slice(3);
-    const isChecked = icon.classList.contains('fa-solid');
+    const isChecked = icon.classList.contains('fa-circle-dot');
 
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
     const item = items.find(item => item.id === id);
 
     if (isChecked) {
+        icon.classList.replace('fa-circle-dot', 'fa-circle');
         icon.classList.replace('fa-solid', 'fa-regular');
         const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
         updateItem(id, item.completed, item.priority, pDescription);
     } else {
+        icon.classList.replace('fa-circle', 'fa-circle-dot');
         icon.classList.replace('fa-regular', 'fa-solid');
         const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
         updateItem(id, item.completed, item.priority, pDescription);
