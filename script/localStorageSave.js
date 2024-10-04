@@ -477,7 +477,19 @@ document.getElementById('apply-save').addEventListener('click', function() {
     }
 
     if(saveData.checkCounter.includes('all') || saveData.checkCounter.includes('todo')){        
-        localStorage.setItem('todoItems', JSON.stringify(saveData.todoItems));
+        let existingItems = JSON.parse(localStorage.getItem('todoItems')) || [];
+
+        if(existingItems){
+            for(let i=0;i<saveData.todoItems.length;i++){
+                if(!existingItems.some(existingItem => existingItem.id === saveData.todoItems[i].id)){
+                    existingItems.push(saveData.todoItems[i]);
+                }
+            }
+            
+            localStorage.setItem('todoItems', JSON.stringify(existingItems));
+        }else{
+            localStorage.setItem('todoItems', JSON.stringify(saveData.todoItems));
+        }
     }
 
     if(saveData.checkCounter.includes('all') || saveData.checkCounter.includes('yard')){

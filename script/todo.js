@@ -3,9 +3,12 @@ document.getElementById('add-item-btn').addEventListener('click', addItem);
 const scheduleFilter = '[S]';
 const weeklyScheduleFilter = '[W]';
 const dailyScheduleFilter = '[D]';
-const listReplaceChar = "<i class='fa-solid fa-minus todo-list-dash'></i> ";
-const dotReplaceChar = "<i class='fa-regular fa-circle todo-list-circle'></i> ";
-const chekcboxReplaceChar = "<i class='fa-regular fa-square todo-list-checkbox'></i> ";
+const listReplaceChar = '<i class="fa-solid fa-minus todo-list-dash"></i> ';
+const checkedListReplaceChar = '<i class="fa-solid fa-plus todo-list-dash"></i> ';
+const dotReplaceChar = '<i class="fa-regular fa-circle todo-list-circle"></i> ';
+const checkedDotReplaceChar = '<i class="fa-solid fa-circle-dot todo-list-circle"></i> ';
+const chekcboxReplaceChar = '<i class="fa-regular fa-square todo-list-checkbox"></i> ';
+const checkedChekcboxReplaceChar = '<i class="fa-solid fa-square-check todo-list-checkbox"></i> ';
 const breakReplaceChar = '.<br>';
 
 function addItem() {
@@ -40,9 +43,9 @@ function addItem() {
         let [titleText, descriptionText] = text.includes('=>') ? text.split('=>').map(str => str.trim()) : [text, 'no description'];
 
         // Replace "-." with the listReplaceChar in descriptionText
-        descriptionText = descriptionText.replace(/-\./g, listReplaceChar);
-        descriptionText = descriptionText.replace(/\*\./g, dotReplaceChar);
-        descriptionText = descriptionText.replace(/=\./g, chekcboxReplaceChar);
+        // descriptionText = descriptionText.replace(/-\./g, listReplaceChar);
+        // descriptionText = descriptionText.replace(/\*\./g, dotReplaceChar);
+        // descriptionText = descriptionText.replace(/=\./g, chekcboxReplaceChar);
         descriptionText = descriptionText.replace(/\.\./g, breakReplaceChar);
 
         const li = createListItem(todoId, titleText, descriptionText, false, false, scheduleIndicator, scheduleType);
@@ -58,6 +61,14 @@ function addItem() {
 }
 
 function createListItem(todoId, titleText, descriptionText, completed, priority, schedule, scheduleType) {
+    // Replace "-." with the listReplaceChar in descriptionText
+    descriptionText = descriptionText.replace(/-\./g, listReplaceChar);
+    descriptionText = descriptionText.replace(/\+\./g, checkedListReplaceChar);
+    descriptionText = descriptionText.replace(/\*\./g, dotReplaceChar);
+    descriptionText = descriptionText.replace(/\@\./g, checkedDotReplaceChar);
+    descriptionText = descriptionText.replace(/=\./g, chekcboxReplaceChar);
+    descriptionText = descriptionText.replace(/%\./g, checkedChekcboxReplaceChar);
+
     // Create li element
     const li = document.createElement('li');
     li.classList.add('todo-item');
@@ -318,6 +329,13 @@ function updateItem(todoId, completed, priority, checkbox='none') {
         item.priority = priority;
     }
     if (checkbox !== 'none'){
+        checkbox = checkbox.replace(listReplaceChar, "-.");
+        checkbox = checkbox.replace(checkedListReplaceChar, "+.");
+        checkbox = checkbox.replace(dotReplaceChar, "*.");
+        checkbox = checkbox.replace(checkedDotReplaceChar, "@.");
+        checkbox = checkbox.replace(chekcboxReplaceChar, "=.");
+        checkbox = checkbox.replace(checkedChekcboxReplaceChar, "%.");
+
         item.description = checkbox;
     }
     localStorage.setItem('todoItems', JSON.stringify(items));
