@@ -329,12 +329,12 @@ function updateItem(todoId, completed, priority, checkbox='none') {
         item.priority = priority;
     }
     if (checkbox !== 'none'){
-        checkbox = checkbox.replace(listReplaceChar, "-.");
-        checkbox = checkbox.replace(checkedListReplaceChar, "+.");
-        checkbox = checkbox.replace(dotReplaceChar, "*.");
-        checkbox = checkbox.replace(checkedDotReplaceChar, "@.");
-        checkbox = checkbox.replace(chekcboxReplaceChar, "=.");
-        checkbox = checkbox.replace(checkedChekcboxReplaceChar, "%.");
+        checkbox = checkbox.replace(new RegExp(listReplaceChar, 'g'), "-.");
+        checkbox = checkbox.replace(new RegExp(checkedListReplaceChar, 'g'), "+.");
+        checkbox = checkbox.replace(new RegExp(dotReplaceChar, 'g'), "*.");
+        checkbox = checkbox.replace(new RegExp(checkedDotReplaceChar, 'g'), "@.");
+        checkbox = checkbox.replace(new RegExp(chekcboxReplaceChar, 'g'), "=.");
+        checkbox = checkbox.replace(new RegExp(checkedChekcboxReplaceChar, 'g'), "%.");
 
         item.description = checkbox;
     }
