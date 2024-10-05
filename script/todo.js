@@ -3,12 +3,12 @@ document.getElementById('add-item-btn').addEventListener('click', addItem);
 const scheduleFilter = '[S]';
 const weeklyScheduleFilter = '[W]';
 const dailyScheduleFilter = '[D]';
-const listReplaceChar = '<i class="fa-solid fa-minus todo-list-dash"></i> ';
-const checkedListReplaceChar = '<i class="fa-solid fa-plus todo-list-dash"></i> ';
-const dotReplaceChar = '<i class="fa-regular fa-circle todo-list-circle"></i> ';
-const checkedDotReplaceChar = '<i class="fa-solid fa-circle-dot todo-list-circle"></i> ';
-const chekcboxReplaceChar = '<i class="fa-regular fa-square todo-list-checkbox"></i> ';
-const checkedChekcboxReplaceChar = '<i class="fa-solid fa-square-check todo-list-checkbox"></i> ';
+const listReplaceChar = '<i class="fa-solid fa-minus todo-list-dash"></i>';
+const checkedListReplaceChar = '<i class="fa-solid fa-plus todo-list-dash"></i>';
+const dotReplaceChar = '<i class="fa-regular fa-circle todo-list-circle"></i>';
+const checkedDotReplaceChar = '<i class="fa-solid fa-circle-dot todo-list-circle"></i>';
+const chekcboxReplaceChar = '<i class="fa-regular fa-square todo-list-checkbox"></i>';
+const checkedChekcboxReplaceChar = '<i class="fa-solid fa-square-check todo-list-checkbox"></i>';
 const breakReplaceChar = '.<br>';
 
 function addItem() {
