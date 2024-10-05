@@ -62,12 +62,12 @@ function addItem() {
 
 function createListItem(todoId, titleText, descriptionText, completed, priority, schedule, scheduleType) {
     // Replace "-." with the listReplaceChar in descriptionText
-    descriptionText = descriptionText.replace(/-\./g, listReplaceChar);
-    descriptionText = descriptionText.replace(/\+\./g, checkedListReplaceChar);
-    descriptionText = descriptionText.replace(/\*\./g, dotReplaceChar);
-    descriptionText = descriptionText.replace(/\@\./g, checkedDotReplaceChar);
-    descriptionText = descriptionText.replace(/=\./g, chekcboxReplaceChar);
-    descriptionText = descriptionText.replace(/%\./g, checkedChekcboxReplaceChar);
+    descriptionText = descriptionText.replace(/\s*-\.\s*/g, listReplaceChar);
+    descriptionText = descriptionText.replace(/\s*\+\.\s*/g, checkedListReplaceChar);
+    descriptionText = descriptionText.replace(/\s*\*\.\s*/g, dotReplaceChar);
+    descriptionText = descriptionText.replace(/\s*\@\.\s*/g, checkedDotReplaceChar);
+    descriptionText = descriptionText.replace(/\s*=\.\s*/g, chekcboxReplaceChar);
+    descriptionText = descriptionText.replace(/\s*%\.\s*/g, checkedChekcboxReplaceChar);
 
     // Create li element
     const li = document.createElement('li');
@@ -329,12 +329,12 @@ function updateItem(todoId, completed, priority, checkbox='none') {
         item.priority = priority;
     }
     if (checkbox !== 'none'){
-        checkbox = checkbox.replace(new RegExp(listReplaceChar, 'g'), "-.");
-        checkbox = checkbox.replace(new RegExp(checkedListReplaceChar, 'g'), "+.");
-        checkbox = checkbox.replace(new RegExp(dotReplaceChar, 'g'), "*.");
-        checkbox = checkbox.replace(new RegExp(checkedDotReplaceChar, 'g'), "@.");
-        checkbox = checkbox.replace(new RegExp(chekcboxReplaceChar, 'g'), "=.");
-        checkbox = checkbox.replace(new RegExp(checkedChekcboxReplaceChar, 'g'), "%.");
+        checkbox = checkbox.replace(new RegExp(`\\s*${listReplaceChar}\\s*`, 'g'), "-.");
+        checkbox = checkbox.replace(new RegExp(`\\s*${checkedListReplaceChar}\\s*`, 'g'), "+.");
+        checkbox = checkbox.replace(new RegExp(`\\s*${dotReplaceChar}\\s*`, 'g'), "*.");
+        checkbox = checkbox.replace(new RegExp(`\\s*${checkedDotReplaceChar}\\s*`, 'g'), "@.");
+        checkbox = checkbox.replace(new RegExp(`\\s*${chekcboxReplaceChar}\\s*`, 'g'), "=.");
+        checkbox = checkbox.replace(new RegExp(`\\s*${checkedChekcboxReplaceChar}\\s*`, 'g'), "%.");
 
         item.description = checkbox;
     }
