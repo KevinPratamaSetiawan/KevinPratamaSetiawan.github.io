@@ -874,6 +874,10 @@ input[type=number] {
       .fa-trash-can {
         margin-left: auto;
       }
+
+      .fa-circle-check{
+        color: var(--complete-color);
+      }
       
       .fa-circle-exclamation{
         color: var(--priority-color);
@@ -883,7 +887,7 @@ input[type=number] {
     .todo-detail{
       width: 100%;
       padding: 10px 0 0 0;
-      gap: 5px;
+      gap: 10px;
       display: flex;
       flex-direction: column;
       align-items: end;
@@ -909,9 +913,6 @@ input[type=number] {
 
         .todo-description{
           width: 100%;
-          // display: flex;
-          // flex-direction: column;
-          // align-items: start;
           overflow-wrap: break-word;
           text-wrap: wrap;
           white-space: normal;
@@ -919,17 +920,24 @@ input[type=number] {
           i{
             cursor: pointer;
             margin-right: 5px;
-            // color: var(--brand-color);
           }
           
           i:not(:nth-child(1)){
             margin-top: 15px;
           }
+
+          .todo-list-indent-two{
+            margin-left: 21px;
+          }
+
+          .todo-list-indent-three{
+            margin-left: 42px;
+          }
         }
       }
 
       .todo-id{
-        // width: 100%;
+        width: 100%;
         cursor: pointer;
         text-align: right;
       }
@@ -947,8 +955,6 @@ input[type=number] {
       > p{
         width: 100%;
         text-align: left;
-        // display: flex;
-        // align-items: center;
 
         span{
           color: var(--schedule-color);
@@ -966,8 +972,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--schedule-color); }
   .fa-angle-right:nth-child(2){ color: #d3bcfe; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
-  .todo-description{ i{ color: #d3bcfe; } }
-  // .todo-description{ i{ color: var(--schedule-color); } }
+  // .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: #d3bcfe; } }
+  .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--schedule-color); } }
 }
 #todo-priority{
   .todo-id{ color: var(--priority-color); } 
@@ -975,8 +981,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--priority-color); }
   .fa-angle-right:nth-child(2){ color: #faa7a3; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
-  .todo-description{ i{ color: #faa7a3; } }
-  // .todo-description{ i{ color: var(--priority-color); } }
+  // .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: #faa7a3; } }
+  .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--priority-color); } }
 }
 #todo-items{
   .todo-id{ color: var(--task-color); } 
@@ -984,8 +990,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--task-color); }
   .fa-angle-right:nth-child(2){ color: #f7eeab; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
-  .todo-description{ i{ color: #f7eeab; } }
-  // .todo-description{ i{ color: var(--task-color); } }
+  // .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: #f7eeab; } }
+  .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--task-color); } }
 }
 #todo-finish{
   .todo-id{ color: var(--complete-color); } 
@@ -993,8 +999,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--complete-color); }
   .fa-angle-right:nth-child(2){ color: #b4edcb; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
-  .todo-description{ i{ color: #b4edcb; } }
-  // .todo-description{ i{ color: var(--complete-color); } }
+  // .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: #b4edcb; } }
+  .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--complete-color); } }
 }
 
 #xml-tab {
@@ -1218,7 +1224,7 @@ input[type=number] {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 3;
   pointer-events: auto;
   gap: 30px;
 
@@ -1231,7 +1237,7 @@ input[type=number] {
   p{
     border-bottom: 5px solid var(--brand-color);
     padding: 0 10px;
-    background-color: rgba(var(--background-color-rgb), 0.6);
+    background-color: var(--background-color-rgba);
   }
 
   h2{
@@ -1239,7 +1245,7 @@ input[type=number] {
     border-left: 5px solid var(--brand-color);
     border-right: 5px solid var(--brand-color);
     // background-color: var(--background-color);
-    background-color: rgba(var(--background-color-rgb), 0.6);
+    background-color: var(--background-color-rgba);
   }
 }
 

@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     applyMode();
+    createThemeItem();
 
     toggleButton.addEventListener('click', () => {
         let savedMode = localStorage.getItem('currentMode');
@@ -153,7 +154,7 @@ function changeMode (savedMode) {
         const accentColor = localStorage.getItem('currentLightAccentColor');
 
         document.documentElement.style.setProperty('--background-color', bgColor);
-        document.documentElement.style.setProperty('--background-color-rgb', bgColorHsl);
+        document.documentElement.style.setProperty('--background-color-rgba', bgColorHsl);
         document.documentElement.style.setProperty('--text-color', textColor);
         document.documentElement.style.setProperty('--brand-color', accentColor);
     }else if (savedMode === 'dark') {
@@ -169,72 +170,152 @@ function changeMode (savedMode) {
         const accentColor = localStorage.getItem('currentDarkAccentColor');
         
         document.documentElement.style.setProperty('--background-color', bgColor);
-        document.documentElement.style.setProperty('--background-color-rgb', bgColorHsl);
+        document.documentElement.style.setProperty('--background-color-rgba', bgColorHsl);
         document.documentElement.style.setProperty('--text-color', textColor);
         document.documentElement.style.setProperty('--brand-color', accentColor);
     }
 }
 
-document.querySelectorAll('.fontItem').forEach(function(button) {
-  button.addEventListener('click', function() {
-      let headerFontFamily = button.getAttribute('data-headerFontFamily');
-      let textFontFamily = button.getAttribute('data-textFontFamily');
+function changeFont(event) {
+    const button = event.target;
+    let headerFontFamily = button.getAttribute('data-headerFontFamily');
+    let textFontFamily = button.getAttribute('data-textFontFamily');
 
-      document.getElementById('heading-display').innerHTML = 'Heading: ' + headerFontFamily;
-      document.getElementById('text-display').innerHTML = 'Normal Text: ' + textFontFamily;
+    document.getElementById('heading-display').innerHTML = 'Heading: ' + headerFontFamily;
+    document.getElementById('text-display').innerHTML = 'Normal Text: ' + textFontFamily;
 
-      document.documentElement.style.setProperty('--head-font-family', headerFontFamily);
-      document.documentElement.style.setProperty('--base-font-family', textFontFamily);
+    document.documentElement.style.setProperty('--head-font-family', headerFontFamily);
+    document.documentElement.style.setProperty('--base-font-family', textFontFamily);
 
-      localStorage.setItem('currentHeaderFont', headerFontFamily);
-      localStorage.setItem('currentTextFont', textFontFamily);
-  });
-});
+    localStorage.setItem('currentHeaderFont', headerFontFamily);
+    localStorage.setItem('currentTextFont', textFontFamily);
+}
 
-document.querySelectorAll('.themeItem').forEach(function(button) {
-    button.addEventListener('click', function() {
-        let mode = button.getAttribute('data-mode');
-        let theme = button.getAttribute('data-theme');
-        let bgColor = button.getAttribute('data-bgColor');
-        let bgColorHsl = button.getAttribute('data-bgColorRgb');
-        let textColor = button.getAttribute('data-textColor');
-        let accentColor = button.getAttribute('data-accentColor');
-  
-        document.getElementById('bg-display-color').style.backgroundColor = bgColor;
-        document.getElementById('text-display-color').style.backgroundColor = textColor;
-        document.getElementById('accent-display-color').style.backgroundColor = accentColor;
-  
-        document.documentElement.style.setProperty('--background-color', bgColor);
-        document.documentElement.style.setProperty('--background-color-rgb', bgColor);
-        document.documentElement.style.setProperty('--text-color', textColor);
-        document.documentElement.style.setProperty('--brand-color', accentColor);
+function changeTheme(event) {
+    const button = event.target;
+    let mode = button.getAttribute('data-mode');
+    let theme = button.getAttribute('data-theme');
+    let bgColor = button.getAttribute('data-bgColor');
+    let bgColorHsl = button.getAttribute('data-bgColorRgb');
+    let textColor = button.getAttribute('data-textColor');
+    let accentColor = button.getAttribute('data-accentColor');
 
-        if (mode === 'light'){
-            if(toggleButtonLogo){
-                toggleButtonLogo.classList.add('fa-sun')
-                toggleButtonLogo.classList.remove('fa-moon')
-            }
-            logo.src = '/black-logo.png';
+    document.getElementById('bg-display-color').style.backgroundColor = bgColor;
+    document.getElementById('text-display-color').style.backgroundColor = textColor;
+    document.getElementById('accent-display-color').style.backgroundColor = accentColor;
 
-            localStorage.setItem('currentMode', mode);
-            localStorage.setItem('currentLightTheme', theme);
-            localStorage.setItem('currentLightBgColor', bgColor);
-            localStorage.setItem('currentLightBgColorHsl', bgColorHsl);
-            localStorage.setItem('currentLightTextColor', textColor);
-            localStorage.setItem('currentLightAccentColor', accentColor);
-        }else if (mode === 'dark'){
-            if(toggleButtonLogo){
-                toggleButtonLogo.classList.add('fa-moon')
-                toggleButtonLogo.classList.remove('fa-sun')
-            }
-            logo.src = '/white-logo.png';
+    document.documentElement.style.setProperty('--background-color', bgColor);
+    document.documentElement.style.setProperty('--background-color-rgb', bgColor);
+    document.documentElement.style.setProperty('--text-color', textColor);
+    document.documentElement.style.setProperty('--brand-color', accentColor);
 
-            localStorage.setItem('currentMode', mode);
-            localStorage.setItem('currentDarkTheme', theme);
-            localStorage.setItem('currentDarkBgColor', bgColor);
-            localStorage.setItem('currentDarkBgColorHsl', bgColorHsl);
-            localStorage.setItem('currentDarkTextColor', textColor);
-            localStorage.setItem('currentDarkAccentColor', accentColor);
+    if (mode === 'light'){
+        if(toggleButtonLogo){
+            toggleButtonLogo.classList.add('fa-sun')
+            toggleButtonLogo.classList.remove('fa-moon')
         }
-    });
-  });
+        logo.src = '/black-logo.png';
+
+        localStorage.setItem('currentMode', mode);
+        localStorage.setItem('currentLightTheme', theme);
+        localStorage.setItem('currentLightBgColor', bgColor);
+        localStorage.setItem('currentLightBgColorHsl', bgColorHsl);
+        localStorage.setItem('currentLightTextColor', textColor);
+        localStorage.setItem('currentLightAccentColor', accentColor);
+    }else if (mode === 'dark'){
+        if(toggleButtonLogo){
+            toggleButtonLogo.classList.add('fa-moon')
+            toggleButtonLogo.classList.remove('fa-sun')
+        }
+        logo.src = '/white-logo.png';
+
+        localStorage.setItem('currentMode', mode);
+        localStorage.setItem('currentDarkTheme', theme);
+        localStorage.setItem('currentDarkBgColor', bgColor);
+        localStorage.setItem('currentDarkBgColorHsl', bgColorHsl);
+        localStorage.setItem('currentDarkTextColor', textColor);
+        localStorage.setItem('currentDarkAccentColor', accentColor);
+    }
+}
+
+function createThemeItem (){
+    const fontList =document.getElementById('fontList');
+    const headerFont = ['"Lato", "Helvetica Neue", Helvetica, sans-serif', '"Barlow", sans-serif', '"Archivo", sans-serif', '"IBM Plex Sans Condensed", sans-serif', '"Roboto", sans-serif'];
+    const bodyFont = ["JetBrains Mono, monospace", "JetBrains Mono, monospace", "JetBrains Mono, monospace", "JetBrains Mono, monospace", "JetBrains Mono, monospace"];
+    const fontInnerText = ['Lato; Helvetica, JetBrains', 'Barlow, JetBrains', 'Archivo, JetBrains', 'IBM Plex Sans Condensed, JetBrains', 'Roboto, JetBrains'];
+
+    for(let i=0; i<headerFont.length; i++){
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.classList.add('fontItem');
+        a.setAttribute('href', '#');
+        a.setAttribute('data-headerFontFamily', headerFont[i]);
+        a.setAttribute('data-textFontFamily', bodyFont[i]);
+        a.innerText = fontInnerText[i];
+        li.appendChild(a);
+        fontList.appendChild(li);
+        a.addEventListener('click', changeFont);
+    }
+
+    const lightModeList =document.getElementById('lightThemeList');
+    const lightTheme = ['lightClassic', 'lightDarkYellow', 'lightSummerX'];
+    const lightBgColor = ['#fdfdfd', '#fdfcf4', '#fefb7d'];
+    const lightTextColor = ['#23272d', '#231f05', '#000000'];
+    const lightAccentColor = ['#60c17d', '#e0c12a', '#090b1d'];
+    const lightInnerText = ['Light Classic', 'Light Dark Yellow', 'Light SummerX'];
+
+    for(let i=0; i<lightTheme.length; i++){
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.classList.add('themeItem');
+        a.setAttribute('href', '#');
+        a.setAttribute('data-mode', 'light');
+        a.setAttribute('data-theme', lightTheme[i]);
+        a.setAttribute('data-bgColor', lightBgColor[i]);
+        a.setAttribute('data-bgColorRgb', hexToRgba(lightBgColor[i], 0.5));
+        a.setAttribute('data-textColor', lightTextColor[i]);
+        a.setAttribute('data-accentColor', lightAccentColor[i]);
+        a.innerText = lightInnerText[i];
+        li.appendChild(a);
+        lightModeList.appendChild(li);
+        a.addEventListener('click', changeTheme);
+    }
+
+    const darkModeList =document.getElementById('darkThemeList');
+    const darkTheme = ['darkClassic', 'darkPurple', 'darkCoffee', 'darkSummerX'];
+    const darkBgColor = ['#23272d', '#16031d', '#0d0c02', '#000000'];
+    const darkTextColor = ['#fdfdfd', '#f0d6fa', '#faf6db', '#fefb7d'];
+    const darkAccentColor = ['#c16560', '#3be879', '#e2d689', '#fefb7d'];
+    const darkInnerText = ['Dark Classic', 'Dark Purple', 'Dark Coffee', 'Dark SummerX'];
+
+    for(let i=0; i<darkTheme.length; i++){
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.classList.add('themeItem');
+        a.setAttribute('href', '#');
+        a.setAttribute('data-mode', 'dark');
+        a.setAttribute('data-theme', darkTheme[i]);
+        a.setAttribute('data-bgColor', darkBgColor[i]);
+        a.setAttribute('data-bgColorRgb', hexToRgba(darkBgColor[i], 0.5));
+        a.setAttribute('data-textColor', darkTextColor[i]);
+        a.setAttribute('data-accentColor', darkAccentColor[i]);
+        a.innerText = darkInnerText[i];
+        li.appendChild(a);
+        darkModeList.appendChild(li);
+        a.addEventListener('click', changeTheme);
+    }
+}
+
+function hexToRgba(hex, alpha = 1) {
+    hex = hex.replace(/^#/, '');
+
+    if (hex.length === 3) {
+        hex = hex.split('').map(char => char + char).join('');
+    }
+
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}

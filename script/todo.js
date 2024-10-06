@@ -3,13 +3,6 @@ document.getElementById('add-item-btn').addEventListener('click', addItem);
 const scheduleFilter = '[S]';
 const weeklyScheduleFilter = '[W]';
 const dailyScheduleFilter = '[D]';
-const listReplaceChar = '<i class="fa-solid fa-minus todo-list-dash"></i>';
-const checkedListReplaceChar = '<i class="fa-solid fa-plus todo-list-dash"></i>';
-const dotReplaceChar = '<i class="fa-regular fa-circle todo-list-circle"></i>';
-const checkedDotReplaceChar = '<i class="fa-solid fa-circle-dot todo-list-circle"></i>';
-const chekcboxReplaceChar = '<i class="fa-regular fa-square todo-list-checkbox"></i>';
-const checkedChekcboxReplaceChar = '<i class="fa-solid fa-square-check todo-list-checkbox"></i>';
-const breakReplaceChar = '.<br>';
 
 function addItem() {
     const filterPattern = /\[S\]|\[W\]|\[D\]/g;
@@ -42,12 +35,6 @@ function addItem() {
         // Handle Title and Description Filtering
         let [titleText, descriptionText] = text.includes('=>') ? text.split('=>').map(str => str.trim()) : [text, 'no description'];
 
-        // Replace "-." with the listReplaceChar in descriptionText
-        // descriptionText = descriptionText.replace(/-\./g, listReplaceChar);
-        // descriptionText = descriptionText.replace(/\*\./g, dotReplaceChar);
-        // descriptionText = descriptionText.replace(/=\./g, chekcboxReplaceChar);
-        descriptionText = descriptionText.replace(/\.\./g, breakReplaceChar);
-
         const li = createListItem(todoId, titleText, descriptionText, false, false, scheduleIndicator, scheduleType);
 
         moveToList(li, false, false, scheduleIndicator);
@@ -62,12 +49,7 @@ function addItem() {
 
 function createListItem(todoId, titleText, descriptionText, completed, priority, schedule, scheduleType) {
     // Replace "-." with the listReplaceChar in descriptionText
-    descriptionText = descriptionText.replace(/\s*-\.\s*/g, listReplaceChar);
-    descriptionText = descriptionText.replace(/\s*\+\.\s*/g, checkedListReplaceChar);
-    descriptionText = descriptionText.replace(/\s*\*\.\s*/g, dotReplaceChar);
-    descriptionText = descriptionText.replace(/\s*\@\.\s*/g, checkedDotReplaceChar);
-    descriptionText = descriptionText.replace(/\s*=\.\s*/g, chekcboxReplaceChar);
-    descriptionText = descriptionText.replace(/\s*%\.\s*/g, checkedChekcboxReplaceChar);
+    descriptionText = listStyling(descriptionText);
 
     // Create li element
     const li = document.createElement('li');
@@ -329,13 +311,7 @@ function updateItem(todoId, completed, priority, checkbox='none') {
         item.priority = priority;
     }
     if (checkbox !== 'none'){
-        checkbox = checkbox.replace(new RegExp(`\\s*${listReplaceChar}\\s*`, 'g'), "-.");
-        checkbox = checkbox.replace(new RegExp(`\\s*${checkedListReplaceChar}\\s*`, 'g'), "+.");
-        checkbox = checkbox.replace(new RegExp(`\\s*${dotReplaceChar}\\s*`, 'g'), "*.");
-        checkbox = checkbox.replace(new RegExp(`\\s*${checkedDotReplaceChar}\\s*`, 'g'), "@.");
-        checkbox = checkbox.replace(new RegExp(`\\s*${chekcboxReplaceChar}\\s*`, 'g'), "=.");
-        checkbox = checkbox.replace(new RegExp(`\\s*${checkedChekcboxReplaceChar}\\s*`, 'g'), "%.");
-
+        checkbox = listStyling(checkbox);
         item.description = checkbox;
     }
     localStorage.setItem('todoItems', JSON.stringify(items));
@@ -541,6 +517,75 @@ function copyFormattedContent(event){
     }, 1000);
 }
 
+const listReplaceChar = ['<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i>', '<i class="fa-solid fa-minus todo-list-dash todo-list-indent-two"></i>', '<i class="fa-solid fa-minus todo-list-dash todo-list-indent-three"></i>'];
+const checkedListReplaceChar = ['<i class="fa-solid fa-plus todo-list-dash todo-list-indent-one"></i>', '<i class="fa-solid fa-plus todo-list-dash todo-list-indent-two"></i>', '<i class="fa-solid fa-plus todo-list-dash todo-list-indent-three"></i>'];
+const dotReplaceChar = ['<i class="fa-regular fa-circle todo-list-circle todo-list-indent-one"></i>', '<i class="fa-regular fa-circle todo-list-circle todo-list-indent-two"></i>', '<i class="fa-regular fa-circle todo-list-circle todo-list-indent-three"></i>'];
+const checkedDotReplaceChar = ['<i class="fa-solid fa-circle-dot todo-list-circle todo-list-indent-one"></i>', '<i class="fa-solid fa-circle-dot todo-list-circle todo-list-indent-two"></i>', '<i class="fa-solid fa-circle-dot todo-list-circle todo-list-indent-three"></i>'];
+const chekcboxReplaceChar = ['<i class="fa-regular fa-square todo-list-checkbox todo-list-indent-one"></i>', '<i class="fa-regular fa-square todo-list-checkbox todo-list-indent-two"></i>', '<i class="fa-regular fa-square todo-list-checkbox todo-list-indent-three"></i>'];
+const checkedChekcboxReplaceChar = ['<i class="fa-solid fa-square-check todo-list-checkbox todo-list-indent-one"></i>', '<i class="fa-solid fa-square-check todo-list-checkbox todo-list-indent-two"></i>', '<i class="fa-solid fa-square-check todo-list-checkbox todo-list-indent-three"></i>'];
+const breakReplaceChar = '.<br>';
+const colonReplaceChar = ':<br>';
+
+function convertBreak(text) {
+    if(text.includes('<br>')){
+        text = text.replace(new RegExp(`\\s*${colonReplaceChar}\\s*`, 'g'), ":.");
+        text = text.replace(new RegExp(`\\s*${breakReplaceChar}\\s*`, 'g'), "..");
+    }else {
+        text = text.replace(/\:\./g, colonReplaceChar);
+        text = text.replace(/\.\./g, breakReplaceChar);
+    }
+
+    return text;
+}
+
+function listStyling(text){
+    if(text.includes('</i>')){
+        text = text.replace(new RegExp(`\\s*${listReplaceChar[2]}\\s*`, 'g'), "-...");
+        text = text.replace(new RegExp(`\\s*${checkedListReplaceChar[2]}\\s*`, 'g'), "+...");
+        text = text.replace(new RegExp(`\\s*${dotReplaceChar[2]}\\s*`, 'g'), "*...");
+        text = text.replace(new RegExp(`\\s*${checkedDotReplaceChar[2]}\\s*`, 'g'), "@...");
+        text = text.replace(new RegExp(`\\s*${chekcboxReplaceChar[2]}\\s*`, 'g'), "=...");
+        text = text.replace(new RegExp(`\\s*${checkedChekcboxReplaceChar[2]}\\s*`, 'g'), "%...");
+
+        text = text.replace(new RegExp(`\\s*${listReplaceChar[1]}\\s*`, 'g'), "-..");
+        text = text.replace(new RegExp(`\\s*${checkedListReplaceChar[1]}\\s*`, 'g'), "+..");
+        text = text.replace(new RegExp(`\\s*${dotReplaceChar[1]}\\s*`, 'g'), "*..");
+        text = text.replace(new RegExp(`\\s*${checkedDotReplaceChar[1]}\\s*`, 'g'), "@..");
+        text = text.replace(new RegExp(`\\s*${chekcboxReplaceChar[1]}\\s*`, 'g'), "=..");
+        text = text.replace(new RegExp(`\\s*${checkedChekcboxReplaceChar[1]}\\s*`, 'g'), "%..");
+
+        text = text.replace(new RegExp(`\\s*${listReplaceChar[0]}\\s*`, 'g'), "-.");
+        text = text.replace(new RegExp(`\\s*${checkedListReplaceChar[0]}\\s*`, 'g'), "+.");
+        text = text.replace(new RegExp(`\\s*${dotReplaceChar[0]}\\s*`, 'g'), "*.");
+        text = text.replace(new RegExp(`\\s*${checkedDotReplaceChar[0]}\\s*`, 'g'), "@.");
+        text = text.replace(new RegExp(`\\s*${chekcboxReplaceChar[0]}\\s*`, 'g'), "=.");
+        text = text.replace(new RegExp(`\\s*${checkedChekcboxReplaceChar[0]}\\s*`, 'g'), "%.");
+    }else {
+        text = text.replace(/\s*-\.\.\.\s*/g, listReplaceChar[2]);
+        text = text.replace(/\s*\+\.\.\.\s*/g, checkedListReplaceChar[2]);
+        text = text.replace(/\s*\*\.\.\.\s*/g, dotReplaceChar[2]);
+        text = text.replace(/\s*\@\.\.\.\s*/g, checkedDotReplaceChar[2]);
+        text = text.replace(/\s*=\.\.\.\s*/g, chekcboxReplaceChar[2]);
+        text = text.replace(/\s*%\.\.\.\s*/g, checkedChekcboxReplaceChar[2]);
+
+        text = text.replace(/\s*-\.\.\s*/g, listReplaceChar[1]);
+        text = text.replace(/\s*\+\.\.\s*/g, checkedListReplaceChar[1]);
+        text = text.replace(/\s*\*\.\.\s*/g, dotReplaceChar[1]);
+        text = text.replace(/\s*\@\.\.\s*/g, checkedDotReplaceChar[1]);
+        text = text.replace(/\s*=\.\.\s*/g, chekcboxReplaceChar[1]);
+        text = text.replace(/\s*%\.\.\s*/g, checkedChekcboxReplaceChar[1]);
+
+        text = text.replace(/\s*-\.\s*/g, listReplaceChar[0]);
+        text = text.replace(/\s*\+\.\s*/g, checkedListReplaceChar[0]);
+        text = text.replace(/\s*\*\.\s*/g, dotReplaceChar[0]);
+        text = text.replace(/\s*\@\.\s*/g, checkedDotReplaceChar[0]);
+        text = text.replace(/\s*=\.\s*/g, chekcboxReplaceChar[0]);
+        text = text.replace(/\s*%\.\s*/g, checkedChekcboxReplaceChar[0]);
+    }
+
+    return convertBreak(text);
+}
+
 // Todo Clock
 document.addEventListener('DOMContentLoaded', function() {
     startTime();
@@ -653,10 +698,6 @@ function copyClock(type) {
 }
 
 document.querySelectorAll('.ratio-item').forEach(item => {
-    // item.addEventListener('mouseenter', () => {
-    //     item.style.width = '97%'; // Apply hover width
-    // });
-
     item.addEventListener('mouseleave', () => {
         displayTodoRatios();
     });
