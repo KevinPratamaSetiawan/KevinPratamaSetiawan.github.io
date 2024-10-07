@@ -115,9 +115,24 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
     pTitle.addEventListener('click', toggleDetail);
 
     // Handle Description and todoId Text Element
-    const pDescription = document.createElement('p');
+    const pDescription = document.createElement('ul');
     pDescription.classList.add('todo-description');
-    pDescription.innerHTML = descriptionText;
+    
+    if(descriptionText.includes('<br>')){
+        const descriptionTexts = descriptionText.split(/<br>/);
+        
+        descriptionTexts.forEach(part => {
+            if(part !== ''){
+                const li = document.createElement('li');
+                li.innerHTML = part.trim() + '<br>';
+                pDescription.appendChild(li);
+            }
+        });
+    }else{
+        const li = document.createElement('li'); // Wrap the description in a single <li> if no <br> is found
+        li.innerHTML = descriptionText.trim();
+        pDescription.appendChild(li);
+    }
 
     const dashIcons = pDescription.querySelectorAll('.todo-list-dash');
     dashIcons.forEach((dashIcon) => { dashIcon.addEventListener('click', toggleListDash); });
@@ -134,8 +149,6 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
         const arrowSpan = document.createElement('span');
         const arrowI = document.createElement('i');
         arrowI.classList.add('fa-solid', 'fa-angle-right', 'fa-smQ');
-
-        // arrowSpan.appendChild(arrowI);
 
         for (let i = 0; i < 3; i++) {
             const clonedArrowI = arrowI.cloneNode(true);
@@ -325,10 +338,10 @@ function deleteItem(todoId) {
 
 // List Visual Handler
 function displayTodoRatios (){
-    const scheduleWidth = document.querySelector("#todo-schedule").querySelectorAll("li").length;
-    const priorityWidth = document.querySelector("#todo-priority").querySelectorAll("li").length;
-    const taskWidth = document.querySelector("#todo-items").querySelectorAll("li").length;
-    const completeWidth = document.querySelector("#todo-finish").querySelectorAll("li").length;
+    const scheduleWidth = document.querySelector("#todo-schedule").querySelectorAll(".todo-item").length;
+    const priorityWidth = document.querySelector("#todo-priority").querySelectorAll(".todo-item").length;
+    const taskWidth = document.querySelector("#todo-items").querySelectorAll(".todo-item").length;
+    const completeWidth = document.querySelector("#todo-finish").querySelectorAll(".todo-item").length;
     const totalWidth = scheduleWidth + priorityWidth + taskWidth + completeWidth;
 
     document.getElementById('schedule-ratio').style.width = (scheduleWidth / totalWidth * 100) + '%';
@@ -397,29 +410,29 @@ function displayTodoRatios (){
 }
 
 function updateCounter(){
-    const scheduleUl = document.getElementById('todo-schedule');
-    const priorityUl = document.querySelector("#todo-priority");
-    const itemsUl = document.querySelector("#todo-items");
-    const finishUl = document.querySelector("#todo-finish");
+    const scheduleUl = document.getElementById('todo-schedule').querySelectorAll(".todo-item").length;
+    const priorityUl = document.querySelector("#todo-priority").querySelectorAll(".todo-item").length;
+    const itemsUl = document.querySelector("#todo-items").querySelectorAll(".todo-item").length;
+    const finishUl = document.querySelector("#todo-finish").querySelectorAll(".todo-item").length;
 
     let scheduleNum, priorityNum, itemsNum, finishNum;
     const currentHistoryFormat = localStorage.getItem('currentHistoryCountFormat');
 
     if(currentHistoryFormat == 1){
-        scheduleNum = scheduleUl.querySelectorAll("li").length.toString();
-        priorityNum = priorityUl.querySelectorAll("li").length.toString();
-        itemsNum = itemsUl.querySelectorAll("li").length.toString();
-        finishNum = finishUl.querySelectorAll("li").length.toString();
+        scheduleNum = scheduleUl.toString();
+        priorityNum = priorityUl.toString();
+        itemsNum = itemsUl.toString();
+        finishNum = finishUl.toString();
     }else if(currentHistoryFormat == 2){
-        scheduleNum = numberToRoman(scheduleUl.querySelectorAll("li").length);
-        priorityNum = numberToRoman(priorityUl.querySelectorAll("li").length);
-        itemsNum = numberToRoman(itemsUl.querySelectorAll("li").length);
-        finishNum = numberToRoman(finishUl.querySelectorAll("li").length);
+        scheduleNum = numberToRoman(scheduleUl);
+        priorityNum = numberToRoman(priorityUl);
+        itemsNum = numberToRoman(itemsUl);
+        finishNum = numberToRoman(finishUl);
     }else if(currentHistoryFormat == 3){
-        scheduleNum = numberToKanji(scheduleUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
-        priorityNum = numberToKanji(priorityUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
-        itemsNum = numberToKanji(itemsUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
-        finishNum = numberToKanji(finishUl.querySelectorAll("li").length) + '<ruby>個<rt>こ</rt></ruby>';
+        scheduleNum = numberToKanji(scheduleUl) + '<ruby>個<rt>こ</rt></ruby>';
+        priorityNum = numberToKanji(priorityUl) + '<ruby>個<rt>こ</rt></ruby>';
+        itemsNum = numberToKanji(itemsUl) + '<ruby>個<rt>こ</rt></ruby>';
+        finishNum = numberToKanji(finishUl) + '<ruby>個<rt>こ</rt></ruby>';
     }
 
     document.getElementById('schedule-display-num').innerHTML = scheduleNum;
@@ -432,7 +445,7 @@ function updateCounter(){
 
 function toggleListDash(event){
     const icon = event.target;
-    const divBot = icon.parentElement.parentElement.parentElement;
+    const divBot = icon.parentElement.parentElement.parentElement.parentElement;
     const id = divBot.querySelector('.todo-id').textContent.slice(3);
     const isChecked = icon.classList.contains('fa-plus');
 
@@ -441,18 +454,19 @@ function toggleListDash(event){
 
     if (isChecked) {
         icon.classList.replace('fa-plus', 'fa-minus');
-        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<li>/g, '').replace(/<\/li>/g, '').trim();
         updateItem(id, item.completed, item.priority, pDescription);
     } else {
         icon.classList.replace('fa-minus', 'fa-plus');
-        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<li>/g, '').replace(/<\/li>/g, '').trim();
         updateItem(id, item.completed, item.priority, pDescription);
     }
 }
 
 function toggleListCircle(event){
     const icon = event.target;
-    const divBot = icon.parentElement.parentElement.parentElement;
+    const divBot = icon.parentElement.parentElement.parentElement.parentElement;
+    console.log(divBot)
     const id = divBot.querySelector('.todo-id').textContent.slice(3);
     const isChecked = icon.classList.contains('fa-circle-dot');
 
@@ -462,19 +476,19 @@ function toggleListCircle(event){
     if (isChecked) {
         icon.classList.replace('fa-circle-dot', 'fa-circle');
         icon.classList.replace('fa-solid', 'fa-regular');
-        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<li>/g, '').replace(/<\/li>/g, '').trim();
         updateItem(id, item.completed, item.priority, pDescription);
     } else {
         icon.classList.replace('fa-circle', 'fa-circle-dot');
         icon.classList.replace('fa-regular', 'fa-solid');
-        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<li>/g, '').replace(/<\/li>/g, '').trim();
         updateItem(id, item.completed, item.priority, pDescription);
     }
 }
 
 function toggleListCheckbox(event){
     const icon = event.target;
-    const divBot = icon.parentElement.parentElement.parentElement;
+    const divBot = icon.parentElement.parentElement.parentElement.parentElement;
     const id = divBot.querySelector('.todo-id').textContent.slice(3);
     const isChecked = icon.classList.contains('fa-square-check');
 
@@ -484,12 +498,12 @@ function toggleListCheckbox(event){
     if (isChecked) {
         icon.classList.replace('fa-square-check', 'fa-square');
         icon.classList.replace('fa-solid', 'fa-regular');
-        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<li>/g, '').replace(/<\/li>/g, '').trim();
         updateItem(id, item.completed, item.priority, pDescription);
     } else {
         icon.classList.replace('fa-square', 'fa-square-check');
         icon.classList.replace('fa-regular', 'fa-solid');
-        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<span>.*?<\/span>/, '').trim();
+        const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<li>/g, '').replace(/<\/li>/g, '').trim();
         updateItem(id, item.completed, item.priority, pDescription);
     }
 }

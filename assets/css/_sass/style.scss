@@ -917,21 +917,55 @@ input[type=number] {
           text-wrap: wrap;
           white-space: normal;
 
-          i{
-            cursor: pointer;
-            margin-right: 5px;
+          li{
+            width: 100%;
+            overflow-wrap: break-word;
+            text-wrap: wrap;
+            white-space: normal;
+
+            i{
+              cursor: pointer;
+              margin-right: 5px;
+            }
+
+            br {
+              display: none;
+            }
           }
-          
-          i:not(:nth-child(1)){
+
+          li:has(.todo-list-indent-one):not(:nth-child(1)) i{
             margin-top: 15px;
           }
 
-          .todo-list-indent-two{
-            margin-left: 21px;
+          li:has(.todo-list-indent-two):not(:nth-child(1)) i{
+            margin-top: 10px;
           }
 
-          .todo-list-indent-three{
-            margin-left: 42px;
+          li:has(.todo-list-indent-three):not(:nth-child(1)) i{
+            margin-top: 5px;
+          }
+
+          li:has(.todo-list-indent-two){
+            padding-left: 21px;
+          }
+
+          li:has(.todo-list-indent-three){
+            padding-left: 42px;
+          }
+
+          li:has(.fa-plus), li:has(.fa-circle-dot), li:has(.fa-square-check) {
+            text-decoration: line-through;
+            color: var(--light-gray);
+          }
+
+          li:has(.fa-plus)::after, li:has(.fa-circle-dot)::after, li:has(.fa-square-check)::after{
+            content: '\2714';
+            text-decoration: none;
+            color: var(--text-color);
+            display: inline-block;
+            margin-left: 5px;
+            // width: 100%;
+            // text-align: right;
           }
         }
       }
