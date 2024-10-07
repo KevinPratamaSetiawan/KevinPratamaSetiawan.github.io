@@ -124,6 +124,7 @@ mp3_order:
     - /assets/thePopOut/meet the grahams.mp3
     - /assets/thePopOut/life goes on.mp3
     - /assets/thePopOut/Not Like Us.mp3
+    - /assets/thePopOut/watch the party die.mp3
     - /assets/thePopOut/The Greatest.mp3
   playlist1:
     - /assets/playlist1/Adonis Interlude.mp3
@@ -250,6 +251,8 @@ mp3_order:
     - /assets/playlist1/6_16 in LA.mp3
     - /assets/playlist1/life goes on.mp3
     - /assets/playlist1/Not Like Us.mp3
+    - /assets/playlist1/watch the party die.mp3
+    - /assets/playlist1/Tobey.mp3
     - /assets/playlist1/Dior.mp3
 
 sass:

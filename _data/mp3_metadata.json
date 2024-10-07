@@ -85,6 +85,12 @@
             "duration": "04:34"
         },
         {
+            "url": "/assets/thePopOut/watch the party die.mp3",
+            "title": "watch the party die",
+            "artist": "Kendrick Lamar",
+            "duration": "05:05"
+        },
+        {
             "url": "/assets/thePopOut/The Greatest.mp3",
             "title": "The Greatest",
             "artist": "Kendrick Lamar",
@@ -842,6 +848,18 @@
             "title": "Dior",
             "artist": "Pop Smoke",
             "duration": "03:36"
+        },
+        {
+            "url": "/assets/playlist1/Tobey.mp3",
+            "title": "Tobey",
+            "artist": "Eminem, Baby Tron, Big Sean",
+            "duration": "04:44"
+        },
+        {
+            "url": "/assets/playlist1/watch the party die.mp3",
+            "title": "watch the party die",
+            "artist": "Kendrick Lamar",
+            "duration": "05:05"
         }
     ]
 }
