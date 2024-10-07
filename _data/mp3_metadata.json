@@ -844,10 +844,10 @@
             "duration": "04:34"
         },
         {
-            "url": "/assets/playlist1/Dior.mp3",
-            "title": "Dior",
-            "artist": "Pop Smoke",
-            "duration": "03:36"
+            "url": "/assets/playlist1/watch the party die.mp3",
+            "title": "watch the party die",
+            "artist": "Kendrick Lamar",
+            "duration": "05:05"
         },
         {
             "url": "/assets/playlist1/Tobey.mp3",
@@ -856,10 +856,10 @@
             "duration": "04:44"
         },
         {
-            "url": "/assets/playlist1/watch the party die.mp3",
-            "title": "watch the party die",
-            "artist": "Kendrick Lamar",
-            "duration": "05:05"
+            "url": "/assets/playlist1/Dior.mp3",
+            "title": "Dior",
+            "artist": "Pop Smoke",
+            "duration": "03:36"
         }
     ]
 }
