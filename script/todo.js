@@ -539,7 +539,6 @@ function toggleListCheckbox(event){
 function copyFormattedContent(event){
     const icon = event.target;
     const divBot = icon.parentElement.parentElement;
-    // const id = divBot.querySelector('.todo-id').textContent.slice(3);
     const id = divBot.querySelector('.todo-id').textContent;
 
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
