@@ -973,6 +973,7 @@ input[type=number] {
         width: 100%;
         cursor: pointer;
         text-align: right;
+        color: var(--text-color);
       }
     }
   }
@@ -1000,7 +1001,8 @@ input[type=number] {
 }
 
 #todo-schedule{
-  .todo-id{ color: var(--schedule-color); } 
+  .todo-id::before,
+  .todo-id::after{ content: '|'; color: var(--schedule-color); } 
   .open{ color: var(--schedule-color); }
   .fa-angle-right:nth-child(1){ color: var(--schedule-color); }
   .fa-angle-right:nth-child(2){ color: #d3bcfe; }
@@ -1009,7 +1011,8 @@ input[type=number] {
   .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--schedule-color); } }
 }
 #todo-priority{
-  .todo-id{ color: var(--priority-color); } 
+  .todo-id::before,
+  .todo-id::after{ content: '|'; color: var(--priority-color); } 
   .open{ color: var(--priority-color); }
   .fa-angle-right:nth-child(1){ color: var(--priority-color); }
   .fa-angle-right:nth-child(2){ color: #faa7a3; }
@@ -1018,7 +1021,8 @@ input[type=number] {
   .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--priority-color); } }
 }
 #todo-items{
-  .todo-id{ color: var(--task-color); } 
+  .todo-id::before,
+  .todo-id::after{ content: '|'; color: var(--task-color); } 
   .open{ color: var(--task-color); }
   .fa-angle-right:nth-child(1){ color: var(--task-color); }
   .fa-angle-right:nth-child(2){ color: #f7eeab; }
@@ -1027,7 +1031,8 @@ input[type=number] {
   .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--task-color); } }
 }
 #todo-finish{
-  .todo-id{ color: var(--complete-color); } 
+  .todo-id::before,
+  .todo-id::after{ content: '|'; color: var(--complete-color); } 
   .open{ color: var(--complete-color); }
   .fa-angle-right:nth-child(1){ color: var(--complete-color); }
   .fa-angle-right:nth-child(2){ color: #b4edcb; }

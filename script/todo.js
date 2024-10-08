@@ -3,34 +3,44 @@ document.getElementById('add-item-btn').addEventListener('click', addItem);
 const scheduleFilter = '[S]';
 const weeklyScheduleFilter = '[W]';
 const dailyScheduleFilter = '[D]';
+const anyScheduleFilter = /\[.*?\]/g;
 
 function addItem() {
     const filterPattern = /\[S\]|\[W\]|\[D\]/g;
     let text = document.getElementById('new-item').value.trim();
 
     if (text !== '') {
-        const todoId = (Math.floor(Math.random() * 10000) + 1).toString().padStart(5, '0');
+        let todoId = 'N-' + (Math.floor(Math.random() * 9999) + 1).toString().padStart(4, '0');
         let scheduleType = '';
         let scheduleIndicator = false;
 
-        if(text.includes(scheduleFilter) || text.includes(weeklyScheduleFilter) || text.includes(dailyScheduleFilter)){
+        if(text.includes('[') && text.includes(']')){
+            todoId = 'S-' + (Math.floor(Math.random() * 9999) + 1).toString().padStart(4, '0');
+
             scheduleIndicator = true;
+            scheduleType = text.match(anyScheduleFilter)[0];
+            text = text.replace(anyScheduleFilter, '').replace(/\s+/g, ' ').trim();
+        }else{
+            scheduleType = '';
         }
+
+        // if(text.includes(scheduleFilter) || text.includes(weeklyScheduleFilter) || text.includes(dailyScheduleFilter)){
+        //     scheduleIndicator = true;
+        // }
 
         // Handle Schedule Filtering
-        if(scheduleIndicator === true){
-            if (text.includes(scheduleFilter)) {
-                scheduleType = '[S]';
-            }else if (text.includes(dailyScheduleFilter)) {
-                scheduleType = '[D]';
-            }else if (text.includes(weeklyScheduleFilter)) {
-                scheduleType = '[W]';
-            }else{
-                scheduleType = '';
-            }
-
-            text = text.replace(filterPattern, '').replace(/\s+/g, ' ').trim();
-        }
+        // if(scheduleIndicator === true){
+        //     if (text.includes(scheduleFilter)) {
+        //         scheduleType = '[S]';
+        //     }else if (text.includes(dailyScheduleFilter)) {
+        //         scheduleType = '[D]';
+        //     }else if (text.includes(weeklyScheduleFilter)) {
+        //         scheduleType = '[W]';
+        //     }else{
+        //         scheduleType = '';
+        //     }
+        //     text = text.replace(filterPattern, '').replace(/\s+/g, ' ').trim();
+        // }
         
         // Handle Title and Description Filtering
         let [titleText, descriptionText] = text.includes('=>') ? text.split('=>').map(str => str.trim()) : [text, 'no description'];
@@ -160,7 +170,9 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
 
     const spanId = document.createElement('span');
     spanId.classList.add('todo-id');
-    spanId.innerText = 'ID:' + todoId;
+    // spanId.innerText = 'ID: ' + todoId;
+    // spanId.innerText = '|' + todoId + '|';
+    spanId.innerText = todoId;
     spanId.addEventListener('click', copyFormattedContent);
 
     // Composing The li Element
