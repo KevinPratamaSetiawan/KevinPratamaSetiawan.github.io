@@ -124,7 +124,7 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
         if(titleText.match(/\b(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{2}\b/)){
             if(titleText.includes(todayDate)){   
                 todayAlert = '-TDY]';
-            }else if(titleText.includes(tomorrowDate)){   
+            }else if(titleText.includes(tomorrowDate)){ 
                 todayAlert = '-TMW]';
             }
         }else if(day !== -1 && day%7 === today){
