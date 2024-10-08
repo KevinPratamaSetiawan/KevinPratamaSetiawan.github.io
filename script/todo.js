@@ -107,9 +107,27 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
                     ];
         
         let day = days.findIndex(day => titleText.includes(day));
+        
+        let year = new Date().getFullYear();
+        let month = new Date().getMonth() + 1;
+        let date = new Date().getDate();
         let today = new Date().getDay();
 
-        if(day !== -1 && day%7 === today){
+        let todayDate = date.toString().padStart(2, '0') + '-' 
+                        + month.toString().padStart(2, '0') + '-' 
+                        + year.toString().slice(-2);
+
+        let tomorrowDate = (date+1).toString().padStart(2, '0') + '-' 
+                        + month.toString().padStart(2, '0') + '-' 
+                        + year.toString().slice(-2);
+        
+        if(titleText.match(/\b(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{2}\b/)){
+            if(titleText.includes(todayDate)){   
+                todayAlert = '-TDY]';
+            }else if(titleText.includes(tomorrowDate)){   
+                todayAlert = '-TMW]';
+            }
+        }else if(day !== -1 && day%7 === today){
             todayAlert = '-T]';
         }
 
@@ -170,8 +188,6 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
 
     const spanId = document.createElement('span');
     spanId.classList.add('todo-id');
-    // spanId.innerText = 'ID: ' + todoId;
-    // spanId.innerText = '|' + todoId + '|';
     spanId.innerText = todoId;
     spanId.addEventListener('click', copyFormattedContent);
 
@@ -523,7 +539,8 @@ function toggleListCheckbox(event){
 function copyFormattedContent(event){
     const icon = event.target;
     const divBot = icon.parentElement.parentElement;
-    const id = divBot.querySelector('.todo-id').textContent.slice(3);
+    // const id = divBot.querySelector('.todo-id').textContent.slice(3);
+    const id = divBot.querySelector('.todo-id').textContent;
 
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
     const item = items.find(item => item.id === id);

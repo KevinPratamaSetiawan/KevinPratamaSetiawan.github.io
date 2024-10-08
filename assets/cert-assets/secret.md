@@ -1,8 +1,8 @@
 ---
 layout: secret
-permalink: /🔑/
-title: 🔑
-# title: Secret
+permalink: /secret/
+# title: 🔑🤔
+title: Secret
 ---
 
 <div class="article-list" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
@@ -22,7 +22,7 @@ title: 🔑
         var button = document.getElementById('submit-button');
 
         if (button.getAttribute('data-redirect') === 'true') {
-            window.location.href = '{{site.baseurl}}/💻/';
+            window.location.href = '{{site.baseurl}}/terminal/';
             return;
         }
 
