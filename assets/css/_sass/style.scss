@@ -811,6 +811,7 @@ input[type=number] {
   }
 }
 
+#todo-tutor,
 #todo-schedule,
 #todo-priority,
 #todo-items,
@@ -844,6 +845,7 @@ input[type=number] {
   overflow: scroll;
 }
 
+#todo-tutor,
 #todo-schedule,
 #todo-priority,
 #todo-items,
@@ -866,6 +868,14 @@ input[type=number] {
       display: flex;
       align-items: center;
       gap: 10px;
+
+      code{
+        background-color: var(--background-color);
+        color: var(--text-color);
+        border: 1px solid var(--brand-color);
+        padding: 0 5px;
+        border-radius: 4px;
+      }
       
       i, p {
         cursor: pointer;
@@ -904,7 +914,6 @@ input[type=number] {
         span{
           text-wrap: nowrap;
           margin-right: 5px;
-          gap: -5px;
 
           i{
             transform: rotate(0);
@@ -917,11 +926,23 @@ input[type=number] {
           text-wrap: wrap;
           white-space: normal;
 
+          li hr{
+            margin: 15px 0;
+          }
+
           li{
             width: 100%;
             overflow-wrap: break-word;
             text-wrap: wrap;
             white-space: normal;
+
+            code{
+              background-color: var(--background-color);
+              color: var(--text-color);
+              border: 1px solid var(--brand-color);
+              padding: 0 5px;
+              border-radius: 4px;
+            }
 
             i{
               cursor: pointer;
@@ -953,12 +974,12 @@ input[type=number] {
             padding-left: 42px;
           }
 
-          li:has(.fa-plus), li:has(.fa-circle-dot), li:has(.fa-square-check) {
+          li:has(.fa-plus), li:has(.fa-circle-xmark), li:has(.fa-square-check) {
             text-decoration: line-through;
             color: var(--light-gray);
           }
 
-          li:has(.fa-plus)::after, li:has(.fa-circle-dot)::after, li:has(.fa-square-check)::after{
+          li:has(.fa-plus)::after, li:has(.fa-circle-xmark)::after, li:has(.fa-square-check)::after{
             content: '\2714';
             text-decoration: none;
             color: var(--text-color);
@@ -1016,8 +1037,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--schedule-color); }
   .fa-angle-right:nth-child(2){ color: #d3bcfe; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
-  // .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: #d3bcfe; } }
-  .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--schedule-color); } }
+  // .todo-description{ .fa-plus, .fa-circle-xmark, .fa-square-check{ color: #d3bcfe; } }
+  .todo-description{ .fa-plus, .fa-circle-xmark, .fa-square-check{ color: var(--schedule-color); } }
 }
 #todo-priority{
   .todo-id::before,
@@ -1026,8 +1047,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--priority-color); }
   .fa-angle-right:nth-child(2){ color: #faa7a3; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
-  // .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: #faa7a3; } }
-  .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--priority-color); } }
+  // .todo-description{ .fa-plus, .fa-circle-xmark, .fa-square-check{ color: #faa7a3; } }
+  .todo-description{ .fa-plus, .fa-circle-xmark, .fa-square-check{ color: var(--priority-color); } }
 }
 #todo-items{
   .todo-id::before,
@@ -1036,8 +1057,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--task-color); }
   .fa-angle-right:nth-child(2){ color: #f7eeab; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
-  // .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: #f7eeab; } }
-  .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--task-color); } }
+  // .todo-description{ .fa-plus, .fa-circle-xmark, .fa-square-check{ color: #f7eeab; } }
+  .todo-description{ .fa-plus, .fa-circle-xmark, .fa-square-check{ color: var(--task-color); } }
 }
 #todo-finish{
   .todo-id::before,
@@ -1046,8 +1067,8 @@ input[type=number] {
   .fa-angle-right:nth-child(1){ color: var(--complete-color); }
   .fa-angle-right:nth-child(2){ color: #b4edcb; }
   .fa-angle-right:nth-child(3){ color: var(--text-color); }
-  // .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: #b4edcb; } }
-  .todo-description{ .fa-plus, .fa-circle-dot, .fa-square-check{ color: var(--complete-color); } }
+  // .todo-description{ .fa-plus, .fa-circle-xmark, .fa-square-check{ color: #b4edcb; } }
+  .todo-description{ .fa-plus, .fa-circle-xmark, .fa-square-check{ color: var(--complete-color); } }
 }
 
 #xml-tab {

@@ -5,6 +5,10 @@ const weeklyScheduleFilter = '[W]';
 const dailyScheduleFilter = '[D]';
 const anyScheduleFilter = /\[.*?\]/g;
 
+document.querySelectorAll('.todo-title').forEach(function(button) {
+  button.addEventListener('click', toggleDetail);
+});
+
 function addItem() {
     const filterPattern = /\[S\]|\[W\]|\[D\]/g;
     let text = document.getElementById('new-item').value.trim();
@@ -176,7 +180,7 @@ function createListItem(todoId, titleText, descriptionText, completed, priority,
     }else{
         const arrowSpan = document.createElement('span');
         const arrowI = document.createElement('i');
-        arrowI.classList.add('fa-solid', 'fa-angle-right', 'fa-smQ');
+        arrowI.classList.add('fa-solid', 'fa-angle-right');
 
         for (let i = 0; i < 3; i++) {
             const clonedArrowI = arrowI.cloneNode(true);
@@ -496,18 +500,18 @@ function toggleListCircle(event){
     const divBot = icon.parentElement.parentElement.parentElement.parentElement;
     console.log(divBot)
     const id = divBot.querySelector('.todo-id').textContent;
-    const isChecked = icon.classList.contains('fa-circle-dot');
+    const isChecked = icon.classList.contains('fa-circle-xmark');
 
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
     const item = items.find(item => item.id === id);
 
     if (isChecked) {
-        icon.classList.replace('fa-circle-dot', 'fa-circle');
+        icon.classList.replace('fa-circle-xmark', 'fa-circle');
         icon.classList.replace('fa-solid', 'fa-regular');
         const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<li>/g, '').replace(/<\/li>/g, '').trim();
         updateItem(id, item.completed, item.priority, pDescription);
     } else {
-        icon.classList.replace('fa-circle', 'fa-circle-dot');
+        icon.classList.replace('fa-circle', 'fa-circle-xmark');
         icon.classList.replace('fa-regular', 'fa-solid');
         const pDescription = divBot.querySelector('.todo-description').innerHTML.replace(/<li>/g, '').replace(/<\/li>/g, '').trim();
         updateItem(id, item.completed, item.priority, pDescription);
@@ -562,7 +566,7 @@ function copyFormattedContent(event){
 const listReplaceChar = ['<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i>', '<i class="fa-solid fa-minus todo-list-dash todo-list-indent-two"></i>', '<i class="fa-solid fa-minus todo-list-dash todo-list-indent-three"></i>'];
 const checkedListReplaceChar = ['<i class="fa-solid fa-plus todo-list-dash todo-list-indent-one"></i>', '<i class="fa-solid fa-plus todo-list-dash todo-list-indent-two"></i>', '<i class="fa-solid fa-plus todo-list-dash todo-list-indent-three"></i>'];
 const dotReplaceChar = ['<i class="fa-regular fa-circle todo-list-circle todo-list-indent-one"></i>', '<i class="fa-regular fa-circle todo-list-circle todo-list-indent-two"></i>', '<i class="fa-regular fa-circle todo-list-circle todo-list-indent-three"></i>'];
-const checkedDotReplaceChar = ['<i class="fa-solid fa-circle-dot todo-list-circle todo-list-indent-one"></i>', '<i class="fa-solid fa-circle-dot todo-list-circle todo-list-indent-two"></i>', '<i class="fa-solid fa-circle-dot todo-list-circle todo-list-indent-three"></i>'];
+const checkedDotReplaceChar = ['<i class="fa-solid fa-circle-xmark todo-list-circle todo-list-indent-one"></i>', '<i class="fa-solid fa-circle-xmark todo-list-circle todo-list-indent-two"></i>', '<i class="fa-solid fa-circle-xmark todo-list-circle todo-list-indent-three"></i>'];
 const chekcboxReplaceChar = ['<i class="fa-regular fa-square todo-list-checkbox todo-list-indent-one"></i>', '<i class="fa-regular fa-square todo-list-checkbox todo-list-indent-two"></i>', '<i class="fa-regular fa-square todo-list-checkbox todo-list-indent-three"></i>'];
 const checkedChekcboxReplaceChar = ['<i class="fa-solid fa-square-check todo-list-checkbox todo-list-indent-one"></i>', '<i class="fa-solid fa-square-check todo-list-checkbox todo-list-indent-two"></i>', '<i class="fa-solid fa-square-check todo-list-checkbox todo-list-indent-three"></i>'];
 const breakReplaceChar = '.<br>';
