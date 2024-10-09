@@ -69,7 +69,7 @@ accentButton.addEventListener('click', () => {
     const savedMode = localStorage.getItem('currentMode');
     let currentIndex, randomIndex, newColor;
     let lightThemes = ['lightClassic', 'lightDarkYellow', 'lightSummerX'];
-    let darkThemes = ['darkClassic', 'darkPurple', 'darkCoffee', 'darkSummerX', 'darkMint'];
+    let darkThemes = ['darkClassic', 'darkPurple', 'darkCoffee', 'darkSummerX', 'darkMint', 'darkOriental1', 'darkOriental2'];
 
     if(savedMode === 'light'){
         if(lightThemes.indexOf(localStorage.getItem('currentLightTheme')) === -1){
@@ -282,11 +282,11 @@ function createThemeItem (){
     }
 
     const darkModeList =document.getElementById('darkThemeList');
-    const darkTheme = ['darkClassic', 'darkPurple', 'darkCoffee', 'darkSummerX', 'darkMint'];
-    const darkBgColor = ['#23272d', '#16031d', '#0d0c02', '#000000', '#00284C'];
-    const darkTextColor = ['#fdfdfd', '#f0d6fa', '#faf6db', '#f1faee', '#EDEDED'];
-    const darkAccentColor = ['#c16560', '#3be879', '#e2d689', '#fefb7d', '#A0E8C5'];
-    const darkInnerText = ['Dark Classic', 'Dark Purple', 'Dark Coffee', 'Dark SummerX', 'Dark Mint'];
+    const darkTheme = ['darkClassic', 'darkPurple', 'darkCoffee', 'darkSummerX', 'darkMint', 'darkOriental1', 'darkOriental2'];
+    const darkBgColor = ['#23272d', '#16031d', '#0d0c02', '#000000', '#00284C', '#121312', '#0d0d0f'];
+    const darkTextColor = ['#fdfdfd', '#f0d6fa', '#faf6db', '#f1faee', '#EDEDED', '#a67d43', '#caa07d'];
+    const darkAccentColor = ['#c16560', '#3be879', '#e2d689', '#fefb7d', '#A0E8C5', '#e8d8c9', '#f7ece6'];
+    const darkInnerText = ['Dark Classic', 'Dark Purple', 'Dark Coffee', 'Dark SummerX', 'Dark Mint', 'Dark Oriental 1', 'Dark Oriental 2'];
 
     for(let i=0; i<darkTheme.length; i++){
         const li = document.createElement('li');
