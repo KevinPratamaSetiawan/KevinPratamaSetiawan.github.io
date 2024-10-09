@@ -230,7 +230,7 @@ function moveToList(li, completed, priority, schedule) {
 function toggleComplete(event) {
     const icon = event.target;
     const li = icon.parentElement.parentElement;
-    const id = li.querySelector('.todo-id').textContent.slice(3);
+    const id = li.querySelector('.todo-id').textContent;
     const title = li.querySelector('.todo-title');
     const isChecked = icon.classList.contains('fa-circle-check');
 
@@ -258,7 +258,7 @@ function toggleComplete(event) {
 function togglePriority(event) {
     const icon = event.target;
     const li = icon.parentElement.parentElement;
-    const id = li.querySelector('.todo-id').textContent.slice(3);
+    const id = li.querySelector('.todo-id').textContent;
     const isPriority = icon.classList.contains('fa-circle-exclamation');
 
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
@@ -282,7 +282,7 @@ function togglePriority(event) {
 
 function removeItem(event) {
     const li = event.target.parentElement.parentElement;
-    const id = li.querySelector('.todo-id').textContent.slice(3);
+    const id = li.querySelector('.todo-id').textContent;
     li.remove();
     deleteItem(id);
 
@@ -474,7 +474,7 @@ function updateCounter(){
 function toggleListDash(event){
     const icon = event.target;
     const divBot = icon.parentElement.parentElement.parentElement.parentElement;
-    const id = divBot.querySelector('.todo-id').textContent.slice(3);
+    const id = divBot.querySelector('.todo-id').textContent;
     const isChecked = icon.classList.contains('fa-plus');
 
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
@@ -495,7 +495,7 @@ function toggleListCircle(event){
     const icon = event.target;
     const divBot = icon.parentElement.parentElement.parentElement.parentElement;
     console.log(divBot)
-    const id = divBot.querySelector('.todo-id').textContent.slice(3);
+    const id = divBot.querySelector('.todo-id').textContent;
     const isChecked = icon.classList.contains('fa-circle-dot');
 
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
@@ -517,7 +517,7 @@ function toggleListCircle(event){
 function toggleListCheckbox(event){
     const icon = event.target;
     const divBot = icon.parentElement.parentElement.parentElement.parentElement;
-    const id = divBot.querySelector('.todo-id').textContent.slice(3);
+    const id = divBot.querySelector('.todo-id').textContent;
     const isChecked = icon.classList.contains('fa-square-check');
 
     let items = JSON.parse(localStorage.getItem('todoItems')) || [];
