@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "bookshelf-app-starter-project",
+		"git.ignoreLimitWarning": true
+	}
+}
