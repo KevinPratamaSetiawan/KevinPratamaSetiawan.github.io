@@ -1,0 +1,3918 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>💻 | KPS</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="💻" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Fullstack and Cloud Developer Informatics Engineering Student Based in Indonesia" />
+<meta property="og:description" content="Fullstack and Cloud Developer Informatics Engineering Student Based in Indonesia" />
+<link rel="canonical" href="/%F0%9F%92%BB/" />
+<meta property="og:url" content="/%F0%9F%92%BB/" />
+<meta property="og:site_name" content="KPS" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="💻" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Fullstack and Cloud Developer Informatics Engineering Student Based in Indonesia","headline":"💻","url":"/%F0%9F%92%BB/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Generated using https://favicon.io/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" sizes="16x16" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+
+    <!-- MathJax -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+     processEscapes: true
+    }
+  });
+</script>
+
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" data-purpose="Layout StyleSheet" title="Web Awesome" href="/css/app-wa-462758aa1e172f82d39e1ea35e919e0a.css?vsn=d">
+    <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@100;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;700&display=swap" rel="stylesheet">
+    <script
+        type="text/javascript"> (function () { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.11.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="terminal-body" id="terminal-body">
+    <div id="max-cover-img">
+        <p id="cover-file-name" style="font-size:large;">../mp3-cover-47.gif 「零」</p>
+        <img src="../assets/images/mp3-cover/mp3-cover-3001.gif" alt="" id="mp3-cover-img-max" class="mp3-cover-img">
+        <h2 id="cover-countdown">00:00</h2>
+    </div>
+    <div class="terminal-nav">
+        <div class="timer">
+            <i class="fa-solid fa-hourglass-end fa-lg" id="hourglass"></i>
+            <i class="fa-solid fa-bell fa-shake fa-lg" id="start-alarm-btn" style="display:none;"></i>
+            <!-- <i class="fa-solid fa-bell-slash" id="stop-alarm-btn"></i> -->
+            <div class="time-digit">
+                <input type="number" id="hours" placeholder="00" min="0" max="99">
+                <span>:</span>
+                <input type="number" id="minutes" placeholder="00" min="0" max="59">
+                <span>:</span>
+                <input type="number" id="seconds" placeholder="00" min="0" max="59">
+            </div>
+            <div style="width: max-content; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <i class="fa-solid fa-play" id="play-timer-btn"></i>
+                    <i class="fa-solid fa-pause" id="pause-timer-btn" style="display:none;"></i>
+                    <i class="fa-solid fa-stop" id="reset-timer-btn" style="display:none;"></i>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <a class="none" href="/">
+                <img id="mode-logo" src="/black-logo.png" alt="Logo" style="width: 50px;">
+            </a>
+        </div>
+        <div class="mode-toggle rounded-social-buttons">
+            <button id="accent-btn" class="social-button mode">
+                <i class="fa-solid fa-dice-d20" style="display: flex; justify-content: center; align-items: center;"></i>
+            </button>
+
+            <button id="mode-btn" class="social-button mode">
+                <i class="fa-solid fa-sun mode-logo" id="mode-icon" style="display: flex; justify-content: center; align-items: center;"></i>
+            </button>
+
+            <button id="theme-popover-btn" popovertarget="themePopover" class="social-button mode">
+                <i class="fa-solid fa-circle-half-stroke mode-logo" id="mode-icon" style="display: flex; justify-content: center; align-items: center;"></i>
+            </button>
+            <div id="themePopover" popover>
+                <div>
+                    <div class="option-list option-list1">
+                        <h1>Fonts</h1>
+                        <ul id="fontList"></ul>
+                    </div>
+                    <div class="option-showcase option-showcase1">
+                        <h4 id="heading-display">Heading</h4>
+                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, distinctio.</h3>
+                        <h4 id="text-display">Normal Text</h4>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat quod ipsam dolore ducimus perferendis quisquam cumque illo numquam est. Unde ipsam nisi optio sequi sed. Nemo praesentium iure quasi.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="option-list option-list2">
+                        <h1>Theme</h1>
+                        <div>
+                            <div>
+                                <h3>Light Mode</h3>
+                                <ul id="lightThemeList"></ul>
+                            </div>
+                            <div>
+                                <h3>Dark Mode</h3>
+                                <ul id="darkThemeList"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option-showcase option-showcase2">
+                        <div class="color-display">
+                            <h4>Background Color</h4>
+                            <div id="bg-display-color" class="color-item-display"></div>
+                        </div>
+                        <div class="color-display">
+                            <h4>Text Color</h4>
+                            <div id="text-display-color" class="color-item-display"></div>
+                        </div>
+                        <div class="color-display">
+                            <h4>Accent Color</h4>
+                            <div id="accent-display-color" class="color-item-display"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="popover-btn" popovertarget="qrPopover" class="social-button mode">
+                <i class="fa-solid fa-qrcode mode-logo" id="mode-icon" style="display: flex; justify-content: center; align-items: center;"></i>
+            </button>
+            <div id="qrPopover" popover>
+                <img src="/assets/images/qrBlack2.png" alt="" width="300px">
+                <p>https://kevinpratamasetiawan.github.io/</p>
+                <img src="/assets/images/barcode.png" alt="" width="300px">
+            </div>
+            
+            <button id="save-popover-btn" popovertarget="saves-popover" class="social-button mode">
+                <i class="fa-solid fa-code fa-xs mode-logo" id="mode-icon" style="display: flex; justify-content: center; align-items: center;"></i>
+            </button>
+
+            <div id="saves-popover" popover>
+                <h2 id="saves-popover-title">Local Storage Data</h2>
+                <div class="save-nav">
+                    <a href="#" id="get-btn"><span style="color: #6bdd9a;">GET</span></a>
+                    <a href="#" id="put-btn">PUT</a>
+                    <a href="#" id="del-btn">DEL</a>
+                    <div>
+                        <p id="method-link">https://kevinpratamasetiawan.github.io/💻/getSaveData</p>
+                    </div>
+                </div>
+                <div id="get-setting">
+                    <div class="save-option-nav">
+                        <button id="saveData0" class="save-options" onclick="displayGetLocalStorage('all', 'setOne')">All</button>
+                        <button id="saveData1" class="save-options" onclick="displayGetLocalStorage('theme', 'setOne')">Theme and Fonts</button>
+                        <button id="saveData2" class="save-options" onclick="displayGetLocalStorage('todo', 'setOne')">To-do List Items</button>
+                        <button id="saveData3" class="save-options" onclick="displayGetLocalStorage('yard', 'setOne')">The Yard RSS</button>
+                        <button id="saveData4" class="save-options" onclick="displayGetLocalStorage('premium', 'setOne')">Premium RSS</button>
+                        <button id="saveData5" class="save-options" onclick="displayGetLocalStorage('advice', 'setOne')">Advice Show RSS</button>
+                        <button id="saveData6" class="save-options" onclick="displayGetLocalStorage('history', 'setOne')">MP3 Play History</button>
+                        <button id="saveData7" class="save-options" onclick="displayGetLocalStorage('setting', 'setOne')">MP3 Setting</button>
+                    </div>
+                    <div class="save-display-area">
+                        <div>
+                            <h3>Output</h3>
+                            <a href="#" id="save-copy"><i class="fa-solid fa-copy"></i> Copy</a>
+                        </div>
+                        <pre id="save-display" class="save-display"></pre>
+                        <a href="#saves-popover-title" class="up-btn"><i class="fa-solid fa-angles-up"></i></a>
+                    </div>
+                </div>
+                <div id="put-setting" style="display: none;">
+                    <div>
+                        <h3>Input</h3>
+                        <a href="#" id="apply-save"><i class="fa-solid fa-floppy-disk"></i> Save Data</a>
+                    </div>
+                    <input type="text" id="input-box" contenteditable="true" placeholder="Paste Your Save Data Here...">
+                    <pre id="input-display-box"></pre>
+                </div>
+                <div id="del-setting" style="display: none;">
+                    <div class="save-option-nav">
+                        <button id="saveData100" class="save-options" onclick="displayGetLocalStorage('all', 'setTwo')">All</button>
+                        <button id="saveData101" class="save-options" onclick="displayGetLocalStorage('theme', 'setTwo')">Theme and Fonts</button>
+                        <button id="saveData102" class="save-options" onclick="displayGetLocalStorage('todo', 'setTwo')">To-do List Items</button>
+                        <button id="saveData103" class="save-options" onclick="displayGetLocalStorage('yard', 'setTwo')">The Yard RSS</button>
+                        <button id="saveData104" class="save-options" onclick="displayGetLocalStorage('premium', 'setTwo')">Premium RSS</button>
+                        <button id="saveData105" class="save-options" onclick="displayGetLocalStorage('advice', 'setTwo')">Advice Show RSS</button>
+                        <button id="saveData106" class="save-options" onclick="displayGetLocalStorage('history', 'setTwo')">MP3 Play History</button>
+                        <button id="saveData107" class="save-options" onclick="displayGetLocalStorage('setting', 'setTwo')">MP3 Setting</button>
+                    </div>
+                    <div class="save-display-area">
+                        <div>
+                            <h3>Output</h3>
+                            <a href="#" id="del-save"><i class="fa-regular fa-trash-can"></i> Delete</a>
+                        </div>
+                        <pre id="del-display" class="save-display"></pre>
+                        <a href="#saves-popover-title" class="up-btn"><i class="fa-solid fa-angles-up"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="todo-list">
+            <h4>To-do List</h4>
+            <div class="todo-clock">
+                <!-- <span>|</span> -->
+                <div id="todo-time">
+                    <p id="time-digit"></p>
+                    <p id="time-ampm"></p>
+                </div>
+                <span>-</span>
+                <span id="clock-lang">EN</span>
+                <span>-</span>
+                <div id="todo-date">
+                    <p id="date-day"></p>
+                    <p id="date-digit"></p>
+                </div>
+                <!-- <span>|</span> -->
+            </div>
+            <div class="add-todo-area">
+                <input type="text" id="new-item" placeholder="Add a new task...">
+                <i class="fa-solid fa-plus fa-lg" id="add-item-btn"></i>
+            </div>
+            <div class="todo-listing">
+                <span class="todo-ratio-container">
+                    <span id="schedule-ratio" class="ratio-item"><p>0%</p></span>
+                    <span id="priority-ratio" class="ratio-item"><p>0%</p></span>
+                    <span id="task-ratio" class="ratio-item"><p>0%</p></span>
+                    <span id="complete-ratio" class="ratio-item"><p>0%</p></span>
+                </span>
+                <details class="todo-list-toggles">
+                    <summary>    
+                        <h4>
+                            <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
+                            <i class="fa-solid fa-angles-right"></i>
+                            <i class="folder-color-code-0 fa-regular fa-folder-open"></i>
+                            <i class="folder-color-code-0 fa-solid fa-folder"></i>
+                            Schedule
+                            <div class="color-code color-code-0"></div>
+                        </h4>
+                        <span id="schedule-display-num">0</span>
+                    </summary>
+                    <ul id="todo-schedule" class="todo-lists"></ul>
+                </details>
+                <details class="todo-list-toggles">
+                    <summary>    
+                        <h4>
+                            <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
+                            <i class="fa-solid fa-angles-right"></i>
+                            <i class="folder-color-code-1 fa-regular fa-folder-open"></i>
+                            <i class="folder-color-code-1 fa-solid fa-folder"></i>
+                            Priority
+                            <div class="color-code color-code-1"></div>
+                        </h4>
+                        <span id="priority-display-num">0</span>
+                    </summary>
+                    <ul id="todo-priority" class="todo-lists"></ul>
+                </details>
+                <details class="todo-list-toggles">
+                    <summary>    
+                        <h4>
+                            <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
+                            <i class="fa-solid fa-angles-right"></i>
+                            <i class="folder-color-code-2 fa-regular fa-folder-open"></i>
+                            <i class="folder-color-code-2 fa-solid fa-folder"></i>
+                            Task
+                            <div class="color-code color-code-2"></div>
+                        </h4>
+                        <span id="items-display-num">0</span>
+                    </summary>    
+                    <ul id="todo-items" class="todo-lists"></ul>
+                </details>
+                <details class="todo-list-toggles">
+                    <summary>    
+                        <h4>
+                            <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
+                            <i class="fa-solid fa-angles-right"></i>
+                            <i class="folder-color-code-3 fa-regular fa-folder-open"></i>
+                            <i class="folder-color-code-3 fa-solid fa-folder"></i>
+                            Completed
+                            <div class="color-code color-code-3"></div>
+                        </h4>
+                        <span id="finish-display-num">0</span>
+                    </summary>    
+                    <ul id="todo-finish" class="todo-lists"></ul>
+                </details>
+                <details class="todo-list-toggles">
+                    <summary>    
+                        <h4>
+                            <!-- <i class="fa-solid fa-turn-up fa-rotate-90 fa-lg"></i> -->
+                            <i class="fa-solid fa-angles-right"></i>
+                            <i class="folder-color-code-3 fa-regular fa-folder-open"></i>
+                            <i class="folder-color-code-3 fa-solid fa-folder"></i>
+                            How to basic
+                        </h4>
+                    </summary>    
+                    <ul id="todo-tutor" class="todo-lists">
+                        <li class="todo-item">
+                            <div class="todo-summary">
+                                <p class="todo-title">Make Schedule item</p>
+                            </div>
+                            <div class="todo-detail" style="display: none;">
+                                <div class="todo-description-container">
+                                    <span>
+                                        <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i>
+                                    </span>
+                                    <ul class="todo-description">
+                                        <li>To make schedule item, use <code class="language-plaintext highlighter-rouge">[<sup>*</sup>any]</code> to make any kind of schedule item label.</li>
+                                        <li><hr></li>
+                                        <li>Here some pre-established label that commonly used:</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">[S]</code>: for <code class="language-plaintext highlighter-rouge">Scheduled</code> schedule item.</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">[D]</code>: for <code class="language-plaintext highlighter-rouge">Daily</code> schedule item.</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">[W]</code>: for <code class="language-plaintext highlighter-rouge">Weekly</code> schedule item.</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">[A]</code>: for <code class="language-plaintext highlighter-rouge">Assignment</code> schedule item.</li>
+<li>
+                                        </li>
+<li><hr></li>
+                                        <li>Additionally there is added label after the main label to give more context, like:</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">-T]</code>: for <code class="language-plaintext highlighter-rouge">Today</code> schedule item that has a day name that same with current date day.</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">-TDY]</code>: for <code class="language-plaintext highlighter-rouge">Today Date</code> schedule item that has a date that same with current date.</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">-TMW]</code>: for <code class="language-plaintext highlighter-rouge">Tomorrow</code> schedule item that has a date that next with current date.</li>
+                                        <li><hr></li>
+                                        <li>To have context label you need to add either day name, date in <code class="language-plaintext highlighter-rouge">dd:mm:yy</code> format, or both on title part.</li>
+                                    </ul>
+                                </div>
+                                <span class="todo-id">T-001</span>
+                            </div>
+                        </li>
+                        <li class="todo-item">
+                            <div class="todo-summary">
+                                <p class="todo-title">Make description</p>
+                            </div>
+                            <div class="todo-detail" style="display: none;">
+                                <div class="todo-description-container">
+                                    <span>
+                                        <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i>
+                                    </span>
+                                    <ul class="todo-description">
+                                        <li>To make description, use <code class="language-plaintext highlighter-rouge">=&gt;</code> to separate text between title and description part of the item.</li>
+                                    </ul>
+                                </div>
+                                <span class="todo-id">T-002</span>
+                            </div>
+                        </li>
+                        <li class="todo-item">
+                            <div class="todo-summary">
+                                <p class="todo-title">List style 1 | <i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i> &amp; <i class="fa-solid fa-plus todo-list-dash todo-list-indent-three"></i></p>
+                            </div>
+                            <div class="todo-detail" style="display: none;">
+                                <div class="todo-description-container">
+                                    <span>
+                                        <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i>
+                                    </span>
+                                    <ul class="todo-description">
+                                        <li>To make list style 1, use <code class="language-plaintext highlighter-rouge">-.</code>:</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">-.</code>: for <code class="language-plaintext highlighter-rouge">-</code> list level 1.</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-two"></i><code class="language-plaintext highlighter-rouge">-..</code>: for <code class="language-plaintext highlighter-rouge">-</code> list level 2.</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-three"></i><code class="language-plaintext highlighter-rouge">-...</code>: for <code class="language-plaintext highlighter-rouge">-</code> list level 3.</li>
+                                        <li>
+<i class="fa-solid fa-plus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">+.</code>: for <code class="language-plaintext highlighter-rouge">+</code> list level 1.</li>
+                                        <li>
+<i class="fa-solid fa-plus todo-list-dash todo-list-indent-two"></i><code class="language-plaintext highlighter-rouge">+..</code>: for <code class="language-plaintext highlighter-rouge">+</code> list level 2.</li>
+                                        <li>
+<i class="fa-solid fa-plus todo-list-dash todo-list-indent-three"></i><code class="language-plaintext highlighter-rouge">+...</code>: for <code class="language-plaintext highlighter-rouge">+</code> list level 3.</li>
+                                    </ul>
+                                </div>
+                                <span class="todo-id">T-003</span>
+                            </div>
+                        </li>
+                        <li class="todo-item">
+                            <div class="todo-summary">
+                                <p class="todo-title">List style 2 | <i class="fa-regular fa-circle todo-list-circle todo-list-indent-one"></i> &amp; <i class="fa-solid fa-circle-xmark todo-list-circle todo-list-indent-three"></i></p>
+                            </div>
+                            <div class="todo-detail" style="display: none;">
+                                <div class="todo-description-container">
+                                    <span>
+                                        <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i>
+                                    </span>
+                                    <ul class="todo-description">
+                                        <li>To make list style 2, use <code class="language-plaintext highlighter-rouge">*.</code>:</li>
+                                        <li>
+<i class="fa-regular fa-circle todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">*.</code>: for <code class="language-plaintext highlighter-rouge">*</code> list level 1.</li>
+                                        <li>
+<i class="fa-regular fa-circle todo-list-dash todo-list-indent-two"></i><code class="language-plaintext highlighter-rouge">*..</code>: for <code class="language-plaintext highlighter-rouge">*</code> list level 2.</li>
+                                        <li>
+<i class="fa-regular fa-circle todo-list-dash todo-list-indent-three"></i><code class="language-plaintext highlighter-rouge">*...</code>: for <code class="language-plaintext highlighter-rouge">*</code> list level 3.</li>
+                                        <li>
+<i class="fa-solid fa-circle-xmark todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">@.</code>: for <code class="language-plaintext highlighter-rouge">@</code> list level 1.</li>
+                                        <li>
+<i class="fa-solid fa-circle-xmark todo-list-dash todo-list-indent-two"></i><code class="language-plaintext highlighter-rouge">@..</code>: for <code class="language-plaintext highlighter-rouge">@</code> list level 2.</li>
+                                        <li>
+<i class="fa-solid fa-circle-xmark todo-list-dash todo-list-indent-three"></i><code class="language-plaintext highlighter-rouge">@...</code>: for <code class="language-plaintext highlighter-rouge">@</code> list level 3.</li>
+                                    </ul>
+                                </div>
+                                <span class="todo-id">T-004</span>
+                            </div>
+                        </li>
+                        <li class="todo-item">
+                            <div class="todo-summary">
+                                <p class="todo-title">List style 3 | <i class="fa-regular fa-square todo-list-dash todo-list-indent-one"></i> &amp; <i class="fa-solid fa-square-check todo-list-dash todo-list-indent-three"></i></p>
+                            </div>
+                            <div class="todo-detail" style="display: none;">
+                                <div class="todo-description-container">
+                                    <span>
+                                        <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i>
+                                    </span>
+                                    <ul class="todo-description">
+                                        <li>To make list style 3, use <code class="language-plaintext highlighter-rouge">=.</code>:</li>
+                                        <li>
+<i class="fa-regular fa-square todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">=.</code>: for <code class="language-plaintext highlighter-rouge">=</code> list level 1.</li>
+                                        <li>
+<i class="fa-regular fa-square todo-list-dash todo-list-indent-two"></i><code class="language-plaintext highlighter-rouge">=..</code>: for <code class="language-plaintext highlighter-rouge">=</code> list level 2.</li>
+                                        <li>
+<i class="fa-regular fa-square todo-list-dash todo-list-indent-three"></i><code class="language-plaintext highlighter-rouge">=...</code>: for <code class="language-plaintext highlighter-rouge">=</code> list level 3.</li>
+                                        <li>
+<i class="fa-solid fa-square-check todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">%.</code>: for <code class="language-plaintext highlighter-rouge">%</code> list level 1.</li>
+                                        <li>
+<i class="fa-solid fa-square-check todo-list-dash todo-list-indent-two"></i><code class="language-plaintext highlighter-rouge">%..</code>: for <code class="language-plaintext highlighter-rouge">%</code> list level 2.</li>
+                                        <li>
+<i class="fa-solid fa-square-check todo-list-dash todo-list-indent-three"></i><code class="language-plaintext highlighter-rouge">%...</code>: for <code class="language-plaintext highlighter-rouge">%</code> list level 3.</li>
+                                    </ul>
+                                </div>
+                                <span class="todo-id">T-005</span>
+                            </div>
+                        </li>
+                        <li class="todo-item">
+                            <div class="todo-summary">
+                                <p class="todo-title">How to <code class="language-plaintext highlighter-rouge">enter</code></p>
+                            </div>
+                            <div class="todo-detail" style="display: none;">
+                                <div class="todo-description-container">
+                                    <span>
+                                        <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i>
+                                    </span>
+                                    <ul class="todo-description">
+                                        <li>To <code class="language-plaintext highlighter-rouge">enter</code> at the end of sentence, use <code class="language-plaintext highlighter-rouge">..</code> or <code class="language-plaintext highlighter-rouge">:.</code>:</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">..</code>: for <code class="language-plaintext highlighter-rouge">.</code> followed by <code class="language-plaintext highlighter-rouge">enter</code>.</li>
+                                        <li>
+<i class="fa-solid fa-minus todo-list-dash todo-list-indent-one"></i><code class="language-plaintext highlighter-rouge">:.</code>: for <code class="language-plaintext highlighter-rouge">:</code> followed by <code class="language-plaintext highlighter-rouge">enter</code>.</li>
+                                    </ul>
+                                </div>
+                                <span class="todo-id">T-006</span>
+                            </div>
+                        </li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+        <div class="music-list" id="mp3-section">
+            <h4>Mp3 Player</h4>
+            <div class="mp3-nav">
+                <div class="tab-item">
+                    <i class="fa-solid fa-record-vinyl fa-lg" id="ide-btn" style="display: none;"></i>
+                    <p id="ide-label">Turntable</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-list fa-lg" id="queue-btn"></i>
+                    <p id="queue-label" style="display: none;">Queue</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-clock-rotate-left fa-lg" id="history-btn"></i>
+                    <p id="history-label" style="display: none;">History</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-sliders fa-lg" id="settings-btn"></i>
+                    <p id="settings-label" style="display: none;">Settings</p>
+                </div>
+            </div>
+            <ul id="queue-tab" style="display: none;"></ul>
+            <div id="history-tab" style="display: none;">
+                <details class="history-list-toggles">
+                    <summary>
+                        <p class="history-list-title"><span>The Yard</span>  last played <span></span> <span id="yard-display-num">0 <span></span> </span></p>
+                    </summary>
+                    <ul id="yard-history-list" class="history-list">
+                        <li>none</li>
+                    </ul>
+                </details>
+                <details class="history-list-toggles">
+                    <summary>
+                        <p class="history-list-title"><span>The Yard Premium</span>  last played <span></span> <span id="premium-display-num">0 <span></span> </span></p>
+                    </summary>
+                    <ul id="premium-history-list" class="history-list">
+                        <li>none</li>
+                    </ul>
+                </details>
+                <details class="history-list-toggles">
+                    <summary>
+                        <p class="history-list-title"><span>The Advice Show</span>  last played <span></span> <span id="advice-display-num">0 <span></span> </span></p>
+                    </summary>
+                    <ul id="advice-history-list" class="history-list">
+                        <li>none</li>
+                    </ul>
+                </details>
+                <details class="history-list-toggles">
+                    <summary>
+                        <p class="history-list-title"><span>style.css</span>  last played <span></span> <span id="style-display-num">0 <span></span> </span></p>
+                    </summary>
+                    <ul id="style-history-list" class="history-list">
+                        <li>none</li>
+                    </ul>
+                </details>
+                <details class="history-list-toggles">
+                    <summary>
+                        <p class="history-list-title"><span>thePopOut</span>  last played <span></span> <span id="popout-display-num">0 <span></span> </span></p>
+                    </summary>
+                    <ul id="popout-history-list" class="history-list">
+                        <li>none</li>
+                    </ul>
+                </details>
+            </div>
+            <div id="mp3-player">
+                <div class="mp3-cover">
+                    <div class="hover-full-img" id="maximize-cover">
+                        <svg data-v-9ba4cb7e="" data-v-2763eefc="" xmlns="http://www.w3.org/2000/svg" width="70%" height="70%" fill="none" viewbox="0 0 24 24" class="icon xLarge" style="color: rgb(255, 255, 255);"><path fill="currentColor" d="m9.5 13.09 1.41 1.41-4.5 4.5H10v2H3v-7h2v3.59zm1.41-3.59L9.5 10.91 5 6.41V10H3V3h7v2H6.41zm3.59 3.59 4.5 4.5V14h2v7h-7v-2h3.59l-4.5-4.5zM13.09 9.5l4.5-4.5H14V3h7v7h-2V6.41l-4.5 4.5z"></path></svg>
+                    </div>
+                    <img src="../assets/images/mp3-cover/mp3-cover-3001.gif" alt="" id="mp3-cover-img" class="mp3-cover-img">
+                </div>
+                <div class="mp3-title">
+                    <h3 id="audioTitle">No Audio Played</h3>
+                </div>
+                <div class="duration-slider">
+                    <p id="startDuration" class="start-slider-p">00:00</p>
+                    <div class="slider-container">
+                        <input type="range" name="mp3-duration" id="mp3-duration" class="mp3-slider" min="0" max="100" value="0">
+                    </div>
+                    <p id="endDuration" class="end-slider-p">00:00</p>
+                </div>
+                <div class="duration-slider" id="volume-slider-container" style="display: none;">
+                    <p id="plus-volume" class="start-slider-p">+ 69%</p>
+                    <div class="slider-container">
+                        <input type="range" id="mp3-volume-control" class="mp3-slider" min="0" max="100" value="69" step="5">
+                    </div>
+                    <p id="minus-volume" class="end-slider-p">- 31%</p>
+                </div>
+                <div class="mp3-control">
+                    <i class="fa-solid fa-arrow-down-a-z fa-xl"></i>
+                    <i class="fa-solid fa-arrow-down-z-a fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-repeat fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-shuffle fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-backward-step fa-xl"></i>
+                    <i class="fa-solid fa-backward fa-xl"></i>
+                    <i class="fa-solid fa-circle-play fa-xl"></i>
+                    <i class="fa-solid fa-circle-pause fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-forward fa-xl"></i>
+                    <i class="fa-solid fa-forward-step fa-xl"></i>
+                    <i class="fa-solid fa-volume-xmark fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-volume-off fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-volume-low fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-volume-high fa-xl" style="display: none;"></i>
+                    <i class="fa-solid fa-ear-listen fa-xl"></i>
+                </div>
+            </div>
+            <div id="settings-tab" style="display: none;">
+                <p class="setting-item">Audio Speed</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-gauge-high fa-flip-horizontal fa-lg" id="fa-gauge-low" style="display: none;"></i>
+                        <i class="fa-solid fa-gauge fa-lg" id="fa-gauge-mid"></i>
+                        <i class="fa-solid fa-gauge-high fa-lg" id="fa-gauge-high" style="display: none;"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="audio-speed-control" min="1" max="20" value="10" step="1">
+                    </div>
+                    <p class="end-slider-p" id="audio-speed-value-display">x1</p>
+                </div>
+                <p class="setting-item">Forward/Rewind Rate</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-backward fa-lg"></i>
+                        <i class="fa-solid fa-forward fa-lg"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="fr-rate-control" min="1" max="12" value="3" step="1">
+                    </div>
+                    <p class="end-slider-p" id="fr-rate-value-display">15s</p>
+                </div>
+                <p class="setting-item">Cover Change Rate</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-images fa-lg"></i>
+                        <i class="fa-solid fa-stopwatch fa-lg"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="cover-rate-control" min="1" max="10" value="3" step="1">
+                    </div>
+                    <p class="end-slider-p" id="cover-rate-value-display">30s</p>
+                </div>
+                <p class="setting-item">Cover Doctype</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-file-image fa-lg"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="doctype-control" min="1" max="4" value="1" step="1">
+                    </div>
+                    <p class="end-slider-p" id="doctype-value-display">All</p>
+                </div>
+                <p class="setting-item">History Item per Playlist</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-timeline fa-lg"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="history-item-control" min="5" max="30" value="5" step="5">
+                    </div>
+                    <p class="end-slider-p" id="history-value-display">5</p>
+                </div>
+                <p class="setting-item">History Count Format</p>
+                <div class="duration-slider">
+                    <p class="start-slider-p">
+                        <i class="fa-solid fa-language fa-lg"></i>
+                    </p>
+                    <div class="slider-container">
+                        <input type="range" class="mp3-slider" id="history-format-control" min="1" max="3" value="1" step="1">
+                    </div>
+                    <p class="end-slider-p" id="history-count-value-display">EN</p>
+                </div>
+            </div>
+        </div>
+        <div class="rss-feed">
+            <h4>Playlist</h4>
+            <div class="tabs-nav">
+                <div class="tab-item">
+                    <i class="fa-solid fa-1 close-tab tab-1 tab-btn" id="tab-1-btn" style="display:none;"></i>
+                    <p id="tab-1-tag" class="close-tab tab-1">XML Link</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-2 close-tab tab-2 tab-btn" id="tab-2-btn"></i>
+                    <p id="tab-2-tag" style="display:none;" class="close-tab tab-2">The Yard</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-3 close-tab tab-3 tab-btn" id="tab-3-btn"></i>
+                    <p id="tab-3-tag" style="display:none;" class="close-tab tab-3">Premium</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-4 close-tab tab-4 tab-btn" id="tab-4-btn"></i>
+                    <p id="tab-4-tag" style="display:none;" class="close-tab tab-4">Advice Show</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-5 close-tab tab-5 tab-btn" id="tab-5-btn"></i>
+                    <p id="tab-5-tag" style="display:none;" class="close-tab tab-5">style.css</p>
+                </div>
+                <div class="tab-item">
+                    <i class="fa-solid fa-6 close-tab tab-6 tab-btn" id="tab-6-btn"></i>
+                    <p id="tab-6-tag" style="display:none;" class="close-tab tab-6">thePopOut</p>
+                </div>
+            </div>
+            <ul id="xml-tab" class="close-tab tab-1">
+                <li>
+                    <a href="https://feeds.redcircle.com/6d74984c-7d4b-450a-b3f2-0c33ac972eac" target="_blank" class="none" rel="noopener noreferrer">
+                        <i class="fa-solid fa-link" id="link-1-btn"></i>
+                        <i class="fa-solid fa-link fa-bounce" id="link-1-bounce" style="display:none;"></i>
+                    </a>
+                    <span>The Yard RSS Feed Link</span>
+                    <i class="fa-solid fa-clipboard fa-lg" id="copy-1-btn"></i>
+                    <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-1-bounce" style="display:none;"></i>
+                </li>
+                <li>
+                    <a href="https://mogulmoves.rodeo/rss/yard" target="_blank" class="none" rel="noopener noreferrer">
+                        <i class="fa-solid fa-link" id="link-2-btn"></i>
+                        <i class="fa-solid fa-link fa-bounce" id="link-2-bounce" style="display:none;"></i>
+                    </a>
+                    <span>The Yard Premium RSS Feed Link</span>
+                    <i class="fa-solid fa-clipboard fa-lg" id="copy-2-btn"></i>
+                    <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-2-bounce" style="display:none;"></i>
+                </li>
+                <li>
+                    <a href="https://mogulmoves.rodeo/rss/yardadvice" target="_blank" class="none" rel="noopener noreferrer">
+                        <i class="fa-solid fa-link" id="link-3-btn"></i>
+                        <i class="fa-solid fa-link fa-bounce" id="link-3-bounce" style="display:none;"></i>
+                    </a>
+                    <span>The Advice Show RSS Feed Link</span>
+                    <i class="fa-solid fa-clipboard fa-lg" id="copy-3-btn"></i>
+                    <i class="fa-solid fa-clipboard fa-bounce fa-lg" id="copy-3-bounce" style="display:none;"></i>
+                </li>
+            </ul>
+            <ul id="yard-tab" style="display:none;" class="close-tab tab-2">
+                <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
+                    <label for="fileInputYard" class="custom-file-upload">
+                        <i class="fa-solid fa-file-arrow-up fa-lg"></i>
+                    </label>
+                    <input type="file" id="fileInputYard" accept=".xml" style="display:none;">
+                    <label for="fileClearYard" class="custom-file-upload">
+                        <i class="fa-solid fa-dumpster fa-lg" id="fileClearYard"></i>
+                    </label>
+                </li>
+            </ul>
+            <ul id="premium-tab" style="display:none;" class="close-tab tab-3">
+                <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
+                    <label for="fileInputPremium" class="custom-file-upload">
+                        <i class="fa-solid fa-file-arrow-up fa-lg"></i>
+                    </label>
+                    <input type="file" id="fileInputPremium" accept=".xml" style="display:none;">
+                    <label for="fileClearPremium" class="custom-file-upload">
+                        <i class="fa-solid fa-dumpster fa-lg" id="fileClearPremium"></i>
+                    </label>
+                </li>
+            </ul>
+            <ul id="advice-tab" style="display:none;" class="close-tab tab-4">
+                <li style="padding: 0 10px; border: none; gap: 10px;" class="io-item">
+                    <label for="fileInputAdvice" class="custom-file-upload">
+                        <i class="fa-solid fa-file-arrow-up fa-lg"></i>
+                    </label>
+                    <input type="file" id="fileInputAdvice" accept=".xml" style="display:none;">
+                    <label for="fileClearAdvice" class="custom-file-upload">
+                        <i class="fa-solid fa-dumpster fa-lg" id="fileClearAdvice"></i>
+                    </label>
+                </li>
+            </ul>
+
+            
+            <ul id="style-tab" style="display:none;" class="close-tab tab-5">
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Adonis Interlude.mp3" data-ticketnum="0" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Adonis Interlude</h3>
+                        <p>J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#001</p>
+                        <p>01:36</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/16.mp3" data-ticketnum="1" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>16</h3>
+                        <p>Baby Keem</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#002</p>
+                        <p>03:14</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/a m a r i.mp3" data-ticketnum="2" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>a m a r i</h3>
+                        <p>J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#003</p>
+                        <p>02:34</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/A.D.H.D.mp3" data-ticketnum="3" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>A.D.H.D</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#004</p>
+                        <p>03:35</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/All My Life.mp3" data-ticketnum="4" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>All My Life</h3>
+                        <p>Lil Durk, J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#005</p>
+                        <p>04:04</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Alright.mp3" data-ticketnum="5" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Alright</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#006</p>
+                        <p>03:07</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/AMERICA HAS A PROBLEM.mp3" data-ticketnum="6" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>AMERICA HAS A PROBLEM</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#007</p>
+                        <p>04:28</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Annihilate.mp3" data-ticketnum="7" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Annihilate</h3>
+                        <p>Lil Wayne, Offset</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#008</p>
+                        <p>02:28</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/a lot.mp3" data-ticketnum="8" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>a lot</h3>
+                        <p>21 Savage, J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#009</p>
+                        <p>06:05</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Backseat Freestyle.mp3" data-ticketnum="9" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Backseat Freestyle</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#010</p>
+                        <p>03:32</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Bad Blood.mp3" data-ticketnum="10" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Bad Blood</h3>
+                        <p>Tylor Swift, Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#011</p>
+                        <p>03:19</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Better Now.mp3" data-ticketnum="11" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Better Now</h3>
+                        <p>Post Malone</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#012</p>
+                        <p>03:51</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Big Shot.mp3" data-ticketnum="12" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Big Shot</h3>
+                        <p>Kendrick Lamar, Travis Scott</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#013</p>
+                        <p>03:42</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Bitch Don't Kill My Vibe.mp3" data-ticketnum="13" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Bitch Don't Kill My Vibe</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#014</p>
+                        <p>05:04</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Black Friday.mp3" data-ticketnum="14" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Black Friday</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#015</p>
+                        <p>03:42</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Bless Up.mp3" data-ticketnum="15" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Bless Up</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#016</p>
+                        <p>02:18</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Brand New.mp3" data-ticketnum="16" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Brand New</h3>
+                        <p>Lil Wayne</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#017</p>
+                        <p>01:54</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Calling.mp3" data-ticketnum="17" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Calling</h3>
+                        <p>Metro Boomin, Swae Lee, NAV, A Boogie Wit da Hoodie</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#018</p>
+                        <p>03:39</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Cash In Cash Out.mp3" data-ticketnum="18" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Cash In Cash Out</h3>
+                        <p>21 Savage, Tyler, The Creator</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#019</p>
+                        <p>03:36</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Control.mp3" data-ticketnum="19" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Control</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#020</p>
+                        <p>03:07</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Count Me Out.mp3" data-ticketnum="20" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Count Me Out</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#021</p>
+                        <p>04:43</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Dance Now.mp3" data-ticketnum="21" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Dance Now</h3>
+                        <p>JID</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#022</p>
+                        <p>04:21</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Die Hard.mp3" data-ticketnum="22" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Die Hard</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#023</p>
+                        <p>03:59</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Diet Coke.mp3" data-ticketnum="23" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Diet Coke</h3>
+                        <p>Pusha T</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#024</p>
+                        <p>02:59</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/DNA.mp3" data-ticketnum="24" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>DNA.</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#025</p>
+                        <p>03:08</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/DOGTOOTH.mp3" data-ticketnum="25" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>DOGTOOTH</h3>
+                        <p>Tyler, The Creator</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#026</p>
+                        <p>02:56</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Don't Do It.mp3" data-ticketnum="26" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Don't do it</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#027</p>
+                        <p>04:30</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Down Bad.mp3" data-ticketnum="27" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Down Bad</h3>
+                        <p>Dreamville/JID/Bas/J. Cole/EARTHGANG/Young Nudy</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#028</p>
+                        <p>02:49</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/dreamy night.mp3" data-ticketnum="28" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>dreamy night</h3>
+                        <p>lilypichu</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#029</p>
+                        <p>04:06</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/EARFQUAKE.mp3" data-ticketnum="29" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>EARFQUAKE</h3>
+                        <p>Tyler, The Creator</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#030</p>
+                        <p>04:26</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/ELEMENT.mp3" data-ticketnum="30" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>ELEMENT.</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#031</p>
+                        <p>03:29</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/FAMILY MATTERS.mp3" data-ticketnum="31" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>FAMILY MATTERS</h3>
+                        <p>Drake</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#032</p>
+                        <p>07:37</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Family ties.mp3" data-ticketnum="32" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Family ties</h3>
+                        <p>Kendrick Lamar, Baby Keem</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#033</p>
+                        <p>04:19</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Father Stretch My Hands Pt. 1.mp3" data-ticketnum="33" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Father Stretch My Hands Pt.1</h3>
+                        <p>Kanye West</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#034</p>
+                        <p>02:16</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/First Person Shooter.mp3" data-ticketnum="34" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>First Person Shooter</h3>
+                        <p>Drake, J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#035</p>
+                        <p>04:07</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Follow God.mp3" data-ticketnum="35" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Follow God</h3>
+                        <p>Kanye West</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#036</p>
+                        <p>01:44</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Fuck Your Ethnicity.mp3" data-ticketnum="36" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>F*ck Your Ethnicity</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#037</p>
+                        <p>03:44</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Fuckin' Problems.mp3" data-ticketnum="37" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Fuckin' Problems</h3>
+                        <p>Kendrick Lamar, A$AP ROCKY, Drake</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#038</p>
+                        <p>03:52</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Good News.mp3" data-ticketnum="38" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Good News</h3>
+                        <p>Mac Miller</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#039</p>
+                        <p>06:37</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/HEAVEN TO ME.mp3" data-ticketnum="39" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>HEAVEN TO ME</h3>
+                        <p>Tyler, The Creator</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#040</p>
+                        <p>03:58</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Hol' Up.mp3" data-ticketnum="40" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Hol' Up</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#041</p>
+                        <p>02:53</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/hooligan.mp3" data-ticketnum="41" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>hooligan</h3>
+                        <p>Baby Keem</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#042</p>
+                        <p>02:39</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/How Much A Dollar Cost.mp3" data-ticketnum="42" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>How Much A Dollar Cost</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#043</p>
+                        <p>04:21</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/How To Love.mp3" data-ticketnum="43" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>How To Love</h3>
+                        <p>Lil Wayne</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#044</p>
+                        <p>04:00</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/HUMBLE.mp3" data-ticketnum="44" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>HUMBLE.</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#045</p>
+                        <p>03:03</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/i.mp3" data-ticketnum="45" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>i</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#046</p>
+                        <p>04:42</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/I Like You (A Happier Song).mp3" data-ticketnum="46" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>I Like You (A Happier Song)</h3>
+                        <p>Post Malone</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#047</p>
+                        <p>03:13</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/I'm Better.mp3" data-ticketnum="47" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>I’m Better</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#048</p>
+                        <p>04:11</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/issues.mp3" data-ticketnum="48" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>issues</h3>
+                        <p>Baby Keem</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#049</p>
+                        <p>03:43</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/King Kunta.mp3" data-ticketnum="49" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>King Kunta</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#050</p>
+                        <p>03:57</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/3005.mp3" data-ticketnum="50" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>3005</h3>
+                        <p>Childish Gambino</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#051</p>
+                        <p>04:15</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/King's Dead.mp3" data-ticketnum="51" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>King's Dead</h3>
+                        <p>Kendrick Lamar, Jay Rock, Future</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#052</p>
+                        <p>04:23</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/LA Leakers 1.1.mp3" data-ticketnum="52" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>LA Leakers 1.1</h3>
+                        <p>J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#053</p>
+                        <p>01:04</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/LA Leakers 1.2.mp3" data-ticketnum="53" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>LA Leakers 1.2</h3>
+                        <p>J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#054</p>
+                        <p>01:50</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Ladders.mp3" data-ticketnum="54" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Ladders</h3>
+                        <p>Mac Miller</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#055</p>
+                        <p>04:47</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/LOYALTY.mp3" data-ticketnum="55" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>LOYALTY.</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#056</p>
+                        <p>03:47</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/M.a.a.D. city.mp3" data-ticketnum="56" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>M.a.a.D. city</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#057</p>
+                        <p>05:51</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Mask Off.mp3" data-ticketnum="57" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Mask Off</h3>
+                        <p>Kendrick Lamar, Future</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#058</p>
+                        <p>04:19</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Mean Street.mp3" data-ticketnum="58" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Mean Street</h3>
+                        <p>DEMONDICE</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#059</p>
+                        <p>02:53</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Mona Lisa.mp3" data-ticketnum="59" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Mona Lisa</h3>
+                        <p>Lil Wayne, Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#060</p>
+                        <p>05:30</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Money Trees.mp3" data-ticketnum="60" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Money Trees</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#061</p>
+                        <p>06:57</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/N95.mp3" data-ticketnum="61" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>N95</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#062</p>
+                        <p>03:26</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/New Freezer.mp3" data-ticketnum="62" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>New Freezer</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#063</p>
+                        <p>03:11</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/no sense.mp3" data-ticketnum="63" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>no sense</h3>
+                        <p>Baby Keem</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#064</p>
+                        <p>03:03</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Nosetalgia.mp3" data-ticketnum="64" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Nosetalgia</h3>
+                        <p>Pusha T, Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#065</p>
+                        <p>03:48</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Only Need.mp3" data-ticketnum="65" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Only Need</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#066</p>
+                        <p>02:07</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Opps.mp3" data-ticketnum="66" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Opps</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#067</p>
+                        <p>03:01</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Paramedic!.mp3" data-ticketnum="67" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Paramedic!</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#068</p>
+                        <p>03:39</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Potato Salad.mp3" data-ticketnum="68" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Potato Salad</h3>
+                        <p>Tyler, The Creator</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#069</p>
+                        <p>03:02</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Praise The Lord (Da Shine).mp3" data-ticketnum="69" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Praise The Lord (Da Shine)</h3>
+                        <p>A$AP ROCKY</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#070</p>
+                        <p>03:46</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Pray For Me.mp3" data-ticketnum="70" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Pray For Me</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#071</p>
+                        <p>03:33</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/PRIDE.mp3" data-ticketnum="71" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>PRIDE.</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#072</p>
+                        <p>04:30</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Rich Spirit.mp3" data-ticketnum="72" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Rich Spirit</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#073</p>
+                        <p>03:22</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/RIOT (Rowdy Pipe'n).mp3" data-ticketnum="73" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>RIOT (Rowdy Pipe'n)</h3>
+                        <p>A$AP ROCKY</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#074</p>
+                        <p>03:50</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/rockstar.mp3" data-ticketnum="74" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>rockstar</h3>
+                        <p>Post Malone</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#075</p>
+                        <p>03:38</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Savior.mp3" data-ticketnum="75" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Savior</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#076</p>
+                        <p>03:44</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/SEE YOU AGAIN.mp3" data-ticketnum="76" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>SEE YOU AGAIN</h3>
+                        <p>Tyler, The Creator</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#077</p>
+                        <p>03:23</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Self Care.mp3" data-ticketnum="77" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Self Care</h3>
+                        <p>Mac Miller</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#078</p>
+                        <p>05:47</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/SICKO MODE.mp3" data-ticketnum="78" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>SICKO MODE</h3>
+                        <p>Travis Scott, Drake</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#079</p>
+                        <p>05:13</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Stay.mp3" data-ticketnum="79" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Stay</h3>
+                        <p>Mac Miller</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#080</p>
+                        <p>05:02</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Stick.mp3" data-ticketnum="80" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Stick</h3>
+                        <p>JID</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#081</p>
+                        <p>05:09</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Sunflower.mp3" data-ticketnum="81" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Sunflower</h3>
+                        <p>Post Malone</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#082</p>
+                        <p>02:42</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Surround Sound.mp3" data-ticketnum="82" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Surround Sound</h3>
+                        <p>JID</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#083</p>
+                        <p>04:32</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Swimming Pool.mp3" data-ticketnum="83" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Swimming Pool</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#084</p>
+                        <p>03:42</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/The Blacker The Berry.mp3" data-ticketnum="84" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>The Blacker The Berry</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#085</p>
+                        <p>05:28</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/The Heart part 5.mp3" data-ticketnum="85" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>The Heart part 5</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#086</p>
+                        <p>05:42</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/The Hillbillies.mp3" data-ticketnum="86" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>The Hillbillies</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#087</p>
+                        <p>03:34</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/The Story Of Adidon.mp3" data-ticketnum="87" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>The Story Of Adidon</h3>
+                        <p>Pusha T</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#088</p>
+                        <p>03:09</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/This is a Satire by Kendrick Lamar.mp3" data-ticketnum="88" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>This is a Satire by Kendrick Lamar</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#089</p>
+                        <p>06:14</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/TPAB.mp3" data-ticketnum="89" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>TPAB</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#090</p>
+                        <p>04:41</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Tribe.mp3" data-ticketnum="90" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Tribe</h3>
+                        <p>Bas</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#091</p>
+                        <p>03:59</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/untitled [8 - 2].mp3" data-ticketnum="91" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>untitled [8 - 2]</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#092</p>
+                        <p>04:38</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Vanity Slave.mp3" data-ticketnum="92" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Vanity Slave</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#093</p>
+                        <p>04:42</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Vegas.mp3" data-ticketnum="93" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Vegas</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#094</p>
+                        <p>01:35</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Vent.mp3" data-ticketnum="94" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Vent</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#095</p>
+                        <p>04:03</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/WHARF TALK.mp3" data-ticketnum="95" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>WHARF TALK</h3>
+                        <p>Tyler, The Creator</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#096</p>
+                        <p>03:39</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/What's Up Danger.mp3" data-ticketnum="96" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>What's Up Danger</h3>
+                        <p>Black Caviar, Blackway</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#097</p>
+                        <p>03:35</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Workin' Out.mp3" data-ticketnum="97" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Workin' Out</h3>
+                        <p>JID</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#098</p>
+                        <p>03:01</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Am I Dreaming.mp3" data-ticketnum="98" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Am I Dreaming</h3>
+                        <p>Metro Boomin/A$AP Rocky/Roisee</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#099</p>
+                        <p>04:16</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Under The Sun (with J. Cole &amp; Lute feat. DaBaby).mp3" data-ticketnum="99" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Under The Sun</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#100</p>
+                        <p>03:22</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/1985.mp3" data-ticketnum="100" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>1985</h3>
+                        <p>J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#101</p>
+                        <p>03:10</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Oklama Rich Spirit.mp3" data-ticketnum="101" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Oklama Rich Spirit</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#102</p>
+                        <p>03:02</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Medics.mp3" data-ticketnum="102" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Medics</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#103</p>
+                        <p>03:15</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Wow Freestyle.mp3" data-ticketnum="103" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Wow Freestyle</h3>
+                        <p>Kendrick Lamar, Jay Rock</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#104</p>
+                        <p>02:56</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/XXX.mp3" data-ticketnum="104" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>XXX.</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#105</p>
+                        <p>04:14</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Ric Flair Drip.mp3" data-ticketnum="105" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Ric Flair Drip</h3>
+                        <p>Offset</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#106</p>
+                        <p>02:52</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Kant Nobody.mp3" data-ticketnum="106" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Kant Nobody</h3>
+                        <p>Lil Wayne</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#107</p>
+                        <p>03:00</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/The London.mp3" data-ticketnum="107" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>The London</h3>
+                        <p>Travis Scott, J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#108</p>
+                        <p>03:20</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Ni__as In Paris.mp3" data-ticketnum="108" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Ni**as In Paris</h3>
+                        <p>Kanye West, Jay Z</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#109</p>
+                        <p>04:11</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/You're an Ace, Kid.mp3" data-ticketnum="109" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>You're an Ace, Kid</h3>
+                        <p>DEMONDICE</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#110</p>
+                        <p>03:42</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/wanting, getting, wanting.mp3" data-ticketnum="110" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>wanting, getting, wanting</h3>
+                        <p>DEMONDICE</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#111</p>
+                        <p>02:32</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/take the bait.mp3" data-ticketnum="111" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>take the bait</h3>
+                        <p>DEMONDICE</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#112</p>
+                        <p>03:46</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/dark hour.mp3" data-ticketnum="112" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>dark hour</h3>
+                        <p>DEMONDICE</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#113</p>
+                        <p>04:11</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/fake ass gold.mp3" data-ticketnum="113" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>fake ass gold</h3>
+                        <p>DEMONDICE</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#114</p>
+                        <p>03:30</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/end of a life.mp3" data-ticketnum="114" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>end of a life</h3>
+                        <p>Mori Calliope</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#115</p>
+                        <p>04:52</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Umeda Night Fever 19'.mp3" data-ticketnum="115" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Umeda Night Fever 19'</h3>
+                        <p>梅田サイファー</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#116</p>
+                        <p>06:02</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Travolta Costum.mp3" data-ticketnum="116" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Travolta Costum</h3>
+                        <p>梅田サイファー</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#117</p>
+                        <p>04:52</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Like That.mp3" data-ticketnum="117" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Like That</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#118</p>
+                        <p>04:28</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/7 Minute Drill.mp3" data-ticketnum="118" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>7 Minute Drill</h3>
+                        <p>J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#119</p>
+                        <p>03:32</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Push Ups.mp3" data-ticketnum="119" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Push Ups</h3>
+                        <p>Drake</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#120</p>
+                        <p>03:52</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/euphoria.mp3" data-ticketnum="120" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>euphoria</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#121</p>
+                        <p>06:24</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/6_16 in LA.mp3" data-ticketnum="121" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>6:16 in LA</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#122</p>
+                        <p>03:45</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/life goes on.mp3" data-ticketnum="122" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>life goes on</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#123</p>
+                        <p>01:17</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Not Like Us.mp3" data-ticketnum="123" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Not Like Us</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#124</p>
+                        <p>04:34</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/watch the party die.mp3" data-ticketnum="124" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>watch the party die</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#125</p>
+                        <p>05:05</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Tobey.mp3" data-ticketnum="125" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Tobey</h3>
+                        <p>Eminem, Baby Tron, Big Sean</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#126</p>
+                        <p>04:44</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Migos Freestyle.mp3" data-ticketnum="126" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Migos Freestyle</h3>
+                        <p>Migos, Takeoff, Quavo, Offset</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#127</p>
+                        <p>01:55</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/playlist1/Dior.mp3" data-ticketnum="127" data-tabtype="style-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+                <div class="mp3-title-date">
+                    <h3>Dior</h3>
+                        <p>Pop Smoke</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#128</p>
+                        <p>03:36</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+            </ul>
+
+            
+            <ul id="pop-out-tab" style="display:none;" class="close-tab tab-6">
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/Control.mp3" data-ticketnum="0" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>Control</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#001</p>
+                        <p>03:06</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/Black Friday.mp3" data-ticketnum="1" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>Black Friday</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#002</p>
+                        <p>03:42</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/Medics.mp3" data-ticketnum="2" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>Medics</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#003</p>
+                        <p>03:15</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/The Story Of Adidon.mp3" data-ticketnum="3" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>The Story Of Adidon</h3>
+                        <p>Pusha T</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#004</p>
+                        <p>03:09</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/First Person Shooter.mp3" data-ticketnum="4" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>First Person Shooter</h3>
+                        <p>Drake, J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#005</p>
+                        <p>04:07</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/Like That.mp3" data-ticketnum="5" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>Like That</h3>
+                        <p>Future, Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#006</p>
+                        <p>04:27</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/7 Minute Drill.mp3" data-ticketnum="6" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>7 Minute Drill</h3>
+                        <p>J. Cole</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#007</p>
+                        <p>03:32</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/Push Ups.mp3" data-ticketnum="7" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>Push Ups</h3>
+                        <p>Drake</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#008</p>
+                        <p>03:52</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/euphoria.mp3" data-ticketnum="8" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>euphoria</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#009</p>
+                        <p>06:23</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/6_16 in LA.mp3" data-ticketnum="9" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>6:16 in LA.mp3</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#010</p>
+                        <p>03:45</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/FAMILY MATTERS.mp3" data-ticketnum="10" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>FAMILY MATTERS</h3>
+                        <p>Drake</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#011</p>
+                        <p>07:37</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/meet the grahams.mp3" data-ticketnum="11" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>meet the grahams</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#012</p>
+                        <p>06:32</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/life goes on.mp3" data-ticketnum="12" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>life goes on</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#013</p>
+                        <p>01:17</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/Not Like Us.mp3" data-ticketnum="13" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>Not Like Us</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#014</p>
+                        <p>04:34</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/watch the party die.mp3" data-ticketnum="14" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>watch the party die</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#015</p>
+                        <p>05:05</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                <li class="mp3-container">
+                    <a href="#mp3-section" data-url="/assets/thePopOut/The Greatest.mp3" data-ticketnum="15" data-tabtype="pop-out-tab" class="none play">
+                    <i class="fa-solid fa-play"></i>
+                    </a>
+                    <div class="mp3-title-date">
+                        <h3>The Greatest</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                    <div class="mp3-number-duration">
+                        <p class="mp3-numbers">#016</p>
+                        <p>00:57</p>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+            </ul>
+
+            
+
+            <!-- KEEP! : Funtion to extract audio duration -->
+            <!-- <div id="audio-files" style="display:none;">
+                    
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                      
+                      <span data-path=""></span>
+                    
+                </div>                   -->
+        </div>
+    </div>
+
+    <!-- Google Analytics Tracking code -->
+<script src="https://cdn.jsdelivr.net/npm/ga-lite@1/dist/ga-lite.min.js" async></script>
+<script>
+var galite = galite || {};
+galite.UA = '';
+</script>
+    
+    <script type="module" src="/script/mp3Player.js"></script>
+    <script type="module" src="/script/timer.js"></script>
+    <script type="module" src="/script/modeToggle.js"></script>
+    <script type="module" src="/script/todo.js"></script>
+    <script type="module" src="/script/rssFeeds.js"></script>
+    <script type="module" src="/script/localStorageSave.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accessToken = sessionStorage.getItem('accessToken');
+
+            if(accessToken === 'false' || accessToken === null){
+                window.location.href = 'https://kevinpratamasetiawan.github.io/';
+            }
+        });
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/../../../script/service-worker.js');
+        }
+    </script>
+</body>
+
+
+</html>
