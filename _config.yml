@@ -1,6 +1,6 @@
-### your site title here
 #Start The Localhost : bundle exec jekyll serve --incremental --trace
 
+### your site title here
 title: KPS
 description: Fullstack and Cloud Developer | Informatics Engineering Student | Based in Indonesia
 
@@ -253,6 +253,7 @@ mp3_order:
     - /assets/playlist1/Not Like Us.mp3
     - /assets/playlist1/watch the party die.mp3
     - /assets/playlist1/Tobey.mp3
+    - /assets/playlist1/Migos Freestyle.mp3
     - /assets/playlist1/Dior.mp3
 
 sass:
