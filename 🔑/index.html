@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🔑 | KPS</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="🔑" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Fullstack and Cloud Developer Informatics Engineering Student Based in Indonesia" />
+<meta property="og:description" content="Fullstack and Cloud Developer Informatics Engineering Student Based in Indonesia" />
+<link rel="canonical" href="/%F0%9F%94%91/" />
+<meta property="og:url" content="/%F0%9F%94%91/" />
+<meta property="og:site_name" content="KPS" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🔑" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Fullstack and Cloud Developer Informatics Engineering Student Based in Indonesia","headline":"🔑","url":"/%F0%9F%94%91/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Generated using https://favicon.io/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" sizes="16x16" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+
+    <!-- MathJax -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+     processEscapes: true
+    }
+  });
+</script>
+
+
+    <!-- Load fontawesome here for faster loadtimes: https://stackoverflow.com/a/35880730/9523246 -->
+    <script
+        type="text/javascript"> (function () { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.11.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body id="secret-style">
+    <main style="margin: auto;">
+        <article>
+            <div class="article-list" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+    <a class="none" href="/">
+        <img id="mode-logo" src="/black-logo.png" alt="Logo" style="width: 400px;">
+    </a>
+    <input align="center" type="password" id="password" class="password" name="password" placeholder="Password">
+    <p align="center">
+        <button class="simplebutton" id="submit-button"><i class="fa-solid fa-user-secret"></i></button>
+    </p>
+</div>
+
+<script>
+    document.getElementById('submit-button').addEventListener('click', function() {
+        var passwordInput = document.getElementById('password');
+        var password = document.getElementById('password').value;
+        var button = document.getElementById('submit-button');
+
+        if (button.getAttribute('data-redirect') === 'true') {
+            window.location.href = '/💻/';
+            return;
+        }
+
+        if (password === '400391211') {
+            passwordInput.style.color = '';
+            passwordInput.value = '';
+            passwordInput.placeholder = 'welcome back Kevin Pratama !';
+            // window.location.href = '/';
+            passwordInput.style.borderBottom = '3px solid green';
+            passwordInput.style.fontFamily = 'JetBrains Mono, monospace';
+            button.textContent = "Access Granted!";
+            button.style.fontFamily = 'JetBrains Mono, monospace';
+            button.setAttribute('data-redirect', 'true');
+            sessionStorage.setItem('accessToken', true);
+        } else {
+            passwordInput.value = '';
+            passwordInput.placeholder = 'Access Denied!';
+            passwordInput.style.borderBottom = '3px solid red';
+        }
+    });
+</script>
+
+
+        </article>
+    </main>
+
+    <!-- Google Analytics Tracking code -->
+<script src="https://cdn.jsdelivr.net/npm/ga-lite@1/dist/ga-lite.min.js" async></script>
+<script>
+var galite = galite || {};
+galite.UA = '';
+</script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/../../../script/service-worker.js');
+        }
+    </script>
+    <script src="/script/modeToggle.js"></script>
+</body>
+
+</html>
